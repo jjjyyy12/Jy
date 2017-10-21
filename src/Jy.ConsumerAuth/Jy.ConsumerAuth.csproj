@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Jy.Application\Jy.Application.csproj" />
+    <ProjectReference Include="..\Jy.DistributedLockHandler\Jy.DistributedLockHandler.csproj" />
+    <ProjectReference Include="..\Jy.Domain\Jy.Domain.csproj" />
+    <ProjectReference Include="..\Jy.EntityFrameworkCore\Jy.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\Jy.IMessageQueue\Jy.IMessageQueue.csproj" />
+    <ProjectReference Include="..\Jy.Kafka\Jy.Kafka.csproj" />
+    <ProjectReference Include="..\Jy.ProcessMessage\Jy.ProcessMessage.csproj" />
+    <ProjectReference Include="..\Jy.RabbitMQ\Jy.RabbitMQ.csproj" />
+    <ProjectReference Include="..\Jy.Utility\Jy.Utility.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.6.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.0.0" />
+    <PackageReference Include="Serilog" Version="2.5.0" />
+    <PackageReference Include="Serilog.Sinks.RollingFile" Version="3.3.0" />
+  </ItemGroup>
+</Project>

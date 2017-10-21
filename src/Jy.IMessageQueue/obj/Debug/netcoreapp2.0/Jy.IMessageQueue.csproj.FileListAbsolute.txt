@@ -1,0 +1,9 @@
+D:\Study\testJy\Jy-master\src\Jy.IMessageQueue\bin\Debug\netcoreapp2.0\Jy.IMessageQueue.deps.json
+D:\Study\testJy\Jy-master\src\Jy.IMessageQueue\bin\Debug\netcoreapp2.0\Jy.IMessageQueue.dll
+D:\Study\testJy\Jy-master\src\Jy.IMessageQueue\bin\Debug\netcoreapp2.0\Jy.IMessageQueue.pdb
+D:\Study\testJy\Jy-master\src\Jy.IMessageQueue\obj\Debug\netcoreapp2.0\Jy.IMessageQueue.csprojResolveAssemblyReference.cache
+D:\Study\testJy\Jy-master\src\Jy.IMessageQueue\obj\Debug\netcoreapp2.0\Jy.IMessageQueue.csproj.CoreCompileInputs.cache
+D:\Study\testJy\Jy-master\src\Jy.IMessageQueue\obj\Debug\netcoreapp2.0\Jy.IMessageQueue.AssemblyInfoInputs.cache
+D:\Study\testJy\Jy-master\src\Jy.IMessageQueue\obj\Debug\netcoreapp2.0\Jy.IMessageQueue.AssemblyInfo.cs
+D:\Study\testJy\Jy-master\src\Jy.IMessageQueue\obj\Debug\netcoreapp2.0\Jy.IMessageQueue.dll
+D:\Study\testJy\Jy-master\src\Jy.IMessageQueue\obj\Debug\netcoreapp2.0\Jy.IMessageQueue.pdb

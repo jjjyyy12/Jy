@@ -1,0 +1,9 @@
+D:\Study\testJy\Jy-master\src\Jy.ILog\bin\Debug\netcoreapp2.0\Jy.ILog.deps.json
+D:\Study\testJy\Jy-master\src\Jy.ILog\bin\Debug\netcoreapp2.0\Jy.ILog.dll
+D:\Study\testJy\Jy-master\src\Jy.ILog\bin\Debug\netcoreapp2.0\Jy.ILog.pdb
+D:\Study\testJy\Jy-master\src\Jy.ILog\obj\Debug\netcoreapp2.0\Jy.ILog.csprojResolveAssemblyReference.cache
+D:\Study\testJy\Jy-master\src\Jy.ILog\obj\Debug\netcoreapp2.0\Jy.ILog.csproj.CoreCompileInputs.cache
+D:\Study\testJy\Jy-master\src\Jy.ILog\obj\Debug\netcoreapp2.0\Jy.ILog.AssemblyInfoInputs.cache
+D:\Study\testJy\Jy-master\src\Jy.ILog\obj\Debug\netcoreapp2.0\Jy.ILog.AssemblyInfo.cs
+D:\Study\testJy\Jy-master\src\Jy.ILog\obj\Debug\netcoreapp2.0\Jy.ILog.dll
+D:\Study\testJy\Jy-master\src\Jy.ILog\obj\Debug\netcoreapp2.0\Jy.ILog.pdb

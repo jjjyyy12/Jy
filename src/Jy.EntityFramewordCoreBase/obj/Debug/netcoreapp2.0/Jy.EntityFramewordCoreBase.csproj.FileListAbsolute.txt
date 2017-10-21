@@ -1,0 +1,13 @@
+D:\Study\testJy\Jy-master\src\Jy.EntityFramewordCoreBase\bin\Debug\netcoreapp2.0\Jy.EntityFramewordCoreBase.deps.json
+D:\Study\testJy\Jy-master\src\Jy.EntityFramewordCoreBase\bin\Debug\netcoreapp2.0\Jy.EntityFramewordCoreBase.dll
+D:\Study\testJy\Jy-master\src\Jy.EntityFramewordCoreBase\bin\Debug\netcoreapp2.0\Jy.EntityFramewordCoreBase.pdb
+D:\Study\testJy\Jy-master\src\Jy.EntityFramewordCoreBase\bin\Debug\netcoreapp2.0\Jy.IRepositories.dll
+D:\Study\testJy\Jy-master\src\Jy.EntityFramewordCoreBase\bin\Debug\netcoreapp2.0\Jy.Utility.dll
+D:\Study\testJy\Jy-master\src\Jy.EntityFramewordCoreBase\bin\Debug\netcoreapp2.0\Jy.IRepositories.pdb
+D:\Study\testJy\Jy-master\src\Jy.EntityFramewordCoreBase\bin\Debug\netcoreapp2.0\Jy.Utility.pdb
+D:\Study\testJy\Jy-master\src\Jy.EntityFramewordCoreBase\obj\Debug\netcoreapp2.0\Jy.EntityFramewordCoreBase.csprojResolveAssemblyReference.cache
+D:\Study\testJy\Jy-master\src\Jy.EntityFramewordCoreBase\obj\Debug\netcoreapp2.0\Jy.EntityFramewordCoreBase.csproj.CoreCompileInputs.cache
+D:\Study\testJy\Jy-master\src\Jy.EntityFramewordCoreBase\obj\Debug\netcoreapp2.0\Jy.EntityFramewordCoreBase.AssemblyInfoInputs.cache
+D:\Study\testJy\Jy-master\src\Jy.EntityFramewordCoreBase\obj\Debug\netcoreapp2.0\Jy.EntityFramewordCoreBase.AssemblyInfo.cs
+D:\Study\testJy\Jy-master\src\Jy.EntityFramewordCoreBase\obj\Debug\netcoreapp2.0\Jy.EntityFramewordCoreBase.dll
+D:\Study\testJy\Jy-master\src\Jy.EntityFramewordCoreBase\obj\Debug\netcoreapp2.0\Jy.EntityFramewordCoreBase.pdb

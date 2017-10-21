@@ -1,0 +1,47 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.0",
+    "signature": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.0": {
+      "Jy.QueueService/1.0.0": {
+        "dependencies": {
+          "Jy.ILog": "1.0.0",
+          "Jy.IMessageQueue": "1.0.0"
+        },
+        "runtime": {
+          "Jy.QueueService.dll": {}
+        }
+      },
+      "Jy.ILog/1.0.0": {
+        "runtime": {
+          "Jy.ILog.dll": {}
+        }
+      },
+      "Jy.IMessageQueue/1.0.0": {
+        "runtime": {
+          "Jy.IMessageQueue.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Jy.QueueService/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Jy.ILog/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Jy.IMessageQueue/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

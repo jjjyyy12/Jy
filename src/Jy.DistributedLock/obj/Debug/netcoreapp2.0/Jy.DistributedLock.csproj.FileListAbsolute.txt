@@ -1,0 +1,9 @@
+D:\Study\testJy\Jy-master\src\Jy.DistributedLock\bin\Debug\netcoreapp2.0\Jy.DistributedLock.deps.json
+D:\Study\testJy\Jy-master\src\Jy.DistributedLock\bin\Debug\netcoreapp2.0\Jy.DistributedLock.dll
+D:\Study\testJy\Jy-master\src\Jy.DistributedLock\bin\Debug\netcoreapp2.0\Jy.DistributedLock.pdb
+D:\Study\testJy\Jy-master\src\Jy.DistributedLock\obj\Debug\netcoreapp2.0\Jy.DistributedLock.csproj.CoreCompileInputs.cache
+D:\Study\testJy\Jy-master\src\Jy.DistributedLock\obj\Debug\netcoreapp2.0\Jy.DistributedLock.AssemblyInfoInputs.cache
+D:\Study\testJy\Jy-master\src\Jy.DistributedLock\obj\Debug\netcoreapp2.0\Jy.DistributedLock.AssemblyInfo.cs
+D:\Study\testJy\Jy-master\src\Jy.DistributedLock\obj\Debug\netcoreapp2.0\Jy.DistributedLock.dll
+D:\Study\testJy\Jy-master\src\Jy.DistributedLock\obj\Debug\netcoreapp2.0\Jy.DistributedLock.pdb
+D:\Study\testJy\Jy-master\src\Jy.DistributedLock\obj\Debug\netcoreapp2.0\Jy.DistributedLock.csprojResolveAssemblyReference.cache

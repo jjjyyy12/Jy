@@ -1,0 +1,35 @@
+
+CREATE SCHEMA `CRM` DEFAULT CHARACTER SET utf8 ;
+
+Tools –> Library Package Manager –> Package Manager Console;
+选择Jy.CRM.EntityFrameworkCore项目，并将api带连接串的项目设成默认启动
+Add-Migration "AddCRM"
+
+CREATE TABLE `CRM`.`__EFMigrationsHistory` (
+  `MigrationId` VARCHAR(100) NOT NULL,
+  `ProductVersion` VARCHAR(200) NULL,
+  PRIMARY KEY (`MigrationId`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+Update-Database
+
+ALTER TABLE `CRM`.`Commodity` 
+CHANGE COLUMN `Des` `Des` NVARCHAR(150) NULL DEFAULT NULL ,
+CHANGE COLUMN `Name` `Name` NVARCHAR(150) NULL DEFAULT NULL ,
+CHANGE COLUMN `Url` `Url` NVARCHAR(150) NULL DEFAULT NULL ;
+ALTER TABLE `CRM`.`Payment` 
+CHANGE COLUMN `ChannelCode` `ChannelCode` VARCHAR(36) NULL DEFAULT NULL ,
+CHANGE COLUMN `PaymentAccount` `PaymentAccount` VARCHAR(72) NULL DEFAULT NULL ,
+CHANGE COLUMN `PaymentMode` `PaymentMode` VARCHAR(36) NULL DEFAULT NULL ;
+
+ALTER TABLE `CRM`.`User` 
+CHANGE COLUMN `Address` `Address` VARCHAR(200) NULL DEFAULT NULL ,
+CHANGE COLUMN `EMail` `EMail` VARCHAR(100) NULL DEFAULT NULL ,
+CHANGE COLUMN `MobileNumber` `MobileNumber` VARCHAR(36) NULL DEFAULT NULL ,
+CHANGE COLUMN `NickName` `NickName` VARCHAR(72) NULL DEFAULT NULL ;
+
+
+
+DbMigration使用方法  1、Enable-Migrations -Context TypeNameLITCS.Data.gmisContext  Enable-Migrations命令创建了一个新的Migrations文件夹，并在该目录下创建了Configuration.cs文件。使用Visual Studio打开Configuration.cs文件，向Seed方法中添加要插入数据表的数据。  2、Add-Migration Initial来创建初始迁移  3、Add-Migration "Adduserrolemanagermenu"   创建新的版本并指定标识符 4、update-database –TargetMigration:"201301230114573_InitPartialDb" 更新到指定的版本，update-database更新到最新版本。  5、如果要最终生成一个版本，可以先删除Migrations文件夹，然后执行1和2即可，把Seed里边的代码贴过了，执行4即可。 

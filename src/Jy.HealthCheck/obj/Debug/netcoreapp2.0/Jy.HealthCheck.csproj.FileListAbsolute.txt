@@ -1,0 +1,9 @@
+D:\Study\testJy\Jy-master\src\Jy.HealthCheck\bin\Debug\netcoreapp2.0\Jy.HealthCheck.deps.json
+D:\Study\testJy\Jy-master\src\Jy.HealthCheck\bin\Debug\netcoreapp2.0\Jy.HealthCheck.dll
+D:\Study\testJy\Jy-master\src\Jy.HealthCheck\bin\Debug\netcoreapp2.0\Jy.HealthCheck.pdb
+D:\Study\testJy\Jy-master\src\Jy.HealthCheck\obj\Debug\netcoreapp2.0\Jy.HealthCheck.csprojResolveAssemblyReference.cache
+D:\Study\testJy\Jy-master\src\Jy.HealthCheck\obj\Debug\netcoreapp2.0\Jy.HealthCheck.csproj.CoreCompileInputs.cache
+D:\Study\testJy\Jy-master\src\Jy.HealthCheck\obj\Debug\netcoreapp2.0\Jy.HealthCheck.AssemblyInfoInputs.cache
+D:\Study\testJy\Jy-master\src\Jy.HealthCheck\obj\Debug\netcoreapp2.0\Jy.HealthCheck.AssemblyInfo.cs
+D:\Study\testJy\Jy-master\src\Jy.HealthCheck\obj\Debug\netcoreapp2.0\Jy.HealthCheck.dll
+D:\Study\testJy\Jy-master\src\Jy.HealthCheck\obj\Debug\netcoreapp2.0\Jy.HealthCheck.pdb

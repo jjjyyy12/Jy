@@ -1,0 +1,9 @@
+D:\Study\testJy\Jy-master\src\Jy.Utility\bin\Debug\netcoreapp2.0\Jy.Utility.deps.json
+D:\Study\testJy\Jy-master\src\Jy.Utility\bin\Debug\netcoreapp2.0\Jy.Utility.dll
+D:\Study\testJy\Jy-master\src\Jy.Utility\bin\Debug\netcoreapp2.0\Jy.Utility.pdb
+D:\Study\testJy\Jy-master\src\Jy.Utility\obj\Debug\netcoreapp2.0\Jy.Utility.csproj.CoreCompileInputs.cache
+D:\Study\testJy\Jy-master\src\Jy.Utility\obj\Debug\netcoreapp2.0\Jy.Utility.AssemblyInfoInputs.cache
+D:\Study\testJy\Jy-master\src\Jy.Utility\obj\Debug\netcoreapp2.0\Jy.Utility.AssemblyInfo.cs
+D:\Study\testJy\Jy-master\src\Jy.Utility\obj\Debug\netcoreapp2.0\Jy.Utility.dll
+D:\Study\testJy\Jy-master\src\Jy.Utility\obj\Debug\netcoreapp2.0\Jy.Utility.pdb
+D:\Study\testJy\Jy-master\src\Jy.Utility\obj\Debug\netcoreapp2.0\Jy.Utility.csprojResolveAssemblyReference.cache

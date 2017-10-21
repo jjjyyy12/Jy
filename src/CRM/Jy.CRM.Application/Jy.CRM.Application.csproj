@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Jy.CacheService\Jy.CacheService.csproj" />
+    <ProjectReference Include="..\..\Jy.ICache\Jy.ICache.csproj" />
+    <ProjectReference Include="..\..\Jy.ILog\Jy.ILog.csproj" />
+    <ProjectReference Include="..\..\Jy.IMessageQueue\Jy.IMessageQueue.csproj" />
+    <ProjectReference Include="..\..\Jy.QueueService\Jy.QueueService.csproj" />
+    <ProjectReference Include="..\Jy.CRM.Domain\Jy.CRM.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

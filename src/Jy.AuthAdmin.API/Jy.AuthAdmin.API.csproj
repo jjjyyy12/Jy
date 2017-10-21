@@ -1,0 +1,64 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netcoreapp2.0\Jy.AuthAdmin.API.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.1.1" />
+	
+	<PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="2.0.0" />
+	
+	<PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="2.0.0" />
+	
+	<PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Owin" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="2.0.0" />
+    <PackageReference Include="Pivotal.Discovery.Client" Version="1.1.0" />
+    <PackageReference Include="Serilog" Version="2.5.0" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="2.0.2" />
+    <PackageReference Include="Serilog.Sinks.RollingFile" Version="3.3.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="1.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Jy.Application\Jy.Application.csproj" />
+    <ProjectReference Include="..\Jy.Cache\Jy.Cache.csproj" />
+    <ProjectReference Include="..\Jy.Dapper\Jy.Dapper.csproj" />
+    <ProjectReference Include="..\Jy.Domain\Jy.Domain.csproj" />
+    <ProjectReference Include="..\Jy.EntityFrameworkCore\Jy.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\Jy.HealthCheck\Jy.HealthCheck.csproj" />
+    <ProjectReference Include="..\Jy.ICache\Jy.ICache.csproj" />
+    <ProjectReference Include="..\Jy.ILog\Jy.ILog.csproj" />
+    <ProjectReference Include="..\Jy.IMessageQueue\Jy.IMessageQueue.csproj" />
+    <ProjectReference Include="..\Jy.Kafka\Jy.Kafka.csproj" />
+    <ProjectReference Include="..\Jy.MVCAuthorization\Jy.MVCAuthorization.csproj" />
+    <ProjectReference Include="..\Jy.RabbitMQ\Jy.RabbitMQ.csproj" />
+    <ProjectReference Include="..\Jy.ServicesKeep\Jy.ServicesKeep.csproj" />
+    <ProjectReference Include="..\Jy.TokenService\Jy.TokenService.csproj" />
+    <ProjectReference Include="..\Jy.Utility\Jy.Utility.csproj" />
+  </ItemGroup>
+
+</Project>

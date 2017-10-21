@@ -1,0 +1,15 @@
+D:\Study\testJy\Jy-master\src\Jy.Domain\bin\Debug\netcoreapp2.0\Jy.Domain.deps.json
+D:\Study\testJy\Jy-master\src\Jy.Domain\bin\Debug\netcoreapp2.0\Jy.Domain.dll
+D:\Study\testJy\Jy-master\src\Jy.Domain\bin\Debug\netcoreapp2.0\Jy.Domain.pdb
+D:\Study\testJy\Jy-master\src\Jy.Domain\bin\Debug\netcoreapp2.0\Jy.IMessageQueue.dll
+D:\Study\testJy\Jy-master\src\Jy.Domain\bin\Debug\netcoreapp2.0\Jy.IRepositories.dll
+D:\Study\testJy\Jy-master\src\Jy.Domain\bin\Debug\netcoreapp2.0\Jy.Utility.dll
+D:\Study\testJy\Jy-master\src\Jy.Domain\bin\Debug\netcoreapp2.0\Jy.IMessageQueue.pdb
+D:\Study\testJy\Jy-master\src\Jy.Domain\bin\Debug\netcoreapp2.0\Jy.IRepositories.pdb
+D:\Study\testJy\Jy-master\src\Jy.Domain\bin\Debug\netcoreapp2.0\Jy.Utility.pdb
+D:\Study\testJy\Jy-master\src\Jy.Domain\obj\Debug\netcoreapp2.0\Jy.Domain.csprojResolveAssemblyReference.cache
+D:\Study\testJy\Jy-master\src\Jy.Domain\obj\Debug\netcoreapp2.0\Jy.Domain.csproj.CoreCompileInputs.cache
+D:\Study\testJy\Jy-master\src\Jy.Domain\obj\Debug\netcoreapp2.0\Jy.Domain.AssemblyInfoInputs.cache
+D:\Study\testJy\Jy-master\src\Jy.Domain\obj\Debug\netcoreapp2.0\Jy.Domain.AssemblyInfo.cs
+D:\Study\testJy\Jy-master\src\Jy.Domain\obj\Debug\netcoreapp2.0\Jy.Domain.dll
+D:\Study\testJy\Jy-master\src\Jy.Domain\obj\Debug\netcoreapp2.0\Jy.Domain.pdb

@@ -1,0 +1,166 @@
+CREATE SCHEMA Auth ;
+ALTER SCHEMA `Auth`  DEFAULT varcharACTER SET utf8mb4 ;
+
+CREATE TABLE Auth.__EFMigrationsHistory (
+  MigrationId VARvarchar(100) NOT NULL,
+  ProductVersion VARvarchar(200) NULL,
+  PRIMARY KEY (MigrationId));
+
+
+ 
+Tools –> Library Package Manager –> Package Manager Console;
+选择Jy.EntityFrameworkCore项目
+选择Jy.EntityFrameworkCore项目项目，并将MVC带连接串的项目设成默认启动
+Add-Migration -Context JyDbContext addAuth
+Update-Database
+
+alert database Auth varcharacter set utf8 
+
+
+-------------------------------------
+CREATE TABLE Auth.Departments (
+  Id varchar(36) NOT NULL,
+  Code longtext,
+  ContactNumber longtext,
+  CreateTime datetime(6) DEFAULT NULL,
+  CreateUserId varchar(36) NOT NULL,
+  IsDeleted int(11) NOT NULL,
+  Manager longtext,
+  Name longtext,
+  ParentId varchar(36) NOT NULL,
+  Remarks longtext,
+  PRIMARY KEY (Id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE Auth.Menus (
+  Id varchar(36) NOT NULL,
+  Code longtext,
+  Icon longtext,
+  Name longtext,
+  ParentId varchar(36) NOT NULL,
+  Remarks longtext,
+  SerialNumber int(11) NOT NULL,
+  Type int(11) NOT NULL,
+  Url longtext,
+  PRIMARY KEY (Id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE Auth.Roles (
+  Id varchar(36) NOT NULL,
+  Code longtext,
+  CreateTime datetime(6) DEFAULT NULL,
+  CreateUserId varchar(36) NOT NULL,
+  Name longtext,
+  Remarks longtext,
+  PRIMARY KEY (Id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE Auth.RoleMenus (
+  RoleId varchar(36) NOT NULL,
+  MenuId varchar(36) NOT NULL,
+  MenuId1 varchar(36) DEFAULT NULL,
+  PRIMARY KEY (RoleId,MenuId),
+  KEY IX_RoleMenus_MenuId (MenuId),
+  KEY IX_RoleMenus_MenuId1 (MenuId1),
+  CONSTRAINT FK_RoleMenus_Menus_MenuId1 FOREIGN KEY (MenuId1) REFERENCES Menus (Id) ON DELETE NO ACTION,
+  CONSTRAINT FK_RoleMenus_Roles_MenuId FOREIGN KEY (MenuId) REFERENCES Roles (Id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE Auth.Users (
+  Id varchar(36) NOT NULL,
+  CreateTime datetime(6) DEFAULT NULL,
+  CreateUserId varchar(36) NOT NULL,
+  DepartmentId varchar(36) NOT NULL,
+  EMail longtext,
+  IsDeleted int(11) NOT NULL,
+  LastLoginTime datetime(6) NOT NULL,
+  LoginTimes int(11) NOT NULL,
+  MobileNumber longtext,
+  Name longtext,
+  Password longtext,
+  Remarks longtext,
+  UserName longtext,
+  PRIMARY KEY (Id),
+  KEY IX_Users_DepartmentId (DepartmentId),
+  CONSTRAINT FK_Users_Departments_DepartmentId FOREIGN KEY (DepartmentId) REFERENCES Departments (Id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE Auth.UserRoles (
+  UserId varchar(36) NOT NULL,
+  RoleId varchar(36) NOT NULL,
+  PRIMARY KEY (UserId,RoleId),
+  KEY IX_UserRoles_RoleId (RoleId),
+  KEY IX_UserRoles_UserId (UserId),
+  CONSTRAINT FK_UserRoles_Roles_RoleId FOREIGN KEY (RoleId) REFERENCES Roles (Id) ON DELETE CASCADE,
+  CONSTRAINT FK_UserRoles_Users_UserId FOREIGN KEY (UserId) REFERENCES Users (Id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `Auth`.`RoleMenus` 
+DROP FOREIGN KEY `FK_RoleMenus_Menus_MenuId1`,
+DROP FOREIGN KEY `FK_RoleMenus_Roles_MenuId`;
+ALTER TABLE `Auth`.`RoleMenus` 
+DROP COLUMN `MenuId1`,
+DROP INDEX `IX_RoleMenus_MenuId1` ,
+ADD INDEX `IX_RoleMenus_MenuId` (`MenuId` ASC),
+DROP INDEX `IX_RoleMenus_MenuId` ;
+ALTER TABLE `Auth`.`RoleMenus` 
+ADD CONSTRAINT `FK_RoleMenus_Menus_MenuId`
+  FOREIGN KEY (`MenuId`)
+  REFERENCES `Auth`.`Menus` (`Id`)
+  ON DELETE NO ACTION,
+ADD CONSTRAINT `FK_RoleMenus_Roles_RoleId`
+  FOREIGN KEY (`RoleId`)
+  REFERENCES `Auth`.`Roles` (`Id`)
+  ON DELETE CASCADE;
+
+
+ALTER TABLE `Auth`.`Departments` 
+CHANGE COLUMN `Code` `Code` VARCHAR(36) NULL DEFAULT NULL ,
+CHANGE COLUMN `ContactNumber` `ContactNumber` VARCHAR(36) NULL DEFAULT NULL ,
+CHANGE COLUMN `Manager` `Manager` VARCHAR(36) NULL DEFAULT NULL ,
+CHANGE COLUMN `Name` `Name` VARCHAR(36) NULL DEFAULT NULL ;
+
+ALTER TABLE `Auth`.`Menus` 
+CHANGE COLUMN `Code` `Code` VARCHAR(36) NULL DEFAULT NULL ,
+CHANGE COLUMN `Icon` `Icon` VARCHAR(36) NULL DEFAULT NULL ,
+CHANGE COLUMN `Name` `Name` VARCHAR(36) NULL DEFAULT NULL ,
+CHANGE COLUMN `Remarks` `Remarks` VARCHAR(72) NULL DEFAULT NULL ,
+CHANGE COLUMN `Url` `Url` VARCHAR(72) NULL DEFAULT NULL ;
+
+ALTER TABLE `Auth`.`Roles` 
+CHANGE COLUMN `Code` `Code` VARCHAR(36) NULL DEFAULT NULL ,
+CHANGE COLUMN `Name` `Name` VARCHAR(36) NULL DEFAULT NULL ,
+CHANGE COLUMN `Remarks` `Remarks` VARCHAR(72) NULL DEFAULT NULL ;
+
+ALTER TABLE `Auth`.`Users` 
+CHANGE COLUMN `EMail` `EMail` VARCHAR(36) NULL DEFAULT NULL ,
+CHANGE COLUMN `MobileNumber` `MobileNumber` VARCHAR(36) NULL DEFAULT NULL ,
+CHANGE COLUMN `Name` `Name` VARCHAR(36) NULL DEFAULT NULL ,
+CHANGE COLUMN `Password` `Password` VARCHAR(72) NULL DEFAULT NULL ,
+CHANGE COLUMN `Remarks` `Remarks` VARCHAR(72) NULL DEFAULT NULL ,
+CHANGE COLUMN `UserName` `UserName` VARCHAR(36) NULL DEFAULT NULL ;
+
+   
+ALTER TABLE `Auth`.`RoleMenus` 
+DROP FOREIGN KEY `FK_RoleMenus_Menus_MenuId1`,
+DROP FOREIGN KEY `FK_RoleMenus_Roles_MenuId`;
+ALTER TABLE `Auth`.`RoleMenus` DROP INDEX `IX_RoleMenus_MenuId1` ,
+ADD INDEX `IX_RoleMenus_MenuId` (`MenuId` ASC),
+DROP INDEX `IX_RoleMenus_MenuId` ;
+ALTER TABLE `Auth`.`RoleMenus` 
+ADD CONSTRAINT `FK_RoleMenus_Menus_MenuId`
+  FOREIGN KEY (`MenuId`)
+  REFERENCES `Auth`.`Menus` (`Id`)
+  ON DELETE NO ACTION,
+ADD CONSTRAINT `FK_RoleMenus_Roles_RoleId`
+  FOREIGN KEY (`RoleId`)
+  REFERENCES `Auth`.`Roles` (`Id`)
+  ON DELETE CASCADE;
+
+
+
+ 
+
+DbMigration使用方法  1、Enable-Migrations -ContextTypeNameLITCS.Data.gmisContext  Enable-Migrations命令创建了一个新的Migrations文件夹，并在该目录下创建了Configuration.cs文件。使用Visual Studio打开Configuration.cs文件，向Seed方法中添加要插入数据表的数据。  2、Add-Migration Initial来创建初始迁移  3、Add-Migration "Adduserrolemanagermenu"   创建新的版本并指定标识符 4、update-database –TargetMigration:"201301230114573_InitPartialDb" 更新到指定的版本，update-database更新到最新版本。  5、如果要最终生成一个版本，可以先删除Migrations文件夹，然后执行1和2即可，把Seed里边的代码贴过了，执行4即可。 

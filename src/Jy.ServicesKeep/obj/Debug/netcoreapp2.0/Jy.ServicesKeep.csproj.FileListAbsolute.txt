@@ -1,0 +1,11 @@
+D:\Study\testJy\Jy-master\src\Jy.ServicesKeep\bin\Debug\netcoreapp2.0\Jy.ServicesKeep.deps.json
+D:\Study\testJy\Jy-master\src\Jy.ServicesKeep\bin\Debug\netcoreapp2.0\Jy.ServicesKeep.dll
+D:\Study\testJy\Jy-master\src\Jy.ServicesKeep\bin\Debug\netcoreapp2.0\Jy.ServicesKeep.pdb
+D:\Study\testJy\Jy-master\src\Jy.ServicesKeep\bin\Debug\netcoreapp2.0\Jy.Utility.dll
+D:\Study\testJy\Jy-master\src\Jy.ServicesKeep\bin\Debug\netcoreapp2.0\Jy.Utility.pdb
+D:\Study\testJy\Jy-master\src\Jy.ServicesKeep\obj\Debug\netcoreapp2.0\Jy.ServicesKeep.csprojResolveAssemblyReference.cache
+D:\Study\testJy\Jy-master\src\Jy.ServicesKeep\obj\Debug\netcoreapp2.0\Jy.ServicesKeep.csproj.CoreCompileInputs.cache
+D:\Study\testJy\Jy-master\src\Jy.ServicesKeep\obj\Debug\netcoreapp2.0\Jy.ServicesKeep.AssemblyInfoInputs.cache
+D:\Study\testJy\Jy-master\src\Jy.ServicesKeep\obj\Debug\netcoreapp2.0\Jy.ServicesKeep.AssemblyInfo.cs
+D:\Study\testJy\Jy-master\src\Jy.ServicesKeep\obj\Debug\netcoreapp2.0\Jy.ServicesKeep.dll
+D:\Study\testJy\Jy-master\src\Jy.ServicesKeep\obj\Debug\netcoreapp2.0\Jy.ServicesKeep.pdb

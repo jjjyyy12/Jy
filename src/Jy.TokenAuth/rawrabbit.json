@@ -1,0 +1,14 @@
+﻿{
+  "Username": "clare",
+  "Password": "clare",
+  "VirtualHost": "/",
+  "Port": 5672,
+  "Hostnames": [ "192.168.1.115", "192.168.1.116" ],
+  "RequestTimeout": "00:20:10",
+  "PublishConfirmTimeout": "00:20:02",
+  "RecoveryInterval": "00:20:10",
+  "PersistentDeliveryMode": true,
+  "AutoCloseConnection": true,
+  "AutomaticRecovery": true,
+  "TopologyRecovery": true
+}

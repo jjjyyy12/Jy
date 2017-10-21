@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Jy.DistributedLock\Jy.DistributedLock.csproj" />
+    <ProjectReference Include="..\Jy.IMessageQueue\Jy.IMessageQueue.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,11 @@
+D:\Study\testJy\Jy-master\src\Jy.Cache\bin\Debug\netcoreapp2.0\Jy.Cache.deps.json
+D:\Study\testJy\Jy-master\src\Jy.Cache\bin\Debug\netcoreapp2.0\Jy.Cache.dll
+D:\Study\testJy\Jy-master\src\Jy.Cache\bin\Debug\netcoreapp2.0\Jy.Cache.pdb
+D:\Study\testJy\Jy-master\src\Jy.Cache\bin\Debug\netcoreapp2.0\Jy.ICache.dll
+D:\Study\testJy\Jy-master\src\Jy.Cache\bin\Debug\netcoreapp2.0\Jy.ICache.pdb
+D:\Study\testJy\Jy-master\src\Jy.Cache\obj\Debug\netcoreapp2.0\Jy.Cache.csprojResolveAssemblyReference.cache
+D:\Study\testJy\Jy-master\src\Jy.Cache\obj\Debug\netcoreapp2.0\Jy.Cache.csproj.CoreCompileInputs.cache
+D:\Study\testJy\Jy-master\src\Jy.Cache\obj\Debug\netcoreapp2.0\Jy.Cache.AssemblyInfoInputs.cache
+D:\Study\testJy\Jy-master\src\Jy.Cache\obj\Debug\netcoreapp2.0\Jy.Cache.AssemblyInfo.cs
+D:\Study\testJy\Jy-master\src\Jy.Cache\obj\Debug\netcoreapp2.0\Jy.Cache.dll
+D:\Study\testJy\Jy-master\src\Jy.Cache\obj\Debug\netcoreapp2.0\Jy.Cache.pdb

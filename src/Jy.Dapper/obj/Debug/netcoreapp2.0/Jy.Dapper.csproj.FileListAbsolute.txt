@@ -1,0 +1,9 @@
+D:\Study\testJy\Jy-master\src\Jy.Dapper\bin\Debug\netcoreapp2.0\Jy.Dapper.deps.json
+D:\Study\testJy\Jy-master\src\Jy.Dapper\bin\Debug\netcoreapp2.0\Jy.Dapper.dll
+D:\Study\testJy\Jy-master\src\Jy.Dapper\bin\Debug\netcoreapp2.0\Jy.Dapper.pdb
+D:\Study\testJy\Jy-master\src\Jy.Dapper\obj\Debug\netcoreapp2.0\Jy.Dapper.csprojResolveAssemblyReference.cache
+D:\Study\testJy\Jy-master\src\Jy.Dapper\obj\Debug\netcoreapp2.0\Jy.Dapper.csproj.CoreCompileInputs.cache
+D:\Study\testJy\Jy-master\src\Jy.Dapper\obj\Debug\netcoreapp2.0\Jy.Dapper.AssemblyInfoInputs.cache
+D:\Study\testJy\Jy-master\src\Jy.Dapper\obj\Debug\netcoreapp2.0\Jy.Dapper.AssemblyInfo.cs
+D:\Study\testJy\Jy-master\src\Jy.Dapper\obj\Debug\netcoreapp2.0\Jy.Dapper.dll
+D:\Study\testJy\Jy-master\src\Jy.Dapper\obj\Debug\netcoreapp2.0\Jy.Dapper.pdb

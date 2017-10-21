@@ -1,0 +1,200 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Jy.AuthAdmin.API</name>
+    </assembly>
+    <members>
+        <member name="M:Jy.AuthAdmin.API.Controllers.AuthorityController.GetRoleTreeData(System.Guid)">
+            <summary>
+            获取列表
+            </summary>
+            <param name="id">user id</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jy.AuthAdmin.API.Controllers.AuthorityController.GetBatchRoleTreeData">
+            <summary>
+            得到功能树
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jy.AuthAdmin.API.Controllers.AuthorityController.BatchUserRole(Jy.AuthAdmin.API.Models.BatchUserRoleModel)">
+            <summary>
+            批量修改用户角色
+            </summary>
+            <param name="rpm">BatchUserRoleModel</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jy.AuthAdmin.API.Controllers.AuthorityController.UserRole(Jy.AuthAdmin.API.Models.UserRoleModel)">
+            <summary>
+            修改用户角色
+            </summary>
+            <param name="rpm">UserRoleModel</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jy.AuthAdmin.API.Controllers.DepartmentController.GetTreeData">
+            <summary>
+            获取功能树Ok数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jy.AuthAdmin.API.Controllers.DepartmentController.GetChildrenByParent(System.Guid,System.Int32,System.Int32)">
+            <summary>
+            获取子级列表
+            </summary>
+            <param name="parentId">父id</param>
+            <param name="startPage">开始页数</param>
+            <param name="pageSize">每页记录</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jy.AuthAdmin.API.Controllers.DepartmentController.Create(Jy.Domain.Dtos.DepartmentDto)">
+            <summary>
+            新增或编辑功能
+            </summary>
+            <param name="dto">DepartmentDto</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jy.AuthAdmin.API.Controllers.DepartmentController.Edit(Jy.Domain.Dtos.DepartmentDto)">
+            <summary>
+            编辑
+            </summary>
+            <param name="dto">DepartmentDto</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jy.AuthAdmin.API.Controllers.DepartmentController.DeleteMuti(System.String)">
+            <summary>
+            删除批量
+            </summary>
+            <param name="ids">string ids 1,2,3</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jy.AuthAdmin.API.Controllers.DepartmentController.Delete(System.Guid)">
+            <summary>
+            删除单个
+            </summary>
+            <param name="id">department id</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jy.AuthAdmin.API.Controllers.JyControllerBase.GetModelStateError">
+            <summary>
+            获取服务端验证的第一条错误信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jy.AuthAdmin.API.Controllers.LoginController.Index">
+            <summary>
+            获取token后更新登录信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jy.AuthAdmin.API.Controllers.LoginController.GetToken(Jy.AuthAdmin.API.Models.LoginModel)">
+            <summary>
+            登陆获取token
+            </summary>
+            <param name="username">用户名</param>
+            <param name="password">密码</param>
+            <param name="role">角色</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jy.AuthAdmin.API.Controllers.LoginController.VerifyToken(System.String)">
+            <summary>
+            验证token
+            </summary>
+            <param name="token">token</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jy.AuthAdmin.API.Controllers.LoginController.LogOutToken(System.String)">
+            <summary>
+            登出
+            </summary>
+            <param name="token">token</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jy.AuthAdmin.API.Controllers.LoginController.GetMenuForLeftMenu(System.String)">
+            <summary>
+            得到左边的菜单信息
+            </summary>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Jy.AuthAdmin.API.Controllers.MenuController">
+            <summary>
+            功能管理控制器
+            </summary>
+        </member>
+        <member name="M:Jy.AuthAdmin.API.Controllers.MenuController.GetMenuTreeData">
+            <summary>
+            获取功能树Ok数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jy.AuthAdmin.API.Controllers.MenuController.GetMneusByParent(System.Guid,System.Int32,System.Int32)">
+            <summary>
+            获取子级功能列表
+            </summary>
+            <param name="parentId">父id</param>
+            <param name="startPage">开始页数</param>
+            <param name="pageSize">每页记录</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jy.AuthAdmin.API.Controllers.MenuController.Create(Jy.Domain.Dtos.MenuDto)">
+            <summary>
+            新增或编辑功能
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jy.AuthAdmin.API.Controllers.MenuController.Edit(Jy.Domain.Dtos.MenuDto)">
+            <summary>
+            编辑
+            </summary>
+            <param name="dto">MenuDto</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jy.AuthAdmin.API.Controllers.MenuController.DeleteMuti(System.String)">
+            <summary>
+            删除批量
+            </summary>
+            <param name="ids">id,id,id</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jy.AuthAdmin.API.Controllers.MenuController.Delete(System.Guid)">
+            <summary>
+            删除单个
+            </summary>
+            <param name="id">menu id</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jy.AuthAdmin.API.Controllers.RoleController.GetListPaged(System.Int32,System.Int32)">
+            <summary>
+            获取列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jy.AuthAdmin.API.Controllers.RoleController.Create(Jy.Domain.Dtos.RoleDto)">
+            <summary>
+            新增
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jy.AuthAdmin.API.Controllers.UserController.GetTreeData">
+            <summary>
+            获取功能树Ok数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jy.AuthAdmin.API.Controllers.UserController.GetChildrenByParent(System.Guid,System.Int32,System.Int32)">
+            <summary>
+            获取子级列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jy.AuthAdmin.API.Controllers.UserController.Create(Jy.Domain.Dtos.UserDto)">
+            <summary>
+            新增
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
