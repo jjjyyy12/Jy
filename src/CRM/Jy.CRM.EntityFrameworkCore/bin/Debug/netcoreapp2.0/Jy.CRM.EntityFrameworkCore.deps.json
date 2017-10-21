@@ -1379,7 +1379,15 @@
           "Jy.EntityFramewordCoreBase.dll": {}
         }
       },
+      "Jy.ILog/1.0.0": {
+        "runtime": {
+          "Jy.ILog.dll": {}
+        }
+      },
       "Jy.IMessageQueue/1.0.0": {
+        "dependencies": {
+          "Jy.ILog": "1.0.0"
+        },
         "runtime": {
           "Jy.IMessageQueue.dll": {}
         }
@@ -2264,6 +2272,11 @@
       "sha512": ""
     },
     "Jy.EntityFramewordCoreBase/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Jy.ILog/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

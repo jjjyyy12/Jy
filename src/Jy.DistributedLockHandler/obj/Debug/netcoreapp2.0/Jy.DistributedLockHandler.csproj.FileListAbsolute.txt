@@ -11,3 +11,5 @@ D:\Study\testJy\Jy-master\src\Jy.DistributedLockHandler\obj\Debug\netcoreapp2.0\
 D:\Study\testJy\Jy-master\src\Jy.DistributedLockHandler\obj\Debug\netcoreapp2.0\Jy.DistributedLockHandler.AssemblyInfo.cs
 D:\Study\testJy\Jy-master\src\Jy.DistributedLockHandler\obj\Debug\netcoreapp2.0\Jy.DistributedLockHandler.dll
 D:\Study\testJy\Jy-master\src\Jy.DistributedLockHandler\obj\Debug\netcoreapp2.0\Jy.DistributedLockHandler.pdb
+D:\Study\testJy\Jy-master\src\Jy.DistributedLockHandler\bin\Debug\netcoreapp2.0\Jy.ILog.dll
+D:\Study\testJy\Jy-master\src\Jy.DistributedLockHandler\bin\Debug\netcoreapp2.0\Jy.ILog.pdb

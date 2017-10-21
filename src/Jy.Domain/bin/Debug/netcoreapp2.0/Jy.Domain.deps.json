@@ -945,7 +945,15 @@
           "System.Xml.ReaderWriter": "4.3.0"
         }
       },
+      "Jy.ILog/1.0.0": {
+        "runtime": {
+          "Jy.ILog.dll": {}
+        }
+      },
       "Jy.IMessageQueue/1.0.0": {
+        "dependencies": {
+          "Jy.ILog": "1.0.0"
+        },
         "runtime": {
           "Jy.IMessageQueue.dll": {}
         }
@@ -1557,6 +1565,11 @@
       "sha512": "sha512-lJ8AxvkX7GQxpC6GFCeBj8ThYVyQczx2+f/cWHJU8tjS7YfI6Cv6bon70jVEgs2CiFbmmM8b9j1oZVx0dSI2Ww==",
       "path": "system.xml.xmldocument/4.3.0",
       "hashPath": "system.xml.xmldocument.4.3.0.nupkg.sha512"
+    },
+    "Jy.ILog/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Jy.IMessageQueue/1.0.0": {
       "type": "project",

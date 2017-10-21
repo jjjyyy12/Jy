@@ -196,6 +196,16 @@
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
+      },
+      "Jy.ILog/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Jy.ILog.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Jy.ILog.dll": {}
+        }
       }
     }
   },
@@ -656,10 +666,16 @@
         "netstandard.library.2.0.0.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
+    },
+    "Jy.ILog/1.0.0": {
+      "type": "project",
+      "path": "../Jy.ILog/Jy.ILog.csproj",
+      "msbuildProject": "../Jy.ILog/Jy.ILog.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
+      "Jy.ILog >= 1.0.0",
       "Microsoft.NETCore.App >= 2.0.0"
     ]
   },
@@ -695,7 +711,11 @@
       },
       "frameworks": {
         "netcoreapp2.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Study\\testJy\\Jy-master\\src\\Jy.ILog\\Jy.ILog.csproj": {
+              "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.ILog\\Jy.ILog.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

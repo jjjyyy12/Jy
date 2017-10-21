@@ -7,14 +7,27 @@
   "targets": {
     ".NETCoreApp,Version=v2.0": {
       "Jy.IMessageQueue/1.0.0": {
+        "dependencies": {
+          "Jy.ILog": "1.0.0"
+        },
         "runtime": {
           "Jy.IMessageQueue.dll": {}
+        }
+      },
+      "Jy.ILog/1.0.0": {
+        "runtime": {
+          "Jy.ILog.dll": {}
         }
       }
     }
   },
   "libraries": {
     "Jy.IMessageQueue/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Jy.ILog/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

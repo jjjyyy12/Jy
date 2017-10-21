@@ -902,9 +902,22 @@
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
       },
+      "Jy.ILog/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Jy.ILog.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Jy.ILog.dll": {}
+        }
+      },
       "Jy.IMessageQueue/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "Jy.ILog": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Jy.IMessageQueue.dll": {}
         },
@@ -3901,6 +3914,11 @@
         "system.xml.xmldocument.4.3.0.nupkg.sha512",
         "system.xml.xmldocument.nuspec"
       ]
+    },
+    "Jy.ILog/1.0.0": {
+      "type": "project",
+      "path": "../../Jy.ILog/Jy.ILog.csproj",
+      "msbuildProject": "../../Jy.ILog/Jy.ILog.csproj"
     },
     "Jy.IMessageQueue/1.0.0": {
       "type": "project",

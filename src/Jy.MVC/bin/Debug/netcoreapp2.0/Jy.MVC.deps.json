@@ -2710,6 +2710,9 @@
         }
       },
       "Jy.IMessageQueue/1.0.0": {
+        "dependencies": {
+          "Jy.ILog": "1.0.0"
+        },
         "runtime": {
           "Jy.IMessageQueue.dll": {}
         },

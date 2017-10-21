@@ -13,3 +13,5 @@ D:\Study\testJy\Jy-master\src\Jy.Domain\obj\Debug\netcoreapp2.0\Jy.Domain.Assemb
 D:\Study\testJy\Jy-master\src\Jy.Domain\obj\Debug\netcoreapp2.0\Jy.Domain.AssemblyInfo.cs
 D:\Study\testJy\Jy-master\src\Jy.Domain\obj\Debug\netcoreapp2.0\Jy.Domain.dll
 D:\Study\testJy\Jy-master\src\Jy.Domain\obj\Debug\netcoreapp2.0\Jy.Domain.pdb
+D:\Study\testJy\Jy-master\src\Jy.Domain\bin\Debug\netcoreapp2.0\Jy.ILog.dll
+D:\Study\testJy\Jy-master\src\Jy.Domain\bin\Debug\netcoreapp2.0\Jy.ILog.pdb

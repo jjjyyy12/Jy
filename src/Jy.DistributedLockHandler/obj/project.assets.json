@@ -1345,9 +1345,22 @@
           "bin/placeholder/Jy.DistributedLock.dll": {}
         }
       },
+      "Jy.ILog/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Jy.ILog.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Jy.ILog.dll": {}
+        }
+      },
       "Jy.IMessageQueue/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "Jy.ILog": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Jy.IMessageQueue.dll": {}
         },
@@ -4665,6 +4678,11 @@
       "type": "project",
       "path": "../Jy.DistributedLock/Jy.DistributedLock.csproj",
       "msbuildProject": "../Jy.DistributedLock/Jy.DistributedLock.csproj"
+    },
+    "Jy.ILog/1.0.0": {
+      "type": "project",
+      "path": "../Jy.ILog/Jy.ILog.csproj",
+      "msbuildProject": "../Jy.ILog/Jy.ILog.csproj"
     },
     "Jy.IMessageQueue/1.0.0": {
       "type": "project",

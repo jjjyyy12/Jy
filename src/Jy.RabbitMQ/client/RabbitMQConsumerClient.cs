@@ -12,7 +12,7 @@ using RabbitMQ.Client.Exceptions;
 namespace Jy.RabbitMQ
 {
     //public delegate Task ProcessEvent(string name, MessageBase msg);
-    public class RabbitMQConsumerClient <T> where T:MessageBase
+    public class RabbitMQConsumerClient<T> : IConsumerClient<T> where T: MessageBase 
     {
         private readonly string _exchageName;
         private readonly string _queueName;
