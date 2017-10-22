@@ -50,8 +50,7 @@ namespace Jy.IMessageQueue
             return Task.Run(() =>
             {
                 //errorHandle
-                if (originalMsg.FailedTimes != 4)  //4次机会重发,每次等待2*失败次数的时间
-                    ExecuteAsync(originalMsg);
+                ExecuteAsync(originalMsg);
                 return originalMsg;
             });
         }
