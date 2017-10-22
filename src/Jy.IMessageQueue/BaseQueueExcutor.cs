@@ -38,34 +38,22 @@ namespace Jy.IMessageQueue
             catch (Exception ex)
             {
                 _logger.LogError($"BaseQueueExcutor ExecuteAsync error:{message.Id},failtimes:{message.FailedTimes}", ex);
-                HandleAsync(message);
+                if (message.FailedTimes <= 4) //4次机会重发,每次等待2*失败次数的时间
+                    HandleAsync(message);
             }
         }
         private Task<MessageBase> HandleAsync(MessageBase originalMsg)
         {
-              if (originalMsg.MessageRouter.IndexOf("_normal") < 0) return Task.FromResult<MessageBase>(null); //非normal 不予处理
+            if (originalMsg.MessageRouter.IndexOf("_normal") < 0) return Task.FromResult<MessageBase>(null); //非normal 不予处理
             originalMsg.FailedTimes++;
-
             Thread.Sleep(2000 * originalMsg.FailedTimes);
-            try
+            return Task.Run(() =>
             {
-                return Task.Run(() =>
-                {
-                    //errorHandle
-                    if (originalMsg.FailedTimes != 4)  //4次机会重发,每次等待2*失败次数的时间
-                        ExecuteAsync(originalMsg);
-                    return originalMsg;
-                });
-            }
-            catch (Exception exi)
-            {
-                _logger.LogError($"BaseQueueExcutor HandleAsync error:{originalMsg.Id},failtimes:{originalMsg.FailedTimes}", exi);
-                if (originalMsg.FailedTimes <= 4) //4次机会重发,每次等待2*失败次数的时间
-                    return HandleAsync(originalMsg);
-                else
-                    return Task.FromResult(originalMsg);
-            }
-           
+                //errorHandle
+                if (originalMsg.FailedTimes != 4)  //4次机会重发,每次等待2*失败次数的时间
+                    ExecuteAsync(originalMsg);
+                return originalMsg;
+            });
         }
     }
 }
