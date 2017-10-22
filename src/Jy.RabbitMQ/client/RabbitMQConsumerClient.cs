@@ -8,12 +8,14 @@ using Jy.IMessageQueue;
 using RabbitMQ.Client.MessagePatterns;
 using Jy.Utility.Convert;
 using RabbitMQ.Client.Exceptions;
+using Jy.ILog;
 
 namespace Jy.RabbitMQ
 {
     //public delegate Task ProcessEvent(string name, MessageBase msg);
     public class RabbitMQConsumerClient<T> : IConsumerClient<T> where T: MessageBase 
     {
+        private readonly ILogger _logger;
         private readonly string _exchageName;
         private readonly string _queueName;
         public string QueueName { get { return _queueName; } }
@@ -37,7 +39,7 @@ namespace Jy.RabbitMQ
 
         public RabbitMQConsumerClient(string exchageName,string queueName,string responseQueueName,bool needResponse,
              ConnectionPool connectionPool,
-             RabbitMQOptions options)//, ProcessEvent processEvent
+             RabbitMQOptions options, ILogger logger)//, ProcessEvent processEvent
         {
             _queueName = queueName;
             _responseQueueName = responseQueueName;
@@ -46,6 +48,7 @@ namespace Jy.RabbitMQ
             _rabbitMQOptions = options;
             _exchageName = exchageName ?? options.TopicExchangeName;
             //_processEvent = processEvent;
+            _logger = logger;
             InitClient();
         }
 
@@ -147,12 +150,14 @@ namespace Jy.RabbitMQ
                 }
                 catch(Exception ex)
                 {
+                    _logger.LogError($"RabbitMQConsumerClient OnConsumerReceived eooro:{message.MessageRouter}", ex);
                     _responseChannel.BasicReject(e.DeliveryTag, false); //不再重新分发
                     hasRejected = true;
                     isSuccess = true;
+                    throw ex;
                 }
           
-                if (_needResponse)
+                if (_needResponse)//是否需要回执
                 {
                     if (isSuccess)
                     {
@@ -167,15 +172,16 @@ namespace Jy.RabbitMQ
                                 _channel.BasicAck(e.DeliveryTag, false); //确认处理成功  此处与不再重新分发，只能出现一次
                             }
                         }
-                        catch (AlreadyClosedException Ex)
+                        catch (Exception Ex)
                         {
-                            Console.WriteLine("ERROR:连接已关闭");
+                            _logger.LogError($"RabbitMQConsumerClient OnConsumerReceived _needResponse error:{message.MessageRouter}", Ex);
+                            throw Ex;
                         }
                     }
-                    else
-                    {
-                        _channel.BasicReject(e.DeliveryTag, true); //处理失败，重新分发
-                    }
+                    //else
+                    //{
+                    //    _channel.BasicReject(e.DeliveryTag, true); //处理失败，重新分发
+                    //}
                 }
             }
            

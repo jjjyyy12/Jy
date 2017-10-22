@@ -11,7 +11,7 @@ using RabbitMQ.Client.Events;
 
 namespace Jy.RabbitMQ
 {
-    public class PublishQueueExecutor
+    public class PublishQueueExecutor: BaseQueueExcutor
     {
         private readonly ILogger _logger;
         private readonly ConnectionPool _connectionPool;
@@ -20,14 +20,14 @@ namespace Jy.RabbitMQ
         public PublishQueueExecutor(
             ConnectionPool connectionPool,
             RabbitMQOptions rabbitMQOptions,
-            ILogger logger)
+            ILogger logger) : base( logger)
         {
             _logger = logger;
             _connectionPool = connectionPool;
             _rabbitMQOptions = rabbitMQOptions;
         }
 
-        public void Publish(MessageBase msg)
+        public override void PublishTopic(MessageBase msg)
         {
             var connection = _connectionPool.Rent();
 
@@ -47,6 +47,7 @@ namespace Jy.RabbitMQ
             catch (Exception ex)
             {
                 _logger.LogError($"rabbitmq topic message [{msg.Id}] has benn raised an exception of sending. the exception is: {ex.Message}",ex);
+                throw ex;
             }
             finally
             {
@@ -95,6 +96,7 @@ namespace Jy.RabbitMQ
             catch (Exception ex)
             {
                 _logger.LogError($"rabbitmq topic message [{msg.Id}] has benn raised an exception of sending. the exception is: {ex.Message}", ex);
+                throw ex;
             }
             finally
             {

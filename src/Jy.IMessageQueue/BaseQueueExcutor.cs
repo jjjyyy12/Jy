@@ -29,7 +29,11 @@ namespace Jy.IMessageQueue
                 var sp = Stopwatch.StartNew();
                   PublishTopic(message);
                 sp.Stop();
-                
+
+                if (sp.Elapsed.TotalSeconds > 4000)
+                {
+                    _logger.LogInformation("BaseQueueExcutor ExecuteAsync too long time:{0},{1}", message.MessageRouter, message.Id);
+                }
             }
             catch (Exception ex)
             {
@@ -43,13 +47,25 @@ namespace Jy.IMessageQueue
             originalMsg.FailedTimes++;
 
             Thread.Sleep(2000 * originalMsg.FailedTimes);
-            return Task.Run(() =>
+            try
             {
-                //errorHandle
-                if (originalMsg.FailedTimes != 4)  //4次机会重发,每次等待2*失败次数的时间
-                    ExecuteAsync(originalMsg);
-                return originalMsg;
-            });
+                return Task.Run(() =>
+                {
+                    //errorHandle
+                    if (originalMsg.FailedTimes != 4)  //4次机会重发,每次等待2*失败次数的时间
+                        ExecuteAsync(originalMsg);
+                    return originalMsg;
+                });
+            }
+            catch (Exception exi)
+            {
+                _logger.LogError($"BaseQueueExcutor HandleAsync error:{originalMsg.Id},failtimes:{originalMsg.FailedTimes}", exi);
+                if (originalMsg.FailedTimes <= 4) //4次机会重发,每次等待2*失败次数的时间
+                    return HandleAsync(originalMsg);
+                else
+                    return Task.FromResult(originalMsg);
+            }
+           
         }
     }
 }

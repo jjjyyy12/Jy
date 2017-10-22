@@ -56,7 +56,7 @@ namespace Jy.RabbitMQ
 
         public void PublishTopic(MessageBase msg)
         {
-            _publishQueueExecutor.Publish(msg);
+            _publishQueueExecutor.ExecuteAsync(msg);
         }
 
         public void SubscribeTopic<T, TH>(Func<TH> handler, string subscriberId, string exchangeName, string queueName, string bindKeyTopic)
@@ -71,7 +71,7 @@ namespace Jy.RabbitMQ
                 //var processEvent = new ProcessEvent(
                 //   async (x, y) => { await ProcessEvent(x, y); }
                 //    );
-                var client = new RabbitMQConsumerClient<T>(exchangeName,queueName, "", false,_connectionPool, _rabbitMQOptions);//, processEvent
+                var client = new RabbitMQConsumerClient<T>(exchangeName,queueName, "", false,_connectionPool, _rabbitMQOptions,_logger);//, processEvent
                 if (!busClientList.ContainsKey(queueName))
                     busClientList.Add(queueName, client);
 
@@ -98,7 +98,7 @@ namespace Jy.RabbitMQ
                 //var processEvent = new ProcessEvent(
                 //   async (x, y) => { await ProcessEvent(x, y); }
                 //    );
-                var client = new RabbitMQConsumerClient<T>(exchangeName,queueName, $"{queueName}_reply", true, _connectionPool, _rabbitMQOptions);
+                var client = new RabbitMQConsumerClient<T>(exchangeName,queueName, $"{queueName}_reply", true, _connectionPool, _rabbitMQOptions,_logger);
                 if (!busClientList.ContainsKey(queueName))
                     busClientList.Add(queueName, client);
                 client.Subscribe(new List<string>(1) { bindKeyTopic });
