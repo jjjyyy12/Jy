@@ -26,6 +26,7 @@ using Jy.QueueSerivce;
 using Jy.Domain.Message;
 using Jy.Domain;
 using Jy.IRepositories;
+using System.Threading.Tasks;
 
 namespace Jy.ConsumerAuth
 {
@@ -303,10 +304,13 @@ namespace Jy.ConsumerAuth
             where TH : IProcessMessage<T>
             where T : MessageBase
         {
-            TH pddon = serviceProvider.GetRequiredService<TH>();
-            ProcessMessageDecorator<T> pddond = new ProcessMessageDecorator<T>(pddon, lockhandler);//分布式锁装饰类
-            logger.Information($"launch SubscribeTopic{typeof(TH).Name}");
-            qo.ResponseTopic<T, ProcessMessageDecorator<T>>(() => { return pddond; }, exchange, queue, topic); //普通消息
+            Task.Run(() => { 
+                TH pddon = serviceProvider.GetRequiredService<TH>();
+                ProcessMessageDecorator<T> pddond = new ProcessMessageDecorator<T>(pddon, lockhandler);//分布式锁装饰类
+                logger.Information($"launch SubscribeTopic{typeof(TH).Name}");
+                qo.ResponseTopic<T, ProcessMessageDecorator<T>>(() => { return pddond; }, exchange, queue, topic); //普通消息
+            });
+
         }
 
         private static void SubscribeTopic<T, TH>(IServiceProvider serviceProvider
@@ -318,13 +322,16 @@ namespace Jy.ConsumerAuth
             , string topic)
         where TH : IProcessMessage<T>
         where T : MessageBase
-            {
+        {
+            Task.Run(() => {
                 TH pddon = serviceProvider.GetRequiredService<TH>();
                 ProcessMessageDecorator<T> pddond = new ProcessMessageDecorator<T>(pddon, lockhandler);//分布式锁装饰类
                 logger.Information($"launch SubscribeTopic{typeof(TH).Name}");
                 qo.SubscribeTopic<T, ProcessMessageDecorator<T>>(() => { return pddond; }, "", exchange, queue, topic); //普通消息
-            }
+            });
         }
+
+    }
 }
 
 //  Autofac注入

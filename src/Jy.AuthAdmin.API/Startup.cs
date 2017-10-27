@@ -69,10 +69,10 @@ namespace Jy.AuthAdmin.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //添加数据上下文
+            //添加数据上下文，已换成SDBSettings初始化DbContext，除了目前的主库中的userindex操作，以后可以换成存solr或elec
             //services.AddDbContext<JyDbContext>(options => options.UseNpgsql(Configuration.GetConnectionString("PostgreSQL"))); //PostgreSQL
             services.AddDbContext<JyDbContext>(options => options.UseMySql(Configuration.GetConnectionString("MySql")), ServiceLifetime.Scoped);//mysql
-                                                                                                                                                    //services.AddDbContext<JyDBReadContext>(options => options.UseMySql(Configuration.GetConnectionString("MySqlRead")), ServiceLifetime.Scoped);//mysqlread
+                                                                                                                                                //services.AddDbContext<JyDBReadContext>(options => options.UseMySql(Configuration.GetConnectionString("MySqlRead")), ServiceLifetime.Scoped);//mysqlread
             services.AddDbContextPool<JyDBReadContext>(
         options => options.UseMySql(Configuration.GetConnectionString("MySqlRead"),
         mysqlOptions => mysqlOptions.MaxBatchSize(100)));
