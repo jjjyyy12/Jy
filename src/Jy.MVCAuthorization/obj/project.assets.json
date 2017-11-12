@@ -2909,6 +2909,7 @@
         "framework": ".NETCoreApp,Version=v2.0",
         "dependencies": {
           "AutoMapper": "6.1.1",
+          "Jy.IIndex": "1.0.0",
           "Jy.IMessageQueue": "1.0.0",
           "Jy.IRepositories": "1.0.0",
           "Jy.Utility": "1.0.0",
@@ -2929,6 +2930,19 @@
         },
         "runtime": {
           "bin/placeholder/Jy.ICache.dll": {}
+        }
+      },
+      "Jy.IIndex/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "Jy.Utility": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Jy.IIndex.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Jy.IIndex.dll": {}
         }
       },
       "Jy.ILog/1.0.0": {
@@ -8675,6 +8689,11 @@
       "type": "project",
       "path": "../Jy.ICache/Jy.ICache.csproj",
       "msbuildProject": "../Jy.ICache/Jy.ICache.csproj"
+    },
+    "Jy.IIndex/1.0.0": {
+      "type": "project",
+      "path": "../Jy.IIndex/Jy.IIndex.csproj",
+      "msbuildProject": "../Jy.IIndex/Jy.IIndex.csproj"
     },
     "Jy.ILog/1.0.0": {
       "type": "project",

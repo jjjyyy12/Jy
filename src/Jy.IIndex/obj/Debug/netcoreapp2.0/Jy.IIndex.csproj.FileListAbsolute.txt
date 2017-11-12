@@ -1,0 +1,11 @@
+D:\Study\testJy\Jy-master\src\Jy.IIndex\bin\Debug\netcoreapp2.0\Jy.IIndex.deps.json
+D:\Study\testJy\Jy-master\src\Jy.IIndex\bin\Debug\netcoreapp2.0\Jy.IIndex.dll
+D:\Study\testJy\Jy-master\src\Jy.IIndex\bin\Debug\netcoreapp2.0\Jy.IIndex.pdb
+D:\Study\testJy\Jy-master\src\Jy.IIndex\bin\Debug\netcoreapp2.0\Jy.Utility.dll
+D:\Study\testJy\Jy-master\src\Jy.IIndex\bin\Debug\netcoreapp2.0\Jy.Utility.pdb
+D:\Study\testJy\Jy-master\src\Jy.IIndex\obj\Debug\netcoreapp2.0\Jy.IIndex.csprojResolveAssemblyReference.cache
+D:\Study\testJy\Jy-master\src\Jy.IIndex\obj\Debug\netcoreapp2.0\Jy.IIndex.csproj.CoreCompileInputs.cache
+D:\Study\testJy\Jy-master\src\Jy.IIndex\obj\Debug\netcoreapp2.0\Jy.IIndex.AssemblyInfoInputs.cache
+D:\Study\testJy\Jy-master\src\Jy.IIndex\obj\Debug\netcoreapp2.0\Jy.IIndex.AssemblyInfo.cs
+D:\Study\testJy\Jy-master\src\Jy.IIndex\obj\Debug\netcoreapp2.0\Jy.IIndex.dll
+D:\Study\testJy\Jy-master\src\Jy.IIndex\obj\Debug\netcoreapp2.0\Jy.IIndex.pdb

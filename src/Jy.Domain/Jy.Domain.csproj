@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Jy.IIndex\Jy.IIndex.csproj" />
     <ProjectReference Include="..\Jy.IMessageQueue\Jy.IMessageQueue.csproj" />
     <ProjectReference Include="..\Jy.IRepository\Jy.IRepositories.csproj" />
     <ProjectReference Include="..\Jy.Utility\Jy.Utility.csproj" />

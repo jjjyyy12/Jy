@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Jy.Utility\Jy.Utility.csproj" />
+  </ItemGroup>
+
 </Project>

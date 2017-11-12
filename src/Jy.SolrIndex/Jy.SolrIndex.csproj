@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SolrNet.Microsoft.DependencyInjection" Version="0.9.1" />
+    <PackageReference Include="SolrNetCore" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Jy.IIndex\Jy.IIndex.csproj" />
+  </ItemGroup>
+
+</Project>

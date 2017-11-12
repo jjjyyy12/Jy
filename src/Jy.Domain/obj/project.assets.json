@@ -1572,6 +1572,19 @@
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
       },
+      "Jy.IIndex/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "Jy.Utility": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Jy.IIndex.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Jy.IIndex.dll": {}
+        }
+      },
       "Jy.ILog/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
@@ -5625,6 +5638,11 @@
         "system.xml.xmldocument.nuspec"
       ]
     },
+    "Jy.IIndex/1.0.0": {
+      "type": "project",
+      "path": "../Jy.IIndex/Jy.IIndex.csproj",
+      "msbuildProject": "../Jy.IIndex/Jy.IIndex.csproj"
+    },
     "Jy.ILog/1.0.0": {
       "type": "project",
       "path": "../Jy.ILog/Jy.ILog.csproj",
@@ -5649,6 +5667,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
       "AutoMapper >= 6.1.1",
+      "Jy.IIndex >= 1.0.0",
       "Jy.IMessageQueue >= 1.0.0",
       "Jy.IRepositories >= 1.0.0",
       "Jy.Utility >= 1.0.0",
@@ -5691,6 +5710,9 @@
           "projectReferences": {
             "D:\\Study\\testJy\\Jy-master\\src\\Jy.IRepository\\Jy.IRepositories.csproj": {
               "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.IRepository\\Jy.IRepositories.csproj"
+            },
+            "D:\\Study\\testJy\\Jy-master\\src\\Jy.IIndex\\Jy.IIndex.csproj": {
+              "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.IIndex\\Jy.IIndex.csproj"
             },
             "D:\\Study\\testJy\\Jy-master\\src\\Jy.Utility\\Jy.Utility.csproj": {
               "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.Utility\\Jy.Utility.csproj"

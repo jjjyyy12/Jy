@@ -1,0 +1,13 @@
+D:\Study\testJy\Jy-master\src\Jy.SolrIndex\bin\Debug\netcoreapp2.0\Jy.SolrIndex.deps.json
+D:\Study\testJy\Jy-master\src\Jy.SolrIndex\bin\Debug\netcoreapp2.0\Jy.SolrIndex.dll
+D:\Study\testJy\Jy-master\src\Jy.SolrIndex\bin\Debug\netcoreapp2.0\Jy.IIndex.dll
+D:\Study\testJy\Jy-master\src\Jy.SolrIndex\bin\Debug\netcoreapp2.0\Jy.Utility.dll
+D:\Study\testJy\Jy-master\src\Jy.SolrIndex\bin\Debug\netcoreapp2.0\Jy.IIndex.pdb
+D:\Study\testJy\Jy-master\src\Jy.SolrIndex\bin\Debug\netcoreapp2.0\Jy.Utility.pdb
+D:\Study\testJy\Jy-master\src\Jy.SolrIndex\obj\Debug\netcoreapp2.0\Jy.SolrIndex.csprojResolveAssemblyReference.cache
+D:\Study\testJy\Jy-master\src\Jy.SolrIndex\obj\Debug\netcoreapp2.0\Jy.SolrIndex.csproj.CoreCompileInputs.cache
+D:\Study\testJy\Jy-master\src\Jy.SolrIndex\obj\Debug\netcoreapp2.0\Jy.SolrIndex.AssemblyInfoInputs.cache
+D:\Study\testJy\Jy-master\src\Jy.SolrIndex\obj\Debug\netcoreapp2.0\Jy.SolrIndex.AssemblyInfo.cs
+D:\Study\testJy\Jy-master\src\Jy.SolrIndex\bin\Debug\netcoreapp2.0\Jy.SolrIndex.pdb
+D:\Study\testJy\Jy-master\src\Jy.SolrIndex\obj\Debug\netcoreapp2.0\Jy.SolrIndex.dll
+D:\Study\testJy\Jy-master\src\Jy.SolrIndex\obj\Debug\netcoreapp2.0\Jy.SolrIndex.pdb
