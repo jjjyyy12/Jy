@@ -45,3 +45,5 @@ D:\Study\testJy\Jy-master\src\Jy.ConsumerAuth\obj\Debug\netcoreapp2.0\Jy.Consume
 D:\Study\testJy\Jy-master\src\Jy.ConsumerAuth\obj\Debug\netcoreapp2.0\Jy.ConsumerAuth.AssemblyInfo.cs
 D:\Study\testJy\Jy-master\src\Jy.ConsumerAuth\obj\Debug\netcoreapp2.0\Jy.ConsumerAuth.dll
 D:\Study\testJy\Jy-master\src\Jy.ConsumerAuth\obj\Debug\netcoreapp2.0\Jy.ConsumerAuth.pdb
+D:\Study\testJy\Jy-master\src\Jy.ConsumerAuth\bin\Debug\netcoreapp2.0\Jy.IIndex.dll
+D:\Study\testJy\Jy-master\src\Jy.ConsumerAuth\bin\Debug\netcoreapp2.0\Jy.IIndex.pdb

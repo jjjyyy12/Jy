@@ -21,3 +21,5 @@ D:\Study\testJy\Jy-master\src\Jy.Kafka\obj\Debug\netcoreapp2.0\Jy.Kafka.Assembly
 D:\Study\testJy\Jy-master\src\Jy.Kafka\obj\Debug\netcoreapp2.0\Jy.Kafka.AssemblyInfo.cs
 D:\Study\testJy\Jy-master\src\Jy.Kafka\obj\Debug\netcoreapp2.0\Jy.Kafka.dll
 D:\Study\testJy\Jy-master\src\Jy.Kafka\obj\Debug\netcoreapp2.0\Jy.Kafka.pdb
+D:\Study\testJy\Jy-master\src\Jy.Kafka\bin\Debug\netcoreapp2.0\Jy.IIndex.dll
+D:\Study\testJy\Jy-master\src\Jy.Kafka\bin\Debug\netcoreapp2.0\Jy.IIndex.pdb

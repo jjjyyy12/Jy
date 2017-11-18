@@ -75,7 +75,7 @@ namespace Jy.IIndex
             //方法IL
             ILGenerator il = dynamicMethod.GetILGenerator();
 
-            il.Emit(OpCodes.Ldarg_0); //put JyDBReadContext into stack
+            il.Emit(OpCodes.Ldarg_0); //put AuthAdminSolrServer<T> into stack
             //实例化命令
             il.Emit(OpCodes.Newobj, constructor);
             //返回

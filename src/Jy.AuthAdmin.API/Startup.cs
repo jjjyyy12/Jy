@@ -46,6 +46,8 @@ using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.Extensions.PlatformAbstractions;
 using System.Reflection;
 using Pivotal.Discovery.Client;
+using SolrNetCore;
+using SolrNet;
 
 namespace Jy.AuthAdmin.API
 {
@@ -69,6 +71,8 @@ namespace Jy.AuthAdmin.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //default solr connect
+            services.AddSolrNet(Configuration.GetSection("SIndexSettings").GetValue<string>("defaultConnectionString"));
             //添加数据上下文，已换成SDBSettings初始化DbContext，除了目前的主库中的userindex操作，以后可以换成存solr或elec
             //services.AddDbContext<JyDbContext>(options => options.UseNpgsql(Configuration.GetConnectionString("PostgreSQL"))); //PostgreSQL
             services.AddDbContext<JyDbContext>(options => options.UseMySql(Configuration.GetConnectionString("MySql")), ServiceLifetime.Scoped);//mysql

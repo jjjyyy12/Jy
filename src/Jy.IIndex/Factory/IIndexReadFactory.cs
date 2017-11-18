@@ -6,7 +6,7 @@ namespace Jy.IIndex
     /// </summary>
     public interface IIndexReadFactory
     {
-        TH CreateIndex<T, TH>(string Id)
+        TH CreateIndex<T, TH>(string Id, string coreIndex)
             where TH : IIndexRead<T>
             where T : Entity;
     }

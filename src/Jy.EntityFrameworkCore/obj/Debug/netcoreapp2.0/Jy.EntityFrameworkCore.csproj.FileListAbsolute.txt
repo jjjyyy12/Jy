@@ -19,3 +19,5 @@ D:\Study\testJy\Jy-master\src\Jy.EntityFrameworkCore\obj\Debug\netcoreapp2.0\Jy.
 D:\Study\testJy\Jy-master\src\Jy.EntityFrameworkCore\obj\Debug\netcoreapp2.0\Jy.EntityFrameworkCore.pdb
 D:\Study\testJy\Jy-master\src\Jy.EntityFrameworkCore\bin\Debug\netcoreapp2.0\Jy.ILog.dll
 D:\Study\testJy\Jy-master\src\Jy.EntityFrameworkCore\bin\Debug\netcoreapp2.0\Jy.ILog.pdb
+D:\Study\testJy\Jy-master\src\Jy.EntityFrameworkCore\bin\Debug\netcoreapp2.0\Jy.IIndex.dll
+D:\Study\testJy\Jy-master\src\Jy.EntityFrameworkCore\bin\Debug\netcoreapp2.0\Jy.IIndex.pdb

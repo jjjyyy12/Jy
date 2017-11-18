@@ -49,3 +49,5 @@ D:\Study\testJy\Jy-master\src\CRM\Jy.CRM.API\obj\Debug\netcoreapp2.0\Jy.CRM.API.
 D:\Study\testJy\Jy-master\src\CRM\Jy.CRM.API\obj\Debug\netcoreapp2.0\Jy.CRM.API.AssemblyInfo.cs
 D:\Study\testJy\Jy-master\src\CRM\Jy.CRM.API\obj\Debug\netcoreapp2.0\Jy.CRM.API.dll
 D:\Study\testJy\Jy-master\src\CRM\Jy.CRM.API\obj\Debug\netcoreapp2.0\Jy.CRM.API.pdb
+D:\Study\testJy\Jy-master\src\CRM\Jy.CRM.API\bin\Debug\netcoreapp2.0\Jy.IIndex.dll
+D:\Study\testJy\Jy-master\src\CRM\Jy.CRM.API\bin\Debug\netcoreapp2.0\Jy.IIndex.pdb

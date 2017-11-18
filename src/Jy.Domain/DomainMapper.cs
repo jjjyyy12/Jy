@@ -67,6 +67,9 @@ namespace Jy.Domain
             CreateMap<User, UserIndex>().ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.Id));
             CreateMap<UserIndex, User>().ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.UserId));
 
+            CreateMap<User, UserIndexs>().ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.Id));
+            CreateMap<UserIndexs, User>().ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.UserId));
+
             CreateMap<UserDto, UserIndex>().ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.Id));
             CreateMap<UserIndex, UserDto>().ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.UserId));
         }

@@ -11,9 +11,7 @@ namespace Jy.Domain.Entities
         public Guid UserId { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
-        public User User { get; set; }
         public Guid DepartmentId { get; set; }
-        public Role Department { get; set; }
 
     }
 }

@@ -14,12 +14,12 @@ using System.Threading.Tasks;
 
 namespace Jy.AuthAdmin.SolrIndex
 {
-    public class AuthAdminSolrServer<T>: ISolrOperations<T> 
+    public class AuthAdminSolrServer<T>: ISolrOperations<T> , IUnitOfWork
     {
         private readonly ISolrBasicOperations<T> basicServer;
         private readonly IReadOnlyMappingManager mappingManager;
         private readonly IMappingValidator _schemaMappingValidator;
-
+         
         public AuthAdminSolrServer(ISolrBasicOperations<T> basicServer, IReadOnlyMappingManager mappingManager, IMappingValidator _schemaMappingValidator)
         {
             this.basicServer = basicServer;
@@ -317,6 +317,16 @@ namespace Jy.AuthAdmin.SolrIndex
         public SolrMoreLikeThisHandlerResults<T> MoreLikeThis(SolrMLTQuery query, MoreLikeThisHandlerQueryOptions options)
         {
             return basicServer.MoreLikeThis(query, options);
+        }
+
+        public void SaveChange()
+        {
+              basicServer.Commit(null);
+        }
+
+        public void Dispose()
+        {
+             
         }
 
         //public Task<SolrQueryResults<T>> QueryAsync(string q) => QueryAsync(new SolrQuery(q));

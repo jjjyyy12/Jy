@@ -27,3 +27,5 @@ D:\Study\testJy\Jy-master\src\Jy.ProcessMessage\obj\Debug\netcoreapp2.0\Jy.Proce
 D:\Study\testJy\Jy-master\src\Jy.ProcessMessage\obj\Debug\netcoreapp2.0\Jy.ProcessMessage.AssemblyInfo.cs
 D:\Study\testJy\Jy-master\src\Jy.ProcessMessage\obj\Debug\netcoreapp2.0\Jy.ProcessMessage.dll
 D:\Study\testJy\Jy-master\src\Jy.ProcessMessage\obj\Debug\netcoreapp2.0\Jy.ProcessMessage.pdb
+D:\Study\testJy\Jy-master\src\Jy.ProcessMessage\bin\Debug\netcoreapp2.0\Jy.IIndex.dll
+D:\Study\testJy\Jy-master\src\Jy.ProcessMessage\bin\Debug\netcoreapp2.0\Jy.IIndex.pdb

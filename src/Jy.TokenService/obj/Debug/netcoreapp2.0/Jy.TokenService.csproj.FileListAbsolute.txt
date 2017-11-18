@@ -21,3 +21,5 @@ D:\Study\testJy\Jy-master\src\Jy.TokenService\obj\Debug\netcoreapp2.0\Jy.TokenSe
 D:\Study\testJy\Jy-master\src\Jy.TokenService\obj\Debug\netcoreapp2.0\Jy.TokenService.AssemblyInfo.cs
 D:\Study\testJy\Jy-master\src\Jy.TokenService\obj\Debug\netcoreapp2.0\Jy.TokenService.dll
 D:\Study\testJy\Jy-master\src\Jy.TokenService\obj\Debug\netcoreapp2.0\Jy.TokenService.pdb
+D:\Study\testJy\Jy-master\src\Jy.TokenService\bin\Debug\netcoreapp2.0\Jy.IIndex.dll
+D:\Study\testJy\Jy-master\src\Jy.TokenService\bin\Debug\netcoreapp2.0\Jy.IIndex.pdb

@@ -15,7 +15,7 @@ namespace Jy.SolrIndex
     /// <typeparam name="TSolrOperations">solrOperations</typeparam>
     public abstract class IndexReadBase<TEntity, TPrimaryKey, TSolrOperations> : IIndexRead<TEntity, TPrimaryKey>
         where TEntity : Entity<TPrimaryKey>
-        where TSolrOperations : ISolrOperations<TEntity>
+        where TSolrOperations : ISolrReadOnlyOperations<TEntity>
     {
         //定义数据访问上下文对象
         protected readonly TSolrOperations _solrOperations;
@@ -121,34 +121,6 @@ namespace Jy.SolrIndex
             }
         }
 
-        /// <summary>
-        /// 新增实体
-        /// </summary>
-        /// <param name="entity">实体</param>
-        /// <param name="autoSave">是否立即执行保存</param>
-        /// <returns></returns>
-        public TEntity Insert(TEntity entity, bool autoSave = true)
-        {
-            _solrOperations.Add(entity);
-            if (autoSave)
-                Save();
-            return entity;
-        }
-
-        /// <summary>
-        /// 更新实体
-        /// </summary>
-        /// <param name="entity">实体</param>
-        /// <param name="autoSave">是否立即执行保存</param>
-        public TEntity Update(TEntity entity, bool autoSave = true)
-        {
-            var obj = Get(entity.Id);
-            EntityToEntity(entity, obj);
-            _solrOperations.Add(entity);
-            if (autoSave)
-                Save();
-            return entity;
-        }
 
         public void EntityToEntity<T>(T pTargetObjSrc, T pTargetObjDest)
         {
@@ -157,82 +129,12 @@ namespace Jy.SolrIndex
                 mItem.SetValue(pTargetObjDest, mItem.GetValue(pTargetObjSrc, new object[] { }), null);
             }
         }
-        /// <summary>
-        /// 新增或更新实体
-        /// </summary>
-        /// <param name="entity">实体</param>
-        /// <param name="autoSave">是否立即执行保存</param>
-        public TEntity InsertOrUpdate(TEntity entity, bool autoSave = true)
-        {
-            if (!(default(Guid).Equals(entity.Id)))//if (Get(entity.Id) != null)
-                return Update(entity, autoSave);
-            return Insert(entity, autoSave);
-        }
+     
 
-        /// <summary>
-        /// 删除实体
-        /// </summary>
-        /// <param name="entity">要删除的实体</param>
-        /// <param name="autoSave">是否立即执行保存</param>
-        public void Delete(TEntity entity, bool autoSave = true)
-        {
-            _solrOperations.Delete(entity);
-            if (autoSave)
-                Save();
-        }
-        /// <summary>
-        /// 删除实体
-        /// </summary>
-        /// <param name="id">实体主键</param>
-        /// <param name="autoSave">是否立即执行保存</param>
-        public void Delete(TPrimaryKey id, bool autoSave = true)
-        {
-            _solrOperations.Delete(new SolrQueryByField("id", id.ToString()));
-            if (autoSave)
-                Save();
-        }
+     
+   
 
-        /// <summary>
-        /// 根据条件删除实体
-        /// </summary>
-        /// <param name="where">lambda表达式</param>
-        /// <param name="autoSave">是否自动保存</param>
-        public void Delete(ICollection<KeyValuePair<string, string>> wheres, bool autoSave = true)
-        {
-            //_solrOperations.Set<TEntity>().RemoveRange(_solrOperations.Set<TEntity>().Where(where).ToList());
-            if (wheres.Count > 1)
-            {
-                SolrQueryByField[] conds = new SolrQueryByField[wheres.Count];
-                int i = 0;
-                foreach (var param in wheres)
-                {
-                    if (string.IsNullOrWhiteSpace(param.Key))
-                        conds[i] = new SolrQueryByField(param.Key, param.Value);
-                }
-                QueryOptions qo = new QueryOptions();
-                qo.AddFilterQueries(conds);
-                var res = _solrOperations.Query(SolrQuery.All, qo);
-                if (res?.Count > 0)
-                {
-                    _solrOperations.Delete(res);
-                    if (autoSave)
-                        Save();
-                }
-            }
-            else
-            {
-                SolrQueryByField qf = null;
-                foreach (var param in wheres)
-                    qf = new SolrQueryByField(param.Key, param.Value);
-                if (qf != null)
-                {
-                    _solrOperations.Query(qf);
-                    if (autoSave)
-                        Save();
-                }
-            }
-           
-        }
+     
         /// <summary>
         /// 分页查询
         /// </summary>
@@ -267,21 +169,14 @@ namespace Jy.SolrIndex
             return results;
         }
 
-        /// <summary>
-        /// 事务性保存
-        /// </summary>
-        public void Save()
-        {
-            _solrOperations.Commit();
-        }
-        
+  
     }
     /// <summary>
     /// 主键为Guid类型的基类
     /// </summary>
     /// <typeparam name="TEntity">实体类型</typeparam>
     /// <typeparam name="TSolrOperations">SolrOperations</typeparam>
-    public abstract class IndexReadBase<TEntity, TSolrOperations> : IndexReadBase<TEntity, Guid, TSolrOperations> where TEntity : Entity where TSolrOperations : ISolrOperations<TEntity>
+    public abstract class IndexReadBase<TEntity, TSolrOperations> : IndexReadBase<TEntity, Guid, TSolrOperations> where TEntity : Entity where TSolrOperations : ISolrReadOnlyOperations<TEntity>
     {
         public IndexReadBase(TSolrOperations solrOperations) : base(solrOperations)
         {

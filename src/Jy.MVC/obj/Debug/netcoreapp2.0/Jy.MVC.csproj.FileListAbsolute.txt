@@ -31,3 +31,5 @@ D:\Study\testJy\Jy-master\src\Jy.MVC\obj\Debug\netcoreapp2.0\Jy.MVC.AssemblyInfo
 D:\Study\testJy\Jy-master\src\Jy.MVC\obj\Debug\netcoreapp2.0\Jy.MVC.AssemblyInfo.cs
 D:\Study\testJy\Jy-master\src\Jy.MVC\obj\Debug\netcoreapp2.0\Jy.MVC.dll
 D:\Study\testJy\Jy-master\src\Jy.MVC\obj\Debug\netcoreapp2.0\Jy.MVC.pdb
+D:\Study\testJy\Jy-master\src\Jy.MVC\bin\Debug\netcoreapp2.0\Jy.IIndex.dll
+D:\Study\testJy\Jy-master\src\Jy.MVC\bin\Debug\netcoreapp2.0\Jy.IIndex.pdb

@@ -52,3 +52,9 @@ D:\Study\testJy\Jy-master\src\Jy.AuthAdmin.API\obj\Debug\netcoreapp2.0\Jy.AuthAd
 D:\Study\testJy\Jy-master\src\Jy.AuthAdmin.API\obj\Debug\netcoreapp2.0\Jy.AuthAdmin.API.AssemblyInfo.cs
 D:\Study\testJy\Jy-master\src\Jy.AuthAdmin.API\obj\Debug\netcoreapp2.0\Jy.AuthAdmin.API.dll
 D:\Study\testJy\Jy-master\src\Jy.AuthAdmin.API\obj\Debug\netcoreapp2.0\Jy.AuthAdmin.API.pdb
+D:\Study\testJy\Jy-master\src\Jy.AuthAdmin.API\bin\Debug\netcoreapp2.0\Jy.IIndex.dll
+D:\Study\testJy\Jy-master\src\Jy.AuthAdmin.API\bin\Debug\netcoreapp2.0\Jy.IIndex.pdb
+D:\Study\testJy\Jy-master\src\Jy.AuthAdmin.API\bin\Debug\netcoreapp2.0\Jy.AuthAdmin.SolrIndex.dll
+D:\Study\testJy\Jy-master\src\Jy.AuthAdmin.API\bin\Debug\netcoreapp2.0\Jy.SolrIndex.dll
+D:\Study\testJy\Jy-master\src\Jy.AuthAdmin.API\bin\Debug\netcoreapp2.0\Jy.AuthAdmin.SolrIndex.pdb
+D:\Study\testJy\Jy-master\src\Jy.AuthAdmin.API\bin\Debug\netcoreapp2.0\Jy.SolrIndex.pdb

@@ -1080,6 +1080,7 @@
       "Jy.Domain/1.0.0": {
         "dependencies": {
           "AutoMapper": "6.1.1",
+          "Jy.IIndex": "1.0.0",
           "Jy.IMessageQueue": "1.0.0",
           "Jy.IRepositories": "1.0.0",
           "Jy.Utility": "1.0.0",
@@ -1087,6 +1088,14 @@
         },
         "runtime": {
           "Jy.Domain.dll": {}
+        }
+      },
+      "Jy.IIndex/1.0.0": {
+        "dependencies": {
+          "Jy.Utility": "1.0.0"
+        },
+        "runtime": {
+          "Jy.IIndex.dll": {}
         }
       },
       "Jy.ILog/1.0.0": {
@@ -1802,6 +1811,11 @@
       "hashPath": "system.xml.xmldocument.4.3.0.nupkg.sha512"
     },
     "Jy.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Jy.IIndex/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

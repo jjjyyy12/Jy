@@ -17,3 +17,5 @@ D:\Study\testJy\Jy-master\src\Jy.RabbitMQ\obj\Debug\netcoreapp2.0\Jy.RabbitMQ.As
 D:\Study\testJy\Jy-master\src\Jy.RabbitMQ\obj\Debug\netcoreapp2.0\Jy.RabbitMQ.AssemblyInfo.cs
 D:\Study\testJy\Jy-master\src\Jy.RabbitMQ\obj\Debug\netcoreapp2.0\Jy.RabbitMQ.dll
 D:\Study\testJy\Jy-master\src\Jy.RabbitMQ\obj\Debug\netcoreapp2.0\Jy.RabbitMQ.pdb
+D:\Study\testJy\Jy-master\src\Jy.RabbitMQ\bin\Debug\netcoreapp2.0\Jy.IIndex.dll
+D:\Study\testJy\Jy-master\src\Jy.RabbitMQ\bin\Debug\netcoreapp2.0\Jy.IIndex.pdb
