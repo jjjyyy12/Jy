@@ -31,6 +31,32 @@
           "lib/netstandard1.3/AutoMapper.dll": {}
         }
       },
+      "CoreCompat.Microsoft.Practices.ServiceLocation/1.3.0-r2": {
+        "type": "package",
+        "dependencies": {
+          "System.ComponentModel": "4.0.1",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Globalization": "4.0.11",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.3/CoreCompat.Microsoft.Practices.ServiceLocation.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/CoreCompat.Microsoft.Practices.ServiceLocation.dll": {}
+        }
+      },
+      "HttpWebAdaptersCore/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp2.0/HttpWebAdaptersCore.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/HttpWebAdaptersCore.dll": {}
+        }
+      },
       "Libuv/1.10.0": {
         "type": "package",
         "dependencies": {
@@ -2120,6 +2146,41 @@
           "lib/netstandard1.3/Serilog.Sinks.RollingFile.dll": {}
         }
       },
+      "SolrNet.Core/0.9.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/SolrNet.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SolrNet.dll": {}
+        }
+      },
+      "SolrNet.Microsoft.DependencyInjection/0.9.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.0.0",
+          "SolrNet.Core": "[0.9.1]"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.DependencyInjection.SolrNet.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.DependencyInjection.SolrNet.dll": {}
+        }
+      },
+      "SolrNetCore/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CoreCompat.Microsoft.Practices.ServiceLocation": "1.3.0-r2",
+          "HttpWebAdaptersCore": "1.0.0"
+        },
+        "compile": {
+          "lib/netcoreapp2.0/SolrNetCore.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/SolrNetCore.dll": {}
+        }
+      },
       "StackExchange.Redis/1.2.6": {
         "type": "package",
         "dependencies": {
@@ -3721,6 +3782,21 @@
           "lib/netstandard1.3/ZooKeeperNetEx.dll": {}
         }
       },
+      "Jy.AuthAdmin.SolrIndex/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "Jy.Domain": "1.0.0",
+          "Jy.IIndex": "1.0.0",
+          "Jy.SolrIndex": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Jy.AuthAdmin.SolrIndex.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Jy.AuthAdmin.SolrIndex.dll": {}
+        }
+      },
       "Jy.Cache/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
@@ -3883,6 +3959,21 @@
           "bin/placeholder/Jy.ServicesKeep.dll": {}
         }
       },
+      "Jy.SolrIndex/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "Jy.IIndex": "1.0.0",
+          "SolrNet.Microsoft.DependencyInjection": "0.9.1",
+          "SolrNetCore": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Jy.SolrIndex.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Jy.SolrIndex.dll": {}
+        }
+      },
       "Jy.TokenService/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
@@ -3929,6 +4020,27 @@
         "lib/netstandard1.1/AutoMapper.xml",
         "lib/netstandard1.3/AutoMapper.dll",
         "lib/netstandard1.3/AutoMapper.xml"
+      ]
+    },
+    "CoreCompat.Microsoft.Practices.ServiceLocation/1.3.0-r2": {
+      "sha512": "5Zw3//TAPtjKsbYteiVkqB1MHtE0SZ48mwcFbELOnMh1P/QySzGCuD+2dhrO81hx4tGzvJdLaCiFgIBDkEM0dg==",
+      "type": "package",
+      "path": "corecompat.microsoft.practices.servicelocation/1.3.0-r2",
+      "files": [
+        "corecompat.microsoft.practices.servicelocation.1.3.0-r2.nupkg.sha512",
+        "corecompat.microsoft.practices.servicelocation.nuspec",
+        "lib/net45/CoreCompat.Microsoft.Practices.ServiceLocation.dll",
+        "lib/netstandard1.3/CoreCompat.Microsoft.Practices.ServiceLocation.dll"
+      ]
+    },
+    "HttpWebAdaptersCore/1.0.0": {
+      "sha512": "ROnFhykJz8ZyUlM4pcAQQMHuvHsRlInnoXbxE0BWXORin5eQJAxi4ewKyXOMjH0dy2fPJvsonAgUII9ioWvoAg==",
+      "type": "package",
+      "path": "httpwebadapterscore/1.0.0",
+      "files": [
+        "httpwebadapterscore.1.0.0.nupkg.sha512",
+        "httpwebadapterscore.nuspec",
+        "lib/netcoreapp2.0/HttpWebAdaptersCore.dll"
       ]
     },
     "Libuv/1.10.0": {
@@ -6057,6 +6169,42 @@
         "lib/netstandard1.3/Serilog.Sinks.RollingFile.xml",
         "serilog.sinks.rollingfile.3.3.0.nupkg.sha512",
         "serilog.sinks.rollingfile.nuspec"
+      ]
+    },
+    "SolrNet.Core/0.9.1": {
+      "sha512": "3AxmNMF6r2u0WCpv3m4i8CmuBGGSLP/W5n/vvEzrAMN59sq5pYOkpuY3H4FN1xYaezBaTnc5D4e/DY7F95q0Fw==",
+      "type": "package",
+      "path": "solrnet.core/0.9.1",
+      "files": [
+        "lib/net46/SolrNet.dll",
+        "lib/net46/SolrNet.pdb",
+        "lib/net46/SolrNet.xml",
+        "lib/netstandard2.0/SolrNet.dll",
+        "lib/netstandard2.0/SolrNet.pdb",
+        "lib/netstandard2.0/SolrNet.xml",
+        "solrnet.core.0.9.1.nupkg.sha512",
+        "solrnet.core.nuspec"
+      ]
+    },
+    "SolrNet.Microsoft.DependencyInjection/0.9.1": {
+      "sha512": "Xw9j+x3rIYflv34QmPQCiv+K/7FXqSZbkorXSwUgh7w/T9t0ExIDK/AvYXSqa3vzlGbzjHLIrt5xN9rtuT8NFw==",
+      "type": "package",
+      "path": "solrnet.microsoft.dependencyinjection/0.9.1",
+      "files": [
+        "lib/netstandard2.0/Microsoft.DependencyInjection.SolrNet.dll",
+        "lib/netstandard2.0/Microsoft.DependencyInjection.SolrNet.pdb",
+        "solrnet.microsoft.dependencyinjection.0.9.1.nupkg.sha512",
+        "solrnet.microsoft.dependencyinjection.nuspec"
+      ]
+    },
+    "SolrNetCore/1.0.0": {
+      "sha512": "mz94VesuBptOk1OPir8SGnWye1uw/bPKaXj0pR+FGEGdhv/+p4qrWYaKzhquj9+9vGv5KZAPVJkLKzaWI4lAHQ==",
+      "type": "package",
+      "path": "solrnetcore/1.0.0",
+      "files": [
+        "lib/netcoreapp2.0/SolrNetCore.dll",
+        "solrnetcore.1.0.0.nupkg.sha512",
+        "solrnetcore.nuspec"
       ]
     },
     "StackExchange.Redis/1.2.6": {
@@ -10327,6 +10475,11 @@
         "zookeepernetex.nuspec"
       ]
     },
+    "Jy.AuthAdmin.SolrIndex/1.0.0": {
+      "type": "project",
+      "path": "../Jy.AuthAdmin.SolrIndex/Jy.AuthAdmin.SolrIndex.csproj",
+      "msbuildProject": "../Jy.AuthAdmin.SolrIndex/Jy.AuthAdmin.SolrIndex.csproj"
+    },
     "Jy.Cache/1.0.0": {
       "type": "project",
       "path": "../Jy.Cache/Jy.Cache.csproj",
@@ -10382,6 +10535,11 @@
       "path": "../Jy.ServicesKeep/Jy.ServicesKeep.csproj",
       "msbuildProject": "../Jy.ServicesKeep/Jy.ServicesKeep.csproj"
     },
+    "Jy.SolrIndex/1.0.0": {
+      "type": "project",
+      "path": "../Jy.SolrIndex/Jy.SolrIndex.csproj",
+      "msbuildProject": "../Jy.SolrIndex/Jy.SolrIndex.csproj"
+    },
     "Jy.TokenService/1.0.0": {
       "type": "project",
       "path": "../Jy.TokenService/Jy.TokenService.csproj",
@@ -10395,6 +10553,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
+      "Jy.AuthAdmin.SolrIndex >= 1.0.0",
       "Jy.Cache >= 1.0.0",
       "Jy.Domain >= 1.0.0",
       "Jy.EntityFrameworkCore >= 1.0.0",
@@ -10464,6 +10623,9 @@
             },
             "D:\\Study\\testJy\\Jy-master\\src\\Jy.Utility\\Jy.Utility.csproj": {
               "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.Utility\\Jy.Utility.csproj"
+            },
+            "D:\\Study\\testJy\\Jy-master\\src\\Jy.AuthAdmin.SolrIndex\\Jy.AuthAdmin.SolrIndex.csproj": {
+              "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.AuthAdmin.SolrIndex\\Jy.AuthAdmin.SolrIndex.csproj"
             },
             "D:\\Study\\testJy\\Jy-master\\src\\Jy.Domain\\Jy.Domain.csproj": {
               "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.Domain\\Jy.Domain.csproj"

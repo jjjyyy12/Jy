@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "465566324f5277544ad4f7d5b915448244eb660c"
+    "signature": "59800b7753978381ed18896ddaf374d768c48f12"
   },
   "compilationOptions": {
     "defines": [
@@ -23,6 +23,7 @@
     ".NETCoreApp,Version=v2.0": {
       "Jy.TokenAuth/1.0.0": {
         "dependencies": {
+          "Jy.AuthAdmin.SolrIndex": "1.0.0",
           "Jy.Cache": "1.0.0",
           "Jy.Domain": "1.0.0",
           "Jy.EntityFrameworkCore": "1.0.0",
@@ -83,6 +84,30 @@
         },
         "compile": {
           "lib/netstandard1.3/AutoMapper.dll": {}
+        }
+      },
+      "CoreCompat.Microsoft.Practices.ServiceLocation/1.3.0-r2": {
+        "dependencies": {
+          "System.ComponentModel": "4.3.0",
+          "System.Diagnostics.Debug": "4.3.0",
+          "System.Diagnostics.Tools": "4.3.0",
+          "System.Globalization": "4.3.0",
+          "System.Reflection": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.3/CoreCompat.Microsoft.Practices.ServiceLocation.dll": {}
+        },
+        "compile": {
+          "lib/netstandard1.3/CoreCompat.Microsoft.Practices.ServiceLocation.dll": {}
+        }
+      },
+      "HttpWebAdaptersCore/1.0.0": {
+        "runtime": {
+          "lib/netcoreapp2.0/HttpWebAdaptersCore.dll": {}
+        },
+        "compile": {
+          "lib/netcoreapp2.0/HttpWebAdaptersCore.dll": {}
         }
       },
       "Libuv/1.10.0": {
@@ -1786,6 +1811,38 @@
           "lib/netstandard1.3/Serilog.Sinks.RollingFile.dll": {}
         }
       },
+      "SolrNet.Core/0.9.1": {
+        "runtime": {
+          "lib/netstandard2.0/SolrNet.dll": {}
+        },
+        "compile": {
+          "lib/netstandard2.0/SolrNet.dll": {}
+        }
+      },
+      "SolrNet.Microsoft.DependencyInjection/0.9.1": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.0.0",
+          "SolrNet.Core": "0.9.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.DependencyInjection.SolrNet.dll": {}
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.DependencyInjection.SolrNet.dll": {}
+        }
+      },
+      "SolrNetCore/1.0.0": {
+        "dependencies": {
+          "CoreCompat.Microsoft.Practices.ServiceLocation": "1.3.0-r2",
+          "HttpWebAdaptersCore": "1.0.0"
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/SolrNetCore.dll": {}
+        },
+        "compile": {
+          "lib/netcoreapp2.0/SolrNetCore.dll": {}
+        }
+      },
       "StackExchange.Redis/1.2.6": {
         "dependencies": {
           "NETStandard.Library": "2.0.0",
@@ -2902,6 +2959,19 @@
           "lib/netstandard1.3/ZooKeeperNetEx.dll": {}
         }
       },
+      "Jy.AuthAdmin.SolrIndex/1.0.0": {
+        "dependencies": {
+          "Jy.Domain": "1.0.0",
+          "Jy.IIndex": "1.0.0",
+          "Jy.SolrIndex": "1.0.0"
+        },
+        "runtime": {
+          "Jy.AuthAdmin.SolrIndex.dll": {}
+        },
+        "compile": {
+          "Jy.AuthAdmin.SolrIndex.dll": {}
+        }
+      },
       "Jy.Cache/1.0.0": {
         "dependencies": {
           "Jy.ICache": "1.0.0",
@@ -3040,6 +3110,19 @@
         },
         "compile": {
           "Jy.ServicesKeep.dll": {}
+        }
+      },
+      "Jy.SolrIndex/1.0.0": {
+        "dependencies": {
+          "Jy.IIndex": "1.0.0",
+          "SolrNet.Microsoft.DependencyInjection": "0.9.1",
+          "SolrNetCore": "1.0.0"
+        },
+        "runtime": {
+          "Jy.SolrIndex.dll": {}
+        },
+        "compile": {
+          "Jy.SolrIndex.dll": {}
         }
       },
       "Jy.TokenService/1.0.0": {
@@ -3258,6 +3341,20 @@
       "sha512": "sha512-A+6PAblvzmkXPS20nFBQJvlNSW5oEdyfN5+cxT/Du35fTNyuP5pNDXT64KT/jBgxt7CPduOM0Y7oLnNe0E5IXg==",
       "path": "automapper/6.1.1",
       "hashPath": "automapper.6.1.1.nupkg.sha512"
+    },
+    "CoreCompat.Microsoft.Practices.ServiceLocation/1.3.0-r2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5Zw3//TAPtjKsbYteiVkqB1MHtE0SZ48mwcFbELOnMh1P/QySzGCuD+2dhrO81hx4tGzvJdLaCiFgIBDkEM0dg==",
+      "path": "corecompat.microsoft.practices.servicelocation/1.3.0-r2",
+      "hashPath": "corecompat.microsoft.practices.servicelocation.1.3.0-r2.nupkg.sha512"
+    },
+    "HttpWebAdaptersCore/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ROnFhykJz8ZyUlM4pcAQQMHuvHsRlInnoXbxE0BWXORin5eQJAxi4ewKyXOMjH0dy2fPJvsonAgUII9ioWvoAg==",
+      "path": "httpwebadapterscore/1.0.0",
+      "hashPath": "httpwebadapterscore.1.0.0.nupkg.sha512"
     },
     "Libuv/1.10.0": {
       "type": "package",
@@ -4169,6 +4266,27 @@
       "path": "serilog.sinks.rollingfile/3.3.0",
       "hashPath": "serilog.sinks.rollingfile.3.3.0.nupkg.sha512"
     },
+    "SolrNet.Core/0.9.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3AxmNMF6r2u0WCpv3m4i8CmuBGGSLP/W5n/vvEzrAMN59sq5pYOkpuY3H4FN1xYaezBaTnc5D4e/DY7F95q0Fw==",
+      "path": "solrnet.core/0.9.1",
+      "hashPath": "solrnet.core.0.9.1.nupkg.sha512"
+    },
+    "SolrNet.Microsoft.DependencyInjection/0.9.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Xw9j+x3rIYflv34QmPQCiv+K/7FXqSZbkorXSwUgh7w/T9t0ExIDK/AvYXSqa3vzlGbzjHLIrt5xN9rtuT8NFw==",
+      "path": "solrnet.microsoft.dependencyinjection/0.9.1",
+      "hashPath": "solrnet.microsoft.dependencyinjection.0.9.1.nupkg.sha512"
+    },
+    "SolrNetCore/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mz94VesuBptOk1OPir8SGnWye1uw/bPKaXj0pR+FGEGdhv/+p4qrWYaKzhquj9+9vGv5KZAPVJkLKzaWI4lAHQ==",
+      "path": "solrnetcore/1.0.0",
+      "hashPath": "solrnetcore.1.0.0.nupkg.sha512"
+    },
     "StackExchange.Redis/1.2.6": {
       "type": "package",
       "serviceable": true,
@@ -4806,6 +4924,11 @@
       "path": "zookeepernetex/3.4.9.4",
       "hashPath": "zookeepernetex.3.4.9.4.nupkg.sha512"
     },
+    "Jy.AuthAdmin.SolrIndex/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "Jy.Cache/1.0.0": {
       "type": "project",
       "serviceable": false,
@@ -4857,6 +4980,11 @@
       "sha512": ""
     },
     "Jy.ServicesKeep/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Jy.SolrIndex/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

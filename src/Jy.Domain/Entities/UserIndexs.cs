@@ -8,10 +8,10 @@ namespace Jy.Domain.Entities
 {
     public class UserIndexs: Entity
     {
-        public Guid UserId { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public Guid DepartmentId { get; set; }
+        //public Guid UserId { get; set; }
+        public string name { get; set; }
+        public string keywords { get; set; }
+        public Guid depid { get; set; }
 
     }
 }

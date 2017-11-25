@@ -67,8 +67,21 @@ namespace Jy.Domain
             CreateMap<User, UserIndex>().ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.Id));
             CreateMap<UserIndex, User>().ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.UserId));
 
-            CreateMap<User, UserIndexs>().ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.Id));
-            CreateMap<UserIndexs, User>().ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.UserId));
+            CreateMap<User, UserIndexs>().ForMember(dest => dest.name, opt => opt.MapFrom(src => src.UserName))
+                .ForMember(dest => dest.keywords, opt => opt.MapFrom(src => src.Password))
+                .ForMember(dest => dest.depid, opt => opt.MapFrom(src => src.DepartmentId)); 
+            CreateMap<UserIndexs, User>().ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.name))
+                .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.keywords))
+                .ForMember(dest => dest.DepartmentId, opt => opt.MapFrom(src => src.depid));
+
+            CreateMap<UserIndex, UserIndexs>().ForMember(dest => dest.name, opt => opt.MapFrom(src => src.UserName))
+                .ForMember(dest => dest.keywords, opt => opt.MapFrom(src => src.Password))
+                .ForMember(dest => dest.depid, opt => opt.MapFrom(src => src.DepartmentId))
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.UserId));
+            CreateMap<UserIndexs, UserIndex>().ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.name))
+                .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.keywords))
+                .ForMember(dest => dest.DepartmentId, opt => opt.MapFrom(src => src.depid))
+                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.Id));
 
             CreateMap<UserDto, UserIndex>().ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.Id));
             CreateMap<UserIndex, UserDto>().ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.UserId));

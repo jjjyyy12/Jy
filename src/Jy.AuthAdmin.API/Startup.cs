@@ -48,6 +48,9 @@ using System.Reflection;
 using Pivotal.Discovery.Client;
 using SolrNetCore;
 using SolrNet;
+using Jy.AuthAdmin.SolrIndex;
+using Jy.Domain.IIndex;
+using Jy.IIndex;
 
 namespace Jy.AuthAdmin.API
 {
@@ -92,7 +95,7 @@ namespace Jy.AuthAdmin.API
             services.AddOptions();
             services.Configure<UrlConfigSetting>(Configuration.GetSection("UrlConfig"));//配置url
             services.Configure<SDBSettings>(Configuration.GetSection("SDBSettings"));
-            
+            services.Configure<SIndexSettings>(Configuration.GetSection("SIndexSettings"));
             //---------------缓存配置
             services.AddMemoryCache();
             //services.Configure<CacheProvider>(Configuration.GetSection("CacheConfig"));
@@ -165,6 +168,11 @@ namespace Jy.AuthAdmin.API
             services.AddScoped<IUserAppService, UserAppService>();
             services.AddScoped<IMenuAppService, MenuAppService>();
             services.AddScoped<IDepartmentAppService, DepartmentAppService>();
+
+            services.AddScoped<IUserIndexsIndex, UserIndexsIndex>();
+            services.AddScoped<IUserIndexsIndexRead, UserIndexsIndexRead>();
+            services.AddScoped<IIndexFactory, IndexFactory<Jy.IIndex.Entity>>();
+            services.AddScoped<IIndexReadFactory, IndexReadFactory<Jy.IIndex.Entity>>();
 
             services.AddScoped<IVerifyTokenAppService, VerifyTokenAppService>();
 
@@ -336,7 +344,7 @@ namespace Jy.AuthAdmin.API
             AuthAPIRegister.registerAuthAPIHostPort(Configuration.GetSection("UrlConfig").GetValue<string>("ZooKeeperList"));
 
             //注册到eureka，springcloud服务发现的注册
-            app.UseDiscoveryClient();
+            //app.UseDiscoveryClient();
         }
         private static readonly string secretKey = "123456Jy_12312321312dafdsfds";
         //private void ConfigureJwtAuth(IApplicationBuilder app)

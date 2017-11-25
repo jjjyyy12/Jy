@@ -52,9 +52,10 @@ namespace Jy.IIndex
             {
                 //BindingFlags defaultFlags = BindingFlags.Public | BindingFlags.Instance;
                 //var constructors = type.GetConstructors(defaultFlags);//获取默认构造函数
-                var constructor = type.GetConstructor(new Type[1] { parameters[0].GetType() });//JyDBReadContext //带一个参数的构造方法
+                 
+                //var constructor = type.GetConstructor(new Type[1] { parameters[0].GetType() });//JyDBReadContext //带一个参数的构造方法
                 //return (TInterface)constructor.Invoke(parameters);
-                var t = (TInterface)this.CreateInstanceByEmit(constructor, parameters);
+                var t = (TInterface)this.CreateInstanceByEmit(type.GetConstructors()[0], parameters);
                 return t;
             }
             else

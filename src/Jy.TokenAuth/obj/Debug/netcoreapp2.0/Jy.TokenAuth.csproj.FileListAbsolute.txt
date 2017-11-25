@@ -35,3 +35,7 @@ D:\Study\testJy\Jy-master\src\Jy.TokenAuth\obj\Debug\netcoreapp2.0\Jy.TokenAuth.
 D:\Study\testJy\Jy-master\src\Jy.TokenAuth\obj\Debug\netcoreapp2.0\Jy.TokenAuth.pdb
 D:\Study\testJy\Jy-master\src\Jy.TokenAuth\bin\Debug\netcoreapp2.0\Jy.IIndex.dll
 D:\Study\testJy\Jy-master\src\Jy.TokenAuth\bin\Debug\netcoreapp2.0\Jy.IIndex.pdb
+D:\Study\testJy\Jy-master\src\Jy.TokenAuth\bin\Debug\netcoreapp2.0\Jy.AuthAdmin.SolrIndex.dll
+D:\Study\testJy\Jy-master\src\Jy.TokenAuth\bin\Debug\netcoreapp2.0\Jy.SolrIndex.dll
+D:\Study\testJy\Jy-master\src\Jy.TokenAuth\bin\Debug\netcoreapp2.0\Jy.AuthAdmin.SolrIndex.pdb
+D:\Study\testJy\Jy-master\src\Jy.TokenAuth\bin\Debug\netcoreapp2.0\Jy.SolrIndex.pdb

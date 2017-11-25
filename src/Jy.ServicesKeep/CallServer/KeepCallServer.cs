@@ -49,14 +49,20 @@ namespace Jy.ServicesKeep
             CallServer zk = CallAuthAPI.getCallServer(zooKeeperURL);
             AuthAPIWatcher watcher = CallAuthAPI.getWatcher(zooKeeperURL);
             string ipport = zk.getChild($"/{NodeName.AuthAdmin}", Guid.NewGuid().ToString(), watcher);
-            return $"http://{ipport}";
+            if (string.IsNullOrWhiteSpace(ipport))
+                return "";
+            else
+                return $"http://{ipport}";
         }
         public static string getTokenAuthAddress(string zooKeeperURL)
         {
             CallServer zk = CallTokenAuth.getCallServer(zooKeeperURL);
             TokenAuthWatcher watcher = CallTokenAuth.getWatcher(zooKeeperURL);
             string ipport = zk.getChild($"/{NodeName.TokenAuth}", Guid.NewGuid().ToString(), watcher);
-            return $"http://{ipport}";
+            if (string.IsNullOrWhiteSpace(ipport))
+                return "";
+            else
+                return $"http://{ipport}";
         }
     }
 }

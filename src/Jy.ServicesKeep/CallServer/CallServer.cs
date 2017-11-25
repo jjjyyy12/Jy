@@ -72,12 +72,18 @@ namespace Jy.ServicesKeep
         }
         private string GetServer(ZooKeeper zk,string node)
         {
-            if (zk.existsAsync(node, true).Result != null)
+            try
             {
-                return Encoding.UTF8.GetString(zk.getDataAsync(node).Result.Data);
-            }
-            else
+                if (zk.existsAsync(node, true).Result != null)
+                {
+                    return Encoding.UTF8.GetString(zk.getDataAsync(node).Result.Data);
+                }
+                else
+                    return "";
+            }catch(Exception ee)
+            {
                 return "";
+            }
         }
         
 

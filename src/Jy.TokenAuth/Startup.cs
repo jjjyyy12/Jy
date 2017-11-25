@@ -21,6 +21,9 @@ using Jy.CacheService;
 using Jy.TokenService;
 using Jy.IRepositories;
 using Jy.ServicesKeep;
+using Jy.IIndex;
+using Jy.AuthAdmin.SolrIndex;
+using Jy.Domain.IIndex;
 
 namespace Jy.TokenAuth
 {
@@ -67,6 +70,7 @@ namespace Jy.TokenAuth
         mysqlOptions => mysqlOptions.MaxBatchSize(100)));
 
             services.Configure<SDBSettings>(Configuration.GetSection("SDBSettings"));
+            services.Configure<SIndexSettings>(Configuration.GetSection("SIndexSettings"));
             //---------------缓存配置
             services.AddMemoryCache();
             //services.Configure<CacheProvider>(Configuration.GetSection("CacheConfig")); 
@@ -106,6 +110,12 @@ namespace Jy.TokenAuth
             services.AddScoped<IRoleRepositoryRead, RoleRepositoryRead>();
             services.AddScoped<IRepositoryFactory, RepositoryFactory>();
             services.AddScoped<IRepositoryReadFactory, RepositoryReadFactory>();
+
+            services.AddScoped<IUserIndexsIndex, UserIndexsIndex>();
+            services.AddScoped<IUserIndexsIndexRead, UserIndexsIndexRead>();
+            services.AddScoped<IIndexFactory, IndexFactory<Jy.IIndex.Entity>>();
+            services.AddScoped<IIndexReadFactory, IndexReadFactory<Jy.IIndex.Entity>>();
+
             services.AddScoped<IVerifyTokenAppService, VerifyTokenAppService>();
             //txtlog
             services.AddSingleton<ILog.ILogger, Jy.TokenAuth.Logger>();

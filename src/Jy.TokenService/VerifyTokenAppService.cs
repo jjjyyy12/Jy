@@ -12,6 +12,8 @@ using Jy.Domain.IRepositories;
 using AutoMapper;
 using Jy.Utility.Const;
 using Jy.IRepositories;
+using Jy.IIndex;
+using Jy.Domain.IIndex;
 
 namespace Jy.TokenService
 {
@@ -29,13 +31,20 @@ namespace Jy.TokenService
         private readonly IRepositoryFactory _repositoryFactory;
         private readonly IRepositoryReadFactory _repositoryReadFactory;
         private readonly IRoleRepositoryRead _rolerepositoryread;
-        public VerifyTokenAppService(ICacheService cacheService, ILogger logger, IUserRepositoryRead userrepositoryread, IRoleRepositoryRead rolerepository, IRepositoryFactory repositoryFactory, IRepositoryReadFactory repositoryReadFactory)
+        private readonly IIndexFactory _indexFactory;
+        private readonly IIndexReadFactory _indexReadFactory;
+        public VerifyTokenAppService(ICacheService cacheService, ILogger logger
+            , IUserRepositoryRead userrepositoryread, IRoleRepositoryRead rolerepository
+            , IRepositoryFactory repositoryFactory, IRepositoryReadFactory repositoryReadFactory
+            , IIndexReadFactory indexReadFactory,IIndexFactory indexFactory)
         {
             _cacheService = cacheService;
             _userrepositoryread = userrepositoryread;
             _repositoryFactory = repositoryFactory;
             _repositoryReadFactory = repositoryReadFactory;
             _rolerepositoryread = rolerepository;
+            _indexReadFactory = indexReadFactory;
+            _indexFactory = indexFactory;
             _logger = logger;
         }
         public async Task<string> GetToken(string username, string password, string role, string tokenServerURL)
@@ -166,6 +175,11 @@ namespace Jy.TokenService
             _logger.LogInformation("CheckUser: username:{0}", userName);
             var userindex = _userrepositoryread.CheckUserIndex(userName, password);
             if (userindex == null) return null;
+            var userindexs = Mapper.Map<UserIndexs>(userindex);
+            var objindex = _indexFactory.CreateIndex<UserIndexs, IUserIndexsIndex>(userindex.UserId.ToString(), "authcore1");
+            //-------------------------------此处报 Entry point was not found
+            //objindex.Insert(userindexs);
+
             var user = _repositoryReadFactory.CreateRepository<User,IUserRepositoryRead>(userindex.UserId.ToString()).CheckUser(userName, password);//
             return Mapper.Map<UserDto>(user);
         }

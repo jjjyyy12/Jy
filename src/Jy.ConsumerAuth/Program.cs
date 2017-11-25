@@ -304,12 +304,12 @@ namespace Jy.ConsumerAuth
             where TH : IProcessMessage<T>
             where T : MessageBase
         {
-            Task.Run(() => { 
+            //Task.Run(() => { 
                 TH pddon = serviceProvider.GetRequiredService<TH>();
                 ProcessMessageDecorator<T> pddond = new ProcessMessageDecorator<T>(pddon, lockhandler);//分布式锁装饰类
                 logger.Information($"launch SubscribeTopic{typeof(TH).Name}");
                 qo.ResponseTopic<T, ProcessMessageDecorator<T>>(() => { return pddond; }, exchange, queue, topic); //普通消息
-            });
+            //});
 
         }
 
@@ -323,12 +323,12 @@ namespace Jy.ConsumerAuth
         where TH : IProcessMessage<T>
         where T : MessageBase
         {
-            Task.Run(() => {
+            //Task.Run(() => {
                 TH pddon = serviceProvider.GetRequiredService<TH>();
                 ProcessMessageDecorator<T> pddond = new ProcessMessageDecorator<T>(pddon, lockhandler);//分布式锁装饰类
                 logger.Information($"launch SubscribeTopic{typeof(TH).Name}");
                 qo.SubscribeTopic<T, ProcessMessageDecorator<T>>(() => { return pddond; }, "", exchange, queue, topic); //普通消息
-            });
+            //});
         }
 
     }
