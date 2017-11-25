@@ -168,7 +168,7 @@ namespace Jy.TokenService
             if (uinfo == null) return null;
             var userId = uinfo?["userId"];
             return _cacheService.Cached.Get<UserToken>(userId);
-        }
+        } 
 
         public UserDto CheckUser(string userName, string password)
         {
