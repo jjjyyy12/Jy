@@ -3898,7 +3898,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
         "dependencies": {
-          "Jy.Utility": "1.0.0"
+          "Jy.Utility": "1.0.0",
+          "SolrNetCore": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Jy.IIndex.dll": {}

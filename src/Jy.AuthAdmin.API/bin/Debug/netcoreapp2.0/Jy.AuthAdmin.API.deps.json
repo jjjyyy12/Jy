@@ -3812,7 +3812,8 @@
       },
       "Jy.IIndex/1.0.0": {
         "dependencies": {
-          "Jy.Utility": "1.0.0"
+          "Jy.Utility": "1.0.0",
+          "SolrNetCore": "1.0.0"
         },
         "runtime": {
           "Jy.IIndex.dll": {}

@@ -10,7 +10,8 @@
         "dependencies": {
           "Jy.Domain": "1.0.0",
           "Jy.IIndex": "1.0.0",
-          "Jy.SolrIndex": "1.0.0"
+          "Jy.SolrIndex": "1.0.0",
+          "Microsoft.Extensions.Options": "2.0.0.0"
         },
         "runtime": {
           "Jy.AuthAdmin.SolrIndex.dll": {}
@@ -1010,7 +1011,8 @@
       },
       "Jy.IIndex/1.0.0": {
         "dependencies": {
-          "Jy.Utility": "1.0.0"
+          "Jy.Utility": "1.0.0",
+          "SolrNetCore": "1.0.0"
         },
         "runtime": {
           "Jy.IIndex.dll": {}
@@ -1056,6 +1058,11 @@
         },
         "runtime": {
           "Jy.Utility.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Options/2.0.0.0": {
+        "runtime": {
+          "Microsoft.Extensions.Options.dll": {}
         }
       }
     }
@@ -1728,6 +1735,11 @@
     },
     "Jy.Utility/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Extensions.Options/2.0.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

@@ -31,6 +31,32 @@
           "lib/netstandard1.3/AutoMapper.dll": {}
         }
       },
+      "CoreCompat.Microsoft.Practices.ServiceLocation/1.3.0-r2": {
+        "type": "package",
+        "dependencies": {
+          "System.ComponentModel": "4.0.1",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Globalization": "4.0.11",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.3/CoreCompat.Microsoft.Practices.ServiceLocation.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/CoreCompat.Microsoft.Practices.ServiceLocation.dll": {}
+        }
+      },
+      "HttpWebAdaptersCore/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp2.0/HttpWebAdaptersCore.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/HttpWebAdaptersCore.dll": {}
+        }
+      },
       "Libuv/1.10.0": {
         "type": "package",
         "dependencies": {
@@ -1922,6 +1948,19 @@
           "lib/netstandard1.3/Serilog.Sinks.RollingFile.dll": {}
         }
       },
+      "SolrNetCore/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CoreCompat.Microsoft.Practices.ServiceLocation": "1.3.0-r2",
+          "HttpWebAdaptersCore": "1.0.0"
+        },
+        "compile": {
+          "lib/netcoreapp2.0/SolrNetCore.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/SolrNetCore.dll": {}
+        }
+      },
       "System.AppContext/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -3509,7 +3548,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
         "dependencies": {
-          "Jy.Utility": "1.0.0"
+          "Jy.Utility": "1.0.0",
+          "SolrNetCore": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Jy.IIndex.dll": {}
@@ -3650,6 +3690,27 @@
         "lib/netstandard1.1/AutoMapper.xml",
         "lib/netstandard1.3/AutoMapper.dll",
         "lib/netstandard1.3/AutoMapper.xml"
+      ]
+    },
+    "CoreCompat.Microsoft.Practices.ServiceLocation/1.3.0-r2": {
+      "sha512": "5Zw3//TAPtjKsbYteiVkqB1MHtE0SZ48mwcFbELOnMh1P/QySzGCuD+2dhrO81hx4tGzvJdLaCiFgIBDkEM0dg==",
+      "type": "package",
+      "path": "corecompat.microsoft.practices.servicelocation/1.3.0-r2",
+      "files": [
+        "corecompat.microsoft.practices.servicelocation.1.3.0-r2.nupkg.sha512",
+        "corecompat.microsoft.practices.servicelocation.nuspec",
+        "lib/net45/CoreCompat.Microsoft.Practices.ServiceLocation.dll",
+        "lib/netstandard1.3/CoreCompat.Microsoft.Practices.ServiceLocation.dll"
+      ]
+    },
+    "HttpWebAdaptersCore/1.0.0": {
+      "sha512": "ROnFhykJz8ZyUlM4pcAQQMHuvHsRlInnoXbxE0BWXORin5eQJAxi4ewKyXOMjH0dy2fPJvsonAgUII9ioWvoAg==",
+      "type": "package",
+      "path": "httpwebadapterscore/1.0.0",
+      "files": [
+        "httpwebadapterscore.1.0.0.nupkg.sha512",
+        "httpwebadapterscore.nuspec",
+        "lib/netcoreapp2.0/HttpWebAdaptersCore.dll"
       ]
     },
     "Libuv/1.10.0": {
@@ -5633,6 +5694,16 @@
         "lib/netstandard1.3/Serilog.Sinks.RollingFile.xml",
         "serilog.sinks.rollingfile.3.3.0.nupkg.sha512",
         "serilog.sinks.rollingfile.nuspec"
+      ]
+    },
+    "SolrNetCore/1.0.0": {
+      "sha512": "mz94VesuBptOk1OPir8SGnWye1uw/bPKaXj0pR+FGEGdhv/+p4qrWYaKzhquj9+9vGv5KZAPVJkLKzaWI4lAHQ==",
+      "type": "package",
+      "path": "solrnetcore/1.0.0",
+      "files": [
+        "lib/netcoreapp2.0/SolrNetCore.dll",
+        "solrnetcore.1.0.0.nupkg.sha512",
+        "solrnetcore.nuspec"
       ]
     },
     "System.AppContext/4.3.0": {

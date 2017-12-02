@@ -1,7 +1,13 @@
 ﻿using Jy.IIndex;
 using Jy.SolrIndex.Connection;
 using SolrNetCore.Impl;
-using System;
+using SolrNetCore.Impl.DocumentPropertyVisitors;
+using SolrNetCore.Impl.FacetQuerySerializers;
+using SolrNetCore.Impl.FieldParsers;
+using SolrNetCore.Impl.FieldSerializers;
+using SolrNetCore.Impl.QuerySerializers;
+using SolrNetCore.Impl.ResponseParsers;
+using SolrNetCore.Mapping;
 using System.Collections.Generic;
 using System.Text;
 
@@ -12,7 +18,20 @@ namespace Jy.AuthAdmin.SolrIndex
         public static AuthAdminSolrServer<T> CreateSolrServer(string connectionString,string coreIndex, IndexType indexType = IndexType.Solr)
         {
             var connection = BuildConnection.CreateSolrConnection(connectionString + coreIndex, indexType);
-            var basesolr = new SolrBasicServer<T>(connection, null, null, null, null, null, null, null);
+
+            var docSerializer = new SolrDocumentSerializer<T>(new AttributesMappingManager(), new DefaultFieldSerializer());
+            var headerResponseParser = new HeaderResponseParser<T>();
+
+            var solrFieldSerializer = new DefaultFieldSerializer();
+            var mapper = new AttributesMappingManager();
+            var dparser = new SolrDocumentResponseParser<T>(mapper, new DefaultDocumentVisitor(mapper, new DefaultFieldParser()), new SolrDocumentActivator<T>());
+            var parser = new DefaultResponseParser<T>(dparser);
+            var querySerializer = new DefaultQuerySerializer(solrFieldSerializer);
+            var facetQuerySerializer = new DefaultFacetQuerySerializer(querySerializer, new DefaultFieldSerializer());
+            var executer = new SolrQueryExecuter<T>(parser, connection, querySerializer, facetQuerySerializer, null);
+
+            var basesolr = new SolrBasicServer<T>(connection, executer, docSerializer, null, headerResponseParser, null, null, null);
+
             return new AuthAdminSolrServer<T>(basesolr,null,null);
         }
         //根据ID得到分库的context

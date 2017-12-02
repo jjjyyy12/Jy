@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using SolrNetCore.Attributes;
+using System; 
 
 namespace Jy.IIndex
 {
@@ -14,6 +12,7 @@ namespace Jy.IIndex
         /// <summary>
         /// 主键
         /// </summary>
+        [SolrUniqueKey("id")]
         public virtual TPrimaryKey Id { get; set; }
     }
 
