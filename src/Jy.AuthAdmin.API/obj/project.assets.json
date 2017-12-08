@@ -4874,6 +4874,7 @@
         "framework": ".NETCoreApp,Version=v2.0",
         "dependencies": {
           "AutoMapper": "6.1.1",
+          "Jy.AuthAdmin.SolrIndex": "1.0.0",
           "Jy.CacheService": "1.0.0",
           "Jy.Domain": "1.0.0",
           "Jy.ILog": "1.0.0"

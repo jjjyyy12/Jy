@@ -1,0 +1,13 @@
+D:\Study\testJy\Jy-master\src\Jy.IndexService\bin\Debug\netcoreapp2.0\Jy.IndexService.deps.json
+D:\Study\testJy\Jy-master\src\Jy.IndexService\bin\Debug\netcoreapp2.0\Jy.IndexService.dll
+D:\Study\testJy\Jy-master\src\Jy.IndexService\bin\Debug\netcoreapp2.0\Jy.IndexService.pdb
+D:\Study\testJy\Jy-master\src\Jy.IndexService\bin\Debug\netcoreapp2.0\Jy.IIndex.dll
+D:\Study\testJy\Jy-master\src\Jy.IndexService\bin\Debug\netcoreapp2.0\Jy.Utility.dll
+D:\Study\testJy\Jy-master\src\Jy.IndexService\bin\Debug\netcoreapp2.0\Jy.IIndex.pdb
+D:\Study\testJy\Jy-master\src\Jy.IndexService\bin\Debug\netcoreapp2.0\Jy.Utility.pdb
+D:\Study\testJy\Jy-master\src\Jy.IndexService\obj\Debug\netcoreapp2.0\Jy.IndexService.csprojResolveAssemblyReference.cache
+D:\Study\testJy\Jy-master\src\Jy.IndexService\obj\Debug\netcoreapp2.0\Jy.IndexService.csproj.CoreCompileInputs.cache
+D:\Study\testJy\Jy-master\src\Jy.IndexService\obj\Debug\netcoreapp2.0\Jy.IndexService.AssemblyInfoInputs.cache
+D:\Study\testJy\Jy-master\src\Jy.IndexService\obj\Debug\netcoreapp2.0\Jy.IndexService.AssemblyInfo.cs
+D:\Study\testJy\Jy-master\src\Jy.IndexService\obj\Debug\netcoreapp2.0\Jy.IndexService.dll
+D:\Study\testJy\Jy-master\src\Jy.IndexService\obj\Debug\netcoreapp2.0\Jy.IndexService.pdb

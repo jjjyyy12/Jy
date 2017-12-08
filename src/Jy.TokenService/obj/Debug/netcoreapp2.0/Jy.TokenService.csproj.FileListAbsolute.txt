@@ -23,3 +23,9 @@ D:\Study\testJy\Jy-master\src\Jy.TokenService\obj\Debug\netcoreapp2.0\Jy.TokenSe
 D:\Study\testJy\Jy-master\src\Jy.TokenService\obj\Debug\netcoreapp2.0\Jy.TokenService.pdb
 D:\Study\testJy\Jy-master\src\Jy.TokenService\bin\Debug\netcoreapp2.0\Jy.IIndex.dll
 D:\Study\testJy\Jy-master\src\Jy.TokenService\bin\Debug\netcoreapp2.0\Jy.IIndex.pdb
+D:\Study\testJy\Jy-master\src\Jy.TokenService\bin\Debug\netcoreapp2.0\Jy.AuthAdmin.SolrIndex.dll
+D:\Study\testJy\Jy-master\src\Jy.TokenService\bin\Debug\netcoreapp2.0\Jy.SolrIndex.dll
+D:\Study\testJy\Jy-master\src\Jy.TokenService\bin\Debug\netcoreapp2.0\Microsoft.Extensions.Options.dll
+D:\Study\testJy\Jy-master\src\Jy.TokenService\bin\Debug\netcoreapp2.0\Jy.AuthAdmin.SolrIndex.pdb
+D:\Study\testJy\Jy-master\src\Jy.TokenService\bin\Debug\netcoreapp2.0\Jy.SolrIndex.pdb
+D:\Study\testJy\Jy-master\src\Jy.TokenService\bin\Debug\netcoreapp2.0\Microsoft.Extensions.Options.xml

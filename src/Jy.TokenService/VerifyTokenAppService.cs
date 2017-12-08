@@ -14,6 +14,8 @@ using Jy.Utility.Const;
 using Jy.IRepositories;
 using Jy.IIndex;
 using Jy.Domain.IIndex;
+using Microsoft.Extensions.Options;
+using Jy.AuthAdmin.SolrIndex;
 
 namespace Jy.TokenService
 {
@@ -24,6 +26,7 @@ namespace Jy.TokenService
     {
         private ILogger _logger;
         private ICacheService _cacheService;
+        private readonly IOptionsSnapshot<SIndexSettings> _SIndexSettings;
         //缓存 
         public ICacheService CacheService { set { _cacheService = value; } get { return _cacheService; } }
 
@@ -36,15 +39,16 @@ namespace Jy.TokenService
         public VerifyTokenAppService(ICacheService cacheService, ILogger logger
             , IUserRepositoryRead userrepositoryread, IRoleRepositoryRead rolerepository
             , IRepositoryFactory repositoryFactory, IRepositoryReadFactory repositoryReadFactory
-            , IIndexReadFactory indexReadFactory,IIndexFactory indexFactory)
+            , IOptionsSnapshot<SIndexSettings> SIndexSettings)
         {
             _cacheService = cacheService;
             _userrepositoryread = userrepositoryread;
             _repositoryFactory = repositoryFactory;
             _repositoryReadFactory = repositoryReadFactory;
             _rolerepositoryread = rolerepository;
-            _indexReadFactory = indexReadFactory;
-            _indexFactory = indexFactory;
+            _SIndexSettings = SIndexSettings;
+            _indexReadFactory = new IndexReadFactory<UserIndexs>(_SIndexSettings);
+            _indexFactory = new IndexFactory<UserIndexs>(_SIndexSettings);
             _logger = logger;
         }
         public async Task<string> GetToken(string username, string password, string role, string tokenServerURL)
@@ -173,12 +177,12 @@ namespace Jy.TokenService
         public UserDto CheckUser(string userName, string password)
         {
             _logger.LogInformation("CheckUser: username:{0}", userName);
+
             var userindex = _userrepositoryread.CheckUserIndex(userName, password);
             if (userindex == null) return null;
             var userindexs = Mapper.Map<UserIndexs>(userindex);
             var objindex = _indexFactory.CreateIndex<UserIndexs, IUserIndexsIndex>(userindex.UserId.ToString(), "authcore1");
-            //-------------------------------此处报 Entry point was not found
-            //objindex.Insert(userindexs);
+            objindex.Insert(userindexs);
 
             var user = _repositoryReadFactory.CreateRepository<User,IUserRepositoryRead>(userindex.UserId.ToString()).CheckUser(userName, password);//
             return Mapper.Map<UserDto>(user);

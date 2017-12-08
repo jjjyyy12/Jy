@@ -113,8 +113,6 @@ namespace Jy.TokenAuth
 
             services.AddScoped<IUserIndexsIndex, UserIndexsIndex>();
             services.AddScoped<IUserIndexsIndexRead, UserIndexsIndexRead>();
-            services.AddScoped<IIndexFactory, IndexFactory<Jy.IIndex.Entity>>();
-            services.AddScoped<IIndexReadFactory, IndexReadFactory<Jy.IIndex.Entity>>();
 
             services.AddScoped<IVerifyTokenAppService, VerifyTokenAppService>();
             //txtlog

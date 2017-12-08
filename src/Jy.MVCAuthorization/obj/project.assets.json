@@ -1432,6 +1432,28 @@
           }
         }
       },
+      "SolrNet.Core/0.9.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/SolrNet.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SolrNet.dll": {}
+        }
+      },
+      "SolrNet.Microsoft.DependencyInjection/0.9.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.0.0",
+          "SolrNet.Core": "[0.9.1]"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.DependencyInjection.SolrNet.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.DependencyInjection.SolrNet.dll": {}
+        }
+      },
       "SolrNetCore/1.0.0": {
         "type": "package",
         "dependencies": {
@@ -2930,6 +2952,21 @@
           "lib/netstandard1.3/ZooKeeperNetEx.dll": {}
         }
       },
+      "Jy.AuthAdmin.SolrIndex/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "Jy.Domain": "1.0.0",
+          "Jy.IIndex": "1.0.0",
+          "Jy.SolrIndex": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Jy.AuthAdmin.SolrIndex.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Jy.AuthAdmin.SolrIndex.dll": {}
+        }
+      },
       "Jy.CacheService/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
@@ -3037,11 +3074,27 @@
           "bin/placeholder/Jy.ServicesKeep.dll": {}
         }
       },
+      "Jy.SolrIndex/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "Jy.IIndex": "1.0.0",
+          "SolrNet.Microsoft.DependencyInjection": "0.9.1",
+          "SolrNetCore": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Jy.SolrIndex.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Jy.SolrIndex.dll": {}
+        }
+      },
       "Jy.TokenService/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
         "dependencies": {
           "AutoMapper": "6.1.1",
+          "Jy.AuthAdmin.SolrIndex": "1.0.0",
           "Jy.CacheService": "1.0.0",
           "Jy.Domain": "1.0.0",
           "Jy.ILog": "1.0.0"
@@ -4689,6 +4742,32 @@
         "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
         "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.nuspec",
         "runtimes/ubuntu.16.10-x64/native/System.Security.Cryptography.Native.OpenSsl.so"
+      ]
+    },
+    "SolrNet.Core/0.9.1": {
+      "sha512": "3AxmNMF6r2u0WCpv3m4i8CmuBGGSLP/W5n/vvEzrAMN59sq5pYOkpuY3H4FN1xYaezBaTnc5D4e/DY7F95q0Fw==",
+      "type": "package",
+      "path": "solrnet.core/0.9.1",
+      "files": [
+        "lib/net46/SolrNet.dll",
+        "lib/net46/SolrNet.pdb",
+        "lib/net46/SolrNet.xml",
+        "lib/netstandard2.0/SolrNet.dll",
+        "lib/netstandard2.0/SolrNet.pdb",
+        "lib/netstandard2.0/SolrNet.xml",
+        "solrnet.core.0.9.1.nupkg.sha512",
+        "solrnet.core.nuspec"
+      ]
+    },
+    "SolrNet.Microsoft.DependencyInjection/0.9.1": {
+      "sha512": "Xw9j+x3rIYflv34QmPQCiv+K/7FXqSZbkorXSwUgh7w/T9t0ExIDK/AvYXSqa3vzlGbzjHLIrt5xN9rtuT8NFw==",
+      "type": "package",
+      "path": "solrnet.microsoft.dependencyinjection/0.9.1",
+      "files": [
+        "lib/netstandard2.0/Microsoft.DependencyInjection.SolrNet.dll",
+        "lib/netstandard2.0/Microsoft.DependencyInjection.SolrNet.pdb",
+        "solrnet.microsoft.dependencyinjection.0.9.1.nupkg.sha512",
+        "solrnet.microsoft.dependencyinjection.nuspec"
       ]
     },
     "SolrNetCore/1.0.0": {
@@ -8746,6 +8825,11 @@
         "zookeepernetex.nuspec"
       ]
     },
+    "Jy.AuthAdmin.SolrIndex/1.0.0": {
+      "type": "project",
+      "path": "../Jy.AuthAdmin.SolrIndex/Jy.AuthAdmin.SolrIndex.csproj",
+      "msbuildProject": "../Jy.AuthAdmin.SolrIndex/Jy.AuthAdmin.SolrIndex.csproj"
+    },
     "Jy.CacheService/1.0.0": {
       "type": "project",
       "path": "../Jy.CacheService/Jy.CacheService.csproj",
@@ -8785,6 +8869,11 @@
       "type": "project",
       "path": "../Jy.ServicesKeep/Jy.ServicesKeep.csproj",
       "msbuildProject": "../Jy.ServicesKeep/Jy.ServicesKeep.csproj"
+    },
+    "Jy.SolrIndex/1.0.0": {
+      "type": "project",
+      "path": "../Jy.SolrIndex/Jy.SolrIndex.csproj",
+      "msbuildProject": "../Jy.SolrIndex/Jy.SolrIndex.csproj"
     },
     "Jy.TokenService/1.0.0": {
       "type": "project",

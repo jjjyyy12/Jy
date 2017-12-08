@@ -33,3 +33,7 @@ D:\Study\testJy\Jy-master\src\Jy.MVC\obj\Debug\netcoreapp2.0\Jy.MVC.dll
 D:\Study\testJy\Jy-master\src\Jy.MVC\obj\Debug\netcoreapp2.0\Jy.MVC.pdb
 D:\Study\testJy\Jy-master\src\Jy.MVC\bin\Debug\netcoreapp2.0\Jy.IIndex.dll
 D:\Study\testJy\Jy-master\src\Jy.MVC\bin\Debug\netcoreapp2.0\Jy.IIndex.pdb
+D:\Study\testJy\Jy-master\src\Jy.MVC\bin\Debug\netcoreapp2.0\Jy.AuthAdmin.SolrIndex.dll
+D:\Study\testJy\Jy-master\src\Jy.MVC\bin\Debug\netcoreapp2.0\Jy.SolrIndex.dll
+D:\Study\testJy\Jy-master\src\Jy.MVC\bin\Debug\netcoreapp2.0\Jy.AuthAdmin.SolrIndex.pdb
+D:\Study\testJy\Jy-master\src\Jy.MVC\bin\Debug\netcoreapp2.0\Jy.SolrIndex.pdb

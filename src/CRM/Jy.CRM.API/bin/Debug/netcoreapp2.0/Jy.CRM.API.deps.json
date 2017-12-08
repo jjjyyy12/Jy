@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "51071144bf6e8b9b00be3dd60140141da4c8a5d6"
+    "signature": "f2b493d341c8757a33f53fceef4e8a3e2817dd6b"
   },
   "compilationOptions": {
     "defines": [
@@ -2121,6 +2121,26 @@
           "lib/netstandard1.3/Serilog.Sinks.RollingFile.dll": {}
         }
       },
+      "SolrNet.Core/0.9.1": {
+        "runtime": {
+          "lib/netstandard2.0/SolrNet.dll": {}
+        },
+        "compile": {
+          "lib/netstandard2.0/SolrNet.dll": {}
+        }
+      },
+      "SolrNet.Microsoft.DependencyInjection/0.9.1": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.0.0",
+          "SolrNet.Core": "0.9.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.DependencyInjection.SolrNet.dll": {}
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.DependencyInjection.SolrNet.dll": {}
+        }
+      },
       "SolrNetCore/1.0.0": {
         "dependencies": {
           "CoreCompat.Microsoft.Practices.ServiceLocation": "1.3.0-r2",
@@ -3440,6 +3460,19 @@
           "lib/netstandard1.3/ZooKeeperNetEx.dll": {}
         }
       },
+      "Jy.AuthAdmin.SolrIndex/1.0.0": {
+        "dependencies": {
+          "Jy.Domain": "1.0.0",
+          "Jy.IIndex": "1.0.0",
+          "Jy.SolrIndex": "1.0.0"
+        },
+        "runtime": {
+          "Jy.AuthAdmin.SolrIndex.dll": {}
+        },
+        "compile": {
+          "Jy.AuthAdmin.SolrIndex.dll": {}
+        }
+      },
       "Jy.Cache/1.0.0": {
         "dependencies": {
           "Jy.ICache": "1.0.0",
@@ -3678,9 +3711,23 @@
           "Jy.ServicesKeep.dll": {}
         }
       },
+      "Jy.SolrIndex/1.0.0": {
+        "dependencies": {
+          "Jy.IIndex": "1.0.0",
+          "SolrNet.Microsoft.DependencyInjection": "0.9.1",
+          "SolrNetCore": "1.0.0"
+        },
+        "runtime": {
+          "Jy.SolrIndex.dll": {}
+        },
+        "compile": {
+          "Jy.SolrIndex.dll": {}
+        }
+      },
       "Jy.TokenService/1.0.0": {
         "dependencies": {
           "AutoMapper": "6.1.1",
+          "Jy.AuthAdmin.SolrIndex": "1.0.0",
           "Jy.CacheService": "1.0.0",
           "Jy.Domain": "1.0.0",
           "Jy.ILog": "1.0.0"
@@ -4966,6 +5013,20 @@
       "path": "serilog.sinks.rollingfile/3.3.0",
       "hashPath": "serilog.sinks.rollingfile.3.3.0.nupkg.sha512"
     },
+    "SolrNet.Core/0.9.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3AxmNMF6r2u0WCpv3m4i8CmuBGGSLP/W5n/vvEzrAMN59sq5pYOkpuY3H4FN1xYaezBaTnc5D4e/DY7F95q0Fw==",
+      "path": "solrnet.core/0.9.1",
+      "hashPath": "solrnet.core.0.9.1.nupkg.sha512"
+    },
+    "SolrNet.Microsoft.DependencyInjection/0.9.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Xw9j+x3rIYflv34QmPQCiv+K/7FXqSZbkorXSwUgh7w/T9t0ExIDK/AvYXSqa3vzlGbzjHLIrt5xN9rtuT8NFw==",
+      "path": "solrnet.microsoft.dependencyinjection/0.9.1",
+      "hashPath": "solrnet.microsoft.dependencyinjection.0.9.1.nupkg.sha512"
+    },
     "SolrNetCore/1.0.0": {
       "type": "package",
       "serviceable": true,
@@ -5680,6 +5741,11 @@
       "path": "zookeepernetex/3.4.9.4",
       "hashPath": "zookeepernetex.3.4.9.4.nupkg.sha512"
     },
+    "Jy.AuthAdmin.SolrIndex/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "Jy.Cache/1.0.0": {
       "type": "project",
       "serviceable": false,
@@ -5761,6 +5827,11 @@
       "sha512": ""
     },
     "Jy.ServicesKeep/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Jy.SolrIndex/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

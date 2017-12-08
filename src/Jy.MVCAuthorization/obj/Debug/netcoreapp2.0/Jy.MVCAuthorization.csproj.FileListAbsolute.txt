@@ -27,3 +27,7 @@ D:\Study\testJy\Jy-master\src\Jy.MVCAuthorization\obj\Debug\netcoreapp2.0\Jy.MVC
 D:\Study\testJy\Jy-master\src\Jy.MVCAuthorization\obj\Debug\netcoreapp2.0\Jy.MVCAuthorization.pdb
 D:\Study\testJy\Jy-master\src\Jy.MVCAuthorization\bin\Debug\netcoreapp2.0\Jy.IIndex.dll
 D:\Study\testJy\Jy-master\src\Jy.MVCAuthorization\bin\Debug\netcoreapp2.0\Jy.IIndex.pdb
+D:\Study\testJy\Jy-master\src\Jy.MVCAuthorization\bin\Debug\netcoreapp2.0\Jy.AuthAdmin.SolrIndex.dll
+D:\Study\testJy\Jy-master\src\Jy.MVCAuthorization\bin\Debug\netcoreapp2.0\Jy.SolrIndex.dll
+D:\Study\testJy\Jy-master\src\Jy.MVCAuthorization\bin\Debug\netcoreapp2.0\Jy.AuthAdmin.SolrIndex.pdb
+D:\Study\testJy\Jy-master\src\Jy.MVCAuthorization\bin\Debug\netcoreapp2.0\Jy.SolrIndex.pdb
