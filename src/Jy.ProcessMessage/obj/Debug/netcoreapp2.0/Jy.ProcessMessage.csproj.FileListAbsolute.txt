@@ -29,3 +29,9 @@ D:\Study\testJy\Jy-master\src\Jy.ProcessMessage\obj\Debug\netcoreapp2.0\Jy.Proce
 D:\Study\testJy\Jy-master\src\Jy.ProcessMessage\obj\Debug\netcoreapp2.0\Jy.ProcessMessage.pdb
 D:\Study\testJy\Jy-master\src\Jy.ProcessMessage\bin\Debug\netcoreapp2.0\Jy.IIndex.dll
 D:\Study\testJy\Jy-master\src\Jy.ProcessMessage\bin\Debug\netcoreapp2.0\Jy.IIndex.pdb
+D:\Study\testJy\Jy-master\src\Jy.ProcessMessage\bin\Debug\netcoreapp2.0\Jy.AuthAdmin.SolrIndex.dll
+D:\Study\testJy\Jy-master\src\Jy.ProcessMessage\bin\Debug\netcoreapp2.0\Jy.SolrIndex.dll
+D:\Study\testJy\Jy-master\src\Jy.ProcessMessage\bin\Debug\netcoreapp2.0\Microsoft.Extensions.Options.dll
+D:\Study\testJy\Jy-master\src\Jy.ProcessMessage\bin\Debug\netcoreapp2.0\Jy.AuthAdmin.SolrIndex.pdb
+D:\Study\testJy\Jy-master\src\Jy.ProcessMessage\bin\Debug\netcoreapp2.0\Jy.SolrIndex.pdb
+D:\Study\testJy\Jy-master\src\Jy.ProcessMessage\bin\Debug\netcoreapp2.0\Microsoft.Extensions.Options.xml

@@ -47,3 +47,7 @@ D:\Study\testJy\Jy-master\src\Jy.ConsumerAuth\obj\Debug\netcoreapp2.0\Jy.Consume
 D:\Study\testJy\Jy-master\src\Jy.ConsumerAuth\obj\Debug\netcoreapp2.0\Jy.ConsumerAuth.pdb
 D:\Study\testJy\Jy-master\src\Jy.ConsumerAuth\bin\Debug\netcoreapp2.0\Jy.IIndex.dll
 D:\Study\testJy\Jy-master\src\Jy.ConsumerAuth\bin\Debug\netcoreapp2.0\Jy.IIndex.pdb
+D:\Study\testJy\Jy-master\src\Jy.ConsumerAuth\bin\Debug\netcoreapp2.0\Jy.AuthAdmin.SolrIndex.dll
+D:\Study\testJy\Jy-master\src\Jy.ConsumerAuth\bin\Debug\netcoreapp2.0\Jy.SolrIndex.dll
+D:\Study\testJy\Jy-master\src\Jy.ConsumerAuth\bin\Debug\netcoreapp2.0\Jy.AuthAdmin.SolrIndex.pdb
+D:\Study\testJy\Jy-master\src\Jy.ConsumerAuth\bin\Debug\netcoreapp2.0\Jy.SolrIndex.pdb

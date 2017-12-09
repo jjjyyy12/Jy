@@ -6,6 +6,10 @@ using Jy.Utility.Convert;
 using AutoMapper;
 using Jy.DistributedLock;
 using Jy.IMessageQueue;
+using Jy.IIndex;
+using Jy.AuthAdmin.SolrIndex;
+using Microsoft.Extensions.Options;
+using Jy.Domain.IIndex;
 
 namespace Jy.RabbitMQ.ProcessMessage
 {
@@ -13,11 +17,15 @@ namespace Jy.RabbitMQ.ProcessMessage
     public class ProcessUser_update_insertupdate_rpc_2 : IProcessMessage<user_update_insertupdate_rpc>
     {
         private readonly IUserRepository _repository;//总库
+        private readonly IIndexFactory _indexFactory;
+        private readonly IOptionsSnapshot<SIndexSettings> _SIndexSettings;
         private static readonly object rpcLocker = new object();
         private static readonly object normalLocker = new object();
-        public ProcessUser_update_insertupdate_rpc_2(IUserRepository repository)
+        public ProcessUser_update_insertupdate_rpc_2(IUserRepository repository, IOptionsSnapshot<SIndexSettings> SIndexSettings)
         {
             _repository = repository;
+            _SIndexSettings = SIndexSettings;
+            _indexFactory = new IndexFactory<UserIndexs>(_SIndexSettings);
         }
         [DistributedLock("ProcessUserIndex", 5)]
         public void ProcessMsg(user_update_insertupdate_rpc msg)
@@ -42,10 +50,17 @@ namespace Jy.RabbitMQ.ProcessMessage
                     var newUser = _repository.Get(userId);
                     user = _repository.InsertUserIndex(newUser);
                 }
+                InsertIndex(user);
             }
             if (user != null)
                 msg.MessageBodyReturnByte = ByteConvertHelper.Object2Bytes(user.UserId);
 
+        }
+        private void InsertIndex(UserIndex bodys)
+        {
+            var userindexs = Mapper.Map<UserIndexs>(bodys);
+            var objindex = _indexFactory.CreateIndex<UserIndexs, IUserIndexsIndex>(userindexs.Id.ToString(), "authcore1");
+            objindex.Insert(userindexs);
         }
     }
 }
