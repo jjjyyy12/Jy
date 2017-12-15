@@ -177,13 +177,16 @@ namespace Jy.TokenService
         public UserDto CheckUser(string userName, string password)
         {
             _logger.LogInformation("CheckUser: username:{0}", userName);
+            if (string.IsNullOrWhiteSpace(userName) || string.IsNullOrWhiteSpace(password)) return null;
 
-            var userindex = _userrepositoryread.CheckUserIndex(userName, password);
-            if (userindex == null) return null;
-            var userindexs = Mapper.Map<UserIndexs>(userindex);
-            var objindex = _indexFactory.CreateIndex<UserIndexs, IUserIndexsIndex>(userindex.UserId.ToString(), "authcore1");
-            objindex.Insert(userindexs);
-
+            var objindex = _indexReadFactory.CreateIndex<UserIndexs, IUserIndexsIndexRead>(Guid.NewGuid().ToString(), "authcore1");
+            var userindexs = objindex.FirstOrDefault(new List<KeyValuePair<string, string>>(2) { new KeyValuePair<string, string>("name", userName), new KeyValuePair<string, string>("keywords", password) });
+            UserIndex userindex = null;
+            if (userindexs == null)
+                userindex = _userrepositoryread.CheckUserIndex(userName, password);
+            else
+                userindex = Mapper.Map<UserIndex>(userindexs);
+            
             var user = _repositoryReadFactory.CreateRepository<User,IUserRepositoryRead>(userindex.UserId.ToString()).CheckUser(userName, password);//
             return Mapper.Map<UserDto>(user);
         }
