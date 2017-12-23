@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 namespace Jy.IMessageQueue
 {
+    //消息总线
     public interface IQueueOperationSubscriptionsManager
     {
         bool IsEmpty { get; }

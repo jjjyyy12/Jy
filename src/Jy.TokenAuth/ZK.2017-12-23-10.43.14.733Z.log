@@ -1,0 +1,66 @@
+[2017-12-23 10:43:16.912 GMT 	ERROR 	ClientCnxn 	Error while calling watcher ] 	
+Exc level 0: System.NullReferenceException: Object reference not set to an instance of an object.
+   at org.apache.zookeeper.ClientCnxn.<processEvent>d__37.MoveNext()
+[2017-12-23 10:53:21.619 GMT 	WARNING 	ClientCnxn 	Client session timed out, have not heard from server in 88565ms for sessionid 0x26082edad520001] 	
+[2017-12-23 10:53:25.293 GMT 	ERROR 	ClientCnxn 	Error while calling watcher ] 	
+Exc level 0: System.NullReferenceException: Object reference not set to an instance of an object.
+   at org.apache.zookeeper.ClientCnxn.<processEvent>d__37.MoveNext()
+[2017-12-23 10:53:39.486 GMT 	ERROR 	ClientCnxn 	Error while calling watcher ] 	
+Exc level 0: System.NullReferenceException: Object reference not set to an instance of an object.
+   at org.apache.zookeeper.ClientCnxn.<processEvent>d__37.MoveNext()
+[2017-12-23 10:53:39.833 GMT 	ERROR 	ClientCnxn 	Error while calling watcher ] 	
+Exc level 0: System.NullReferenceException: Object reference not set to an instance of an object.
+   at org.apache.zookeeper.ClientCnxn.<processEvent>d__37.MoveNext()
+[2017-12-23 10:53:39.845 GMT 	WARNING 	ClientCnxn 	Unable to reconnect to ZooKeeper service, session 0x26082edad520001 has expired] 	
+[2017-12-23 10:53:39.859 GMT 	WARNING 	ClientCnxn 	!!!Session 0x26082edad520001 for server {192.168.1.115:12181}, unexpected error, closing socket connection and attempting reconnect] 	
+Exc level 0: org.apache.zookeeper.ClientCnxn+SessionExpiredException: Unable to reconnect to ZooKeeper service, session 0x26082edad520001 has expired
+   at org.apache.zookeeper.ClientCnxn.onConnected(Int32 _negotiatedSessionTimeout, Int64 _sessionId, Byte[] _sessionPasswd, Boolean isRO)
+   at org.apache.zookeeper.ClientCnxnSocket.readConnectResult()
+   at org.apache.zookeeper.ClientCnxnSocketNIO.doIO()
+   at org.apache.zookeeper.ClientCnxnSocketNIO.<doTransport>d__29.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at org.apache.zookeeper.ClientCnxn.<startSendTask>d__60.MoveNext()
+[2017-12-23 11:16:50.734 GMT 	WARNING 	ClientCnxn 	Client session timed out, have not heard from server in 28423ms for sessionid 0x26082edad520018] 	
+[2017-12-23 11:16:56.584 GMT 	ERROR 	ClientCnxn 	Error while calling watcher ] 	
+Exc level 0: System.NullReferenceException: Object reference not set to an instance of an object.
+   at org.apache.zookeeper.ClientCnxn.<processEvent>d__37.MoveNext()
+[2017-12-23 11:17:44.774 GMT 	WARNING 	ClientCnxn 	Client session timed out, have not heard from server in 48845ms for sessionid 0x26082edad520020] 	
+[2017-12-23 11:18:02.226 GMT 	ERROR 	ClientCnxn 	Error while calling watcher ] 	
+Exc level 0: System.NullReferenceException: Object reference not set to an instance of an object.
+   at org.apache.zookeeper.ClientCnxn.<processEvent>d__37.MoveNext()
+[2017-12-23 11:18:02.886 GMT 	ERROR 	ClientCnxn 	Error while calling watcher ] 	
+Exc level 0: System.NullReferenceException: Object reference not set to an instance of an object.
+   at org.apache.zookeeper.ClientCnxn.<processEvent>d__37.MoveNext()
+[2017-12-23 11:18:09.993 GMT 	ERROR 	ClientCnxn 	Error while calling watcher ] 	
+Exc level 0: System.NullReferenceException: Object reference not set to an instance of an object.
+   at org.apache.zookeeper.ClientCnxn.<processEvent>d__37.MoveNext()
+[2017-12-23 11:18:09.991 GMT 	ERROR 	ClientCnxn 	Error while calling watcher ] 	
+Exc level 0: System.NullReferenceException: Object reference not set to an instance of an object.
+   at org.apache.zookeeper.ClientCnxn.<processEvent>d__37.MoveNext()
+[2017-12-23 11:18:12.425 GMT 	WARNING 	ClientCnxn 	Unable to reconnect to ZooKeeper service, session 0x26082edad520018 has expired] 	
+[2017-12-23 11:18:12.752 GMT 	WARNING 	ClientCnxn 	!!!Session 0x26082edad520018 for server {192.168.1.115:12181}, unexpected error, closing socket connection and attempting reconnect] 	
+Exc level 0: org.apache.zookeeper.ClientCnxn+SessionExpiredException: Unable to reconnect to ZooKeeper service, session 0x26082edad520018 has expired
+   at org.apache.zookeeper.ClientCnxn.onConnected(Int32 _negotiatedSessionTimeout, Int64 _sessionId, Byte[] _sessionPasswd, Boolean isRO)
+   at org.apache.zookeeper.ClientCnxnSocket.readConnectResult()
+   at org.apache.zookeeper.ClientCnxnSocketNIO.doIO()
+   at org.apache.zookeeper.ClientCnxnSocketNIO.<doTransport>d__29.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at org.apache.zookeeper.ClientCnxn.<startSendTask>d__60.MoveNext()
+[2017-12-23 11:18:13.161 GMT 	ERROR 	ClientCnxn 	Error while calling watcher ] 	
+Exc level 0: System.NullReferenceException: Object reference not set to an instance of an object.
+   at org.apache.zookeeper.ClientCnxn.<processEvent>d__37.MoveNext()
+[2017-12-23 11:18:13.164 GMT 	WARNING 	ClientCnxn 	Unable to reconnect to ZooKeeper service, session 0x26082edad520020 has expired] 	
+[2017-12-23 11:18:13.170 GMT 	WARNING 	ClientCnxn 	!!!Session 0x26082edad520020 for server {192.168.1.115:12181}, unexpected error, closing socket connection and attempting reconnect] 	
+Exc level 0: org.apache.zookeeper.ClientCnxn+SessionExpiredException: Unable to reconnect to ZooKeeper service, session 0x26082edad520020 has expired
+   at org.apache.zookeeper.ClientCnxn.onConnected(Int32 _negotiatedSessionTimeout, Int64 _sessionId, Byte[] _sessionPasswd, Boolean isRO)
+   at org.apache.zookeeper.ClientCnxnSocket.readConnectResult()
+   at org.apache.zookeeper.ClientCnxnSocketNIO.doIO()
+   at org.apache.zookeeper.ClientCnxnSocketNIO.<doTransport>d__29.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at org.apache.zookeeper.ClientCnxn.<startSendTask>d__60.MoveNext()

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace Jy.IMessageQueue
 {
+    //消息
     public class MessageBase
     {
         public MessageBase()

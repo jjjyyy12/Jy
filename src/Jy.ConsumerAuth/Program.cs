@@ -27,6 +27,7 @@ using Jy.Domain.Message;
 using Jy.Domain;
 using Jy.IRepositories;
 using System.Threading.Tasks;
+using Jy.IIndex;
 
 namespace Jy.ConsumerAuth
 {
@@ -56,7 +57,7 @@ namespace Jy.ConsumerAuth
 
 
             services.Configure<SDBSettings>(Configuration.GetSection("SDBSettings"));
-
+            services.Configure<SIndexSettings>(Configuration.GetSection("SIndexSettings"));
             DomainMapper.Initialize();
             //services.AddRawRabbit();
             //分布式锁,redis实现

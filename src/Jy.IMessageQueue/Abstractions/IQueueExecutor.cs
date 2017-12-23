@@ -4,6 +4,7 @@ using System.Text;
 
 namespace Jy.IMessageQueue
 {
+    //消息发送
     interface IQueueExecutor
     {
         void ExecuteAsync(MessageBase message);

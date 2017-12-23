@@ -56,7 +56,7 @@ namespace Jy.SolrIndex
                 int i = 0;
                 foreach(var param in wheres)
                 {
-                    if(string.IsNullOrWhiteSpace(param.Key))
+                    if(!string.IsNullOrWhiteSpace(param.Key))
                         conds[i] = new SolrQueryByField(param.Key, param.Value);
                     i++;
                 }
@@ -96,7 +96,7 @@ namespace Jy.SolrIndex
                 int i = 0;
                 foreach (var param in wheres)
                 {
-                    if (string.IsNullOrWhiteSpace(param.Key))
+                    if (!string.IsNullOrWhiteSpace(param.Key))
                         conds[i] = new SolrQueryByField(param.Key, param.Value);
                     i++;
                 }
@@ -156,7 +156,7 @@ namespace Jy.SolrIndex
             int i = 0;
             foreach (var param in wheres)
             {
-                if (string.IsNullOrWhiteSpace(param.Key))
+                if (!string.IsNullOrWhiteSpace(param.Key))
                     conds[i] = new SolrQueryByField(param.Key, param.Value);
                 i++;
             }

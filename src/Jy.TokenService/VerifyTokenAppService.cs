@@ -179,11 +179,20 @@ namespace Jy.TokenService
             _logger.LogInformation("CheckUser: username:{0}", userName);
             if (string.IsNullOrWhiteSpace(userName) || string.IsNullOrWhiteSpace(password)) return null;
 
-            var objindex = _indexReadFactory.CreateIndex<UserIndexs, IUserIndexsIndexRead>(Guid.NewGuid().ToString(), "authcore1");
-            var userindexs = objindex.FirstOrDefault(new List<KeyValuePair<string, string>>(2) { new KeyValuePair<string, string>("name", userName), new KeyValuePair<string, string>("keywords", password) });
+            //get from indexs
+            var readindex = _indexReadFactory.CreateIndex<UserIndexs, IUserIndexsIndexRead>(Guid.NewGuid().ToString(), "authcore1");
+            var userindexs = readindex.FirstOrDefault(new List<KeyValuePair<string, string>>(2) { new KeyValuePair<string, string>("name", userName), new KeyValuePair<string, string>("keywords", password) });
             UserIndex userindex = null;
             if (userindexs == null)
+            {
                 userindex = _userrepositoryread.CheckUserIndex(userName, password);
+                if(userindex != null)//write to indexs
+                {
+                    var writeuserindexs = Mapper.Map<UserIndexs>(userindex);
+                    var writeindex = _indexFactory.CreateIndex<UserIndexs, IUserIndexsIndex>(writeuserindexs.Id.ToString(), "authcore1");
+                    writeindex.Insert(writeuserindexs);
+                }
+            }
             else
                 userindex = Mapper.Map<UserIndex>(userindexs);
             

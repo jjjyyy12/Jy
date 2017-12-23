@@ -31,7 +31,7 @@ namespace Jy.IMessageQueue
             {
                 _handlers.Add(key, new List<Delegate>());
             }
-            if(!_handlers.ContainsKey(key))
+            if(!_handlers[key].Contains(handler))
                 _handlers[key].Add(handler);
             if(!_eventTypes.Contains(typeof(T)))
                 _eventTypes.Add(typeof(T));

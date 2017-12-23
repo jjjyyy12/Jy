@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 
 namespace Jy.IMessageQueue
 {
+    //消息监听
     public interface IConsumerClient<T> :IDisposable where T : MessageBase
     {
         void Subscribe(IEnumerable<string> topics);

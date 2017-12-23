@@ -1,0 +1,32 @@
+[2017-12-23 12:00:43.990 GMT 	ERROR 	ClientCnxn 	Error while calling watcher ] 	
+Exc level 0: System.NullReferenceException: Object reference not set to an instance of an object.
+   at org.apache.zookeeper.ClientCnxn.<processEvent>d__37.MoveNext()
+[2017-12-23 12:00:43.990 GMT 	ERROR 	ClientCnxn 	Error while calling watcher ] 	
+Exc level 0: System.NullReferenceException: Object reference not set to an instance of an object.
+   at org.apache.zookeeper.ClientCnxn.<processEvent>d__37.MoveNext()
+[2017-12-23 12:00:46.206 GMT 	ERROR 	ClientCnxn 	Error while calling watcher ] 	
+Exc level 0: System.NullReferenceException: Object reference not set to an instance of an object.
+   at org.apache.zookeeper.ClientCnxn.<processEvent>d__37.MoveNext()
+[2017-12-23 12:02:42.850 GMT 	WARNING 	ClientCnxn 	Client session timed out, have not heard from server in 118857ms for sessionid 0x16082edad3a005f] 	
+[2017-12-23 12:02:42.889 GMT 	WARNING 	ClientCnxn 	Client session timed out, have not heard from server in 116679ms for sessionid 0x16082edad3a0060] 	
+[2017-12-23 12:02:58.599 GMT 	ERROR 	ClientCnxn 	Error while calling watcher ] 	
+Exc level 0: System.NullReferenceException: Object reference not set to an instance of an object.
+   at org.apache.zookeeper.ClientCnxn.<processEvent>d__37.MoveNext()
+[2017-12-23 12:02:58.600 GMT 	ERROR 	ClientCnxn 	Error while calling watcher ] 	
+Exc level 0: System.NullReferenceException: Object reference not set to an instance of an object.
+   at org.apache.zookeeper.ClientCnxn.<processEvent>d__37.MoveNext()
+[2017-12-23 12:02:58.599 GMT 	ERROR 	ClientCnxn 	Error while calling watcher ] 	
+Exc level 0: System.NullReferenceException: Object reference not set to an instance of an object.
+   at org.apache.zookeeper.ClientCnxn.<processEvent>d__37.MoveNext()
+[2017-12-23 12:02:58.599 GMT 	ERROR 	ClientCnxn 	Error while calling watcher ] 	
+Exc level 0: System.NullReferenceException: Object reference not set to an instance of an object.
+   at org.apache.zookeeper.ClientCnxn.<processEvent>d__37.MoveNext()
+[2017-12-23 12:02:58.645 GMT 	ERROR 	ClientCnxn 	Error while calling watcher ] 	
+Exc level 0: System.NullReferenceException: Object reference not set to an instance of an object.
+   at org.apache.zookeeper.ClientCnxn.<processEvent>d__37.MoveNext()
+[2017-12-23 12:02:58.692 GMT 	ERROR 	ClientCnxn 	Error while calling watcher ] 	
+Exc level 0: System.NullReferenceException: Object reference not set to an instance of an object.
+   at org.apache.zookeeper.ClientCnxn.<processEvent>d__37.MoveNext()
+[2017-12-23 12:02:58.778 GMT 	ERROR 	ClientCnxn 	Error while calling watcher ] 	
+Exc level 0: System.NullReferenceException: Object reference not set to an instance of an object.
+   at org.apache.zookeeper.ClientCnxn.<processEvent>d__37.MoveNext()

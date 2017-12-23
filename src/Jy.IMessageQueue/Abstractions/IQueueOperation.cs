@@ -16,7 +16,7 @@ namespace Jy.IMessageQueue
         /// </summary>
         void PublishTopic(MessageBase msg);
         /// <summary>
-        /// 接收消息
+        /// 监听处理消息
         /// </summary>
         void SubscribeTopic<T, TH>(Func<TH> handler, string subscriberId, string exchangeName, string queueName, string bindKeyTopic)
             where TH : IProcessMessage<T>
@@ -26,7 +26,7 @@ namespace Jy.IMessageQueue
         /// </summary>
         Task<MessageBase> RequestTopic(MessageBase msg);
         /// <summary>
-        /// RPC处理消息
+        /// RPC监听处理消息
         /// </summary>
         void ResponseTopic<T, TH>(Func<TH> handler, string exchangeName, string queueName, string bindKeyTopic) 
             where TH : IProcessMessage<T>
