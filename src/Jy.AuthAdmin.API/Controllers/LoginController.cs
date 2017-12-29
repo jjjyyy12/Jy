@@ -20,11 +20,16 @@ namespace Jy.AuthAdmin.API.Controllers
     public class LoginController : JyControllerBase
     {
         private IVerifyTokenAppService _verifyTokenAppService;
+        private ITokenAuthService _tokenAuthService; //调用tokenauth服务相关
         private readonly IOptions<UrlConfigSetting> _urlConfig;
         private IHttpContextAccessor _httpContextAccesor;
-        public LoginController( IVerifyTokenAppService verifyTokenAppService, IOptions<UrlConfigSetting> urlConfig, IHttpContextAccessor httpContextAccesor)
+        public LoginController( IVerifyTokenAppService verifyTokenAppService,
+            ITokenAuthService tokenAuthService,
+            IOptions<UrlConfigSetting> urlConfig,
+            IHttpContextAccessor httpContextAccesor)
         {
             _verifyTokenAppService = verifyTokenAppService;
+            _tokenAuthService = tokenAuthService;
             _urlConfig = urlConfig;
             _httpContextAccesor = httpContextAccesor;
         }
@@ -80,7 +85,7 @@ namespace Jy.AuthAdmin.API.Controllers
                     Message = GetModelStateError()
                 });
             }
-            var token = await _verifyTokenAppService.GetToken(model.UserName, model.Password,"auth", $"{KeepCallServer.getTokenAuthHostPort(_urlConfig.Value.ZooKeeperList)}{_urlConfig.Value.TokenAuthUrl}");
+            var token = await _tokenAuthService.GetToken(model.UserName, model.Password,"auth", $"{KeepCallServer.getTokenAuthHostPort(_urlConfig.Value.ZooKeeperList)}{_urlConfig.Value.TokenAuthUrl}");
             if (!string.IsNullOrWhiteSpace(token)&&token.Length>50)
             {
                 CookieOptions conf = new CookieOptions();
@@ -102,12 +107,13 @@ namespace Jy.AuthAdmin.API.Controllers
         [HttpPost]
         [Route("[action]")]
         [AllowAnonymous]
-        public IActionResult VerifyToken([FromBody]string token)
+        public async Task<IActionResult> VerifyToken([FromBody]string token)
         {
-            if (_verifyTokenAppService.VerifyToken(token))
+            var res = await _tokenAuthService.VerifyToken(token, "validatetoken", $"{KeepCallServer.getTokenAuthHostPort(_urlConfig.Value.ZooKeeperList)}{_urlConfig.Value.TokenAuthUrl}");
+            if ("Success".Equals(res))
             {
-                //HttpContext.Response.Cookies.Append("token", token);
-                //HttpContext.Session.Set("token", ByteConvertHelper.Object2Bytes(token));
+                //HttpContext.Response.Cookies.Delete("token");
+                //HttpContext.Session.Remove("CurrentUser");
                 return Ok(new { Result = "Success", Token = token });
             }
             else
@@ -125,7 +131,7 @@ namespace Jy.AuthAdmin.API.Controllers
         [BearerAuthorize]
         public async Task<IActionResult> LogOutToken([FromBody]string token)
         {
-            var res = await _verifyTokenAppService.BlackToken(token, "black", $"{KeepCallServer.getTokenAuthHostPort(_urlConfig.Value.ZooKeeperList)}{_urlConfig.Value.TokenAuthUrl}");
+            var res = await _tokenAuthService.BlackToken(token, "black", $"{KeepCallServer.getTokenAuthHostPort(_urlConfig.Value.ZooKeeperList)}{_urlConfig.Value.TokenAuthUrl}");
             if ("Success".Equals(res))
             {
                 //HttpContext.Response.Cookies.Delete("token");

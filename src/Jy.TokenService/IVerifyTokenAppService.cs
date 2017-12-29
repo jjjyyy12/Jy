@@ -17,10 +17,6 @@ namespace Jy.TokenService
         List<RoleMenuDto> GetRowMenuForLeftMenu(string token);
         //jwt 是否注销了
         bool VerifyBlackRecordsToken(string jti);
-        //获取token令牌
-        Task<string> GetToken(string username, string password, string role, string tokenServerURL);
-        //注销令牌，jwt加入黑名单
-        Task<string> BlackToken(string oldToken, string role, string tokenServerURL);
         //保存令牌
         void SaveToken(UserDto dto, string token, string jti, TimeSpan expires);
         //注销令牌的实质操作

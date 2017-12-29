@@ -4,8 +4,6 @@ using Jy.ILog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using Jy.CacheService;
 using Jy.Domain.IRepositories;
@@ -50,35 +48,6 @@ namespace Jy.TokenService
             _indexReadFactory = new IndexReadFactory<UserIndexs>(_SIndexSettings);
             _indexFactory = new IndexFactory<UserIndexs>(_SIndexSettings);
             _logger = logger;
-        }
-        public async Task<string> GetToken(string username, string password, string role, string tokenServerURL)
-        {
-            HttpClient _httpClient = new HttpClient();
-            var parameters = new Dictionary<string, string>();
-            parameters.Add("username", username);
-            parameters.Add("password", password);
-            parameters.Add("role", role);
-            HttpResponseMessage message_token = await _httpClient.PostAsync(tokenServerURL, new FormUrlEncodedContent(parameters));
-            string res = await message_token.Content.ReadAsStringAsync();
-            if (message_token.StatusCode != HttpStatusCode.OK)
-                return res;
-
-            var json = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, object>>(res);
-            return json.Where(t => t.Key == "access_token").FirstOrDefault().Value.ToString();
-        }
-        public async Task<string> BlackToken(string oldToken, string role, string tokenServerURL)
-        {
-            HttpClient _httpClient = new HttpClient();
-            var parameters = new Dictionary<string, string>();
-            parameters.Add("oldtoken", oldToken);
-            parameters.Add("role", role);
-            HttpResponseMessage message_token = await _httpClient.PostAsync(tokenServerURL, new FormUrlEncodedContent(parameters));
-            string res = await message_token.Content.ReadAsStringAsync();
-            if (message_token.StatusCode != HttpStatusCode.OK)
-                return res;
-
-            var json = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, object>>(res);
-            return json.Where(t => t.Key == "Result").FirstOrDefault().Value.ToString();
         }
         public void SaveToken(UserDto dto, string token, string jti, TimeSpan expires)
         {

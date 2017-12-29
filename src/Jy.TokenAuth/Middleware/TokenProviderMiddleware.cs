@@ -43,12 +43,14 @@ namespace Jy.TokenAuth.Middleware
             }
 
             var role = context.Request.Form["role"];
-            if ("black".Equals(role))
+            if ("black".Equals(role)) //注销
                 return BlackToken(context);
-            else if ("auth".Equals(role))
+            else if ("auth".Equals(role)) //生成token
                 return GenerateToken(context);
-            else if ("validate".Equals(role))
-                return Validate(context);
+            else if ("validate".Equals(role))//验证tokenrole
+                return ValidateRole(context);
+            else if ("validatetoken".Equals(role))//验证token
+                return ValidateToken(context);
             else
             {
                 context.Response.StatusCode = 400;
@@ -70,14 +72,6 @@ namespace Jy.TokenAuth.Middleware
                     await context.Response.WriteAsync("Invalid username or password.");
                     return;
                 }
-
-                //var identity = await GetIdentity(username, password,role);
-                //if (identity == null)
-                //{
-                //    context.Response.StatusCode = 400;
-                //    await context.Response.WriteAsync("identity failed.");
-                //    return;
-                //}
 
                 var now = DateTime.UtcNow;
                 var jti = Guid.NewGuid().ToString();
@@ -133,7 +127,7 @@ namespace Jy.TokenAuth.Middleware
             context.Response.ContentType = "application/json";
             await context.Response.WriteAsync(JsonConvert.SerializeObject(response, new JsonSerializerSettings { Formatting = Formatting.Indented }));
         }
-        private async Task Validate(HttpContext context)
+        private async Task ValidateRole(HttpContext context)
         {
             var jti = context.Request.Form["jti"];
             var userId = context.Request.Form["userId"];
@@ -157,19 +151,25 @@ namespace Jy.TokenAuth.Middleware
             context.Response.ContentType = "application/json";
             await context.Response.WriteAsync(JsonConvert.SerializeObject(response, new JsonSerializerSettings { Formatting = Formatting.Indented }));
         }
-        private Task<ClaimsIdentity> GetIdentity(string username, string password, string role)
-        {   
-            if (username != null)
-            {
-                return Task.FromResult(new ClaimsIdentity(new System.Security.Principal.GenericIdentity(username, "Token"), new Claim[] { new Claim("username", username), new Claim("role", role) }));
-            }
 
-            // Credentials are invalid, or account doesn't exist
-            return Task.FromResult<ClaimsIdentity>(null);
+        private async Task ValidateToken(HttpContext context)
+        {
+            var token = context.Request.Form["token"];
+
+            string resultStr = "Failed";
+            if(_verifyTokenAppService.VerifyToken(token))
+                resultStr = "Success";
+
+            var response = new
+            {
+                Result = resultStr
+            };
+            // Serialize and return the response
+            context.Response.ContentType = "application/json";
+            await context.Response.WriteAsync(JsonConvert.SerializeObject(response, new JsonSerializerSettings { Formatting = Formatting.Indented }));
         }
 
         public static long ToUnixEpochDate(DateTime date) => (long)Math.Round((date.ToUniversalTime() - new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero)).TotalSeconds);
-
 
     }
 

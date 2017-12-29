@@ -173,7 +173,8 @@ namespace Jy.AuthAdmin.API
             services.AddScoped<IUserIndexsIndexRead, UserIndexsIndexRead>();
  
             services.AddScoped<IVerifyTokenAppService, VerifyTokenAppService>();
-
+            services.AddScoped<ITokenAuthService, TokenAuthService>();
+            
             //jwt  http://www.cnblogs.com/JacZhu/p/6837676.html
             services.AddAuthorization(auth =>
             {
