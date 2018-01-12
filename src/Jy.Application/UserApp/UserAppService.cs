@@ -51,7 +51,7 @@ namespace Jy.Application.UserApp
       
         public void Delete(Guid id)
         {
-            List<Guid> ids = new List<Guid>(); ids.Add(id);
+            List<Guid> ids = new List<Guid>(1); ids.Add(id);
             DeleteCache(ids);
             user_delete_deleteuser_normal delobj = new user_delete_deleteuser_normal(_queueService.ExchangeName, ids);
             _queueService.PublishTopic(delobj);

@@ -88,7 +88,7 @@ namespace Jy.Application.MenuApp
 
         public void Delete(Guid id)
         {
-            List<Guid> ids = new List<Guid>(); ids.Add(id);
+            List<Guid> ids = new List<Guid>(1); ids.Add(id);
             DeleteCache(ids);
             _queueService.PublishTopic(new menu_delete_deletemenu_normal(_queueService.ExchangeName, ids));
             //_menuRepository.Delete(id);

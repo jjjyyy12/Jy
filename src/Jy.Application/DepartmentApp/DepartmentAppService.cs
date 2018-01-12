@@ -112,7 +112,7 @@ namespace Jy.Application.DepartmentApp
         /// <param name="id">Id</param>
         public void Delete(Guid id)
         {
-            List<Guid> ids = new List<Guid>(); ids.Add(id);
+            List<Guid> ids = new List<Guid>(1); ids.Add(id);
             DeleteCache(ids);
             _queueService.PublishTopic(new department_delete_deletedepartment_normal(_queueService.ExchangeName, ids));
             //_repository.Delete(id);

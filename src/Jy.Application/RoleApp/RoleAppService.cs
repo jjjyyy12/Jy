@@ -49,7 +49,7 @@ namespace Jy.Application.RoleApp
  
         public void Delete(Guid id)
         {
-            List<Guid> ids = new List<Guid>(); ids.Add(id);
+            List<Guid> ids = new List<Guid>(1); ids.Add(id);
             DeleteCache(ids);
             _queueService.PublishTopic(new role_delete_deleterole_normal(_queueService.ExchangeName, ids));
             //_repository.Delete(id);
