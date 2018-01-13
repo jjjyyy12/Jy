@@ -86,7 +86,7 @@ namespace Jy.Application.MenuApp
             //_menuRepository.Delete(it => ids.Contains(it.Id));
         }
 
-        public void Delete(Guid id)
+        public void Delete(Guid id) 
         {
             List<Guid> ids = new List<Guid>(1); ids.Add(id);
             DeleteCache(ids);

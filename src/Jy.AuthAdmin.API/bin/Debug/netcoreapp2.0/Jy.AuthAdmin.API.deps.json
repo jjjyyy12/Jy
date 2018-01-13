@@ -25,6 +25,7 @@
         "dependencies": {
           "Jy.Application": "1.0.0",
           "Jy.AuthAdmin.SolrIndex": "1.0.0",
+          "Jy.AuthService": "1.0.0",
           "Jy.Cache": "1.0.0",
           "Jy.Dapper": "1.0.0",
           "Jy.Domain": "1.0.0",
@@ -3700,6 +3701,17 @@
           "Jy.AuthAdmin.SolrIndex.dll": {}
         }
       },
+      "Jy.AuthService/1.0.0": {
+        "dependencies": {
+          "Jy.Domain": "1.0.0"
+        },
+        "runtime": {
+          "Jy.AuthService.dll": {}
+        },
+        "compile": {
+          "Jy.AuthService.dll": {}
+        }
+      },
       "Jy.Cache/1.0.0": {
         "dependencies": {
           "Jy.ICache": "1.0.0",
@@ -6042,6 +6054,11 @@
       "sha512": ""
     },
     "Jy.AuthAdmin.SolrIndex/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Jy.AuthService/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

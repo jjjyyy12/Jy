@@ -18,7 +18,7 @@ using Jy.AuthAdmin.SolrIndex;
 namespace Jy.TokenService
 {
     /// <summary>
-    /// 用户登录、验证用户权限
+    /// 用户登录、验证用户权限，原则上只被TokenAuth（identityserver），authadminapi（用户，权限系统）引用
     /// </summary>
     public class VerifyTokenAppService : IVerifyTokenAppService
     {
@@ -111,7 +111,7 @@ namespace Jy.TokenService
         {
             var objtoken = _cacheService.Cached.Get<UserToken>(userId);
             if (objtoken == null) return false;
-
+            //此处可改为调用roleapi
             List<string> urls = GetUserRowMenusUrls(objtoken.RoleIds);
             LoadControllerSubActions(urls);
             if (urls.IndexOf($"/{ currController}/Index") > -1)
@@ -133,6 +133,7 @@ namespace Jy.TokenService
             var userId = uinfo?["userId"];
             var userToken = _cacheService.Cached.Get<UserToken>(userId);
             if (userToken == null) return null;
+            //此处可改为调用roleapi
             return GetRowMenuForLeftMenu(userToken.RoleIds);
         }
         public UserToken GetCurrentUserStatus(string token)

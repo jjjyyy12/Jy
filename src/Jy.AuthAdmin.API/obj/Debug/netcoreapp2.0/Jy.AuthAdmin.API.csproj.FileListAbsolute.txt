@@ -58,3 +58,5 @@ D:\Study\testJy\Jy-master\src\Jy.AuthAdmin.API\bin\Debug\netcoreapp2.0\Jy.AuthAd
 D:\Study\testJy\Jy-master\src\Jy.AuthAdmin.API\bin\Debug\netcoreapp2.0\Jy.SolrIndex.dll
 D:\Study\testJy\Jy-master\src\Jy.AuthAdmin.API\bin\Debug\netcoreapp2.0\Jy.AuthAdmin.SolrIndex.pdb
 D:\Study\testJy\Jy-master\src\Jy.AuthAdmin.API\bin\Debug\netcoreapp2.0\Jy.SolrIndex.pdb
+D:\Study\testJy\Jy-master\src\Jy.AuthAdmin.API\bin\Debug\netcoreapp2.0\Jy.AuthService.dll
+D:\Study\testJy\Jy-master\src\Jy.AuthAdmin.API\bin\Debug\netcoreapp2.0\Jy.AuthService.pdb

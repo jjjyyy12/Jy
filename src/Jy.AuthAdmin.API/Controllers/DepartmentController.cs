@@ -115,12 +115,7 @@ namespace Jy.AuthAdmin.API.Controllers
         {
             try
             {
-                string[] idArray = ids.Split(',');
-                List<Guid> delIds = new List<Guid>();
-                foreach (string id in idArray)
-                {
-                    delIds.Add(Guid.Parse(id));
-                }
+                List<Guid> delIds = GetList(ids,',');
                 _service.DeleteBatch(delIds);
                 return Ok(new
                 {

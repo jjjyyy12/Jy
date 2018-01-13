@@ -28,5 +28,27 @@ namespace Jy.AuthAdmin.API.Controllers
             }
             return "";
         }
+        /// <summary>
+        /// 根据str获得list guid
+        /// </summary>
+        /// <param name="ids">ids</param>
+        /// <param name="sp">分隔符</param>
+        /// <returns></returns>
+        protected List<Guid> GetList(string ids,char sp)
+        {
+            string[] idArray = ids.Split('_');
+            List<Guid> Ids = new List<Guid>();
+            int? j = idArray?.Length;
+            for (int i = 0; i < j; i++)
+                Ids.Add(new Guid(idArray?[i]));
+            return Ids;
+            //string[] idArray = ids.Split(sp);
+            //List<Guid> Ids = new List<Guid>();
+            //foreach (string id in idArray)
+            //{
+            //    Ids.Add(Guid.Parse(id));
+            //}
+            //return Ids;
+        }
     }
 }

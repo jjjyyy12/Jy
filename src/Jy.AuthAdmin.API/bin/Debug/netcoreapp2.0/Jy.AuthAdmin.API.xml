@@ -4,6 +4,11 @@
         <name>Jy.AuthAdmin.API</name>
     </assembly>
     <members>
+        <member name="T:Jy.AuthAdmin.API.Controllers.AuthorityController">
+            <summary>
+            权限管理
+            </summary>
+        </member>
         <member name="M:Jy.AuthAdmin.API.Controllers.AuthorityController.GetRoleTreeData(System.Guid)">
             <summary>
             获取列表
@@ -78,6 +83,14 @@
             <summary>
             获取服务端验证的第一条错误信息
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jy.AuthAdmin.API.Controllers.JyControllerBase.GetList(System.String,System.Char)">
+            <summary>
+            根据str获得list guid
+            </summary>
+            <param name="ids">ids</param>
+            <param name="sp">分隔符</param>
             <returns></returns>
         </member>
         <member name="M:Jy.AuthAdmin.API.Controllers.LoginController.Index">
@@ -166,15 +179,43 @@
         </member>
         <member name="M:Jy.AuthAdmin.API.Controllers.RoleController.GetListPaged(System.Int32,System.Int32)">
             <summary>
-            获取列表
+            获取权限列表
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jy.AuthAdmin.API.Controllers.RoleController.GetMenuTreeData(System.Guid)">
+            <summary>
+            获取角色对应的功能列表
+            </summary>
+            <param name="id">roleid</param>
             <returns></returns>
         </member>
         <member name="M:Jy.AuthAdmin.API.Controllers.RoleController.Create(Jy.Domain.Dtos.RoleDto)">
             <summary>
             新增
             </summary>
-            <param name="dto"></param>
+            <param name="dto">RoleDto</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jy.AuthAdmin.API.Controllers.RoleController.RoleMenu(Jy.AuthAdmin.API.Models.RoleMenuModel)">
+            <summary>
+            更新rolemenu
+            </summary>
+            <param name="rpm"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jy.AuthAdmin.API.Controllers.RoleController.GetRowMenuForLeftMenu(System.String)">
+            <summary>
+            得到左侧菜单列表
+            </summary>
+            <param name="ids">roleids</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jy.AuthAdmin.API.Controllers.RoleController.GetUserRowMenusUrls(System.String)">
+            <summary>
+            得到用户菜urls
+            </summary>
+            <param name="ids">roleids</param>
             <returns></returns>
         </member>
         <member name="M:Jy.AuthAdmin.API.Controllers.UserController.GetTreeData">

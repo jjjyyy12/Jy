@@ -11,6 +11,9 @@ using Jy.Domain.Dtos;
 
 namespace Jy.AuthAdmin.API.Controllers
 {
+    /// <summary>
+    /// 权限管理
+    /// </summary>
     [Route("api/v{version:apiVersion}/[controller]")]
     [BearerAuthorize]
     public class AuthorityController : JyControllerBase
@@ -83,19 +86,8 @@ namespace Jy.AuthAdmin.API.Controllers
             }
             try
             {
-                string[] userIds = rpm.userIDs?.Split('_');
-                string[] roleIds = rpm.roleIDs?.Split('_');
-                List<Guid> uIds = new List<Guid>();
-                List<Guid> rIds = new List<Guid>();
-                foreach (string rid in roleIds)
-                {
-                    rIds.Add(Guid.Parse(rid));
-                }
-                foreach (string id in userIds)
-                {
-                    uIds.Add(Guid.Parse(id));
-                }
-
+                List<Guid> uIds = GetList(rpm?.userIDs, '_');
+                List<Guid> rIds = GetList(rpm?.roleIDs, '_'); ;
                 _userAppService.BatchUpdateUserRoles(uIds, rIds);
                 return Ok(new
                 {
@@ -130,13 +122,7 @@ namespace Jy.AuthAdmin.API.Controllers
             }
             try
             {
-                string[] roleIDs = rpm.roleIDs?.Split('_');
-                List<Guid> dto = new List<Guid>();
-                int? j = roleIDs?.Length;
-
-                for (int  i = 0  ; i < j; i++)
-                    dto.Add( new Guid(roleIDs?[i]));
-
+                List<Guid> dto = GetList(rpm.roleIDs,'_');
                 _userAppService.UpdateUserRoles(rpm.userRoleId, dto);
 
                 return Ok(new { Result = "Success" });

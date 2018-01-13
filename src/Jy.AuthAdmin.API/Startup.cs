@@ -51,6 +51,7 @@ using SolrNet;
 using Jy.AuthAdmin.SolrIndex;
 using Jy.Domain.IIndex;
 using Jy.IIndex;
+using Jy.AuthService;
 
 namespace Jy.AuthAdmin.API
 {

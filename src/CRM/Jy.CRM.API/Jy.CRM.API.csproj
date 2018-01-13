@@ -24,6 +24,7 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Jy.AuthService\Jy.AuthService.csproj" />
     <ProjectReference Include="..\..\Jy.Cache\Jy.Cache.csproj" />
     <ProjectReference Include="..\..\Jy.ICache\Jy.ICache.csproj" />
     <ProjectReference Include="..\..\Jy.ILog\Jy.ILog.csproj" />
@@ -31,7 +32,6 @@
     <ProjectReference Include="..\..\Jy.Kafka\Jy.Kafka.csproj" />
     <ProjectReference Include="..\..\Jy.MVCAuthorization\Jy.MVCAuthorization.csproj" />
     <ProjectReference Include="..\..\Jy.RabbitMQ\Jy.RabbitMQ.csproj" />
-    <ProjectReference Include="..\..\Jy.TokenService\Jy.TokenService.csproj" />
     <ProjectReference Include="..\..\Jy.Utility\Jy.Utility.csproj" />
     <ProjectReference Include="..\Jy.CRM.Application\Jy.CRM.Application.csproj" />
     <ProjectReference Include="..\Jy.CRM.Domain\Jy.CRM.Domain.csproj" />

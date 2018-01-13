@@ -23,6 +23,7 @@
     ".NETCoreApp,Version=v2.0": {
       "Jy.CRM.API/1.0.0": {
         "dependencies": {
+          "Jy.AuthService": "1.0.0",
           "Jy.CRM.Application": "1.0.0",
           "Jy.CRM.Domain": "1.0.0",
           "Jy.CRM.EntityFrameworkCore": "1.0.0",
@@ -33,7 +34,6 @@
           "Jy.Kafka": "1.0.0",
           "Jy.MVCAuthorization": "1.0.0",
           "Jy.RabbitMQ": "1.0.0",
-          "Jy.TokenService": "1.0.0",
           "Jy.Utility": "1.0.0",
           "Microsoft.ApplicationInsights.AspNetCore": "2.1.1",
           "Microsoft.AspNetCore": "2.0.0",
@@ -3473,6 +3473,17 @@
           "Jy.AuthAdmin.SolrIndex.dll": {}
         }
       },
+      "Jy.AuthService/1.0.0": {
+        "dependencies": {
+          "Jy.Domain": "1.0.0"
+        },
+        "runtime": {
+          "Jy.AuthService.dll": {}
+        },
+        "compile": {
+          "Jy.AuthService.dll": {}
+        }
+      },
       "Jy.Cache/1.0.0": {
         "dependencies": {
           "Jy.ICache": "1.0.0",
@@ -5742,6 +5753,11 @@
       "hashPath": "zookeepernetex.3.4.9.4.nupkg.sha512"
     },
     "Jy.AuthAdmin.SolrIndex/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Jy.AuthService/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

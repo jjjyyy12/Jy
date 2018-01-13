@@ -4363,6 +4363,19 @@
           "bin/placeholder/Jy.AuthAdmin.SolrIndex.dll": {}
         }
       },
+      "Jy.AuthService/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "Jy.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Jy.AuthService.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Jy.AuthService.dll": {}
+        }
+      },
       "Jy.Cache/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
@@ -11803,6 +11816,11 @@
       "path": "../../Jy.AuthAdmin.SolrIndex/Jy.AuthAdmin.SolrIndex.csproj",
       "msbuildProject": "../../Jy.AuthAdmin.SolrIndex/Jy.AuthAdmin.SolrIndex.csproj"
     },
+    "Jy.AuthService/1.0.0": {
+      "type": "project",
+      "path": "../../Jy.AuthService/Jy.AuthService.csproj",
+      "msbuildProject": "../../Jy.AuthService/Jy.AuthService.csproj"
+    },
     "Jy.Cache/1.0.0": {
       "type": "project",
       "path": "../../Jy.Cache/Jy.Cache.csproj",
@@ -11906,6 +11924,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
+      "Jy.AuthService >= 1.0.0",
       "Jy.CRM.Application >= 1.0.0",
       "Jy.CRM.Domain >= 1.0.0",
       "Jy.CRM.EntityFrameworkCore >= 1.0.0",
@@ -11916,7 +11935,6 @@
       "Jy.Kafka >= 1.0.0",
       "Jy.MVCAuthorization >= 1.0.0",
       "Jy.RabbitMQ >= 1.0.0",
-      "Jy.TokenService >= 1.0.0",
       "Jy.Utility >= 1.0.0",
       "Microsoft.ApplicationInsights.AspNetCore >= 2.1.1",
       "Microsoft.AspNetCore >= 2.0.0",
@@ -11973,6 +11991,9 @@
             "D:\\Study\\testJy\\Jy-master\\src\\Jy.ICache\\Jy.ICache.csproj": {
               "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.ICache\\Jy.ICache.csproj"
             },
+            "D:\\Study\\testJy\\Jy-master\\src\\Jy.AuthService\\Jy.AuthService.csproj": {
+              "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.AuthService\\Jy.AuthService.csproj"
+            },
             "D:\\Study\\testJy\\Jy-master\\src\\CRM\\Jy.CRM.EntityFrameworkCore\\Jy.CRM.EntityFrameworkCore.csproj": {
               "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\CRM\\Jy.CRM.EntityFrameworkCore\\Jy.CRM.EntityFrameworkCore.csproj"
             },
@@ -11990,9 +12011,6 @@
             },
             "D:\\Study\\testJy\\Jy-master\\src\\Jy.Kafka\\Jy.Kafka.csproj": {
               "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.Kafka\\Jy.Kafka.csproj"
-            },
-            "D:\\Study\\testJy\\Jy-master\\src\\Jy.TokenService\\Jy.TokenService.csproj": {
-              "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.TokenService\\Jy.TokenService.csproj"
             },
             "D:\\Study\\testJy\\Jy-master\\src\\Jy.MVCAuthorization\\Jy.MVCAuthorization.csproj": {
               "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.MVCAuthorization\\Jy.MVCAuthorization.csproj"

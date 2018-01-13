@@ -34,7 +34,7 @@ namespace Jy.AuthAdmin.API.Controllers
 
 
         /// <summary>
-        /// 获取列表
+        /// 获取权限列表
         /// </summary>
         /// <returns></returns>
         // GET api/v1/[controller]/GetListPaged[?pageSize=3&pageIndex=10]
@@ -51,6 +51,11 @@ namespace Jy.AuthAdmin.API.Controllers
                 rows = result,
             });
         }
+        /// <summary>
+        /// 获取角色对应的功能列表
+        /// </summary>
+        /// <param name="id">roleid</param>
+        /// <returns></returns>
         // GET api/v1/[controller]/GetMenuTreeData/id
         [HttpGet]
         [Route("[action]/{id}")]
@@ -71,7 +76,7 @@ namespace Jy.AuthAdmin.API.Controllers
         /// <summary>
         /// 新增
         /// </summary>
-        /// <param name="dto"></param>
+        /// <param name="dto">RoleDto</param>
         /// <returns></returns>
         // POST api/Role
         [HttpPost]
@@ -123,12 +128,7 @@ namespace Jy.AuthAdmin.API.Controllers
         {
             try
             {
-                string[] idArray = ids.Split(',');
-                List<Guid> delIds = new List<Guid>();
-                foreach (string id in idArray)
-                {
-                    delIds.Add(Guid.Parse(id));
-                }
+                List<Guid> delIds = GetList(ids,',');
                 _service.DeleteBatch(delIds);
                 return Ok(new
                 {
@@ -165,6 +165,11 @@ namespace Jy.AuthAdmin.API.Controllers
                 });
             }
         }
+        /// <summary>
+        /// 更新rolemenu
+        /// </summary>
+        /// <param name="rpm"></param>
+        /// <returns></returns>
         [HttpPut]
         [Route("[action]")]
         public IActionResult RoleMenu([FromBody]RoleMenuModel rpm)
@@ -203,6 +208,34 @@ namespace Jy.AuthAdmin.API.Controllers
             var dto = _service.Get(id);
             return Ok(dto);
         }
+        /// <summary>
+        /// 得到左侧菜单列表
+        /// </summary>
+        /// <param name="ids">roleids</param>
+        /// <returns></returns>
+        // Get api/Role/GetRowMenuForLeftMenu/5,6
+        [Route("[action]/{ids}")]
+        [HttpGet]
+        public IActionResult GetRowMenuForLeftMenu(string ids)
+        {
+            List<Guid> Ids = GetList(ids,',');
+            return Ok(_service.GetRowMenuForLeftMenu(Ids));
+        }
+        /// <summary>
+        /// 得到用户菜urls
+        /// </summary>
+        /// <param name="ids">roleids</param>
+        /// <returns></returns>
+        // Get api/Role/GetUserRowMenusUrls/5,6
+        [Route("[action]/{ids}")]
+        [HttpGet]
+        public IActionResult GetUserRowMenusUrls(string ids)
+        {
+            List<Guid> Ids = GetList(ids, ',');
+            return Ok(_service.GetUserRowMenusUrls(Ids));
+        }
+         
+        
         async Task<string> GetUserTokenAsync()
         {
             //var context = _httpContextAccesor.HttpContext;

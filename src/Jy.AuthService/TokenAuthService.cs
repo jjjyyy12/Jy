@@ -6,10 +6,10 @@ using System.Net.Http;
 using System.Threading.Tasks;
 
 
-namespace Jy.TokenService
+namespace Jy.AuthService
 {
     /// <summary>
-    /// 调用tokenauth服务相关，针对token在cache中统一的存取
+    /// 负责各个api与tokenauth（identityserver）的相关调用封装
     /// </summary>
     public class TokenAuthService : ITokenAuthService
     {
@@ -18,6 +18,7 @@ namespace Jy.TokenService
         {
             _logger = logger;
         }
+        
         public async Task<string> GetToken(string username, string password, string role, string tokenServerURL)
         {
             _logger.LogInformation("TokenAuthService.GetToken: username:{0},role:{1}", username, role);

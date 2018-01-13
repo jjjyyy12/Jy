@@ -4584,6 +4584,19 @@
           "bin/placeholder/Jy.AuthAdmin.SolrIndex.dll": {}
         }
       },
+      "Jy.AuthService/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "Jy.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Jy.AuthService.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Jy.AuthService.dll": {}
+        }
+      },
       "Jy.Cache/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
@@ -12201,6 +12214,11 @@
       "path": "../Jy.AuthAdmin.SolrIndex/Jy.AuthAdmin.SolrIndex.csproj",
       "msbuildProject": "../Jy.AuthAdmin.SolrIndex/Jy.AuthAdmin.SolrIndex.csproj"
     },
+    "Jy.AuthService/1.0.0": {
+      "type": "project",
+      "path": "../Jy.AuthService/Jy.AuthService.csproj",
+      "msbuildProject": "../Jy.AuthService/Jy.AuthService.csproj"
+    },
     "Jy.Cache/1.0.0": {
       "type": "project",
       "path": "../Jy.Cache/Jy.Cache.csproj",
@@ -12306,6 +12324,7 @@
     ".NETCoreApp,Version=v2.0": [
       "Jy.Application >= 1.0.0",
       "Jy.AuthAdmin.SolrIndex >= 1.0.0",
+      "Jy.AuthService >= 1.0.0",
       "Jy.Cache >= 1.0.0",
       "Jy.Dapper >= 1.0.0",
       "Jy.Domain >= 1.0.0",
@@ -12400,6 +12419,9 @@
             },
             "D:\\Study\\testJy\\Jy-master\\src\\Jy.Utility\\Jy.Utility.csproj": {
               "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.Utility\\Jy.Utility.csproj"
+            },
+            "D:\\Study\\testJy\\Jy-master\\src\\Jy.AuthService\\Jy.AuthService.csproj": {
+              "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.AuthService\\Jy.AuthService.csproj"
             },
             "D:\\Study\\testJy\\Jy-master\\src\\Jy.IMessageQueue\\Jy.IMessageQueue.csproj": {
               "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.IMessageQueue\\Jy.IMessageQueue.csproj"

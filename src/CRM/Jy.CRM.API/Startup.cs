@@ -33,8 +33,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.Extensions.FileProviders;
 using Jy.CRM.API.Filter;
-using Jy.Domain.IIndex;
-using Jy.IIndex;
+using Jy.AuthService;
 
 namespace Jy.CRM.API
 {
@@ -154,7 +153,7 @@ namespace Jy.CRM.API
             //services.AddScoped<IUserIndexsIndexRead, UserIndexsIndexRead>();
             //services.AddScoped<IIndexFactory, IndexFactory<Jy.IIndex.Entity>>();
             //services.AddScoped<IIndexReadFactory, IndexReadFactory<Jy.IIndex.Entity>>();
-            services.AddScoped<IVerifyTokenAppService, VerifyTokenAppService>();
+            services.AddScoped<ITokenAuthService, TokenAuthService>();
 
             //jwt  http://www.cnblogs.com/JacZhu/p/6837676.html
             services.AddAuthorization(auth =>
