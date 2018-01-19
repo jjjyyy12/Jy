@@ -13,6 +13,9 @@ using Jy.QueueSerivce;
 
 namespace Jy.RabbitMQ.ProcessMessage
 {
+    /// <summary>
+    /// 删除角色
+    /// </summary>
     public class ProcessRoleRole_delete_deleterole_normal : IProcessMessage<role_delete_deleterole_normal>
     {
         private readonly IRoleRepository _repository;

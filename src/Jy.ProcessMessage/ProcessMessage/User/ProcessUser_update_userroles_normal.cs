@@ -9,17 +9,31 @@ using AutoMapper;
 using Jy.DistributedLock;
 using Jy.IMessageQueue;
 using Jy.IRepositories;
+using Jy.IIndex;
+using Microsoft.Extensions.Options;
+using Jy.AuthAdmin.SolrIndex;
+using Jy.Domain.IIndex;
+using System.Text;
 
 namespace Jy.RabbitMQ.ProcessMessage
 {
+    /// <summary>
+    /// 更新用户角色
+    /// </summary>
     public class ProcessUser_update_userroles_normal : IProcessMessage<user_update_userroles_normal>
     {
         private readonly IRepositoryFactory _repository;
+        private readonly IIndexFactory _indexFactory;
+        private readonly IIndexReadFactory _indexReadFactory;
+        private readonly IOptionsSnapshot<SIndexSettings> _SIndexSettings;
         private static readonly object rpcLocker = new object();
         private static readonly object normalLocker = new object();
-        public ProcessUser_update_userroles_normal(IRepositoryFactory repository)
+        public ProcessUser_update_userroles_normal(IRepositoryFactory repository, IOptionsSnapshot<SIndexSettings> SIndexSettings)
         {
             _repository = repository;
+            _SIndexSettings = SIndexSettings;
+            _indexReadFactory = new IndexReadFactory<UserIndexs>(_SIndexSettings);
+            _indexFactory = new IndexFactory<UserIndexs>(_SIndexSettings);
         }
         [DistributedLock("ProcessUserRoles", 10)]
         public void ProcessMsg(user_update_userroles_normal msg)
@@ -30,8 +44,15 @@ namespace Jy.RabbitMQ.ProcessMessage
         private void UpdateUserRole(user_update_userroles_normal msg)
         {
             UserRoleMsg bodys = ByteConvertHelper.Bytes2Object<UserRoleMsg>(msg.MessageBodyByte);
+            if (bodys == null) return;
             List<UserRole> userRoles = new List<UserRole>();
-            bodys?.userIds.ForEach(uid => { bodys?.roleIds.ForEach(rid => userRoles.Add(new UserRole() { UserId = uid, RoleId = rid })); });
+            Dictionary<Guid,string> userRoleStrs = new Dictionary<Guid, string>(bodys.userIds.Count);
+            bodys.userIds.ForEach(uid => {
+                StringBuilder roleStrs = new StringBuilder();
+                bodys?.roleIds.ForEach(rid => { userRoles.Add(new UserRole() { UserId = uid, RoleId = rid }); roleStrs.Append( rid).Append(","); });
+                roleStrs.Remove(roleStrs.Length - 1, 1);
+                userRoleStrs.Add(uid, roleStrs.ToString());
+            });
 
             lock (normalLocker)
             {
@@ -39,6 +60,17 @@ namespace Jy.RabbitMQ.ProcessMessage
                     var up = _repository.CreateRepository<User,IUserRepository>(id.ToString());
                     up.Execute(() =>
                     {
+                        //get from indexs
+                        var readindex = _indexReadFactory.CreateIndex<UserIndexs, IUserIndexsIndexRead>(id.ToString(), "authcore1");
+                        var userindex = readindex.FirstOrDefault(new List<KeyValuePair<string, string>>(1) { new KeyValuePair<string, string>("id", id.ToString())  });
+                        if (userindex != null)
+                        {
+                            userindex.roles = userRoleStrs[id];
+                            //update indexs
+                            var objindex = _indexFactory.CreateIndex<UserIndexs, IUserIndexsIndex>(id.ToString(), "authcore1");
+                            objindex.Insert(userindex);
+                        }
+                        
                         // Achieving atomicity between original catalog database operation and the IntegrationEventLog thanks to a local transaction
                         up.RemoveUserRoles(id, userRoles);
                         up.UnitOfWork.SaveChange();

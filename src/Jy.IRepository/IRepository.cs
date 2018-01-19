@@ -102,7 +102,10 @@ namespace Jy.IRepositories
         IQueryable<TEntity> LoadPageList(int startPage, int pageSize, out int rowCount, Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, object>> order);
 
         void Save();
-
+        /// <summary>
+        /// 执行事务过程
+        /// </summary>
+        /// <param name="action"></param>
         void Execute(Action action);
         Task ExecuteAsync(Func<Task> action);
     }

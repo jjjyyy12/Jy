@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Jy.AuthAdmin.API.Models;
 using Microsoft.AspNetCore.Authorization;
-
 using Jy.TokenService;
 using Microsoft.Extensions.Options;
 using Jy.MVCAuthorization;
@@ -69,9 +68,7 @@ namespace Jy.AuthAdmin.API.Controllers
         /// <summary>
         /// 登陆获取token
         /// </summary>
-        /// <param name="username">用户名</param>
-        /// <param name="password">密码</param>
-        /// <param name="role">角色</param>
+        /// <param name="model">LoginModel</param>
         /// <returns></returns>
         [HttpPost]
         [Route("[action]")]

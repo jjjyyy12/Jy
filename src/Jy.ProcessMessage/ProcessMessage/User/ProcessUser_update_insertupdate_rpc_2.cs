@@ -13,7 +13,10 @@ using Jy.Domain.IIndex;
 
 namespace Jy.RabbitMQ.ProcessMessage
 {
-    //update userindex
+ 
+    /// <summary>
+    /// 更新用户索引
+    /// </summary>
     public class ProcessUser_update_insertupdate_rpc_2 : IProcessMessage<user_update_insertupdate_rpc>
     {
         private readonly IUserRepository _repository;//总库

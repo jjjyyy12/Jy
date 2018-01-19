@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace Jy.TokenService
 {
+    /// <summary>
+    /// 用户登录、验证用户权限，原则上只被TokenAuth（identityserver），authadminapi（用户，权限系统）引用
+    /// </summary>
     public interface IVerifyTokenAppService
     {
         //验证令牌

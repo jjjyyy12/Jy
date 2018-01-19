@@ -11,7 +11,9 @@ using Jy.IRepositories;
 
 namespace Jy.RabbitMQ.ProcessMessage
 {
-    //更新其他分库的角色基础信息
+    /// <summary>
+    /// 删除其他分库的角色基础信息
+    /// </summary>
     public class ProcessRoleRole_delete_others_normal : IProcessMessage<role_delete_others_normal>
     {
         private readonly IRepositoryFactory _repository;

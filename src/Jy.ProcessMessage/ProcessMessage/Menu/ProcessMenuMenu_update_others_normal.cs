@@ -13,6 +13,9 @@ using Jy.IRepositories;
 
 namespace Jy.RabbitMQ.ProcessMessage
 {
+    /// <summary>
+    /// 新增或修改菜单分库数据
+    /// </summary>
     public class ProcessMenuMenu_update_others_normal : IProcessMessage<menu_update_others_normal>
     {
         private readonly IRepositoryFactory _repository;

@@ -11,6 +11,9 @@ using Jy.QueueSerivce;
 
 namespace Jy.RabbitMQ.ProcessMessage
 {
+    /// <summary>
+    /// 修改角色菜单对应关系
+    /// </summary>
     public class ProcessRoleRole_update_rolemenus_normal : IProcessMessage<role_update_rolemenus_normal>
     {
         private readonly IRoleRepository _repository;

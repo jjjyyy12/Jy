@@ -4,6 +4,9 @@ using Jy.IMessageQueue;
 
 namespace Jy.RabbitMQ.ProcessMessage
 {
+    /// <summary>
+    /// kafka log操作处理
+    /// </summary>
     public class ProcessOperateLog : IProcessMessage<MessageBase>
     {
         private ILogger _logger;

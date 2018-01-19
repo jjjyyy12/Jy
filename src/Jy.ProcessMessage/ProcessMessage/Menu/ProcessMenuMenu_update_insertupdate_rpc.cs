@@ -14,6 +14,9 @@ using Jy.QueueSerivce;
 
 namespace Jy.RabbitMQ.ProcessMessage
 {
+    /// <summary>
+    /// 新增或修改菜单
+    /// </summary>
     public class ProcessMenuMenu_update_insertupdate_rpc : IProcessMessage<menu_update_insertupdate_rpc>
     {
         private readonly IMenuRepository _repository;

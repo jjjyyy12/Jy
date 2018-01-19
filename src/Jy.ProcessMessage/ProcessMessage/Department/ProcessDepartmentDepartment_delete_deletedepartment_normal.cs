@@ -11,6 +11,9 @@ using Jy.QueueSerivce;
 
 namespace Jy.RabbitMQ.ProcessMessage
 {
+    /// <summary>
+    /// 删除部门
+    /// </summary>
     public class ProcessDepartmentDepartment_delete_deletedepartment_normal : IProcessMessage<department_delete_deletedepartment_normal>
     {
         private readonly IDepartmentRepository _repository;

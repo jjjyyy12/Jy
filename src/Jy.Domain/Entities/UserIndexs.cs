@@ -16,6 +16,8 @@ namespace Jy.Domain.Entities
         public string keywords { get; set; }
         [SolrField("depid")]
         public Guid depid { get; set; }
+        [SolrField("attachment")]
+        public string roles { get; set; }
 
     }
 }

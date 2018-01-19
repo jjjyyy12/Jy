@@ -12,6 +12,9 @@ using Jy.IRepositories;
 
 namespace Jy.RabbitMQ.ProcessMessage
 {
+    /// <summary>
+    ///  更新或新增角色
+    /// </summary>
     public class ProcessRoleRole_update_insertupdate_rpc : IProcessMessage<role_update_insertupdate_rpc>
     {
         private readonly IRoleRepository _repository;

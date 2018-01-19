@@ -11,6 +11,9 @@ using Jy.IRepositories;
 
 namespace Jy.RabbitMQ.ProcessMessage
 {
+    /// <summary>
+    /// 删除用户db数据
+    /// </summary>
     public class ProcessUser_delete_deleteuser_normal : IProcessMessage<user_delete_deleteuser_normal>
     {
         private readonly IRepositoryFactory _repository;

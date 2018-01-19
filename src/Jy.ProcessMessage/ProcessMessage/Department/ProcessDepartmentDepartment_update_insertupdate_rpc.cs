@@ -12,6 +12,9 @@ using Jy.QueueSerivce;
 
 namespace Jy.RabbitMQ.ProcessMessage
 {
+    /// <summary>
+    /// 新增修改部门信息
+    /// </summary>
     public class ProcessDepartmentDepartment_update_insertupdate_rpc : IProcessMessage<department_update_insertupdate_rpc>
     {
         private readonly IDepartmentRepository _repository;

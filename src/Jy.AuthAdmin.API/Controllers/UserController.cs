@@ -33,7 +33,7 @@ namespace Jy.AuthAdmin.API.Controllers
         }
 
         /// <summary>
-        /// 获取功能树Ok数据
+        /// 获取功能树数据
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -122,6 +122,11 @@ namespace Jy.AuthAdmin.API.Controllers
             }
             return Ok(new { Result = "Faild" });
         }
+        /// <summary>
+        /// 重置密码
+        /// </summary>
+        /// <param name="rpm"></param>
+        /// <returns></returns>
         [HttpPut]
         [Route("[action]")]
         public IActionResult ResetPassword([FromBody]ResetPasswordModel rpm)

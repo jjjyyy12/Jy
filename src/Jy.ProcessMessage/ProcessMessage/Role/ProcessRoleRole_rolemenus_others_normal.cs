@@ -12,7 +12,9 @@ using Jy.IRepositories;
 
 namespace Jy.RabbitMQ.ProcessMessage
 {
-    //更新其他分库的角色基础信息
+    /// <summary>
+    /// 修改分库角色菜单对应关系
+    /// </summary>
     public class ProcessRoleRole_rolemenus_others_normal : IProcessMessage<role_rolemenus_others_normal>
     {
         private readonly IRepositoryFactory _repository;

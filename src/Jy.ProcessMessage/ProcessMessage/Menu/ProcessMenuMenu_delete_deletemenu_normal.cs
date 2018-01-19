@@ -13,6 +13,9 @@ using Jy.QueueSerivce;
 
 namespace Jy.RabbitMQ.ProcessMessage
 {
+    /// <summary>
+    /// 删除菜单
+    /// </summary>
     public class ProcessMenuMenu_delete_deletemenu_normal : IProcessMessage<menu_delete_deletemenu_normal>
     {
         private readonly IMenuRepository _repository;

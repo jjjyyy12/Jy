@@ -103,9 +103,7 @@
             <summary>
             登陆获取token
             </summary>
-            <param name="username">用户名</param>
-            <param name="password">密码</param>
-            <param name="role">角色</param>
+            <param name="model">LoginModel</param>
             <returns></returns>
         </member>
         <member name="M:Jy.AuthAdmin.API.Controllers.LoginController.VerifyToken(System.String)">
@@ -220,7 +218,7 @@
         </member>
         <member name="M:Jy.AuthAdmin.API.Controllers.UserController.GetTreeData">
             <summary>
-            获取功能树Ok数据
+            获取功能树数据
             </summary>
             <returns></returns>
         </member>
@@ -235,6 +233,13 @@
             新增
             </summary>
             <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jy.AuthAdmin.API.Controllers.UserController.ResetPassword(Jy.AuthAdmin.API.Models.ResetPasswordModel)">
+            <summary>
+            重置密码
+            </summary>
+            <param name="rpm"></param>
             <returns></returns>
         </member>
     </members>

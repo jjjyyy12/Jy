@@ -12,6 +12,9 @@ using Jy.IRepositories;
 
 namespace Jy.RabbitMQ.ProcessMessage
 {
+    /// <summary>
+    /// 删除分库中菜单数据
+    /// </summary>
     public class ProcessMenuMenu_delete_others_normal : IProcessMessage<menu_delete_others_normal>
     {
         private readonly IRepositoryFactory _repository;

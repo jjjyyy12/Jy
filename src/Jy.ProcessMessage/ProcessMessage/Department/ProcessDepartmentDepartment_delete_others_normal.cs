@@ -12,6 +12,9 @@ using Jy.Domain.IRepositories;
 
 namespace Jy.RabbitMQ.ProcessMessage
 {
+    /// <summary>
+    /// 删除分库部门
+    /// </summary>
     public class ProcessDepartmentDepartment_delete_others_normal : IProcessMessage<department_delete_others_normal>
     {
         private readonly IRepositoryFactory _repository;

@@ -14,7 +14,10 @@ using Jy.Domain.IIndex;
 
 namespace Jy.RabbitMQ.ProcessMessage
 {
-    //delete userindex
+
+    /// <summary>
+    /// 删除用户索引  delete userindex
+    /// </summary>
     public class ProcessUser_delete_deleteuser_normal_2 : IProcessMessage<user_delete_deleteuser_normal>
     {
         private readonly IUserRepository _repository;//总库

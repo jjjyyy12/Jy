@@ -11,6 +11,9 @@ using Jy.IRepositories;
 
 namespace Jy.RabbitMQ.ProcessMessage
 {
+    /// <summary>
+    /// 现在修改部门分库信息
+    /// </summary>
     public class ProcessDepartmentDepartment_update_others_normal : IProcessMessage<department_update_others_normal>
     {
         private readonly IRepositoryFactory _repository;

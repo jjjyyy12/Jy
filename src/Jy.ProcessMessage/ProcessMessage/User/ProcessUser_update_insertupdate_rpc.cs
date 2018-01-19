@@ -12,6 +12,9 @@ using Jy.Domain.Dtos;
 
 namespace Jy.RabbitMQ.ProcessMessage
 {
+    /// <summary>
+    /// 更新或新增用户
+    /// </summary>
     public class ProcessUser_update_insertupdate_rpc : IProcessMessage<user_update_insertupdate_rpc>
     {
         private readonly IRepositoryFactory _repository;
