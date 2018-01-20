@@ -181,7 +181,7 @@ namespace Jy.Application.UserApp
         }
         private void DeleteCache(Guid id)
         {
-            List<string> keys = new List<string>(3) { $"{CacheKeyName.UserRoleKey}{id}", $"{CacheKeyName.UserKey}{id}", $"{CacheKeyName.UserRoleKey}" };
+            List<string> keys = new List<string>(2) { $"{CacheKeyName.UserRoleKey}{id}", $"{CacheKeyName.UserKey}{id}" };
             foreach (var item in keys)//RemoveAllAsync 需要key落在同一个solt上
                 _cacheService.Cached.RemoveAsync(item);
         }
