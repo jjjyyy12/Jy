@@ -49,6 +49,7 @@ namespace Jy.Application.RoleApp
  
         public void Delete(Guid id)
         {
+            if (id == null || default(Guid).Equals(id)) return;
             List<Guid> ids = new List<Guid>(1); ids.Add(id);
             DeleteCache(ids);
             _queueService.PublishTopic(new role_delete_deleterole_normal(_queueService.ExchangeName, ids));
@@ -76,7 +77,7 @@ namespace Jy.Application.RoleApp
         }
         public RoleDto Get(Guid id)
         {
-            if (id == null) return null;
+            if (id == null || default(Guid).Equals(id)) return null;
             return _cacheService.Cached.Get(() => { return Mapper.Map<RoleDto>(_repositoryRead.Get(id)); }, $"{CacheKeyName.RoleKey}{id}");
             //return Mapper.Map<RoleDto>(_repositoryRead.Get(id));
         }
@@ -170,6 +171,7 @@ namespace Jy.Application.RoleApp
         }
         private void DeleteCache(Guid id)
         {
+            if (id == null || default(Guid).Equals(id)) return;
             List<string> keys = new List<string>(3) { $"{CacheKeyName.RoleMenuKey}{id}", $"{CacheKeyName.RoleMenuKey}",$"{CacheKeyName.RoleKey}{id}" };
             foreach(var item in keys)//RemoveAllAsync 需要key落在同一个solt上
                 _cacheService.Cached.RemoveAsync(item);

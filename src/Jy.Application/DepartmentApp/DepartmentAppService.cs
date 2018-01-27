@@ -112,6 +112,7 @@ namespace Jy.Application.DepartmentApp
         /// <param name="id">Id</param>
         public void Delete(Guid id)
         {
+            if (id == null || default(Guid).Equals(id)) return;
             List<Guid> ids = new List<Guid>(1); ids.Add(id);
             DeleteCache(ids);
             _queueService.PublishTopic(new department_delete_deletedepartment_normal(_queueService.ExchangeName, ids));
@@ -132,6 +133,7 @@ namespace Jy.Application.DepartmentApp
         }
         private void DeleteCache(Guid id)
         {
+            if (id == null || default(Guid).Equals(id)) return;
             List<string> keys = new List<string>(1) { $"{CacheKeyName.DepartmentKey}{id}" };
             foreach (var item in keys)//RemoveAllAsync 需要key落在同一个solt上
                 _cacheService.Cached.RemoveAsync(item);
@@ -143,7 +145,7 @@ namespace Jy.Application.DepartmentApp
         /// <returns></returns>
         public DepartmentDto Get(Guid id)
         {
-            if (id == null) return null;
+            if (id == null || default(Guid).Equals(id)) return null;
             return _cacheService.Cached.Get(() => { return Mapper.Map<DepartmentDto>(_repositoryRead.Get(id)); }, $"{CacheKeyName.DepartmentKey}{id}");
             //return Mapper.Map<DepartmentDto>(_repositoryRead.Get(id));
         }

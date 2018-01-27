@@ -51,6 +51,7 @@ namespace Jy.Application.UserApp
       
         public void Delete(Guid id)
         {
+            if (id == null || default(Guid).Equals(id)) return;
             List<Guid> ids = new List<Guid>(1); ids.Add(id);
             DeleteCache(ids);
             user_delete_deleteuser_normal delobj = new user_delete_deleteuser_normal(_queueService.ExchangeName, ids);
@@ -181,6 +182,7 @@ namespace Jy.Application.UserApp
         }
         private void DeleteCache(Guid id)
         {
+            if (id == null || default(Guid).Equals(id)) return;
             List<string> keys = new List<string>(2) { $"{CacheKeyName.UserRoleKey}{id}", $"{CacheKeyName.UserKey}{id}" };
             foreach (var item in keys)//RemoveAllAsync 需要key落在同一个solt上
                 _cacheService.Cached.RemoveAsync(item);

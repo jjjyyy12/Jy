@@ -88,6 +88,7 @@ namespace Jy.Application.MenuApp
 
         public void Delete(Guid id) 
         {
+            if (id == null || default(Guid).Equals(id)) return;
             List<Guid> ids = new List<Guid>(1); ids.Add(id);
             DeleteCache(ids);
             _queueService.PublishTopic(new menu_delete_deletemenu_normal(_queueService.ExchangeName, ids));
@@ -108,6 +109,7 @@ namespace Jy.Application.MenuApp
         }
         private void DeleteCache(Guid id)
         {
+            if (id == null || default(Guid).Equals(id)) return;
             List<string> keys = new List<string>(1) { $"{CacheKeyName.MenuKey}{id}" };
             foreach (var item in keys)//RemoveAllAsync 需要key落在同一个solt上
                 _cacheService.Cached.RemoveAsync(item);
