@@ -17,7 +17,7 @@ namespace Jy.TokenService
         //验证此次请求是否符合有权限访问action
         bool VerifyCurrActionRole(string userId, string currController);
         //获取左侧菜单
-        List<RoleMenuDto> GetRowMenuForLeftMenu(string token);
+        List<RoleMenuDto> GetRoleMenuForLeftMenu(string token);
         //jwt 是否注销了
         bool VerifyBlackRecordsToken(string jti);
         //保存令牌

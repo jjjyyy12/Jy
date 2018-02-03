@@ -152,7 +152,7 @@ namespace Jy.AuthAdmin.API.Controllers
         public IActionResult GetMenuForLeftMenu(string token)
         {
             if(string.IsNullOrWhiteSpace(token)) return  NotFound();
-            var roleMenus = _verifyTokenAppService.GetRowMenuForLeftMenu(token);
+            var roleMenus = _verifyTokenAppService.GetRoleMenuForLeftMenu(token);
             var userStatus = _verifyTokenAppService.GetCurrentUserStatus(token);
             return Ok(new { Menus = roleMenus
                 , UserName = userStatus.UserName 

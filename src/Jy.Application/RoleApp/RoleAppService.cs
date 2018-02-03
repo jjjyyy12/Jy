@@ -156,18 +156,18 @@ namespace Jy.Application.RoleApp
                 DeleteCache(inobj.Id);
             }
         }
-        public List<RoleMenuDto> GetRowMenus(Guid id)
+        public List<RoleMenuDto> GetRoleMenus(Guid id)
         {
             string tkey = CacheKeyName.RoleMenuKey + id.ToString();
             return _cacheService.Cached.Get<List<RoleMenuDto>>(() => { return Mapper.Map<List<RoleMenuDto>>(_repositoryRead.GetRoleMenus(id)); }, tkey, default(TimeSpan));
             //return Mapper.Map<List<RoleMenuDto>>(_repository.GetRoleMenus(id));
         }
 
-        public void UpdateRowMenus(Guid id, List<Guid> menuIds)
+        public void UpdateRoleMenus(Guid id, List<Guid> menuIds)
         {
             DeleteCache(id);
             _queueService.PublishTopic(new role_update_rolemenus_normal(_queueService.ExchangeName, new RoleMenuMsg() { Id = id, menuIds = menuIds }));
-            //_repository.UpdateRowMenus(id, Mapper.Map<List<RoleMenu>>(roleMenus));
+            //_repository.UpdateRoleMenus(id, Mapper.Map<List<RoleMenu>>(roleMenus));
         }
         private void DeleteCache(Guid id)
         {
@@ -176,28 +176,28 @@ namespace Jy.Application.RoleApp
             foreach(var item in keys)//RemoveAllAsync 需要key落在同一个solt上
                 _cacheService.Cached.RemoveAsync(item);
         }
-        public List<RoleMenuDto> GetAllRowMenus()
+        public List<RoleMenuDto> GetAllRoleMenus()
         {
             string tkey = CacheKeyName.RoleMenuKey;
             return _cacheService.Cached.Get<List<RoleMenuDto>>(() => { return Mapper.Map<List<RoleMenuDto>>(_repositoryRead.GetAllRoleMenus()); }, tkey, default(TimeSpan));
         }
         
-        public List<string> GetUserRowMenusUrls(List<Guid> roleIds)
+        public List<string> GetUserRoleMenusUrls(List<Guid> roleIds)
         {
-            List<RoleMenuDto> rlist = GetUserRowMenus(roleIds);
+            List<RoleMenuDto> rlist = GetUserRoleMenus(roleIds);
             List<string> slist = Mapper.Map<List<string>>(rlist);
             slist.RemoveAll(x => string.IsNullOrWhiteSpace(x));
             return slist;
         }
-        public List<RoleMenuDto> GetRowMenuForLeftMenu(List<Guid> roleIds)
+        public List<RoleMenuDto> GetRoleMenuForLeftMenu(List<Guid> roleIds)
         {
-            List<RoleMenuDto> rlist = GetUserRowMenus(roleIds);
+            List<RoleMenuDto> rlist = GetUserRoleMenus(roleIds);
             rlist.RemoveAll(x => string.IsNullOrWhiteSpace(x.MenuName));
             return rlist.Distinct(new RoleMenuDtoComparer()).ToList();
         }
-        private List<RoleMenuDto> GetUserRowMenus(List<Guid> roleIds)
+        private List<RoleMenuDto> GetUserRoleMenus(List<Guid> roleIds)
         {
-            List<RoleMenuDto> rlist = GetAllRowMenus().Where(t => roleIds.Contains(t.RoleId)).ToList();
+            List<RoleMenuDto> rlist = GetAllRoleMenus().Where(t => roleIds.Contains(t.RoleId)).ToList();
             return rlist;
         }
     }

@@ -62,7 +62,7 @@ namespace Jy.AuthAdmin.API.Controllers
         public IActionResult GetMenuTreeData(Guid id)
         {
             var menus = _menuAppService.GetAllList();
-            var roleMenus = _service.GetRowMenus(id);
+            var roleMenus = _service.GetRoleMenus(id);
             List<TreeCheckBoxModel> treeModels = new List<TreeCheckBoxModel>();
 
             menus.ForEach((menu) =>
@@ -192,7 +192,7 @@ namespace Jy.AuthAdmin.API.Controllers
                     dto.Add(Guid.Parse(menuIDs?[i]));
                 }
 
-                _service.UpdateRowMenus(rpm.roleMenuId, dto);
+                _service.UpdateRoleMenus(rpm.roleMenuId, dto);
           
                 return Ok(new { Result = "Success" });
             }
@@ -219,7 +219,7 @@ namespace Jy.AuthAdmin.API.Controllers
         public IActionResult GetRowMenuForLeftMenu(string ids)
         {
             List<Guid> Ids = GetList(ids,',');
-            return Ok(_service.GetRowMenuForLeftMenu(Ids));
+            return Ok(_service.GetRoleMenuForLeftMenu(Ids));
         }
         /// <summary>
         /// 得到用户菜urls
@@ -232,7 +232,7 @@ namespace Jy.AuthAdmin.API.Controllers
         public IActionResult GetUserRowMenusUrls(string ids)
         {
             List<Guid> Ids = GetList(ids, ',');
-            return Ok(_service.GetUserRowMenusUrls(Ids));
+            return Ok(_service.GetUserRoleMenusUrls(Ids));
         }
          
         

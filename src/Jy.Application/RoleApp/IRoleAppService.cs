@@ -54,12 +54,12 @@ namespace Jy.Application.RoleApp
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        List<RoleMenuDto> GetRowMenus(Guid id);
-        List<RoleMenuDto> GetAllRowMenus();
-        List<string> GetUserRowMenusUrls(List<Guid> roleIds);
+        List<RoleMenuDto> GetRoleMenus(Guid id);
+        List<RoleMenuDto> GetAllRoleMenus();
+        List<string> GetUserRoleMenusUrls(List<Guid> roleIds);
         //获取左侧菜单
-        List<RoleMenuDto> GetRowMenuForLeftMenu(List<Guid> roleIds);
-        void UpdateRowMenus(Guid id, List<Guid> menuIds);
+        List<RoleMenuDto> GetRoleMenuForLeftMenu(List<Guid> roleIds);
+        void UpdateRoleMenus(Guid id, List<Guid> menuIds);
  
     }
 }
