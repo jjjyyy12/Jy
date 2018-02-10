@@ -36,7 +36,7 @@ namespace Jy.AuthAdmin.API.Controllers
         /// <returns></returns>
         protected List<Guid> GetList(string ids,char sp)
         {
-            string[] idArray = ids.Split('_');
+            string[] idArray = ids.Split(sp);
             List<Guid> Ids = new List<Guid>();
             int? j = idArray?.Length;
             for (int i = 0; i < j; i++)
