@@ -47,9 +47,9 @@ namespace Jy.MVC.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> GetMneusByParent(Guid parentId, int startPage, int pageSize)
+        public async Task<IActionResult> GetMenusByParent(Guid parentId, int startPage, int pageSize)
         {
-            var res = await _service.GetMneusByParent(parentId,startPage,pageSize);
+            var res = await _service.GetMenusByParent(parentId,startPage,pageSize);
             return Json(res);
         }
         /// <summary>

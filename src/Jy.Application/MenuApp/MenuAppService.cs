@@ -44,7 +44,7 @@ namespace Jy.Application.MenuApp
             //return _cacheService.Cached.Get<List<MenuDto>>(() => {return Mapper.Map<List<MenuDto>>(_menuRepository.GetAllList().OrderBy(it => it.SerialNumber));}, CacheKeyName.MenuKey, default(TimeSpan));
         }
 
-        public List<MenuDto> GetMneusByParent(Guid parentId, int startPage, int pageSize, out int rowCount)
+        public List<MenuDto> GetMenusByParent(Guid parentId, int startPage, int pageSize, out int rowCount)
         {
             List<MenuDto> rlist = GetAllList().Where(x => x.ParentId == parentId).ToList();
             return _pagedHelper.Paged<MenuDto>(rlist, startPage, pageSize, out rowCount);

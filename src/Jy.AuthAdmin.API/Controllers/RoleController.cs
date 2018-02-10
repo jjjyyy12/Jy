@@ -184,14 +184,8 @@ namespace Jy.AuthAdmin.API.Controllers
             }
             try
             {
-                string[] menuIDs = rpm.menuIDs?.Split('_') ;
-                List<Guid> dto = new List<Guid>();
-                int? j = menuIDs?.Length;
-                for (int i = 0; i < j; i++)
-                {
-                    dto.Add(Guid.Parse(menuIDs?[i]));
-                }
-
+                 
+                List<Guid> dto = GetList(rpm.menuIDs,'_');
                 _service.UpdateRoleMenus(rpm.roleMenuId, dto);
           
                 return Ok(new { Result = "Success" });
@@ -226,10 +220,10 @@ namespace Jy.AuthAdmin.API.Controllers
         /// </summary>
         /// <param name="ids">roleids</param>
         /// <returns></returns>
-        // Get api/Role/GetUserRowMenusUrls/5,6
+        // Get api/Role/GetUserRoleMenusUrls/5,6
         [Route("[action]/{ids}")]
         [HttpGet]
-        public IActionResult GetUserRowMenusUrls(string ids)
+        public IActionResult GetUserRoleMenusUrls(string ids)
         {
             List<Guid> Ids = GetList(ids, ',');
             return Ok(_service.GetUserRoleMenusUrls(Ids));

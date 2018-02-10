@@ -72,10 +72,10 @@ namespace Jy.MVC.Services
             return JsonConvert.DeserializeObject<Menu>(response);
         }
 
-        public async Task<Paged<Menu>> GetMneusByParent(Guid parentId, int startPage, int pageSize)
+        public async Task<Paged<Menu>> GetMenusByParent(Guid parentId, int startPage, int pageSize)
         {
             var ctoken = await GetUserTokenAsync();
-            var response = await _apiClient.GetStringAsync(API.Auth.GetMneusByParent(_remoteServiceBaseUrl, parentId, startPage, pageSize), ctoken);
+            var response = await _apiClient.GetStringAsync(API.Auth.GetMenusByParent(_remoteServiceBaseUrl, parentId, startPage, pageSize), ctoken);
             return JsonConvert.DeserializeObject<Paged<Menu>>(response);
         }
 

@@ -45,7 +45,7 @@ function loadTables(startPage, pageSize) {
     $("#checkAll").prop("checked", false);
     $.ajax({
         type: "GET",
-        url: "/Menu/GetMneusByParent?parentId=" + selectedMenuId + "&startPage=" + startPage + "&pageSize=" + pageSize + "&_t=" + new Date().getTime(),
+        url: "/Menu/GetMenusByParent?parentId=" + selectedMenuId + "&startPage=" + startPage + "&pageSize=" + pageSize + "&_t=" + new Date().getTime(),
         success: function (data) {
             $.each(data.rows, function (i, item) {
                 var tr = "<tr>";

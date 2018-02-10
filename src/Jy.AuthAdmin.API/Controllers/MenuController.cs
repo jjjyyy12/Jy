@@ -50,13 +50,13 @@ namespace Jy.AuthAdmin.API.Controllers
         /// <param name="startPage">开始页数</param>
         /// <param name="pageSize">每页记录</param>
         /// <returns></returns>
-        // GET api/v1/[controller]/GetMneusByParent/1[?pageSize=3&pageIndex=10]
+        // GET api/v1/[controller]/GetMenusByParent/1[?pageSize=3&pageIndex=10]
         [HttpGet]
         [Route("[action]/{parentId}")]
-        public IActionResult GetMneusByParent(Guid parentId, [FromQuery]int startPage, [FromQuery] int pageSize)
+        public IActionResult GetMenusByParent(Guid parentId, [FromQuery]int startPage, [FromQuery] int pageSize)
         {
             int rowCount = 0;
-            var result = _menuAppService.GetMneusByParent(parentId, startPage, pageSize, out rowCount);
+            var result = _menuAppService.GetMenusByParent(parentId, startPage, pageSize, out rowCount);
             return Ok(new
             {
                 rowCount = rowCount,

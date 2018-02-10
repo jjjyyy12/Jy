@@ -54,9 +54,9 @@ namespace Jy.MVC.Infrastructure
             {// GET api/v1/[controller]/GetListPaged[?pageSize=3&pageIndex=10]
                 return $"{baseUri}/GetListPaged?startPage={startPage}&pageSize={pageSize}";
             }
-            public static string GetMneusByParent(string baseUri, Guid parentId, int startPage, int pageSize)
-            {// GET api/v1/[controller]/GetMneusByParent/1[?pageSize=3&pageIndex=10]
-                return $"{baseUri}/GetMneusByParent/{parentId}?startPage={startPage}&pageSize={pageSize}";
+            public static string GetMenusByParent(string baseUri, Guid parentId, int startPage, int pageSize)
+            {// GET api/v1/[controller]/GetMenusByParent/1[?pageSize=3&pageIndex=10]
+                return $"{baseUri}/GetMenusByParent/{parentId}?startPage={startPage}&pageSize={pageSize}";
             }
             public static string GetChildrenByParent2(string baseUri, Guid parentId, int startPage, int pageSize)
             {// GET api/v1/[controller]/GetChildrenByParent/1[?pageSize=3&pageIndex=10]
