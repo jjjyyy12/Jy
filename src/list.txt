@@ -1,9 +1,3 @@
-# Jy
-.net core 2.0 版本的系统
-包含：权限管理
-CQRS原则分层
-
-具体目录项目结构：
 BuildingBlocks --公共组件
 	Cache	--缓存
 		Jy.Cache	--HttpCache Redis 的底层方法，ICache的实现
@@ -55,3 +49,39 @@ Services	--服务层
 WebApp	--web前端
 	AuthAdmin	--权限管理
 		Jy.MVC	--权限管理web前端
+	
+		
+
+
+Jy.Application	
+Jy.AuthAdmin.API
+Jy.AuthAdmin.SolrIndex
+Jy.AuthService
+Jy.Cache
+Jy.CacheService
+Jy.ConsumerAuth
+Jy.Dapper
+Jy.DistributedLock
+Jy.DistributedLockHandler
+Jy.Domain
+Jy.EntityFramewordCoreBase
+Jy.EntityFrameworkCore
+Jy.HealthCheck
+Jy.ICache
+Jy.IIndex
+Jy.ILog
+Jy.IMessageQueue
+Jy.IndexService
+Jy.IRepository
+Jy.Kafka
+Jy.MVC
+Jy.MVCAuthorization
+Jy.ProcessMessage
+Jy.QueueService
+Jy.RabbitMQ
+Jy.Resilience.Http
+Jy.ServicesKeep
+Jy.SolrIndex
+Jy.TokenAuth
+Jy.TokenService
+Jy.Utility
