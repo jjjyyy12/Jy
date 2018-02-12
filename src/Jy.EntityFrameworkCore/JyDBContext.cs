@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Jy.EntityFramewordCoreBase;
+using System.Threading;
+
 namespace Jy.EntityFrameworkCore
 {
 	//http://www.cnblogs.com/CreateMyself/p/6613949.html
@@ -165,6 +167,10 @@ namespace Jy.EntityFrameworkCore
         public int SaveChange()
         {
             return DbContextExtensions.SaveChanges(this,RefreshConflict.MergeClientAndStore);
+        }
+        public Task SaveChangeAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return Task.Factory.StartNew(SaveChange, cancellationToken);
         }
     }
  

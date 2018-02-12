@@ -7,6 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Jy.CRM.EntityFrameworkCore
@@ -141,6 +142,10 @@ namespace Jy.CRM.EntityFrameworkCore
         public int SaveChange()
         {
             return DbContextExtensions.SaveChanges(this, RefreshConflict.MergeClientAndStore);
+        }
+        public Task SaveChangeAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return Task.Factory.StartNew(SaveChange, cancellationToken);
         }
     }
  
