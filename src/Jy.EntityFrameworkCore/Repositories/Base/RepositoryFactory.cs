@@ -1,4 +1,5 @@
 ﻿using Jy.Domain.IRepositories;
+using Jy.EntityFramewordCoreBase.Repositories;
 using Jy.IRepositories;
 using Microsoft.Extensions.Options;
 using System.Collections.Generic;
@@ -34,14 +35,16 @@ namespace Jy.EntityFrameworkCore.Repositories
             where TH : IRepository<T>
         {
             var contextObj = getContext(Id);
-            return _createRepository.Get<TH>(new object[] { contextObj });
+            var repositoryContext = new EntityFrameworkRepositoryContext(contextObj, this);
+            return _createRepository.Get<TH>(new object[] { repositoryContext });
         }
         public TH CreateDefaultRepository<T, TH>()
            where TH : IRepository<T>
            where T : Entity
         {
             var contextObj = BuildDBContext.CreateJyDBContext(_SDBSettings.Value.defaultConnectionString, _SDBSettings.Value.dbType);
-            return _createRepository.Get<TH>(new object[] { contextObj });
+            var repositoryContext = new EntityFrameworkRepositoryContext(contextObj, this);
+            return _createRepository.Get<TH>(new object[] { repositoryContext });
         }
 
         //得到所有分库的Repository
@@ -51,7 +54,10 @@ namespace Jy.EntityFrameworkCore.Repositories
         {
             var contextList = BuildDBContext.CreateAllJyDBContext(_SDBSettings.Value.connectionList, _SDBSettings.Value.defaultConnectionString,_SDBSettings.Value.dbType);
             List<TH> rlist = new List<TH>();
-            contextList.ForEach((contextObj) => { rlist.Add( _createRepository.Get<TH>(new object[] { contextObj })); });
+            contextList.ForEach((contextObj) => {
+                var repositoryContext = new EntityFrameworkRepositoryContext(contextObj, this);
+                rlist.Add( _createRepository.Get<TH>(new object[] { repositoryContext }));
+            });
             return rlist;
         }
         public TH CreateRepositoryByConnStr<T, TH>(string ConnStr)
@@ -59,7 +65,8 @@ namespace Jy.EntityFrameworkCore.Repositories
             where TH : IRepository<T>
         {
             var contextObj = BuildDBContext.CreateJyDBContext(ConnStr, _SDBSettings.Value.dbType);
-            return _createRepository.Get<TH>(new object[] { contextObj });
+            var repositoryContext = new EntityFrameworkRepositoryContext(contextObj, this);
+            return _createRepository.Get<TH>(new object[] { repositoryContext });
         }
     }
 }

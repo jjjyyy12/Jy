@@ -52,6 +52,7 @@ using Jy.AuthAdmin.SolrIndex;
 using Jy.Domain.IIndex;
 using Jy.IIndex;
 using Jy.AuthService;
+using Jy.EntityFramewordCoreBase.Repositories;
 
 namespace Jy.AuthAdmin.API
 {
@@ -152,6 +153,7 @@ namespace Jy.AuthAdmin.API
             services.AddScoped<ICacheService, Jy.CacheService.CacheService>();
             services.AddScoped<IQueueService, Jy.QueueSerivce.QueueSerivce>();
 
+            services.AddScoped<IRepositoryContext, EntityFrameworkRepositoryContext>();
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IMenuRepository, MenuRepository>();

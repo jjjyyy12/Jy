@@ -3,6 +3,8 @@ using Jy.Domain.Entities;
 using Jy.Domain.IRepositories;
 using Jy.EntityFramewordCoreBase.Connection;
 using Jy.EntityFramewordCoreBase.Repositories;
+using Jy.IRepositories;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
@@ -15,10 +17,12 @@ namespace Jy.EntityFrameworkCore.Repositories
     /// <summary>
     /// 用户管理仓储实现
     /// </summary>
-    public class UserRepository : JyRepositoryBase<User, JyDbContext>, IUserRepository
+    public class UserRepository : EntityFrameworkRepositoryBase<User>, IUserRepository
     {
-        public UserRepository(JyDbContext dbcontext) : base(dbcontext, dbcontext)
+        protected readonly JyDbContext dbContext;
+        public UserRepository(IRepositoryContext context) : base(context)
         {
+            dbContext = (JyDbContext)_dbContext;
         }
         public UserIndex EditUserIndex(User user,bool autoSave = true)
         {
@@ -52,14 +56,14 @@ namespace Jy.EntityFrameworkCore.Repositories
         }
         public void UpdateUserRoles(Guid id, List<UserRole> userRoles)
         {
-            using (var transaction = _dbContext.Database.BeginTransaction())
+            using (var transaction = dbContext.Database.BeginTransaction())
             {
                 try
                 {
-                    _dbContext.UserRoles.RemoveRange(_dbContext.Set<UserRole>().Where(it => it.UserId == id));
-                    _dbContext.SaveChanges();
-                    _dbContext.UserRoles.AddRange(userRoles);
-                    _dbContext.SaveChanges();
+                    dbContext.UserRoles.RemoveRange(dbContext.Set<UserRole>().Where(it => it.UserId == id));
+                    dbContext.SaveChanges();
+                    dbContext.UserRoles.AddRange(userRoles);
+                    dbContext.SaveChanges();
                     transaction.Commit();
                 }
                 catch (Exception e)
@@ -71,14 +75,14 @@ namespace Jy.EntityFrameworkCore.Repositories
 
         public void BatchUpdateUserRoles(List<Guid> userIds, List<UserRole> userRoles)
         {
-            using (var transaction = _dbContext.Database.BeginTransaction())
+            using (var transaction = dbContext.Database.BeginTransaction())
             {
                 try
                 {
-                    userIds.ForEach(x => _dbContext.UserRoles.RemoveRange(_dbContext.Set<UserRole>().Where(it => it.UserId == x)));
-                    _dbContext.SaveChanges();
-                    _dbContext.UserRoles.AddRange(userRoles);
-                    _dbContext.SaveChanges();
+                    userIds.ForEach(x => dbContext.UserRoles.RemoveRange(dbContext.Set<UserRole>().Where(it => it.UserId == x)));
+                    dbContext.SaveChanges();
+                    dbContext.UserRoles.AddRange(userRoles);
+                    dbContext.SaveChanges();
                     transaction.Commit();
                 }
                 catch (Exception e)
@@ -89,15 +93,15 @@ namespace Jy.EntityFrameworkCore.Repositories
         }
         public void RemoveUserRoles(Guid userId, List<UserRole> userRoles)
         {
-            _dbContext.UserRoles.RemoveRange(_dbContext.Set<UserRole>().Where(it => it.UserId == userId));
+            dbContext.UserRoles.RemoveRange(dbContext.Set<UserRole>().Where(it => it.UserId == userId));
         }
         public void BatchRemoveUserRoles(List<Guid> userIds, List<UserRole> userRoles)
         {
-            userIds.ForEach(x => _dbContext.UserRoles.RemoveRange(_dbContext.Set<UserRole>().Where(it => it.UserId == x)));
+            userIds.ForEach(x => dbContext.UserRoles.RemoveRange(dbContext.Set<UserRole>().Where(it => it.UserId == x)));
         }
         public void BatchAddUserRoles(List<UserRole> userRoles)
         {
-            _dbContext.UserRoles.AddRange(userRoles);
+            dbContext.UserRoles.AddRange(userRoles);
         }
     }
 }

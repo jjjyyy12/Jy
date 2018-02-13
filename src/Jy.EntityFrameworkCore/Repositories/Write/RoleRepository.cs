@@ -1,19 +1,19 @@
 ﻿using Jy.Domain.Entities;
 using Jy.Domain.IRepositories;
 using Jy.EntityFramewordCoreBase.Repositories;
+using Jy.IRepositories;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
+using System.Linq; 
  
 namespace Jy.EntityFrameworkCore.Repositories
 {
-    public class RoleRepository : JyRepositoryBase<Role, JyDbContext>, IRoleRepository
+    public class RoleRepository : EntityFrameworkRepositoryBase<Role>, IRoleRepository
     {
-        public RoleRepository(JyDbContext dbcontext) : base(dbcontext, dbcontext)
+        protected readonly JyDbContext dbContext;
+        public RoleRepository(IRepositoryContext dbcontext) : base(dbcontext)
         {
-
+            dbContext = (JyDbContext)_dbContext;
         }
         public void UpdateRowMenus(Guid id, List<RoleMenu> roleMenus)
         {
@@ -21,10 +21,10 @@ namespace Jy.EntityFrameworkCore.Repositories
             {
                 try
                 {
-                    _dbContext.RoleMenus.RemoveRange(_dbContext.Set<RoleMenu>().Where(it => it.RoleId == id));
-                    _dbContext.SaveChanges();
-                    _dbContext.RoleMenus.AddRange(roleMenus);
-                    _dbContext.SaveChanges();
+                    dbContext.RoleMenus.RemoveRange(dbContext.Set<RoleMenu>().Where(it => it.RoleId == id));
+                    dbContext.SaveChanges();
+                    dbContext.RoleMenus.AddRange(roleMenus);
+                    dbContext.SaveChanges();
                     transaction.Commit();
                 }
                 catch (Exception e)
@@ -36,11 +36,11 @@ namespace Jy.EntityFrameworkCore.Repositories
 
         public void RemoveRowMenus(Guid id)
         {
-            _dbContext.RoleMenus.RemoveRange(_dbContext.Set<RoleMenu>().Where(it => it.RoleId == id));
+            dbContext.RoleMenus.RemoveRange(dbContext.Set<RoleMenu>().Where(it => it.RoleId == id));
         }
         public void BatchAddRowMenus(List<RoleMenu> roleMenus)
         {
-            _dbContext.RoleMenus.AddRange(roleMenus);
+            dbContext.RoleMenus.AddRange(roleMenus);
         }
     }
 }
