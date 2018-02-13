@@ -10,6 +10,7 @@ namespace Jy.EntityFrameworkCore.Repositories
     {
         private readonly IOptionsSnapshot<SDBSettings> _SDBSettings;
         private readonly CreateRepository _createRepository = new CreateRepository();
+
         public RepositoryFactory(IOptionsSnapshot<SDBSettings> SDBSettings)
         {
             _SDBSettings = SDBSettings;
@@ -25,6 +26,10 @@ namespace Jy.EntityFrameworkCore.Repositories
         {
             return BuildDBContext.CreateJyDBContextFromId(Id, _SDBSettings.Value.connectionKeyList, _SDBSettings.Value.connectionList,_SDBSettings.Value.defaultConnectionString,_SDBSettings.Value.dbType);
         }
+        private EntityFrameworkRepositoryContext getRepositoryContext(JyDbContext context)
+        {
+            return new EntityFrameworkRepositoryContext(context);
+        }
         public HashSet<string> GetConnectionStrings()
         {
            return BuildDBContext.GetConnectionStrings(_SDBSettings.Value.connectionList,_SDBSettings.Value.defaultConnectionString, _SDBSettings.Value.dbType);
@@ -35,7 +40,7 @@ namespace Jy.EntityFrameworkCore.Repositories
             where TH : IRepository<T>
         {
             var contextObj = getContext(Id);
-            var repositoryContext = new EntityFrameworkRepositoryContext(contextObj, this);
+            var repositoryContext = getRepositoryContext(contextObj);
             return _createRepository.Get<TH>(new object[] { repositoryContext });
         }
         public TH CreateDefaultRepository<T, TH>()
@@ -43,7 +48,7 @@ namespace Jy.EntityFrameworkCore.Repositories
            where T : Entity
         {
             var contextObj = BuildDBContext.CreateJyDBContext(_SDBSettings.Value.defaultConnectionString, _SDBSettings.Value.dbType);
-            var repositoryContext = new EntityFrameworkRepositoryContext(contextObj, this);
+            var repositoryContext = getRepositoryContext(contextObj);
             return _createRepository.Get<TH>(new object[] { repositoryContext });
         }
 
@@ -55,7 +60,7 @@ namespace Jy.EntityFrameworkCore.Repositories
             var contextList = BuildDBContext.CreateAllJyDBContext(_SDBSettings.Value.connectionList, _SDBSettings.Value.defaultConnectionString,_SDBSettings.Value.dbType);
             List<TH> rlist = new List<TH>();
             contextList.ForEach((contextObj) => {
-                var repositoryContext = new EntityFrameworkRepositoryContext(contextObj, this);
+                var repositoryContext = getRepositoryContext(contextObj);
                 rlist.Add( _createRepository.Get<TH>(new object[] { repositoryContext }));
             });
             return rlist;
@@ -65,7 +70,7 @@ namespace Jy.EntityFrameworkCore.Repositories
             where TH : IRepository<T>
         {
             var contextObj = BuildDBContext.CreateJyDBContext(ConnStr, _SDBSettings.Value.dbType);
-            var repositoryContext = new EntityFrameworkRepositoryContext(contextObj, this);
+            var repositoryContext = getRepositoryContext(contextObj);
             return _createRepository.Get<TH>(new object[] { repositoryContext });
         }
     }

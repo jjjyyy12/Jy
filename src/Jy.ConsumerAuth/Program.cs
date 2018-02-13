@@ -28,6 +28,7 @@ using Jy.Domain;
 using Jy.IRepositories;
 using System.Threading.Tasks;
 using Jy.IIndex;
+using Jy.EntityFramewordCoreBase.Repositories;
 
 namespace Jy.ConsumerAuth
 {
@@ -71,6 +72,7 @@ namespace Jy.ConsumerAuth
             services.AddScoped<PagedHelper>();
             services.AddScoped<ICacheService, Jy.CacheService.CacheService>();
             services.AddScoped<IQueueService, Jy.QueueSerivce.QueueSerivce>();
+            services.AddScoped<IRepositoryContext, EntityFrameworkRepositoryContext>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserAppService, UserAppService>();
             services.AddScoped<IMenuRepository, MenuRepository>();

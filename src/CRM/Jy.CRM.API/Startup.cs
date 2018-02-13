@@ -34,6 +34,7 @@ using System.Text;
 using Microsoft.Extensions.FileProviders;
 using Jy.CRM.API.Filter;
 using Jy.AuthService;
+using Jy.EntityFramewordCoreBase.Repositories;
 
 namespace Jy.CRM.API
 {
@@ -134,7 +135,7 @@ namespace Jy.CRM.API
 
             services.AddScoped<ICacheService, Jy.CacheService.CacheService>();
             services.AddScoped<IQueueService, Jy.QueueSerivce.QueueSerivce>();
-             
+            services.AddScoped<IRepositoryContext, EntityFrameworkRepositoryContext>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserRepositoryRead, UserRepositoryRead>();
             services.AddScoped<IAddressRepository, AddressRepository>();

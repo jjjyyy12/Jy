@@ -10,7 +10,7 @@ namespace Jy.IRepositories
 
         object Session { get; }
 
-        IRepositoryFactory RepositoryFactory { get; }
+        //IRepositoryFactory RepositoryFactory { get; }
 
         IUnitOfWork UnitOfWork { get; }
     }

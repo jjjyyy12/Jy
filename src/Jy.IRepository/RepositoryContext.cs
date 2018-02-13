@@ -16,10 +16,9 @@ namespace Jy.IRepositories
         #endregion
 
         #region Ctor
-        protected RepositoryContext(TSession session, IRepositoryFactory repositoryFactory, IUnitOfWork unitOfWork)
+        protected RepositoryContext(TSession session, IUnitOfWork unitOfWork)
         {
             this.session = session;
-            this.RepositoryFactory = repositoryFactory;
             this.UnitOfWork = unitOfWork;
         }
         #endregion
@@ -54,7 +53,7 @@ namespace Jy.IRepositories
 
         #region Public Methods
 
-        public IRepositoryFactory RepositoryFactory { get; }
+        //public IRepositoryFactory RepositoryFactory { get; }
 
         public IUnitOfWork UnitOfWork { get; }
 
