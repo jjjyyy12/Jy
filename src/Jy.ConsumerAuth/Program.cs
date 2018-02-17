@@ -72,7 +72,9 @@ namespace Jy.ConsumerAuth
             services.AddScoped<PagedHelper>();
             services.AddScoped<ICacheService, Jy.CacheService.CacheService>();
             services.AddScoped<IQueueService, Jy.QueueSerivce.QueueSerivce>();
-            services.AddScoped<IRepositoryContext, EntityFrameworkRepositoryContext>();
+
+            services.AddScoped<JyDbContext>();
+            services.AddScoped<IRepositoryContext, AuthRepositoryContext>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserAppService, UserAppService>();
             services.AddScoped<IMenuRepository, MenuRepository>();

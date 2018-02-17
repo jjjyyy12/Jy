@@ -1,0 +1,13 @@
+[2018-02-17 13:10:19.692 GMT 	ERROR 	ClientCnxn 	Error while calling watcher ] 	
+Exc level 0: System.NullReferenceException: Object reference not set to an instance of an object.
+   at org.apache.zookeeper.ClientCnxn.<processEvent>d__37.MoveNext()
+[2018-02-17 13:13:25.831 GMT 	WARNING 	ClientCnxn 	Client session timed out, have not heard from server in 33283ms for sessionid 0x261a371b41e0009] 	
+[2018-02-17 13:13:28.394 GMT 	ERROR 	ClientCnxn 	Error while calling watcher ] 	
+Exc level 0: System.NullReferenceException: Object reference not set to an instance of an object.
+   at org.apache.zookeeper.ClientCnxn.<processEvent>d__37.MoveNext()
+[2018-02-17 13:13:28.431 GMT 	ERROR 	ClientCnxn 	Error while calling watcher ] 	
+Exc level 0: System.NullReferenceException: Object reference not set to an instance of an object.
+   at org.apache.zookeeper.ClientCnxn.<processEvent>d__37.MoveNext()
+[2018-02-17 13:13:28.488 GMT 	ERROR 	ClientCnxn 	Error while calling watcher ] 	
+Exc level 0: System.NullReferenceException: Object reference not set to an instance of an object.
+   at org.apache.zookeeper.ClientCnxn.<processEvent>d__37.MoveNext()

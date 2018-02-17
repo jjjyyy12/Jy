@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
  
 namespace Jy.EntityFramewordCoreBase.Repositories
 {
-    public sealed class EntityFrameworkRepositoryContext : RepositoryContext<DbContext>
+    public class EntityFrameworkRepositoryContext : RepositoryContext<DbContext>
     {
         private bool disposed = false;
         public EntityFrameworkRepositoryContext(DbContext session) : base(session,(IUnitOfWork) session)

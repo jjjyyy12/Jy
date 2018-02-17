@@ -153,7 +153,7 @@ namespace Jy.AuthAdmin.API
             services.AddScoped<ICacheService, Jy.CacheService.CacheService>();
             services.AddScoped<IQueueService, Jy.QueueSerivce.QueueSerivce>();
 
-            services.AddScoped<IRepositoryContext, EntityFrameworkRepositoryContext>();
+            services.AddScoped<IRepositoryContext, AuthRepositoryContext>();
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IMenuRepository, MenuRepository>();
