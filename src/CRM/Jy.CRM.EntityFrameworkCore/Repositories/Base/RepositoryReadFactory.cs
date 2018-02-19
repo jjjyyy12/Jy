@@ -1,6 +1,7 @@
 ﻿using Jy.CRM.Domain.IRepositories;
 using Jy.CRM.EntityFrameworkCore;
 using Jy.CRM.EntityFrameworkCore.Repositories;
+using Jy.EntityFramewordCoreBase.Repositories;
 using Jy.IRepositories;
 using Microsoft.Extensions.Options;
 
@@ -26,13 +27,17 @@ namespace Jy.CRM.EntityFrameworkCore.Repositories
         {
             return BuildDBContext.CreateJyCRMDBReadContextFromId(Id, _SDBSettings.Value.connectionKeyList, _SDBSettings.Value.connectionReadList, _SDBSettings.Value.defaultReadConnectionString, _SDBSettings.Value.dbType);
         }
-
+        private EntityFrameworkRepositoryReadContext getRepositoryReadContext(JyCRMDBReadContext context)
+        {
+            return new EntityFrameworkRepositoryReadContext(context);
+        }
         public TH CreateRepository<T, TH>(string Id)
             where T : Entity
             where TH : IRepositoryRead<T>
         {
             var contextObj = getReadContext(Id);
-            return _createRepository.Get<TH>(new object[] { contextObj });
+            var repositoryContext = getRepositoryReadContext(contextObj);
+            return _createRepository.Get<TH>(new object[] { repositoryContext });
         }
         
     }

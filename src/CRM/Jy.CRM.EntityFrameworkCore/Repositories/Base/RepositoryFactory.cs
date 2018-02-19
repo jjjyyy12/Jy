@@ -3,6 +3,7 @@ using Jy.IRepositories;
 using Microsoft.Extensions.Options;
 using System.Collections.Generic;
 using System;
+using Jy.EntityFramewordCoreBase.Repositories;
 
 namespace Jy.CRM.EntityFrameworkCore.Repositories
 {
@@ -26,6 +27,10 @@ namespace Jy.CRM.EntityFrameworkCore.Repositories
         {
             return BuildDBContext.CreateJyDBContextFromId(Id, _SDBSettings.Value.connectionKeyList, _SDBSettings.Value.connectionList,_SDBSettings.Value.defaultConnectionString,_SDBSettings.Value.dbType);
         }
+        private EntityFrameworkRepositoryContext getRepositoryContext(JyCRMDBContext context)
+        {
+            return new EntityFrameworkRepositoryContext(context);
+        }
         public HashSet<string> GetConnectionStrings()
         {
             return BuildDBContext.GetConnectionStrings(_SDBSettings.Value.connectionList, _SDBSettings.Value.defaultConnectionString, _SDBSettings.Value.dbType);
@@ -35,14 +40,16 @@ namespace Jy.CRM.EntityFrameworkCore.Repositories
             where TH : IRepository<T>
         {
             var contextObj = getContext(Id);
-            return _createRepository.Get<TH>(new object[] { contextObj });
+            var repositoryContext = getRepositoryContext(contextObj);
+            return _createRepository.Get<TH>(new object[] { repositoryContext });
         }
         public TH CreateDefaultRepository<T, TH>()
            where TH : IRepository<T>
            where T : Entity
         {
             var contextObj = BuildDBContext.CreateJyDBContext(_SDBSettings.Value.defaultConnectionString, _SDBSettings.Value.dbType);
-            return _createRepository.Get<TH>(new object[] { contextObj });
+            var repositoryContext = getRepositoryContext(contextObj);
+            return _createRepository.Get<TH>(new object[] { repositoryContext });
         }
         //得到所有分库的Repository
         public List<TH> CreateAllRepository<T, TH>()
@@ -51,7 +58,10 @@ namespace Jy.CRM.EntityFrameworkCore.Repositories
         {
             var contextList = BuildDBContext.CreateAllJyDBContext(_SDBSettings.Value.connectionList, _SDBSettings.Value.dbType);
             List<TH> rlist = new List<TH>();
-            contextList.ForEach((contextObj) => { rlist.Add(_createRepository.Get<TH>(new object[] { contextObj })); });
+            contextList.ForEach((contextObj) => {
+                var repositoryContext = getRepositoryContext(contextObj);
+                rlist.Add(_createRepository.Get<TH>(new object[] { repositoryContext }));
+            });
             return rlist;
         }
 
@@ -60,7 +70,8 @@ namespace Jy.CRM.EntityFrameworkCore.Repositories
             where TH : IRepository<T>
         {
             var contextObj = BuildDBContext.CreateJyDBContext(ConnStr, _SDBSettings.Value.dbType);
-            return _createRepository.Get<TH>(new object[] { contextObj });
+            var repositoryContext = getRepositoryContext(contextObj);
+            return _createRepository.Get<TH>(new object[] { repositoryContext });
         }
     }
 }

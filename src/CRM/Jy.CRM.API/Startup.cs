@@ -136,6 +136,7 @@ namespace Jy.CRM.API
             services.AddScoped<ICacheService, Jy.CacheService.CacheService>();
             services.AddScoped<IQueueService, Jy.QueueSerivce.QueueSerivce>();
             services.AddScoped<IRepositoryContext, CRMRepositoryContext>();
+            services.AddScoped<IRepositoryReadContext, CRMRepositoryReadContext>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserRepositoryRead, UserRepositoryRead>();
             services.AddScoped<IAddressRepository, AddressRepository>();

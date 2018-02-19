@@ -20,6 +20,7 @@ namespace Jy.IRepositories
     /// <typeparam name="TPrimaryKey">主键类型</typeparam>
     public interface IRepositoryRead<TEntity, TPrimaryKey> : IRepositoryRead where TEntity : Entity<TPrimaryKey>
     {
+        IRepositoryReadContext Context { get; }
         /// <summary>
         /// 获取实体集合
         /// </summary>

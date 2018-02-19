@@ -154,6 +154,7 @@ namespace Jy.AuthAdmin.API
             services.AddScoped<IQueueService, Jy.QueueSerivce.QueueSerivce>();
 
             services.AddScoped<IRepositoryContext, AuthRepositoryContext>();
+            services.AddScoped<IRepositoryReadContext, AuthRepositoryReadContext>();
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IMenuRepository, MenuRepository>();

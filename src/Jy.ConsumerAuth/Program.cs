@@ -73,8 +73,8 @@ namespace Jy.ConsumerAuth
             services.AddScoped<ICacheService, Jy.CacheService.CacheService>();
             services.AddScoped<IQueueService, Jy.QueueSerivce.QueueSerivce>();
 
-            services.AddScoped<JyDbContext>();
             services.AddScoped<IRepositoryContext, AuthRepositoryContext>();
+            services.AddScoped<IRepositoryReadContext, AuthRepositoryReadContext>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserAppService, UserAppService>();
             services.AddScoped<IMenuRepository, MenuRepository>();

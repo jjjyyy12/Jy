@@ -2,6 +2,7 @@
 using Jy.Domain.IRepositories;
 using Jy.EntityFramewordCoreBase.Connection;
 using Jy.EntityFramewordCoreBase.Repositories;
+using Jy.IRepositories;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
@@ -14,11 +15,13 @@ namespace Jy.EntityFrameworkCore.Repositories
     /// <summary>
     /// 用户管理读仓储实现
     /// </summary>
-    public class UserRepositoryRead : JyRepositoryReadBase<User, JyDBReadContext>, IUserRepositoryRead
+    public class UserRepositoryRead : EntityFrameworkRepositoryReadBase<User>, IUserRepositoryRead
     {
 
-        public UserRepositoryRead(JyDBReadContext dbcontext) : base(dbcontext)
+        protected readonly JyDBReadContext dbContext;
+        public UserRepositoryRead(IRepositoryReadContext context) : base(context)
         {
+            dbContext = (JyDBReadContext)_dbContext;
         }
 
         /// <summary>
@@ -29,11 +32,11 @@ namespace Jy.EntityFrameworkCore.Repositories
         /// <returns>存在返回用户实体，否则返回NULL</returns>
         public UserIndex CheckUserIndex(string userName, string password)
         {
-            return _dbContext.UserIndexs.Where(u =>  u.UserName == userName && u.Password == password).FirstOrDefault();
+            return dbContext.UserIndexs.Where(u =>  u.UserName == userName && u.Password == password).FirstOrDefault();
         }
         public List<UserIndex> GetUserIndexList(Expression<Func<UserIndex, bool>> predicate)
         {
-            return _dbContext.UserIndexs.Where(predicate).ToList();
+            return dbContext.UserIndexs.Where(predicate).ToList();
         }
         /// <summary>
         /// 检查用户是存在
@@ -43,9 +46,9 @@ namespace Jy.EntityFrameworkCore.Repositories
         /// <returns>存在返回用户实体，否则返回NULL</returns>
         public User CheckUser(string userName, string password)
         {
-            var query = from u in _dbContext.Users
+            var query = from u in dbContext.Users
                         where u.UserName == userName && u.Password == password
-                        join x in _dbContext.Departments on u.DepartmentId equals x.Id into temp
+                        join x in dbContext.Departments on u.DepartmentId equals x.Id into temp
                         from x in temp.DefaultIfEmpty()
                         select new User()
             {
@@ -58,7 +61,7 @@ namespace Jy.EntityFrameworkCore.Repositories
                 ,Department = x
             };
             var dd = query.Cast<User>().FirstOrDefault();
-            var rr = from ur in _dbContext.UserRoles where ur.UserId == dd.Id select ur;
+            var rr = from ur in dbContext.UserRoles where ur.UserId == dd.Id select ur;
                 dd.UserRoles = rr.ToList();
             return dd;
 
@@ -66,9 +69,9 @@ namespace Jy.EntityFrameworkCore.Repositories
         }
         public User GetUserInfo(Guid userId)
         {
-            var query = from u in _dbContext.Users
+            var query = from u in dbContext.Users
                         where u.Id == userId  
-                        join x in _dbContext.Users on u.CreateUserId equals x.Id into temp
+                        join x in dbContext.Users on u.CreateUserId equals x.Id into temp
                         from x in temp.DefaultIfEmpty()
                         select new User()
                         {
@@ -91,7 +94,7 @@ namespace Jy.EntityFrameworkCore.Repositories
         }
         public List<UserRole> GetUserRoles(Guid id)
         {
-            return _dbContext.Set<UserRole>().Where(it => it.UserId == id).ToList();
+            return dbContext.Set<UserRole>().Where(it => it.UserId == id).ToList();
         }
      
     }
