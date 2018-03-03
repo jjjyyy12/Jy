@@ -107,7 +107,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jy.AuthAdmin.SolrIndex", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jy.IndexService", "src\Jy.IndexService\Jy.IndexService.csproj", "{17A8E5AF-D490-422C-89D9-736AEF7CC959}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jy.AuthService", "src\Jy.AuthService\Jy.AuthService.csproj", "{D4C74FDD-273B-44AB-B47C-DC15BB501C92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jy.AuthService", "src\Jy.AuthService\Jy.AuthService.csproj", "{D4C74FDD-273B-44AB-B47C-DC15BB501C92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jy.DapperBase", "src\Jy.DapperBase\Jy.DapperBase.csproj", "{21275E4F-610E-4405-88F7-9DE594422DF6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -259,6 +261,10 @@ Global
 		{D4C74FDD-273B-44AB-B47C-DC15BB501C92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4C74FDD-273B-44AB-B47C-DC15BB501C92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4C74FDD-273B-44AB-B47C-DC15BB501C92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21275E4F-610E-4405-88F7-9DE594422DF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21275E4F-610E-4405-88F7-9DE594422DF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21275E4F-610E-4405-88F7-9DE594422DF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21275E4F-610E-4405-88F7-9DE594422DF6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -315,6 +321,7 @@ Global
 		{5021C2A3-3FAB-4B35-9BCC-D0286BD9E31B} = {1A101DC5-80BF-4F4F-A224-3A0894455999}
 		{17A8E5AF-D490-422C-89D9-736AEF7CC959} = {4D8D2DD0-BF81-481D-BE58-4A4E117B4135}
 		{D4C74FDD-273B-44AB-B47C-DC15BB501C92} = {A4FC4A5E-B281-4B15-9936-9E8DA8E597A7}
+		{21275E4F-610E-4405-88F7-9DE594422DF6} = {1F85742B-7632-4C43-9EF7-8E48C66BE925}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F5F89B58-6C55-4263-80BB-69549FC838F9}

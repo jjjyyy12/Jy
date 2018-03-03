@@ -1,0 +1,5 @@
+D:\Study\testJy\Jy-master\src\Jy.DapperBase\bin\Debug\netcoreapp2.0\Jy.DapperBase.deps.json
+D:\Study\testJy\Jy-master\src\Jy.DapperBase\bin\Debug\netcoreapp2.0\Jy.DapperBase.dll
+D:\Study\testJy\Jy-master\src\Jy.DapperBase\obj\Debug\netcoreapp2.0\Jy.DapperBase.csproj.CoreCompileInputs.cache
+D:\Study\testJy\Jy-master\src\Jy.DapperBase\obj\Debug\netcoreapp2.0\Jy.DapperBase.AssemblyInfoInputs.cache
+D:\Study\testJy\Jy-master\src\Jy.DapperBase\obj\Debug\netcoreapp2.0\Jy.DapperBase.AssemblyInfo.cs
