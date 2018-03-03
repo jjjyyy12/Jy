@@ -3,3 +3,7 @@ D:\Study\testJy\Jy-master\src\Jy.DapperBase\bin\Debug\netcoreapp2.0\Jy.DapperBas
 D:\Study\testJy\Jy-master\src\Jy.DapperBase\obj\Debug\netcoreapp2.0\Jy.DapperBase.csproj.CoreCompileInputs.cache
 D:\Study\testJy\Jy-master\src\Jy.DapperBase\obj\Debug\netcoreapp2.0\Jy.DapperBase.AssemblyInfoInputs.cache
 D:\Study\testJy\Jy-master\src\Jy.DapperBase\obj\Debug\netcoreapp2.0\Jy.DapperBase.AssemblyInfo.cs
+D:\Study\testJy\Jy-master\src\Jy.DapperBase\bin\Debug\netcoreapp2.0\Jy.DapperBase.pdb
+D:\Study\testJy\Jy-master\src\Jy.DapperBase\obj\Debug\netcoreapp2.0\Jy.DapperBase.csprojResolveAssemblyReference.cache
+D:\Study\testJy\Jy-master\src\Jy.DapperBase\obj\Debug\netcoreapp2.0\Jy.DapperBase.dll
+D:\Study\testJy\Jy-master\src\Jy.DapperBase\obj\Debug\netcoreapp2.0\Jy.DapperBase.pdb
