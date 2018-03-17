@@ -16,6 +16,18 @@
           "lib/netstandard2.0/Dapper.dll": {}
         }
       },
+      "Dapper.Extension/1.0.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Dapper": "1.42.0"
+        },
+        "compile": {
+          "lib/net45/Dapper.Extension.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Dapper.Extension.dll": {}
+        }
+      },
       "Microsoft.CSharp/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -1144,6 +1156,16 @@
         "lib/netstandard1.3/Dapper.xml",
         "lib/netstandard2.0/Dapper.dll",
         "lib/netstandard2.0/Dapper.xml"
+      ]
+    },
+    "Dapper.Extension/1.0.0.1": {
+      "sha512": "n6fojUprDCEMe1ffytdJkrTJXM89eh7KfJw0giG6N81Jn4OGc7o/imYxVyk6LJ24cWONKmHGqas41qeVGAe0nA==",
+      "type": "package",
+      "path": "dapper.extension/1.0.0.1",
+      "files": [
+        "dapper.extension.1.0.0.1.nupkg.sha512",
+        "dapper.extension.nuspec",
+        "lib/net45/Dapper.Extension.dll"
       ]
     },
     "Microsoft.CSharp/4.3.0": {
@@ -4341,6 +4363,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
       "Dapper >= 1.50.4",
+      "Dapper.Extension >= 1.0.0.1",
       "Jy.IRepositories >= 1.0.0",
       "Microsoft.NETCore.App >= 2.0.0",
       "MySql.Data >= 6.10.6"
@@ -4407,6 +4430,10 @@
             "target": "Package",
             "version": "2.0.0",
             "autoReferenced": true
+          },
+          "Dapper.Extension": {
+            "target": "Package",
+            "version": "1.0.0.1"
           }
         },
         "imports": [
@@ -4416,5 +4443,17 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "已使用“.NETFramework,Version=v4.6.1”而不是项目目标框架“.NETCoreApp,Version=v2.0”还原包“Dapper.Extension 1.0.0.1”。此包可能与项目不完全兼容。",
+      "libraryId": "Dapper.Extension",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.0"
+      ]
+    }
+  ]
 }

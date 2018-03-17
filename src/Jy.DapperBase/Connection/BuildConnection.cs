@@ -10,13 +10,19 @@ namespace Jy.DapperBase.Connection
 {
     public class BuildConnection
     {
-        public static IDbConnection GetConnection(string connectionString, DBType dbType = DBType.MySql)
+        public static IDbConnection GetConnection(string connectionString, DBType dbType = DBType.MySql,bool open = true,
+            bool convertZeroDatetime = false, bool allowZeroDatetime = false)
         {
             IDbConnection connection;
             switch (dbType)
             {
                 case DBType.MySql:
-                    connection = new MySqlConnection(connectionString);
+                    var csb = new MySqlConnectionStringBuilder(connectionString)
+                    {
+                        AllowZeroDateTime = allowZeroDatetime,
+                        ConvertZeroDateTime = convertZeroDatetime
+                    };
+                    connection = new MySqlConnection(csb.ConnectionString);
                     break;
                 case DBType.SqlServer:
                     connection = new SqlConnection(connectionString);
@@ -25,7 +31,7 @@ namespace Jy.DapperBase.Connection
                     connection = new MySqlConnection(connectionString);
                     break;
             }
-            connection.Open();
+            if (open) connection.Open();
             return connection;
         }
     }
