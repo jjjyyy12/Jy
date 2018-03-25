@@ -7,7 +7,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Threading.Tasks;
-
+using Dapper.Contrib.Extensions;
 namespace Jy.DapperBase.Repositories
 {
     /// <summary>
@@ -49,7 +49,7 @@ namespace Jy.DapperBase.Repositories
         /// <returns></returns>
         public override List<TEntity> GetAllList(Expression<Func<TEntity, bool>> predicate)
         {
-            string sql = "select * from " + typeof(TEntity).ToString();
+            var sql = StatementFactory.Select<TEntity>(Dialect.MSSQL);
             return _dbContext.connection.Query<TEntity>(sql).Where(predicate.Compile()).ToList();
         }
 
@@ -60,7 +60,8 @@ namespace Jy.DapperBase.Repositories
         /// <returns></returns>
         public override TEntity Get(TPrimaryKey id)
         {
-            string sql = "select * from " + typeof(TEntity).ToString() + " where id=@id";
+            var sql = StatementFactory.Select<TEntity>(Dialect.MSSQL, new { Id = id });
+            //string sql = "select * from " + typeof(TEntity).ToString() + " where id=@id";
             DynamicParameters para = new DynamicParameters();
             para.Add("id", id);
             return _dbContext.connection.Query<TEntity>(sql, para).FirstOrDefault();
@@ -174,6 +175,10 @@ namespace Jy.DapperBase.Repositories
             //_dbContext.Set<TEntity>().Where(where).ToList().ForEach(it => _dbContext.Set<TEntity>().Remove(it));
             //if (autoSave)
             //    Save();
+        }
+        private void DeleteHelper<TEntity>(Expression<Func<TEntity, bool>> where)
+        {
+             
         }
         /// <summary>
         /// 分页查询

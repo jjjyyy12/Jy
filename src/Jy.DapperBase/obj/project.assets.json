@@ -16,6 +16,20 @@
           "lib/netstandard2.0/Dapper.dll": {}
         }
       },
+      "Dapper.Contrib/1.50.4": {
+        "type": "package",
+        "dependencies": {
+          "Dapper": "1.50.4",
+          "Microsoft.CSharp": "4.3.0",
+          "System.Reflection.Emit": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Dapper.Contrib.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Dapper.Contrib.dll": {}
+        }
+      },
       "Dapper.Extension/1.0.0.1": {
         "type": "package",
         "dependencies": {
@@ -1156,6 +1170,21 @@
         "lib/netstandard1.3/Dapper.xml",
         "lib/netstandard2.0/Dapper.dll",
         "lib/netstandard2.0/Dapper.xml"
+      ]
+    },
+    "Dapper.Contrib/1.50.4": {
+      "sha512": "2RBJJgOMzyZuD4LdcfrqGGZ005IppwOwo0JFlntZ0S0J/d69I6ehiYwiL4SyLE6mTBrB17uUZPIM67KO3GFEpw==",
+      "type": "package",
+      "path": "dapper.contrib/1.50.4",
+      "files": [
+        "dapper.contrib.1.50.4.nupkg.sha512",
+        "dapper.contrib.nuspec",
+        "lib/net451/Dapper.Contrib.dll",
+        "lib/net451/Dapper.Contrib.xml",
+        "lib/netstandard1.3/Dapper.Contrib.dll",
+        "lib/netstandard1.3/Dapper.Contrib.xml",
+        "lib/netstandard2.0/Dapper.Contrib.dll",
+        "lib/netstandard2.0/Dapper.Contrib.xml"
       ]
     },
     "Dapper.Extension/1.0.0.1": {
@@ -4363,6 +4392,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
       "Dapper >= 1.50.4",
+      "Dapper.Contrib >= 1.50.4",
       "Dapper.Extension >= 1.0.0.1",
       "Jy.IRepositories >= 1.0.0",
       "Microsoft.NETCore.App >= 2.0.0",
@@ -4430,6 +4460,10 @@
             "target": "Package",
             "version": "2.0.0",
             "autoReferenced": true
+          },
+          "Dapper.Contrib": {
+            "target": "Package",
+            "version": "1.50.4"
           },
           "Dapper.Extension": {
             "target": "Package",
