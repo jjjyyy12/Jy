@@ -5,9 +5,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Reflection;
+using Jy.DapperBase.Repositories.Extensions;
 using System.Threading.Tasks;
 using Dapper.Contrib.Extensions;
+ 
 namespace Jy.DapperBase.Repositories
 {
     /// <summary>
@@ -39,8 +40,7 @@ namespace Jy.DapperBase.Repositories
         /// <returns></returns>
         public override List<TEntity> GetAllList()
         {
-            string sql = "select * from "+ typeof(TEntity).ToString();
-            return _dbContext.connection.Query<TEntity>(sql).ToList();
+            return _dbContext.connection.Query<TEntity>(StatementFactory.Select<TEntity>(Dialect.MSSQL)).ToList();
         }
         /// <summary>
         /// 根据lambda表达式条件获取实体集合
@@ -49,8 +49,7 @@ namespace Jy.DapperBase.Repositories
         /// <returns></returns>
         public override List<TEntity> GetAllList(Expression<Func<TEntity, bool>> predicate)
         {
-            var sql = StatementFactory.Select<TEntity>(Dialect.MSSQL);
-            return _dbContext.connection.Query<TEntity>(sql).Where(predicate.Compile()).ToList();
+            return _dbContext.connection.Query<TEntity>(predicate).ToList();
         }
 
         /// <summary>
@@ -74,8 +73,9 @@ namespace Jy.DapperBase.Repositories
         /// <returns></returns>
         public override TEntity FirstOrDefault(Expression<Func<TEntity, bool>> predicate)
         {
-            string sql = "select * from " + typeof(TEntity).ToString();
-            return _dbContext.connection.Query<TEntity>(sql).FirstOrDefault(predicate.Compile());
+            return _dbContext.connection.Query<TEntity>(predicate).FirstOrDefault();
+            //string sql = "select * from " + typeof(TEntity).ToString();
+            //return _dbContext.connection.Query<TEntity>(sql).FirstOrDefault(predicate.Compile());
         }
 
         /// <summary>
@@ -171,14 +171,15 @@ namespace Jy.DapperBase.Repositories
         /// <param name="autoSave">是否自动保存</param>
         public override void Delete(Expression<Func<TEntity, bool>> where, bool autoSave = true)
         {
+            var items = _dbContext.connection.Query<TEntity>(where);
+            var ids = items.Select(p => p.Id).ToList();
+            if (ids == null || ids.Count == 0) return;
+            var statement = "delete from "+typeof(TEntity).ToString()+" where id in ("+ string.Join(",", ids.ToArray()) + ")";
+            _dbContext.Execute(statement);
             //_dbContext.Set<TEntity>().RemoveRange(_dbContext.Set<TEntity>().Where(where).ToList());
             //_dbContext.Set<TEntity>().Where(where).ToList().ForEach(it => _dbContext.Set<TEntity>().Remove(it));
             //if (autoSave)
             //    Save();
-        }
-        private void DeleteHelper<TEntity>(Expression<Func<TEntity, bool>> where)
-        {
-             
         }
         /// <summary>
         /// 分页查询
@@ -191,17 +192,17 @@ namespace Jy.DapperBase.Repositories
         /// <returns></returns>
         public override IQueryable<TEntity> LoadPageList(int startPage, int pageSize, out int rowCount, Expression<Func<TEntity, bool>> where = null, Expression<Func<TEntity, object>> order = null)
         {
-            throw new NotImplementedException();
-            //var result = from p in _dbContext.Set<TEntity>()
-            //             select p;
-            //if (where != null)
-            //    result = result.Where(where);
-            //if (order != null)
-            //    result = result.OrderBy(order);
-            //else
-            //    result = result.OrderBy(m => m.Id);
-            //rowCount = result.Count();
-            //return result.Skip((startPage - 1) * pageSize).Take(pageSize);
+             
+            var result = from p in _dbContext.connection.Query<TEntity>()
+                         select p;
+            if (where != null)
+                result = result.Where(where);
+            if (order != null)
+                result = result.OrderBy(order);
+            else
+                result = result.OrderBy(m => m.Id);
+            rowCount = result.Count();
+            return result.Skip((startPage - 1) * pageSize).Take(pageSize);
         }
 
         /// <summary>
@@ -241,6 +242,11 @@ namespace Jy.DapperBase.Repositories
             //        transaction.Commit();
             //    }
             //});
+            using (var transaction = _dbContext.connection.BeginTransaction())
+            {
+                action();
+                transaction.Commit();
+            }
         }
         public override async Task ExecuteAsync(Func<Task> action)
         {
@@ -255,23 +261,13 @@ namespace Jy.DapperBase.Repositories
             //        transaction.Commit();
             //    }
             //});
+            using (var transaction = _dbContext.connection.BeginTransaction())
+            {
+                await action();
+                transaction.Commit();
+            }
         }
-        //    public List<TEntity> Query<TEntity>(string sql, List<DbParameter> parms, CommandType cmdType = CommandType.Text)
-        //    {
-        //        //存储过程（exec getActionUrlId @name,@ID）
-        //        if (cmdType == CommandType.StoredProcedure)
-        //        {
-        //            StringBuilder paraNames = new StringBuilder();
-        //            foreach (var sqlPara in parms)
-        //            {
-        //                paraNames.Append($" @{sqlPara},");
-        //            }
-        //            sql = paraNames.Length > 0 ? $"exec {sql} {paraNames.ToString().Trim(',')}" : $"exec {sql} ";
-        //        }
-        //        var list = _dbContext.Database.<TEntity>(sql, parms.ToArray());
-        //        var enityList = list.ToList();
-        //        return enityList;
-        //    }
+       
     }
 
     /// <summary>

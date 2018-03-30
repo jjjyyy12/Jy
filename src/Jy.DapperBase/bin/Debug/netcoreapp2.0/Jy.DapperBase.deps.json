@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "e159e468e4bd46ffc9f83a7c9821ce08dc344690"
+    "signature": "7c51b199b8545470c79fc80617faeb819920ba59"
   },
   "compilationOptions": {},
   "targets": {
@@ -10,7 +10,6 @@
         "dependencies": {
           "Dapper": "1.50.4",
           "Dapper.Contrib": "1.50.4",
-          "Dapper.Extension": "1.0.0.1",
           "Jy.IRepositories": "1.0.0",
           "MySql.Data": "6.10.6"
         },
@@ -36,14 +35,6 @@
         },
         "runtime": {
           "lib/netstandard2.0/Dapper.Contrib.dll": {}
-        }
-      },
-      "Dapper.Extension/1.0.0.1": {
-        "dependencies": {
-          "Dapper": "1.50.4"
-        },
-        "runtime": {
-          "lib/net45/Dapper.Extension.dll": {}
         }
       },
       "Microsoft.CSharp/4.3.0": {
@@ -597,13 +588,6 @@
       "sha512": "sha512-2RBJJgOMzyZuD4LdcfrqGGZ005IppwOwo0JFlntZ0S0J/d69I6ehiYwiL4SyLE6mTBrB17uUZPIM67KO3GFEpw==",
       "path": "dapper.contrib/1.50.4",
       "hashPath": "dapper.contrib.1.50.4.nupkg.sha512"
-    },
-    "Dapper.Extension/1.0.0.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-n6fojUprDCEMe1ffytdJkrTJXM89eh7KfJw0giG6N81Jn4OGc7o/imYxVyk6LJ24cWONKmHGqas41qeVGAe0nA==",
-      "path": "dapper.extension/1.0.0.1",
-      "hashPath": "dapper.extension.1.0.0.1.nupkg.sha512"
     },
     "Microsoft.CSharp/4.3.0": {
       "type": "package",
