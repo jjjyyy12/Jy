@@ -5,9 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Dapper" Version="1.50.2" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="1.1.2" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="1.1.2" />
     <PackageReference Include="SapientGuardian.MySql.Data" Version="6.9.816" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Jy.DapperBase\Jy.DapperBase.csproj" />
+    <ProjectReference Include="..\Jy.Domain\Jy.Domain.csproj" />
   </ItemGroup>
 </Project>

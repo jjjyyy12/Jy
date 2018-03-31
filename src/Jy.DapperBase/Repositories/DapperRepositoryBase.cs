@@ -7,8 +7,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using Jy.DapperBase.Repositories.Extensions;
 using System.Threading.Tasks;
-using Dapper.Contrib.Extensions;
- 
+
 namespace Jy.DapperBase.Repositories
 {
     /// <summary>
@@ -231,17 +230,6 @@ namespace Jy.DapperBase.Repositories
 
         public override void Execute(Action action)
         {
-            //Use of an EF Core resiliency strategy when using multiple DbContexts within an explicit BeginTransaction():
-            //See: https://docs.microsoft.com/en-us/ef/core/miscellaneous/connection-resiliency
-            //var strategy = _dbContext.Database.CreateExecutionStrategy();
-            //strategy.Execute(() =>
-            //{
-            //    using (var transaction = _dbContext.Database.BeginTransaction())
-            //    {
-            //        action();
-            //        transaction.Commit();
-            //    }
-            //});
             using (var transaction = _dbContext.connection.BeginTransaction())
             {
                 action();
@@ -250,17 +238,6 @@ namespace Jy.DapperBase.Repositories
         }
         public override async Task ExecuteAsync(Func<Task> action)
         {
-            ////Use of an EF Core resiliency strategy when using multiple DbContexts within an explicit BeginTransaction():
-            ////See: https://docs.microsoft.com/en-us/ef/core/miscellaneous/connection-resiliency
-            //var strategy = _dbContext.Database.CreateExecutionStrategy();
-            //await strategy.ExecuteAsync(async () =>
-            //{
-            //    using (var transaction = _dbContext.Database.BeginTransaction())
-            //    {
-            //        await action();
-            //        transaction.Commit();
-            //    }
-            //});
             using (var transaction = _dbContext.connection.BeginTransaction())
             {
                 await action();

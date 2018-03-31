@@ -3,10 +3,10 @@ using System.Data.Common;
 
 namespace Jy.DapperBase.Repositories
 {
-    public class DapperRepositoryReadContext : RepositoryReadContext<DbConnection>
+    public class DapperRepositoryReadContext : RepositoryReadContext<TransactedConnection>
     {
         private bool disposed = false;
-        public DapperRepositoryReadContext(DbConnection session) : base(session)
+        public DapperRepositoryReadContext(TransactedConnection session) : base(session)
         {
         }
         public override void Dispose()
