@@ -85,6 +85,8 @@ namespace Jy.DapperBase.Repositories
         /// <returns></returns>
         public override TEntity Insert(TEntity entity, bool autoSave = true)
         {
+            if (entity == null) return null;
+            entity.InitID();
             var statement = StatementFactory.Insert<TEntity>(Dialect.MySQL);
             _dbContext.connection.Execute(statement, EntityToValue<TEntity>(entity));
             if (autoSave)
@@ -108,7 +110,8 @@ namespace Jy.DapperBase.Repositories
         public override TEntity Update(TEntity entity, bool autoSave = true)
         {
             var obj = Get(entity.Id);
-            EntityToEntity(entity, obj);
+            var statement = StatementFactory.Update<TEntity>(Dialect.MySQL);
+            _dbContext.connection.Execute(statement, EntityToValue<TEntity>(obj));
             if (autoSave)
                 Save();
             return entity;
@@ -177,8 +180,8 @@ namespace Jy.DapperBase.Repositories
             _dbContext.Execute(statement);
             //_dbContext.Set<TEntity>().RemoveRange(_dbContext.Set<TEntity>().Where(where).ToList());
             //_dbContext.Set<TEntity>().Where(where).ToList().ForEach(it => _dbContext.Set<TEntity>().Remove(it));
-            //if (autoSave)
-            //    Save();
+            if (autoSave)
+                Save();
         }
         /// <summary>
         /// 分页查询

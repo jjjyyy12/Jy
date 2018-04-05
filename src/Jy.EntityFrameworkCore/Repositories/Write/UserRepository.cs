@@ -91,11 +91,11 @@ namespace Jy.EntityFrameworkCore.Repositories
                 }
             }
         }
-        public void RemoveUserRoles(Guid userId, List<UserRole> userRoles)
+        public void RemoveUserRoles(Guid userId)
         {
             dbContext.UserRoles.RemoveRange(dbContext.Set<UserRole>().Where(it => it.UserId == userId));
         }
-        public void BatchRemoveUserRoles(List<Guid> userIds, List<UserRole> userRoles)
+        public void BatchRemoveUserRoles(List<Guid> userIds)
         {
             userIds.ForEach(x => dbContext.UserRoles.RemoveRange(dbContext.Set<UserRole>().Where(it => it.UserId == x)));
         }

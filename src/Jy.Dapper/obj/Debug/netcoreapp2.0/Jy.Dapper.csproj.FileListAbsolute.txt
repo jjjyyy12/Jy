@@ -7,3 +7,17 @@ D:\Study\testJy\Jy-master\src\Jy.Dapper\obj\Debug\netcoreapp2.0\Jy.Dapper.Assemb
 D:\Study\testJy\Jy-master\src\Jy.Dapper\obj\Debug\netcoreapp2.0\Jy.Dapper.AssemblyInfo.cs
 D:\Study\testJy\Jy-master\src\Jy.Dapper\obj\Debug\netcoreapp2.0\Jy.Dapper.dll
 D:\Study\testJy\Jy-master\src\Jy.Dapper\obj\Debug\netcoreapp2.0\Jy.Dapper.pdb
+D:\Study\testJy\Jy-master\src\Jy.Dapper\bin\Debug\netcoreapp2.0\Jy.DapperBase.dll
+D:\Study\testJy\Jy-master\src\Jy.Dapper\bin\Debug\netcoreapp2.0\Jy.Domain.dll
+D:\Study\testJy\Jy-master\src\Jy.Dapper\bin\Debug\netcoreapp2.0\Jy.IIndex.dll
+D:\Study\testJy\Jy-master\src\Jy.Dapper\bin\Debug\netcoreapp2.0\Jy.ILog.dll
+D:\Study\testJy\Jy-master\src\Jy.Dapper\bin\Debug\netcoreapp2.0\Jy.IMessageQueue.dll
+D:\Study\testJy\Jy-master\src\Jy.Dapper\bin\Debug\netcoreapp2.0\Jy.IRepositories.dll
+D:\Study\testJy\Jy-master\src\Jy.Dapper\bin\Debug\netcoreapp2.0\Jy.Utility.dll
+D:\Study\testJy\Jy-master\src\Jy.Dapper\bin\Debug\netcoreapp2.0\Jy.DapperBase.pdb
+D:\Study\testJy\Jy-master\src\Jy.Dapper\bin\Debug\netcoreapp2.0\Jy.Domain.pdb
+D:\Study\testJy\Jy-master\src\Jy.Dapper\bin\Debug\netcoreapp2.0\Jy.IIndex.pdb
+D:\Study\testJy\Jy-master\src\Jy.Dapper\bin\Debug\netcoreapp2.0\Jy.ILog.pdb
+D:\Study\testJy\Jy-master\src\Jy.Dapper\bin\Debug\netcoreapp2.0\Jy.IMessageQueue.pdb
+D:\Study\testJy\Jy-master\src\Jy.Dapper\bin\Debug\netcoreapp2.0\Jy.IRepositories.pdb
+D:\Study\testJy\Jy-master\src\Jy.Dapper\bin\Debug\netcoreapp2.0\Jy.Utility.pdb

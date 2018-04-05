@@ -1,4 +1,7 @@
 ﻿
+using Jy.DapperBase;
+using Jy.DapperBase.Connection;
+using Jy.DapperBase.Repositories;
 using Jy.IRepositories;
 using System.Collections.Generic;
 using System.Text;
@@ -7,20 +10,19 @@ namespace Jy.Dapper
 {
     public class BuildDBContext
     {
-        public static JyDbContext CreateJyDBContext(string connectionString, DBType dbType = DBType.MySql)
+        public static TransactedConnection CreateJyDBContext(string connectionString, DBType dbType = DBType.MySql)
         {
-            DbContextOptions<JyDbContext> options = BuildConnection.CreateDbContextOptions<JyDbContext>(connectionString, dbType);
-            return new JyDbContext(options);
+            var conn = BuildConnection.GetConnection(connectionString, dbType);
+            return new TransactedConnection(conn, conn.BeginTransaction());
         }
         //根据ID得到分库的context
-        public static JyDbContext CreateJyDBContextFromId(string id, string connectionKeyList, string connectionList ,string defaultConnStr,DBType dbType = DBType.MySql)
+        public static TransactedConnection CreateJyDBContextFromId(string id, string connectionKeyList, string connectionList ,string defaultConnStr,DBType dbType = DBType.MySql)
         {
             var connectionString = string.IsNullOrWhiteSpace(id)? defaultConnStr : ConnectionHelper.getConnectionFromId(id,",",connectionKeyList, connectionList);
-            DbContextOptions<JyDbContext> options = BuildConnection.CreateDbContextOptions<JyDbContext>(connectionString, dbType);
-            return new JyDbContext(options);
+            return CreateJyDBContext(connectionString, dbType);
         }
         //根据ID得到分库的slave的context，如果一个分库有2个slave，根据idhash出读哪个库
-        public static JyDBReadContext CreateJyDBReadContextFromId(string id, string connectionKeyList, string connectionList, string defaultConnStr, DBType dbType = DBType.MySql)
+        public static DapperRepositoryReadContext CreateJyDBReadContextFromId(string id, string connectionKeyList, string connectionList, string defaultConnStr, DBType dbType = DBType.MySql)
         {
             var connectionString = string.IsNullOrWhiteSpace(id) ? defaultConnStr : ConnectionHelper.getConnectionFromId(id, ",", connectionKeyList, connectionList);
             if (connectionString.IndexOf("^") > 0)
@@ -32,25 +34,23 @@ namespace Jy.Dapper
                 slaveKeyList.Remove(slaveKeyList.Length - 1, 1);
                 connectionString = ConnectionHelper.getConnectionFromId(id, "^", slaveKeyList.ToString(), connectionString);
             }
-            DbContextOptions<JyDBReadContext> options = BuildConnection.CreateDbContextOptions<JyDBReadContext>(connectionString, dbType);
-            return new JyDBReadContext(options);
+            return new DapperRepositoryReadContext(CreateJyDBContext(connectionString, dbType));
         }
         //获取所有分库context,除了主库
-        public static List<JyDbContext> CreateAllJyDBContext(string connectionList, string defaultConnStr,DBType dbType = DBType.MySql)
+        public static List<DapperRepositoryContext> CreateAllJyDBContext(string connectionList, string defaultConnStr,DBType dbType = DBType.MySql)
         {
             if (string.IsNullOrWhiteSpace(connectionList)) return null;
             string [] connectionString = connectionList.Split(',');
             HashSet<string> connSet = new HashSet<string>();
-            List<JyDbContext> rlist =new List<JyDbContext>();
+            List<DapperRepositoryContext> rlist =new List<DapperRepositoryContext>();
             for(int i = 0 ,j=connectionString.Length;i<j;i++)
             {
                 var connStr = connectionString[i];
                 if (connSet.Contains(connStr) || defaultConnStr.Equals(connStr))
                     continue;
                 connSet.Add(connStr);
-                var option = BuildConnection.CreateDbContextOptions<JyDbContext>(connStr, dbType);
-                if(option!=null)
-                    rlist.Add( new JyDbContext(option));
+                if(!string.IsNullOrWhiteSpace(connStr) )
+                    rlist.Add( new DapperRepositoryContext(CreateJyDBContext(connStr, dbType)));
             }
             return rlist;
         }

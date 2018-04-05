@@ -45,9 +45,9 @@ namespace Jy.Dapper.Repositories
         /// <returns>存在返回用户实体，否则返回NULL</returns>
         public User CheckUser(string userName, string password)
         {
-            var query = from u in _dbContext.connection.Query<User>()
+            var query = from u in dbContext.connection.Query<User>()
                         where u.UserName == userName && u.Password == password
-                        join x in _dbContext.connection.Query<Department>() on u.DepartmentId equals x.Id into temp
+                        join x in dbContext.connection.Query<Department>() on u.DepartmentId equals x.Id into temp
                         from x in temp.DefaultIfEmpty()
                         select new User()
             {
@@ -60,7 +60,7 @@ namespace Jy.Dapper.Repositories
                 ,Department = x
             };
             var dd = query.Cast<User>().FirstOrDefault();
-            var rr = from ur in _dbContext.connection.Query<UserRole>() where ur.UserId == dd.Id select ur;
+            var rr = from ur in dbContext.connection.Query<UserRole>() where ur.UserId == dd.Id select ur;
                 dd.UserRoles = rr.ToList();
             return dd;
 
@@ -68,9 +68,9 @@ namespace Jy.Dapper.Repositories
         }
         public User GetUserInfo(Guid userId)
         {
-            var query = from u in dbContext.Users
+            var query = from u in dbContext.connection.Query<User>()
                         where u.Id == userId  
-                        join x in dbContext.Users on u.CreateUserId equals x.Id into temp
+                        join x in dbContext.connection.Query<User>() on u.CreateUserId equals x.Id into temp
                         from x in temp.DefaultIfEmpty()
                         select new User()
                         {
@@ -93,7 +93,7 @@ namespace Jy.Dapper.Repositories
         }
         public List<UserRole> GetUserRoles(Guid id)
         {
-            return dbContext.Set<UserRole>().Where(it => it.UserId == id).ToList();
+            return dbContext.connection.Query<UserRole>(it => it.UserId == id).ToList();
         }
      
     }

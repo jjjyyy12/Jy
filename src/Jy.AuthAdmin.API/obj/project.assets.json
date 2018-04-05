@@ -4620,8 +4620,7 @@
           "Jy.DapperBase": "1.0.0",
           "Jy.Domain": "1.0.0",
           "Microsoft.AspNetCore.Http.Abstractions": "1.1.2",
-          "Microsoft.Extensions.Options": "1.1.2",
-          "SapientGuardian.MySql.Data": "6.9.816"
+          "Microsoft.Extensions.Options": "1.1.2"
         },
         "compile": {
           "bin/placeholder/Jy.Dapper.dll": {}

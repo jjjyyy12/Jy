@@ -21,8 +21,8 @@ namespace Jy.Domain.IRepositories
 
         void BatchUpdateUserRoles(List<Guid> userIds, List<UserRole> userRoles);
 
-        void BatchRemoveUserRoles(List<Guid> userIds, List<UserRole> userRoles);
-        void RemoveUserRoles(Guid userId, List<UserRole> userRoles);
+        void BatchRemoveUserRoles(List<Guid> userIds);
+        void RemoveUserRoles(Guid userId);
 
         void BatchAddUserRoles(List<UserRole> userRoles);
          

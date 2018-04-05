@@ -11,6 +11,9 @@ namespace Jy.IRepositories
     /// <typeparam name="TPrimaryKey">主键类型</typeparam>
     public abstract class Entity<TPrimaryKey>
     {
+        public virtual void InitID()
+        {
+        }
         /// <summary>
         /// 主键
         /// </summary>
@@ -22,6 +25,11 @@ namespace Jy.IRepositories
     /// </summary>
     public abstract class Entity : Entity<Guid>
     {
+        public override void InitID()
+        {
+            if (default(Guid).Equals(Id))
+                Id = Guid.NewGuid();
+        }
         int? _requestedHashCode;
         public override int GetHashCode()
         {

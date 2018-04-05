@@ -72,7 +72,7 @@ namespace Jy.RabbitMQ.ProcessMessage
                         }
                         
                         // Achieving atomicity between original catalog database operation and the IntegrationEventLog thanks to a local transaction
-                        up.RemoveUserRoles(id, userRoles);
+                        up.RemoveUserRoles(id);
                         up.UnitOfWork.SaveChange();
                         up.BatchAddUserRoles(userRoles);
                         up.UnitOfWork.SaveChange();
