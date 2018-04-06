@@ -22,7 +22,7 @@ namespace Jy.Dapper
             return CreateJyDBContext(connectionString, dbType);
         }
         //根据ID得到分库的slave的context，如果一个分库有2个slave，根据idhash出读哪个库
-        public static DapperRepositoryReadContext CreateJyDBReadContextFromId(string id, string connectionKeyList, string connectionList, string defaultConnStr, DBType dbType = DBType.MySql)
+        public static TransactedConnection CreateJyDBReadContextFromId(string id, string connectionKeyList, string connectionList, string defaultConnStr, DBType dbType = DBType.MySql)
         {
             var connectionString = string.IsNullOrWhiteSpace(id) ? defaultConnStr : ConnectionHelper.getConnectionFromId(id, ",", connectionKeyList, connectionList);
             if (connectionString.IndexOf("^") > 0)
@@ -34,15 +34,15 @@ namespace Jy.Dapper
                 slaveKeyList.Remove(slaveKeyList.Length - 1, 1);
                 connectionString = ConnectionHelper.getConnectionFromId(id, "^", slaveKeyList.ToString(), connectionString);
             }
-            return new DapperRepositoryReadContext(CreateJyDBContext(connectionString, dbType));
+            return CreateJyDBContext(connectionString, dbType);
         }
         //获取所有分库context,除了主库
-        public static List<DapperRepositoryContext> CreateAllJyDBContext(string connectionList, string defaultConnStr,DBType dbType = DBType.MySql)
+        public static List<TransactedConnection> CreateAllJyDBContext(string connectionList, string defaultConnStr,DBType dbType = DBType.MySql)
         {
             if (string.IsNullOrWhiteSpace(connectionList)) return null;
             string [] connectionString = connectionList.Split(',');
             HashSet<string> connSet = new HashSet<string>();
-            List<DapperRepositoryContext> rlist =new List<DapperRepositoryContext>();
+            List<TransactedConnection> rlist =new List<TransactedConnection>();
             for(int i = 0 ,j=connectionString.Length;i<j;i++)
             {
                 var connStr = connectionString[i];
@@ -50,7 +50,7 @@ namespace Jy.Dapper
                     continue;
                 connSet.Add(connStr);
                 if(!string.IsNullOrWhiteSpace(connStr) )
-                    rlist.Add( new DapperRepositoryContext(CreateJyDBContext(connStr, dbType)));
+                    rlist.Add( CreateJyDBContext(connStr, dbType));
             }
             return rlist;
         }
