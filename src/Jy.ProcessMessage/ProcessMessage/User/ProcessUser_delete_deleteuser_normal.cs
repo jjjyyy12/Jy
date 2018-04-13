@@ -17,11 +17,15 @@ namespace Jy.RabbitMQ.ProcessMessage
     public class ProcessUser_delete_deleteuser_normal : IProcessMessage<user_delete_deleteuser_normal>
     {
         private readonly IRepositoryFactory _repository;
+        //一个接口多个实现
+        private readonly Func<string, IRepositoryFactory> _repositoryAccessor;
+
         private static readonly object rpcLocker = new object();
         private static readonly object normalLocker = new object();
-        public ProcessUser_delete_deleteuser_normal(IRepositoryFactory repository)
+        public ProcessUser_delete_deleteuser_normal(Func<string, IRepositoryFactory> repositoryAccessor)
         {
-            _repository = repository;
+            _repositoryAccessor = repositoryAccessor;
+            _repository = _repositoryAccessor("EF");
         }
         [DistributedLock("ProcessUser", 5)]
         public void ProcessMsg(user_delete_deleteuser_normal msg)

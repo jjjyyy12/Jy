@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Jy.AuthAdmin.SolrIndex\Jy.AuthAdmin.SolrIndex.csproj" />
+    <ProjectReference Include="..\Jy.Dapper\Jy.Dapper.csproj" />
     <ProjectReference Include="..\Jy.Domain\Jy.Domain.csproj" />
     <ProjectReference Include="..\Jy.EntityFrameworkCore\Jy.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\Jy.Cache\Jy.Cache.csproj" />

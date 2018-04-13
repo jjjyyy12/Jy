@@ -100,16 +100,42 @@ namespace Jy.TokenAuth
                     new MemoryCacheRepository(new MemoryCache(new MemoryCacheOptions()), new TimeSpan(0, Configuration.GetSection("CacheConfig").GetValue<int>("expTime"), 0)));
             }
             //---------------缓存配置 end
-
-            //依赖注入
-            services.AddScoped<PagedHelper>();
             services.AddScoped<ICacheService, Jy.CacheService.CacheService>();
+            services.AddScoped<PagedHelper>();
+ 
+            //添加数据上下文
+            //services.AddDbContext<JyDbContext>(options => options.UseNpgsql(sqlConnectionString)); //PostgreSQL
+            services.AddDbContext<JyDbContext>(options => options.UseMySql(Configuration.GetConnectionString("MySql")), ServiceLifetime.Scoped);//mysql                                                                                                   //services.AddDbContext<JyDBReadContext>(options => options.UseMySql(Configuration.GetConnectionString("MySqlRead")), ServiceLifetime.Scoped);//mysqlread
+            services.AddDbContextPool<JyDBReadContext>(
+        options => options.UseMySql(Configuration.GetConnectionString("MySqlRead"),
+        mysqlOptions => mysqlOptions.MaxBatchSize(100)));
+
+
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IUserRepositoryRead, UserRepositoryRead>();
             services.AddScoped<IRoleRepositoryRead, RoleRepositoryRead>();
             services.AddScoped<IRepositoryFactory, RepositoryFactory>();
             services.AddScoped<IRepositoryReadFactory, RepositoryReadFactory>();
+
+            services.AddScoped(factory => {
+                Func<string, IRepositoryFactory> accesor = (key) => 
+                {
+                    if (key.Equals("EF"))
+                    {
+                        return factory.GetService<RepositoryFactory>();
+                    }
+                    else if(key.Equals("DP"))
+                    {
+                        return factory.GetService<Jy.Dapper.Repositories.DPRepositoryFactory>();
+                    }
+                    else
+                    {
+                        throw new ArgumentException($"Not Support key :{key}");
+                    }
+                };
+                return accesor;
+            });
 
             services.AddScoped<IUserIndexsIndex, UserIndexsIndex>();
             services.AddScoped<IUserIndexsIndexRead, UserIndexsIndexRead>();

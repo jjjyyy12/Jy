@@ -78,13 +78,7 @@ namespace Jy.AuthAdmin.API
         {
             //default solr connect
             services.AddSolrNet(Configuration.GetSection("SIndexSettings").GetValue<string>("defaultConnectionString"));
-            //添加数据上下文，已换成SDBSettings初始化DbContext，除了目前的主库中的userindex操作，以后可以换成存solr或elec
-            //services.AddDbContext<JyDbContext>(options => options.UseNpgsql(Configuration.GetConnectionString("PostgreSQL"))); //PostgreSQL
-            services.AddDbContext<JyDbContext>(options => options.UseMySql(Configuration.GetConnectionString("MySql")), ServiceLifetime.Scoped);//mysql
-                                                                                                                                                //services.AddDbContext<JyDBReadContext>(options => options.UseMySql(Configuration.GetConnectionString("MySqlRead")), ServiceLifetime.Scoped);//mysqlread
-            services.AddDbContextPool<JyDBReadContext>(
-        options => options.UseMySql(Configuration.GetConnectionString("MySqlRead"),
-        mysqlOptions => mysqlOptions.MaxBatchSize(100)));
+           
 
             //----dapper
             services.Configure<DapperOptions>(options =>
@@ -147,11 +141,19 @@ namespace Jy.AuthAdmin.API
             services.AddScoped<IBigQueueOperation, QueueOperationRdKafka>();
             //------------------------kafka
 
-            //依赖注入
+            
             services.AddScoped<PagedHelper>();
 
             services.AddScoped<ICacheService, Jy.CacheService.CacheService>();
             services.AddScoped<IQueueService, Jy.QueueSerivce.QueueSerivce>();
+
+            //添加数据上下文，已换成SDBSettings初始化DbContext，除了目前的主库中的userindex操作，以后可以换成存solr或elec
+            //services.AddDbContext<JyDbContext>(options => options.UseNpgsql(Configuration.GetConnectionString("PostgreSQL"))); //PostgreSQL
+            services.AddDbContext<JyDbContext>(options => options.UseMySql(Configuration.GetConnectionString("MySql")), ServiceLifetime.Scoped);//mysql
+                                                                                                                          //services.AddDbContext<JyDBReadContext>(options => options.UseMySql(Configuration.GetConnectionString("MySqlRead")), ServiceLifetime.Scoped);//mysqlread
+            services.AddDbContextPool<JyDBReadContext>(
+        options => options.UseMySql(Configuration.GetConnectionString("MySqlRead"),
+        mysqlOptions => mysqlOptions.MaxBatchSize(100)));
 
             services.AddScoped<IRepositoryContext, AuthRepositoryContext>();
             services.AddScoped<IRepositoryReadContext, AuthRepositoryReadContext>();
@@ -167,6 +169,25 @@ namespace Jy.AuthAdmin.API
 
             services.AddScoped<IRepositoryFactory, RepositoryFactory>();
             services.AddScoped<IRepositoryReadFactory, RepositoryReadFactory>();
+
+            services.AddScoped(factory => {
+                Func<string, IRepositoryFactory> accesor = (key) =>
+                {
+                    if (key.Equals("EF"))
+                    {
+                        return factory.GetService<RepositoryFactory>();
+                    }
+                    else if (key.Equals("DP"))
+                    {
+                        return factory.GetService<Jy.Dapper.Repositories.DPRepositoryFactory>();
+                    }
+                    else
+                    {
+                        throw new ArgumentException($"Not Support key :{key}");
+                    }
+                };
+                return accesor;
+            });
 
             services.AddScoped<IRoleAppService, RoleAppService>();
             services.AddScoped<IUserAppService, UserAppService>();

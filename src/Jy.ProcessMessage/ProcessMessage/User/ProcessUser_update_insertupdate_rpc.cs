@@ -18,11 +18,15 @@ namespace Jy.RabbitMQ.ProcessMessage
     public class ProcessUser_update_insertupdate_rpc : IProcessMessage<user_update_insertupdate_rpc>
     {
         private readonly IRepositoryFactory _repository;
+        //一个接口多个实现
+        private readonly Func<string, IRepositoryFactory> _repositoryAccessor;
+
         private static readonly object rpcLocker = new object();
         private static readonly object normalLocker = new object();
-        public ProcessUser_update_insertupdate_rpc(IRepositoryFactory repository)
+        public ProcessUser_update_insertupdate_rpc(Func<string, IRepositoryFactory> repositoryAccessor)
         {
-            _repository = repository;
+            _repositoryAccessor = repositoryAccessor;
+            _repository = _repositoryAccessor("EF");
         }
         [DistributedLock("ProcessUser", 5)]
         public void ProcessMsg(user_update_insertupdate_rpc msg)

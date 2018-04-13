@@ -23,14 +23,17 @@ namespace Jy.RabbitMQ.ProcessMessage
     public class ProcessUser_update_userroles_normal : IProcessMessage<user_update_userroles_normal>
     {
         private readonly IRepositoryFactory _repository;
+        //一个接口多个实现
+        private readonly Func<string, IRepositoryFactory> _repositoryAccessor;
         private readonly IIndexFactory _indexFactory;
         private readonly IIndexReadFactory _indexReadFactory;
         private readonly IOptionsSnapshot<SIndexSettings> _SIndexSettings;
         private static readonly object rpcLocker = new object();
         private static readonly object normalLocker = new object();
-        public ProcessUser_update_userroles_normal(IRepositoryFactory repository, IOptionsSnapshot<SIndexSettings> SIndexSettings)
+        public ProcessUser_update_userroles_normal(Func<string, IRepositoryFactory> repositoryAccessor, IOptionsSnapshot<SIndexSettings> SIndexSettings)
         {
-            _repository = repository;
+            _repositoryAccessor = repositoryAccessor;
+            _repository = _repositoryAccessor("EF");
             _SIndexSettings = SIndexSettings;
             _indexReadFactory = new IndexReadFactory<UserIndexs>(_SIndexSettings);
             _indexFactory = new IndexFactory<UserIndexs>(_SIndexSettings);
