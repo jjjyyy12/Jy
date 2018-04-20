@@ -90,6 +90,25 @@ namespace Jy.ConsumerAuth
             services.AddScoped<IDepartmentRepositoryRead, DepartmentRepositoryRead>();
             services.AddScoped<IRepositoryFactory, RepositoryFactory>();
             services.AddScoped<IRepositoryReadFactory, RepositoryReadFactory>();
+
+            services.AddScoped(factory => {
+                Func<string, IRepositoryFactory> accesor = (key) =>
+                {
+                    if (key.Equals("EF"))
+                    {
+                        return factory.GetService<RepositoryFactory>();
+                    }
+                    else if (key.Equals("DP"))
+                    {
+                        return factory.GetService<Jy.Dapper.Repositories.DPRepositoryFactory>();
+                    }
+                    else
+                    {
+                        throw new ArgumentException($"Not Support key :{key}");
+                    }
+                };
+                return accesor;
+            });
             //MQ 
             //services.AddScoped(typeof(IProcessMessage));
             //handlers

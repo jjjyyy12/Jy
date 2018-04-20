@@ -8,6 +8,7 @@ using AutoMapper;
 using Jy.IMessageQueue;
 using Jy.Domain.Dtos;
 using Jy.IRepositories;
+using System;
 
 namespace Jy.RabbitMQ.ProcessMessage
 {
@@ -17,11 +18,13 @@ namespace Jy.RabbitMQ.ProcessMessage
     public class ProcessDepartmentDepartment_update_others_normal : IProcessMessage<department_update_others_normal>
     {
         private readonly IRepositoryFactory _repository;
+        private readonly Func<string, IRepositoryFactory> _repositoryAccessor;
         private static readonly object rpcLocker = new object();
         private static readonly object normalLocker = new object();
-        public ProcessDepartmentDepartment_update_others_normal(IRepositoryFactory departmentRepository)
+        public ProcessDepartmentDepartment_update_others_normal(Func<string, IRepositoryFactory> repositoryAccessor)
         {
-            _repository = departmentRepository;
+            _repositoryAccessor = repositoryAccessor;
+            _repository = _repositoryAccessor("EF");
         }
         [DistributedLock("ProcessDepartment", 10)]
         public void ProcessMsg(department_update_others_normal msg)

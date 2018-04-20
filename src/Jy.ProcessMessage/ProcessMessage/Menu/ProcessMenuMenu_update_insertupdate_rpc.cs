@@ -21,14 +21,16 @@ namespace Jy.RabbitMQ.ProcessMessage
     {
         private readonly IMenuRepository _repository;
         private readonly IRepositoryFactory _repositoryFactory;
+        private readonly Func<string, IRepositoryFactory> _repositoryAccessor;
         private readonly IQueueService _queueService;
         private static readonly object rpcLocker = new object();
         private static readonly object normalLocker = new object();
-        public ProcessMenuMenu_update_insertupdate_rpc(IMenuRepository menuRepository, IRepositoryFactory repositoryFactory, IQueueService queueService)
+        public ProcessMenuMenu_update_insertupdate_rpc(IMenuRepository menuRepository, Func<string, IRepositoryFactory> repositoryAccessor, IQueueService queueService)
         {
             _repository = menuRepository;
             _queueService = queueService;
-            _repositoryFactory = repositoryFactory;
+            _repositoryAccessor = repositoryAccessor;
+            _repositoryFactory = _repositoryAccessor("EF");
         }
         [DistributedLock("ProcessMenu", 10)]
         public void ProcessMsg(menu_update_insertupdate_rpc msg)

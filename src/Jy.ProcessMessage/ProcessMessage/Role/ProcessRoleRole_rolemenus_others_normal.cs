@@ -18,11 +18,13 @@ namespace Jy.RabbitMQ.ProcessMessage
     public class ProcessRoleRole_rolemenus_others_normal : IProcessMessage<role_rolemenus_others_normal>
     {
         private readonly IRepositoryFactory _repository;
+        private readonly Func<string, IRepositoryFactory> _repositoryAccessor;
         private static readonly object rpcLocker = new object();
         private static readonly object normalLocker = new object();
-        public ProcessRoleRole_rolemenus_others_normal(IRepositoryFactory roleRepository)
+        public ProcessRoleRole_rolemenus_others_normal(Func<string, IRepositoryFactory> repositoryAccessor)
         {
-            _repository = roleRepository;
+            _repositoryAccessor = repositoryAccessor;
+            _repository = _repositoryAccessor("EF");
         }
         [DistributedLock("ProcessRoleMenus", 20)]
         public void ProcessMsg(role_rolemenus_others_normal msg)

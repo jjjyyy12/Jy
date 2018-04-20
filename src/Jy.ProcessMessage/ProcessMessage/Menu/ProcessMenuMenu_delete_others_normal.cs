@@ -18,11 +18,13 @@ namespace Jy.RabbitMQ.ProcessMessage
     public class ProcessMenuMenu_delete_others_normal : IProcessMessage<menu_delete_others_normal>
     {
         private readonly IRepositoryFactory _repository;
+        private readonly Func<string, IRepositoryFactory> _repositoryAccessor;
         private static readonly object rpcLocker = new object();
         private static readonly object normalLocker = new object();
-        public ProcessMenuMenu_delete_others_normal(IRepositoryFactory menuRepository)
+        public ProcessMenuMenu_delete_others_normal(Func<string, IRepositoryFactory> repositoryAccessor)
         {
-            _repository = menuRepository;
+            _repositoryAccessor = repositoryAccessor;
+            _repository = _repositoryAccessor("EF");
         }
         [DistributedLock("ProcessMenu", 10)]
         public void ProcessMsg(menu_delete_others_normal msg)

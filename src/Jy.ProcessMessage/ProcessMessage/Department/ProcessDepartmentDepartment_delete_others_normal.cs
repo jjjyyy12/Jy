@@ -18,11 +18,13 @@ namespace Jy.RabbitMQ.ProcessMessage
     public class ProcessDepartmentDepartment_delete_others_normal : IProcessMessage<department_delete_others_normal>
     {
         private readonly IRepositoryFactory _repository;
+        private readonly Func<string, IRepositoryFactory> _repositoryAccessor;
         private static readonly object rpcLocker = new object();
         private static readonly object normalLocker = new object();
-        public ProcessDepartmentDepartment_delete_others_normal(IRepositoryFactory departmentRepository, IRepositoryFactory repositoryFactory, IQueueService queueService)
+        public ProcessDepartmentDepartment_delete_others_normal(IRepositoryFactory departmentRepository, Func<string, IRepositoryFactory> repositoryAccessor, IQueueService queueService)
         {
-            _repository = departmentRepository;
+            _repositoryAccessor = repositoryAccessor;
+            _repository = _repositoryAccessor("EF");
         }
         [DistributedLock("ProcessDepartment", 10)]
         public void ProcessMsg(department_delete_others_normal msg)

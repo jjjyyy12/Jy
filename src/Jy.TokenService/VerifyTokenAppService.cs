@@ -30,18 +30,20 @@ namespace Jy.TokenService
 
         private readonly IUserRepositoryRead _userrepositoryread;
         private readonly IRepositoryFactory _repositoryFactory;
+        private readonly Func<string, IRepositoryFactory> _repositoryAccessor;
         private readonly IRepositoryReadFactory _repositoryReadFactory;
         private readonly IRoleRepositoryRead _rolerepositoryread;
         private readonly IIndexFactory _indexFactory;
         private readonly IIndexReadFactory _indexReadFactory;
         public VerifyTokenAppService(ICacheService cacheService, ILogger logger
             , IUserRepositoryRead userrepositoryread, IRoleRepositoryRead rolerepository
-            , IRepositoryFactory repositoryFactory, IRepositoryReadFactory repositoryReadFactory
+            , Func<string, IRepositoryFactory> repositoryAccessor, IRepositoryReadFactory repositoryReadFactory
             , IOptionsSnapshot<SIndexSettings> SIndexSettings)
         {
             _cacheService = cacheService;
             _userrepositoryread = userrepositoryread;
-            _repositoryFactory = repositoryFactory;
+            _repositoryAccessor = repositoryAccessor;
+            _repositoryFactory = _repositoryAccessor("EF");
             _repositoryReadFactory = repositoryReadFactory;
             _rolerepositoryread = rolerepository;
             _SIndexSettings = SIndexSettings;

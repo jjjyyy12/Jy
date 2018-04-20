@@ -20,15 +20,17 @@ namespace Jy.RabbitMQ.ProcessMessage
     {
         private readonly IRoleRepository _repository;
         private readonly IRepositoryFactory _repositoryFactory;
+        private readonly Func<string, IRepositoryFactory> _repositoryAccessor;
         private readonly IQueueService _queueService;
 
         private static readonly object rpcLocker = new object();
         private static readonly object normalLocker = new object();
-        public ProcessRoleRole_delete_deleterole_normal(IRoleRepository roleRepository, IRepositoryFactory repositoryFactory, IQueueService queueService)
+        public ProcessRoleRole_delete_deleterole_normal(IRoleRepository roleRepository, Func<string, IRepositoryFactory> repositoryAccessor, IQueueService queueService)
         {
             _repository = roleRepository;
             _queueService = queueService;
-            _repositoryFactory = repositoryFactory;
+            _repositoryAccessor = repositoryAccessor;
+            _repositoryFactory = _repositoryAccessor("EF");
         }
         [DistributedLock("ProcessRole", 10)]
         public void ProcessMsg(role_delete_deleterole_normal msg)

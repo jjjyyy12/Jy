@@ -9,6 +9,7 @@ using Jy.IMessageQueue;
 using Jy.QueueSerivce;
 using Jy.Domain.Dtos;
 using Jy.IRepositories;
+using System;
 
 namespace Jy.RabbitMQ.ProcessMessage
 {
@@ -18,17 +19,19 @@ namespace Jy.RabbitMQ.ProcessMessage
     public class ProcessRoleRole_update_insertupdate_rpc : IProcessMessage<role_update_insertupdate_rpc>
     {
         private readonly IRoleRepository _repository;
+        private readonly Func<string, IRepositoryFactory> _repositoryAccessor;
         private readonly IRepositoryFactory _repositoryFactory;
         private readonly IQueueService _queueService;
         //队列
         public IQueueService QueueService { get { return _queueService; } }
         private static readonly object rpcLocker = new object();
         private static readonly object normalLocker = new object();
-        public ProcessRoleRole_update_insertupdate_rpc(IRoleRepository roleRepository, IRepositoryFactory repositoryFactory, IQueueService queueService)
+        public ProcessRoleRole_update_insertupdate_rpc(IRoleRepository roleRepository, Func<string, IRepositoryFactory> repositoryAccessor, IQueueService queueService)
         {
             _repository = roleRepository;
             _queueService = queueService;
-            _repositoryFactory = repositoryFactory;
+            _repositoryAccessor = repositoryAccessor;
+            _repositoryFactory = _repositoryAccessor("EF");
         }
         [DistributedLock("ProcessRole", 10)]
         public void ProcessMsg(role_update_insertupdate_rpc msg)
