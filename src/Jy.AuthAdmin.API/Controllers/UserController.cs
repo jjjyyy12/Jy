@@ -38,6 +38,7 @@ namespace Jy.AuthAdmin.API.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("[action]")]
+        [ResponseCache(Duration = 10)]
         public IActionResult GetTreeData()
         {
             var dtos = _departmentservice.GetAllList();
@@ -55,6 +56,7 @@ namespace Jy.AuthAdmin.API.Controllers
         // GET api/v1/[controller]/GetChildrenByParent/1[?pageSize=3&pageIndex=10]
         [HttpGet]
         [Route("[action]/{departmentId}")]
+        [ResponseCache(Duration = 10)]
         public IActionResult GetChildrenByParent(Guid departmentId, [FromQuery]int startPage, [FromQuery] int pageSize)
         {
             int rowCount = 0;
