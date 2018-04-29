@@ -33,7 +33,7 @@ namespace Jy.AuthAdmin.API.Controllers
         // GET api/v1/[controller]/GetMenuTreeData
         [HttpGet]
         [Route("[action]")]
-        [ResponseCache(Duration = 10)]
+        [ResponseCache(Duration = 100, CacheProfileName = "menuTree")]
         public IActionResult GetMenuTreeData()
         {
             var menus = _menuAppService.GetAllList();
@@ -54,7 +54,7 @@ namespace Jy.AuthAdmin.API.Controllers
         // GET api/v1/[controller]/GetMenusByParent/1[?pageSize=3&pageIndex=10]
         [HttpGet]
         [Route("[action]/{parentId}")]
-        [ResponseCache(Duration = 10)]
+        [ResponseCache(Duration = 100, VaryByQueryKeys = new string[] {"parentId", "startPage", "pageSize" })]
         public IActionResult GetMenusByParent(Guid parentId, [FromQuery]int startPage, [FromQuery] int pageSize)
         {
             int rowCount = 0;
