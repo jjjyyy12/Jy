@@ -118,13 +118,7 @@ namespace Jy.CRM.API
             //services.AddRawRabbit();
             //services.AddScoped<IQueueOperation, QueueOperationRawRabbit>();
             //services.AddScoped<IQueueOperationSubscriptionsManager, InMemorySubscriptionsManager>();
-            services.AddRabbitMQServices(new RabbitMQOptions()
-            {
-                HostName = Configuration.GetSection("RabbitMQConfig").GetValue<string>("HostName"),
-                UserName = Configuration.GetSection("RabbitMQConfig").GetValue<string>("UserName"),
-                Password = Configuration.GetSection("RabbitMQConfig").GetValue<string>("Password"),
-                Port = Configuration.GetSection("RabbitMQConfig").GetValue<int>("Port")
-            });
+            services.AddRabbitMQServices(Configuration);
             //------------------------rabbitMQ
 
             //------------------------kafka
