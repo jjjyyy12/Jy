@@ -1,0 +1,17 @@
+D:\Study\testJy\Jy-master\src\Jy.CKafka\bin\Debug\netcoreapp2.0\Jy.CKafka.deps.json
+D:\Study\testJy\Jy-master\src\Jy.CKafka\bin\Debug\netcoreapp2.0\Jy.CKafka.dll
+D:\Study\testJy\Jy-master\src\Jy.CKafka\obj\Debug\netcoreapp2.0\Jy.CKafka.csprojResolveAssemblyReference.cache
+D:\Study\testJy\Jy-master\src\Jy.CKafka\obj\Debug\netcoreapp2.0\Jy.CKafka.csproj.CoreCompileInputs.cache
+D:\Study\testJy\Jy-master\src\Jy.CKafka\obj\Debug\netcoreapp2.0\Jy.CKafka.AssemblyInfoInputs.cache
+D:\Study\testJy\Jy-master\src\Jy.CKafka\obj\Debug\netcoreapp2.0\Jy.CKafka.AssemblyInfo.cs
+D:\Study\testJy\Jy-master\src\Jy.CKafka\bin\Debug\netcoreapp2.0\Jy.ILog.dll
+D:\Study\testJy\Jy-master\src\Jy.CKafka\bin\Debug\netcoreapp2.0\Jy.IMessageQueue.dll
+D:\Study\testJy\Jy-master\src\Jy.CKafka\bin\Debug\netcoreapp2.0\Jy.Utility.dll
+D:\Study\testJy\Jy-master\src\Jy.CKafka\bin\Debug\netcoreapp2.0\Jy.ILog.pdb
+D:\Study\testJy\Jy-master\src\Jy.CKafka\bin\Debug\netcoreapp2.0\Jy.IMessageQueue.pdb
+D:\Study\testJy\Jy-master\src\Jy.CKafka\bin\Debug\netcoreapp2.0\Jy.Utility.pdb
+D:\Study\testJy\Jy-master\src\Jy.CKafka\bin\Debug\netcoreapp2.0\Jy.CKafka.pdb
+D:\Study\testJy\Jy-master\src\Jy.CKafka\bin\Debug\netcoreapp2.0\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\Study\testJy\Jy-master\src\Jy.CKafka\bin\Debug\netcoreapp2.0\Microsoft.Extensions.Configuration.Abstractions.xml
+D:\Study\testJy\Jy-master\src\Jy.CKafka\obj\Debug\netcoreapp2.0\Jy.CKafka.dll
+D:\Study\testJy\Jy-master\src\Jy.CKafka\obj\Debug\netcoreapp2.0\Jy.CKafka.pdb

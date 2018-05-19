@@ -134,7 +134,7 @@
         </member>
         <member name="M:Jy.AuthAdmin.API.Controllers.MenuController.GetMenuTreeData">
             <summary>
-            获取功能树Ok数据
+            获取功能树数据
             </summary>
             <returns></returns>
         </member>

@@ -46,6 +46,7 @@ namespace Jy.RabbitMQ
             {
                 extbusClientList[queueName].Dispose();
             }
+            _subsManager.Clear();
         }
         public void Dispose()
         {

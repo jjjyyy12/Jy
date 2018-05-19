@@ -48,6 +48,7 @@ namespace Jy.RabbitMQ
                 var obj = (RabbitMQConsumerClient<MessageBase>)temp1.Value;
                 obj.Dispose();
             }
+            _subsManager.Clear();
         }
 
         public void ErrorSubscribe()

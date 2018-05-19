@@ -27,13 +27,13 @@ namespace Jy.AuthAdmin.API.Controllers
         }
 
         /// <summary>
-        /// 获取功能树Ok数据
+        /// 获取功能树数据
         /// </summary>
         /// <returns></returns>
         // GET api/v1/[controller]/GetMenuTreeData
         [HttpGet]
         [Route("[action]")]
-        [ResponseCache(Duration = 100, CacheProfileName = "menuTree")]
+        [ResponseCache(Duration = 20, CacheProfileName = "menuTree")]
         public IActionResult GetMenuTreeData()
         {
             var menus = _menuAppService.GetAllList();
@@ -54,7 +54,7 @@ namespace Jy.AuthAdmin.API.Controllers
         // GET api/v1/[controller]/GetMenusByParent/1[?pageSize=3&pageIndex=10]
         [HttpGet]
         [Route("[action]/{parentId}")]
-        [ResponseCache(Duration = 100, VaryByQueryKeys = new string[] {"parentId", "startPage", "pageSize" })]
+        [ResponseCache(Duration = 20, VaryByQueryKeys = new string[] {"parentId", "startPage", "pageSize" })]
         public IActionResult GetMenusByParent(Guid parentId, [FromQuery]int startPage, [FromQuery] int pageSize)
         {
             int rowCount = 0;

@@ -86,7 +86,7 @@ namespace Jy.TokenAuth
                     expTime = new TimeSpan(0, Configuration.GetSection("CacheConfig").GetValue<int>("expTime"), 0)
                 }, 0));
             }
-            else
+            if ("TRUE".Equals(Configuration.GetSection("CacheConfig").GetValue<string>("UseHttpCache").ToUpper()))
             {
                 //Use MemoryCache
                 services.AddSingleton<IMemoryCache>(factory =>

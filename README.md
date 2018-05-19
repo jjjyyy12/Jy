@@ -34,6 +34,8 @@ BuildingBlocks --公共组件
 		
 	Repositories	--持久化
 	
+		Jy.DapperBase	--Dapper的基础实现，实现IRepositories
+		
 		Jy.EntityFramewordCoreBase	--efcore的基础实现，实现IRepositories
 		
 		Jy.IRepositories	--数据持久化基础操作方法
