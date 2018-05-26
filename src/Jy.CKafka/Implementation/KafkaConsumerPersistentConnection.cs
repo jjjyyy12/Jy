@@ -1,6 +1,7 @@
 ﻿using Confluent.Kafka;
 using Confluent.Kafka.Serialization;
 using Jy.ILog;
+using Jy.IMessageQueue;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,15 +12,17 @@ namespace Jy.CKafka.Implementation
     public class KafkaConsumerPersistentConnection : KafkaPersistentConnectionBase
     {
         private readonly ILogger _logger;
-        private Consumer<Null, string> _consumerClient;
-        private readonly IDeserializer<string> _stringDeserializer;
+        private Consumer<string, MessageBase> _consumerClient;
+        private readonly IDeserializer<string> _keyDeserializer;
+        private readonly IDeserializer<MessageBase> _valueDeserializer;
         bool _disposed;
 
         public KafkaConsumerPersistentConnection(ILogger logger)
             : base(logger)
         {
             _logger = logger;
-            _stringDeserializer = new StringDeserializer(Encoding.UTF8);
+            _keyDeserializer = new StringDeserializer(Encoding.UTF8);
+            _valueDeserializer = new MessageBaseDeserializer();
         }
 
         public override bool IsConnected => _consumerClient != null && !_disposed;
@@ -28,7 +31,7 @@ namespace Jy.CKafka.Implementation
         {
             return () =>
             {
-                _consumerClient = new Consumer<Null, string>(options, null, _stringDeserializer);
+                _consumerClient = new Consumer<string, MessageBase>(options, _keyDeserializer, _valueDeserializer);
                 _consumerClient.OnConsumeError += OnConsumeError;
                 _consumerClient.OnError += OnConnectionException;
             };
@@ -41,7 +44,7 @@ namespace Jy.CKafka.Implementation
 
         private void OnConsumeError(object sender, Message e)
         {
-            var message = e.Deserialize<Null, string>(null, _stringDeserializer);
+            var message = e.Deserialize<string, MessageBase>( _keyDeserializer, _valueDeserializer);
             if (_disposed) return;
 
             _logger.LogWarning($"An error occurred during consume the message; Topic:'{e.Topic}'," +
