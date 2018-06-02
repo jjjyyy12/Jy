@@ -11,7 +11,5 @@ D:\Study\testJy\Jy-master\src\Jy.CKafka\bin\Debug\netcoreapp2.0\Jy.ILog.pdb
 D:\Study\testJy\Jy-master\src\Jy.CKafka\bin\Debug\netcoreapp2.0\Jy.IMessageQueue.pdb
 D:\Study\testJy\Jy-master\src\Jy.CKafka\bin\Debug\netcoreapp2.0\Jy.Utility.pdb
 D:\Study\testJy\Jy-master\src\Jy.CKafka\bin\Debug\netcoreapp2.0\Jy.CKafka.pdb
-D:\Study\testJy\Jy-master\src\Jy.CKafka\bin\Debug\netcoreapp2.0\Microsoft.Extensions.Configuration.Abstractions.dll
-D:\Study\testJy\Jy-master\src\Jy.CKafka\bin\Debug\netcoreapp2.0\Microsoft.Extensions.Configuration.Abstractions.xml
 D:\Study\testJy\Jy-master\src\Jy.CKafka\obj\Debug\netcoreapp2.0\Jy.CKafka.dll
 D:\Study\testJy\Jy-master\src\Jy.CKafka\obj\Debug\netcoreapp2.0\Jy.CKafka.pdb
