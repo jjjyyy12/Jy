@@ -35,6 +35,7 @@ using Microsoft.Extensions.FileProviders;
 using Jy.CRM.API.Filter;
 using Jy.AuthService;
 using Jy.EntityFramewordCoreBase.Repositories;
+using Jy.CKafka;
 
 namespace Jy.CRM.API
 {
@@ -122,7 +123,8 @@ namespace Jy.CRM.API
             //------------------------rabbitMQ
 
             //------------------------kafka
-            services.AddScoped<IBigQueueOperation, QueueOperationRdKafka>();
+            //services.AddScoped<IBigQueueOperation, QueueOperationRdKafka>();
+            services.AddCKafkaServices(Configuration);
             //------------------------kafka
 
             services.AddScoped<PagedHelper>();

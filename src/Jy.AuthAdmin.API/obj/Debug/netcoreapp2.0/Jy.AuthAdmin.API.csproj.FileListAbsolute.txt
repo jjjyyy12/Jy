@@ -62,3 +62,5 @@ D:\Study\testJy\Jy-master\src\Jy.AuthAdmin.API\bin\Debug\netcoreapp2.0\Jy.AuthSe
 D:\Study\testJy\Jy-master\src\Jy.AuthAdmin.API\bin\Debug\netcoreapp2.0\Jy.AuthService.pdb
 D:\Study\testJy\Jy-master\src\Jy.AuthAdmin.API\bin\Debug\netcoreapp2.0\Jy.DapperBase.dll
 D:\Study\testJy\Jy-master\src\Jy.AuthAdmin.API\bin\Debug\netcoreapp2.0\Jy.DapperBase.pdb
+D:\Study\testJy\Jy-master\src\Jy.AuthAdmin.API\bin\Debug\netcoreapp2.0\Jy.CKafka.dll
+D:\Study\testJy\Jy-master\src\Jy.AuthAdmin.API\bin\Debug\netcoreapp2.0\Jy.CKafka.pdb

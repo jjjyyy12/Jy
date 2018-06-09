@@ -26,6 +26,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Jy.AuthService\Jy.AuthService.csproj" />
     <ProjectReference Include="..\..\Jy.Cache\Jy.Cache.csproj" />
+    <ProjectReference Include="..\..\Jy.CKafka\Jy.CKafka.csproj" />
     <ProjectReference Include="..\..\Jy.ICache\Jy.ICache.csproj" />
     <ProjectReference Include="..\..\Jy.ILog\Jy.ILog.csproj" />
     <ProjectReference Include="..\..\Jy.IMessageQueue\Jy.IMessageQueue.csproj" />

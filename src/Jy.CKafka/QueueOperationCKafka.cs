@@ -21,12 +21,13 @@ namespace Jy.CKafka
         private readonly IQueueOperationSubscriptionsManager _subsManager;
         private readonly IKafkaPersisterConnection _producerConnection;
         private readonly IKafkaPersisterConnection _consumerConnection;
-
-        public QueueOperationCKafka(IQueueOperationSubscriptionsManager subsManager, IKafkaPersisterConnection producerConnection, IKafkaPersisterConnection consumerConnection)
+        private readonly Func<string, IKafkaPersisterConnection> _connectionAccessor;
+        public QueueOperationCKafka(IQueueOperationSubscriptionsManager subsManager, Func<string, IKafkaPersisterConnection> connectionAccessor)
         {
             _subsManager = subsManager ?? new InMemorySubscriptionsManager();
-            _producerConnection = producerConnection;
-            _consumerConnection = consumerConnection;
+            _connectionAccessor = connectionAccessor;
+            _producerConnection = _connectionAccessor("KafkaProducer");
+            _consumerConnection = _connectionAccessor("KafkaConsumer"); 
             _logger = LoggerFactory.CreateLogger();
             subsManager.OnEventRemoved += SubsManager_OnEventRemoved;
         }

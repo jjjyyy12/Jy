@@ -6,6 +6,7 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Jy.Application\Jy.Application.csproj" />
+    <ProjectReference Include="..\Jy.CKafka\Jy.CKafka.csproj" />
     <ProjectReference Include="..\Jy.Dapper\Jy.Dapper.csproj" />
     <ProjectReference Include="..\Jy.DistributedLockHandler\Jy.DistributedLockHandler.csproj" />
     <ProjectReference Include="..\Jy.Domain\Jy.Domain.csproj" />

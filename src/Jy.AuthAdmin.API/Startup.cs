@@ -53,6 +53,7 @@ using Jy.Domain.IIndex;
 using Jy.IIndex;
 using Jy.AuthService;
 using Jy.EntityFramewordCoreBase.Repositories;
+using Jy.CKafka;
 
 namespace Jy.AuthAdmin.API
 {
@@ -132,10 +133,11 @@ namespace Jy.AuthAdmin.API
             //------------------------rabbitMQ
 
             //------------------------kafka
-            services.AddScoped<IBigQueueOperation, QueueOperationRdKafka>();
+            //services.AddScoped<IBigQueueOperation, QueueOperationRdKafka>();
+            services.AddCKafkaServices(Configuration);
             //------------------------kafka
 
-            
+
             services.AddScoped<PagedHelper>();
 
             services.AddScoped<ICacheService, Jy.CacheService.CacheService>();

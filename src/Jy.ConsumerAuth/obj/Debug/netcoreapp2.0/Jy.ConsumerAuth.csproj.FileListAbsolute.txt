@@ -55,3 +55,5 @@ D:\Study\testJy\Jy-master\src\Jy.ConsumerAuth\bin\Debug\netcoreapp2.0\Jy.Dapper.
 D:\Study\testJy\Jy-master\src\Jy.ConsumerAuth\bin\Debug\netcoreapp2.0\Jy.DapperBase.dll
 D:\Study\testJy\Jy-master\src\Jy.ConsumerAuth\bin\Debug\netcoreapp2.0\Jy.Dapper.pdb
 D:\Study\testJy\Jy-master\src\Jy.ConsumerAuth\bin\Debug\netcoreapp2.0\Jy.DapperBase.pdb
+D:\Study\testJy\Jy-master\src\Jy.ConsumerAuth\bin\Debug\netcoreapp2.0\Jy.CKafka.dll
+D:\Study\testJy\Jy-master\src\Jy.ConsumerAuth\bin\Debug\netcoreapp2.0\Jy.CKafka.pdb

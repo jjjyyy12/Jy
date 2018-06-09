@@ -44,6 +44,25 @@
           "lib/netstandard1.3/AutoMapper.dll": {}
         }
       },
+      "Confluent.Kafka/0.11.4": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "System.Console": "4.3.0",
+          "System.Linq": "4.3.0",
+          "System.Runtime.CompilerServices.Unsafe": "4.0.0",
+          "System.Runtime.Extensions": "4.3.0",
+          "System.Runtime.InteropServices": "4.3.0",
+          "System.Threading": "4.3.0",
+          "librdkafka.redist": "0.11.4"
+        },
+        "compile": {
+          "lib/netstandard1.3/Confluent.Kafka.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Confluent.Kafka.dll": {}
+        }
+      },
       "CoreCompat.Microsoft.Practices.ServiceLocation/1.3.0-r2": {
         "type": "package",
         "dependencies": {
@@ -96,6 +115,58 @@
         },
         "runtime": {
           "lib/netcoreapp2.0/HttpWebAdaptersCore.dll": {}
+        }
+      },
+      "librdkafka.redist/0.11.4": {
+        "type": "package",
+        "build": {
+          "build/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/debian9-librdkafka.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x64/native/librdkafka.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx-x64/native/librdkafka.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/win7-x64/native/librdkafka.dll": {
+            "assetType": "native",
+            "rid": "win7-x64"
+          },
+          "runtimes/win7-x64/native/librdkafkacpp.dll": {
+            "assetType": "native",
+            "rid": "win7-x64"
+          },
+          "runtimes/win7-x64/native/msvcr120.dll": {
+            "assetType": "native",
+            "rid": "win7-x64"
+          },
+          "runtimes/win7-x64/native/zlib.dll": {
+            "assetType": "native",
+            "rid": "win7-x64"
+          },
+          "runtimes/win7-x86/native/librdkafka.dll": {
+            "assetType": "native",
+            "rid": "win7-x86"
+          },
+          "runtimes/win7-x86/native/librdkafkacpp.dll": {
+            "assetType": "native",
+            "rid": "win7-x86"
+          },
+          "runtimes/win7-x86/native/msvcr120.dll": {
+            "assetType": "native",
+            "rid": "win7-x86"
+          },
+          "runtimes/win7-x86/native/zlib.dll": {
+            "assetType": "native",
+            "rid": "win7-x86"
+          }
         }
       },
       "Microsoft.AspNetCore.Http.Abstractions/1.1.2": {
@@ -3171,6 +3242,26 @@
           "bin/placeholder/Jy.CacheService.dll": {}
         }
       },
+      "Jy.CKafka/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "Confluent.Kafka": "0.11.4",
+          "Jy.ILog": "1.0.0",
+          "Jy.IMessageQueue": "1.0.0",
+          "Jy.Utility": "1.0.0",
+          "Microsoft.Extensions.Configuration.Json": "2.0.0",
+          "Microsoft.Extensions.DependencyInjection": "2.0.0",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "2.0.0",
+          "Polly": "5.3.1"
+        },
+        "compile": {
+          "bin/placeholder/Jy.CKafka.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Jy.CKafka.dll": {}
+        }
+      },
       "Jy.Dapper/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
@@ -3489,6 +3580,21 @@
         "lib/netstandard1.3/AutoMapper.xml"
       ]
     },
+    "Confluent.Kafka/0.11.4": {
+      "sha512": "+SOy+WoPa02rB+wn1XTJJaIpnCLBtNLtEqy3c3efpjmgWVJn10N/PEI7Y82wzec4N4LSrG01FACT5AOOaWGsdw==",
+      "type": "package",
+      "path": "confluent.kafka/0.11.4",
+      "files": [
+        "confluent.kafka.0.11.4.nupkg.sha512",
+        "confluent.kafka.nuspec",
+        "lib/net45/Confluent.Kafka.dll",
+        "lib/net45/Confluent.Kafka.xml",
+        "lib/net46/Confluent.Kafka.dll",
+        "lib/net46/Confluent.Kafka.xml",
+        "lib/netstandard1.3/Confluent.Kafka.dll",
+        "lib/netstandard1.3/Confluent.Kafka.xml"
+      ]
+    },
     "CoreCompat.Microsoft.Practices.ServiceLocation/1.3.0-r2": {
       "sha512": "5Zw3//TAPtjKsbYteiVkqB1MHtE0SZ48mwcFbELOnMh1P/QySzGCuD+2dhrO81hx4tGzvJdLaCiFgIBDkEM0dg==",
       "type": "package",
@@ -3538,6 +3644,37 @@
         "httpwebadapterscore.1.0.0.nupkg.sha512",
         "httpwebadapterscore.nuspec",
         "lib/netcoreapp2.0/HttpWebAdaptersCore.dll"
+      ]
+    },
+    "librdkafka.redist/0.11.4": {
+      "sha512": "7/tR5bBcwlNAnYpbcXh0gfsn492l8it0vrBY7qXCvZZ5SvJ8u3mF9jQVrYBoJeoKuue9UBqT/YjcEwkfOrkzZw==",
+      "type": "package",
+      "path": "librdkafka.redist/0.11.4",
+      "files": [
+        "CONFIGURATION.md",
+        "LICENSES.txt",
+        "README.md",
+        "build/librdkafka.redist.props",
+        "build/native/include/librdkafka/rdkafka.h",
+        "build/native/include/librdkafka/rdkafkacpp.h",
+        "build/native/lib/win7/x64/win7-x64-Release/v120/librdkafka.lib",
+        "build/native/lib/win7/x64/win7-x64-Release/v120/librdkafkacpp.lib",
+        "build/native/lib/win7/x86/win7-x86-Release/v120/librdkafka.lib",
+        "build/native/lib/win7/x86/win7-x86-Release/v120/librdkafkacpp.lib",
+        "build/native/librdkafka.redist.targets",
+        "librdkafka.redist.0.11.4.nupkg.sha512",
+        "librdkafka.redist.nuspec",
+        "runtimes/linux-x64/native/debian9-librdkafka.so",
+        "runtimes/linux-x64/native/librdkafka.so",
+        "runtimes/osx-x64/native/librdkafka.dylib",
+        "runtimes/win7-x64/native/librdkafka.dll",
+        "runtimes/win7-x64/native/librdkafkacpp.dll",
+        "runtimes/win7-x64/native/msvcr120.dll",
+        "runtimes/win7-x64/native/zlib.dll",
+        "runtimes/win7-x86/native/librdkafka.dll",
+        "runtimes/win7-x86/native/librdkafkacpp.dll",
+        "runtimes/win7-x86/native/msvcr120.dll",
+        "runtimes/win7-x86/native/zlib.dll"
       ]
     },
     "Microsoft.AspNetCore.Http.Abstractions/1.1.2": {
@@ -9618,6 +9755,11 @@
       "path": "../Jy.CacheService/Jy.CacheService.csproj",
       "msbuildProject": "../Jy.CacheService/Jy.CacheService.csproj"
     },
+    "Jy.CKafka/1.0.0": {
+      "type": "project",
+      "path": "../Jy.CKafka/Jy.CKafka.csproj",
+      "msbuildProject": "../Jy.CKafka/Jy.CKafka.csproj"
+    },
     "Jy.Dapper/1.0.0": {
       "type": "project",
       "path": "../Jy.Dapper/Jy.Dapper.csproj",
@@ -9713,6 +9855,7 @@
     ".NETCoreApp,Version=v2.0": [
       "Autofac >= 4.6.1",
       "Jy.Application >= 1.0.0",
+      "Jy.CKafka >= 1.0.0",
       "Jy.Dapper >= 1.0.0",
       "Jy.DistributedLockHandler >= 1.0.0",
       "Jy.Domain >= 1.0.0",
@@ -9785,6 +9928,9 @@
             },
             "D:\\Study\\testJy\\Jy-master\\src\\Jy.Domain\\Jy.Domain.csproj": {
               "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.Domain\\Jy.Domain.csproj"
+            },
+            "D:\\Study\\testJy\\Jy-master\\src\\Jy.CKafka\\Jy.CKafka.csproj": {
+              "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.CKafka\\Jy.CKafka.csproj"
             },
             "D:\\Study\\testJy\\Jy-master\\src\\Jy.Kafka\\Jy.Kafka.csproj": {
               "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.Kafka\\Jy.Kafka.csproj"

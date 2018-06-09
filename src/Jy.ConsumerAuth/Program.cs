@@ -29,6 +29,7 @@ using Jy.IRepositories;
 using System.Threading.Tasks;
 using Jy.IIndex;
 using Jy.EntityFramewordCoreBase.Repositories;
+using Jy.CKafka;
 
 namespace Jy.ConsumerAuth
 {
@@ -143,7 +144,8 @@ namespace Jy.ConsumerAuth
             services.AddScoped(typeof(ProcessMessageDecorator<>));
 
             //------------------------kafka
-            services.AddScoped<IBigQueueOperation, QueueOperationRdKafka>();
+            //services.AddScoped<IBigQueueOperation, QueueOperationRdKafka>();
+            services.AddCKafkaServices(Configuration); 
             //------------------------kafka
 
             IServiceProvider serviceProvider = services.BuildServiceProvider();
