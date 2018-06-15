@@ -20,7 +20,7 @@ namespace Jy.ServicesKeep.Watch
             var state = @event.getState();
             if (Event.KeeperState.Disconnected == state)
             {
-                KeepCallServer.AuthAPIAddress = KeepCallServer.getAuthAPIAddress(_zooKeeperURL);
+                KeepCallServer.refreshAuthAPIHostPort(_zooKeeperURL);
             }
             var type = @event.get_Type();
             if (type != Event.EventType.None)

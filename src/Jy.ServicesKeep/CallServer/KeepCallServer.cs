@@ -5,45 +5,47 @@ using System;
 namespace Jy.ServicesKeep
 {
     public class KeepCallServer
-    {
-        private static volatile CallServer _zkAuthAPI;
-
-        private static readonly object _zkAuthAPIlocker = new object();
-
-        public static string AuthAPIAddress=""; //cache AuthAPIAddress
+    { 
+        private static string _AuthAPIAddress=""; //cache AuthAPIAddress
         private static readonly object _AuthAPIAddresslocker = new object();
         public static string getAuthAPIHostPort(string zooKeeperURL)
         {
-            if (string.IsNullOrWhiteSpace(AuthAPIAddress))
+            if (string.IsNullOrWhiteSpace(_AuthAPIAddress))
             {
                 lock (_AuthAPIAddresslocker)
                 {
-                    if (string.IsNullOrWhiteSpace(AuthAPIAddress))
+                    if (string.IsNullOrWhiteSpace(_AuthAPIAddress))
                     {
-                        AuthAPIAddress = getAuthAPIAddress(zooKeeperURL);
+                        _AuthAPIAddress = getAuthAPIAddress(zooKeeperURL);
                     }
                 }
             }
-            return AuthAPIAddress;
+            return _AuthAPIAddress;
         }
-         
-        public static string TokenAuthAddress = ""; //cache TokenAuthAddress
+        public static void refreshAuthAPIHostPort(string zooKeeperURL)
+        {
+           _AuthAPIAddress = getAuthAPIAddress(zooKeeperURL);
+        }
+        private static string _TokenAuthAddress = ""; //cache TokenAuthAddress
         private static readonly object _TokenAuthAddresslocker = new object();
         public static string getTokenAuthHostPort(string zooKeeperURL)
         {
-            if (string.IsNullOrWhiteSpace(TokenAuthAddress))
+            if (string.IsNullOrWhiteSpace(_TokenAuthAddress))
             {
                 lock (_TokenAuthAddresslocker)
                 {
-                    if (string.IsNullOrWhiteSpace(TokenAuthAddress))
+                    if (string.IsNullOrWhiteSpace(_TokenAuthAddress))
                     {
-                        TokenAuthAddress = getTokenAuthAddress(zooKeeperURL);
+                        _TokenAuthAddress = getTokenAuthAddress(zooKeeperURL);
                     }
                 }
             }
-            return TokenAuthAddress;
+            return _TokenAuthAddress;
         }
-
+        public static void refreshTokenAuthHostPort(string zooKeeperURL)
+        {
+            _TokenAuthAddress = getTokenAuthHostPort(zooKeeperURL);
+        }
         public static string getAuthAPIAddress(string zooKeeperURL)
         {
             CallServer zk = CallAuthAPI.getCallServer(zooKeeperURL);
