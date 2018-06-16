@@ -13,41 +13,49 @@ namespace Jy.Cache
 {
     public class RedisCacheRepository: ICached
     {
-        protected IDatabase _cache;
+        //protected IDatabase _cache;
 
         private ConnectionMultiplexer _connection;
 
         private readonly ICacheClient<IDatabase> _cacheClient;
-
+        private readonly RedisContext _context;
         private readonly string _instance;
         public TimeSpan _expTime { get; set; } = new TimeSpan(0, 10, 0);
         public int _connectTimeout { get; set; }
-        public RedisCacheRepository(ICacheClient<IDatabase> cacheClient,RedisCacheOptions options, int database = 0)
+        public RedisCacheRepository(RedisCacheOptions options, int database = 0)
         {
-            _cacheClient = cacheClient;
+            _cacheClient = new RedisCacheClient<IDatabase>();//cacheClient;
+            _context = new RedisContext(new HashAlgorithm(), options);
             _connection = ConnectionMultiplexer.Connect(options.Configuration);
-            _cache = _connection.GetDatabase(database);
+            //_cache = _connection.GetDatabase(database);
             _instance = options.InstanceName;
             _expTime = options.expTime;
             _connectTimeout = options.ConnectTimeout;
+        }
+        private IDatabase GetCache(string key)
+        {
+            var node = GetRedisNode(key);
+            var redis = GetRedisClient(new RedisEndpoint()
+            {
+                DbIndex = int.Parse(node.Db),
+                Host = node.Host,
+                Password = node.Password,
+                Port = int.Parse(node.Port),
+                MinSize = int.Parse(node.MinSize),
+                MaxSize = int.Parse(node.MaxSize),
+            });
+            return redis;
         }
         private IDatabase GetRedisClient(CacheEndpoint info)
         {
             return _cacheClient.GetClient(info, _connectTimeout);
         }
-        //private ConsistentHashNode GetRedisNode(string item)
-        //{
-        //    if (addressResolver != null)
-        //    {
-        //        return addressResolver.Resolver($"{KeySuffix}.{CacheTargetType.Redis.ToString()}", item).Result;
-        //    }
-        //    else
-        //    {
-        //        ConsistentHash<ConsistentHashNode> hash;
-        //        _context.Value.dicHash.TryGetValue(CacheTargetType.Redis.ToString(), out hash);
-        //        return hash != null ? hash.GetItemNode(item) : default(ConsistentHashNode);
-        //    }
-        //}
+        private ConsistentHashNode GetRedisNode(string item)
+        {
+            ConsistentHash<ConsistentHashNode> hash;
+            _context.dicHash.TryGetValue(CacheTargetType.Redis.ToString(), out hash);
+            return hash != null ? hash.GetItemNode(item) : default(ConsistentHashNode);
+        }
         public async Task<bool> ConnectionAsync(CacheEndpoint endpoint)
         {
             var connection = await _cacheClient.ConnectionAsync(endpoint, _connectTimeout);
@@ -92,7 +100,8 @@ namespace Jy.Cache
             {
                 throw new ArgumentNullException(nameof(key));
             }
-            return _cache.KeyExists(GetKeyForRedis(key));
+            
+            return GetCache(key).KeyExists(GetKeyForRedis(key));
         }
 
         /// <summary>
@@ -107,7 +116,7 @@ namespace Jy.Cache
             {
                 throw new ArgumentNullException(nameof(key));
             }
-            return _cache.StringSet(GetKeyForRedis(key), Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(value)));
+            return GetCache(key).StringSet(GetKeyForRedis(key), Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(value)));
         }
         /// <summary>
         /// 添加缓存
@@ -125,7 +134,8 @@ namespace Jy.Cache
             }
             if (expiressAbsoulte == default(TimeSpan))
                 expiressAbsoulte = this._expTime;
-            return _cache.StringSet(GetKeyForRedis(key), Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(value)), expiressAbsoulte);
+
+            return GetCache(key).StringSet(GetKeyForRedis(key), Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(value)), expiressAbsoulte);
         }
         /// <summary>
         /// 添加缓存
@@ -144,7 +154,7 @@ namespace Jy.Cache
 
             if (expiresIn == default(TimeSpan))
                 expiresIn = this._expTime;
-            return _cache.StringSet(GetKeyForRedis(key), Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(value)), expiresIn);
+            return GetCache(key).StringSet(GetKeyForRedis(key), Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(value)), expiresIn);
         }
 
         /// <summary>
@@ -158,7 +168,7 @@ namespace Jy.Cache
             {
                 throw new ArgumentNullException(nameof(key));
             }
-            return _cache.KeyDelete(GetKeyForRedis(key));
+            return GetCache(key).KeyDelete(GetKeyForRedis(key));
         }
         /// <summary>
         /// 批量删除缓存
@@ -187,7 +197,7 @@ namespace Jy.Cache
                 throw new ArgumentNullException(nameof(key));
             }
 
-            var value = _cache.StringGet(GetKeyForRedis(key));
+            var value = GetCache(key).StringGet(GetKeyForRedis(key));
 
             if (!value.HasValue)
             {
@@ -208,7 +218,7 @@ namespace Jy.Cache
                 throw new ArgumentNullException(nameof(key));
             }
 
-            var value = _cache.StringGet(GetKeyForRedis(key));
+            var value = GetCache(key).StringGet(GetKeyForRedis(key));
 
             if (!value.HasValue)
             {
@@ -312,7 +322,7 @@ namespace Jy.Cache
             {
                 throw new ArgumentNullException(nameof(key));
             }
-            return _cache.StringSetAsync(GetKeyForRedis(key), Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(value)));
+            return GetCache(key).StringSetAsync(GetKeyForRedis(key), Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(value)));
         }
 
         public Task<bool> AddAsync(string key, object value, TimeSpan expiresSliding, TimeSpan expiressAbsoulte)
@@ -323,7 +333,7 @@ namespace Jy.Cache
             }
             if (expiressAbsoulte == default(TimeSpan))
                 expiressAbsoulte = this._expTime;
-            return _cache.StringSetAsync(GetKeyForRedis(key), Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(value)),expiressAbsoulte);
+            return GetCache(key).StringSetAsync(GetKeyForRedis(key), Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(value)),expiressAbsoulte);
 
         }
 
@@ -333,7 +343,7 @@ namespace Jy.Cache
             {
                 throw new ArgumentNullException(nameof(key));
             }
-            return _cache.StringSetAsync(GetKeyForRedis(key), Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(value)), expiresIn);
+            return GetCache(key).StringSetAsync(GetKeyForRedis(key), Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(value)), expiresIn);
 
         }
 
@@ -343,24 +353,25 @@ namespace Jy.Cache
             {
                 throw new ArgumentNullException(nameof(key));
             }
-            return _cache.KeyDeleteAsync(GetKeyForRedis(key));
+            return GetCache(key).KeyDeleteAsync(GetKeyForRedis(key));
         }
 
         public Task RemoveAllAsync(IEnumerable<string> keys)
         {
-            if (keys == null || keys.Count()==0)
-            {
-                throw new ArgumentNullException(nameof(keys));
-            }
+            throw new NotImplementedException();
+            //if (keys == null || keys.Count()==0)
+            //{
+            //    throw new ArgumentNullException(nameof(keys));
+            //}
  
-            RedisKey[] inKeys = new RedisKey[keys.Count()];
-            int i = 0;
-            foreach(var it in keys)
-            {
-                inKeys[i] = GetKeyForRedis(it);
-                i++;
-            }
-            return _cache.KeyDeleteAsync(inKeys);
+            //RedisKey[] inKeys = new RedisKey[keys.Count()];
+            //int i = 0;
+            //foreach(var it in keys)
+            //{
+            //    inKeys[i] = GetKeyForRedis(it);
+            //    i++;
+            //}
+            //return GetCache(key).KeyDeleteAsync(inKeys);
         }
 
         public Task<T> GetAsync<T>(string key) where T : class
@@ -373,7 +384,7 @@ namespace Jy.Cache
             {
                 throw new ArgumentNullException(nameof(key));
             }
-            RedisValue value = await _cache.StringGetAsync(GetKeyForRedis(key));
+            RedisValue value = await GetCache(key).StringGetAsync(GetKeyForRedis(key));
             return value;
         }
         public T Get<T>(Func<T> handler, string key, TimeSpan expiressAbsoulte = default(TimeSpan))
@@ -385,7 +396,7 @@ namespace Jy.Cache
             if (expiressAbsoulte == default(TimeSpan))
                 expiressAbsoulte = this._expTime;
             T obj;
-            var value = _cache.StringGet(GetKeyForRedis(key));
+            var value = GetCache(key).StringGet(GetKeyForRedis(key));
 
             if (!value.HasValue)
             {
@@ -408,7 +419,7 @@ namespace Jy.Cache
                 throw new ArgumentNullException(nameof(key));
             }
            
-            var value = _cache.SortedSetRangeByRank(GetKeyForRedis(key));
+            var value = GetCache(key).SortedSetRangeByRank(GetKeyForRedis(key));
             if (value?.Length==0)
             {
                 List<T> obj = handler();
@@ -419,10 +430,10 @@ namespace Jy.Cache
                     {
                         vals[i] = new SortedSetEntry(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(obj[i])),i);
                     }
-                    _cache.SortedSetAdd(GetKeyForRedis(key), vals);
+                    GetCache(key).SortedSetAdd(GetKeyForRedis(key), vals);
                     if (expiresIn == default(TimeSpan))
                         expiresIn = this._expTime;
-                    _cache.KeyExpire(GetKeyForRedis(key), expiresIn);
+                    GetCache(key).KeyExpire(GetKeyForRedis(key), expiresIn);
                 }
                 return obj;
             }
@@ -448,7 +459,7 @@ namespace Jy.Cache
             {
                  vals[i] = new SortedSetEntry(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(rlist[i])), i);
             }
-            return _cache.SortedSetAdd(GetKeyForRedis(key), vals);
+            return GetCache(key).SortedSetAdd(GetKeyForRedis(key), vals);
         }
         public bool SetSortSingal(string key, object value, double score)
         {
@@ -456,7 +467,7 @@ namespace Jy.Cache
             {
                 throw new ArgumentNullException(nameof(key));
             }
-            return _cache.SortedSetAdd(GetKeyForRedis(key), Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(value)), score);
+            return GetCache(key).SortedSetAdd(GetKeyForRedis(key), Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(value)), score);
         }
         public List<T> SortedSetRangeByRank<T>(string key,long start=0,long end = -1)
         {
@@ -464,7 +475,7 @@ namespace Jy.Cache
             {
                 throw new ArgumentNullException(nameof(key));
             }
-            var zlist = _cache.SortedSetRangeByRank(GetKeyForRedis(key), start,end);
+            var zlist = GetCache(key).SortedSetRangeByRank(GetKeyForRedis(key), start,end);
             List<T> rlist = new List<T>();
             for (int i = 0, j = zlist.Length; i < j; i++)
             {
@@ -480,6 +491,7 @@ namespace Jy.Cache
                 throw new ArgumentNullException(nameof(inobj));
 
             string okey = GetKeyForRedis(key);
+            var _cache = GetCache(key);
             var zlist = _cache.SortedSetRangeByRankWithScores(okey);
             bool isNew = true;
             for (int i = 0, j = zlist.Length; i < j; i++)
@@ -537,7 +549,7 @@ namespace Jy.Cache
             {
                 vals[i] = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(values[i]));
             }
-            _cache.SetAdd(GetKeyForRedis(key), vals);
+            GetCache(key).SetAdd(GetKeyForRedis(key), vals);
         }
         public void SetAdd(string key, object value)
         {
@@ -545,7 +557,7 @@ namespace Jy.Cache
             {
                 throw new ArgumentNullException(nameof(key));
             }
-            _cache.SetAdd(GetKeyForRedis(key), Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(value)));
+            GetCache(key).SetAdd(GetKeyForRedis(key), Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(value)));
         }
         public List<T> SetMembers<T>(string key) where T : class
         {
@@ -553,7 +565,7 @@ namespace Jy.Cache
             {
                 throw new ArgumentNullException(nameof(key));
             }
-            var value = _cache.SetMembers(GetKeyForRedis(key));
+            var value = GetCache(key).SetMembers(GetKeyForRedis(key));
 
             if (value==null||value.Length<=0)
             {
@@ -572,7 +584,7 @@ namespace Jy.Cache
             {
                 throw new ArgumentNullException(nameof(key));
             }
-            return _cache.SetContains(GetKeyForRedis(key), Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(value)));
+            return GetCache(key).SetContains(GetKeyForRedis(key), Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(value)));
         }
         public void HashSet(string key, object field,object value)
         {
@@ -580,7 +592,7 @@ namespace Jy.Cache
             {
                 throw new ArgumentNullException(nameof(key));
             }
-            _cache.HashSet(GetKeyForRedis(key), Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(field)), Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(value)));
+            GetCache(key).HashSet(GetKeyForRedis(key), Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(field)), Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(value)));
         }
         public  T HashGet<T>(string key,object field) where T : class
         {
@@ -588,7 +600,7 @@ namespace Jy.Cache
             {
                 throw new ArgumentNullException(nameof(key));
             }
-            var value = _cache.HashGet(GetKeyForRedis(key), Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(field)));
+            var value = GetCache(key).HashGet(GetKeyForRedis(key), Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(field)));
 
             if (!value.HasValue)
             {
@@ -603,7 +615,7 @@ namespace Jy.Cache
             {
                 throw new ArgumentNullException(nameof(key));
             }
-            _cache.KeyExpire(GetKeyForRedis(key), expiresIn);
+            GetCache(key).KeyExpire(GetKeyForRedis(key), expiresIn);
         }
 
     }

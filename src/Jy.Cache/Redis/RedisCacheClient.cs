@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jy.Cache.Redis
+namespace Jy.Cache
 { 
     public class RedisCacheClient<T> : ICacheClient<T>
         where T : class
