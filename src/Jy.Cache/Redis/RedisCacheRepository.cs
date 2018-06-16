@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Net;
+using Jy.Cache.HashAlgorithms;
 
 namespace Jy.Cache
 {
@@ -16,17 +17,42 @@ namespace Jy.Cache
 
         private ConnectionMultiplexer _connection;
 
+        private readonly ICacheClient<IDatabase> _cacheClient;
+
         private readonly string _instance;
         public TimeSpan _expTime { get; set; } = new TimeSpan(0, 10, 0);
-
-        public RedisCacheRepository(RedisCacheOptions options, int database = 0)
+        public int _connectTimeout { get; set; }
+        public RedisCacheRepository(ICacheClient<IDatabase> cacheClient,RedisCacheOptions options, int database = 0)
         {
+            _cacheClient = cacheClient;
             _connection = ConnectionMultiplexer.Connect(options.Configuration);
             _cache = _connection.GetDatabase(database);
             _instance = options.InstanceName;
             _expTime = options.expTime;
+            _connectTimeout = options.ConnectTimeout;
         }
-
+        private IDatabase GetRedisClient(CacheEndpoint info)
+        {
+            return _cacheClient.GetClient(info, _connectTimeout);
+        }
+        //private ConsistentHashNode GetRedisNode(string item)
+        //{
+        //    if (addressResolver != null)
+        //    {
+        //        return addressResolver.Resolver($"{KeySuffix}.{CacheTargetType.Redis.ToString()}", item).Result;
+        //    }
+        //    else
+        //    {
+        //        ConsistentHash<ConsistentHashNode> hash;
+        //        _context.Value.dicHash.TryGetValue(CacheTargetType.Redis.ToString(), out hash);
+        //        return hash != null ? hash.GetItemNode(item) : default(ConsistentHashNode);
+        //    }
+        //}
+        public async Task<bool> ConnectionAsync(CacheEndpoint endpoint)
+        {
+            var connection = await _cacheClient.ConnectionAsync(endpoint, _connectTimeout);
+            return connection;
+        }
         public string GetKeyForRedis(string key)
         {
             return _instance + key;
