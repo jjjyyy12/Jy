@@ -14,8 +14,7 @@ namespace Jy.Cache
     public class RedisCacheRepository: ICached
     {
         //protected IDatabase _cache;
-
-        private ConnectionMultiplexer _connection;
+        //private ConnectionMultiplexer _connection;
 
         private readonly ICacheClient<IDatabase> _cacheClient;
         private readonly RedisContext _context;
@@ -26,7 +25,7 @@ namespace Jy.Cache
         {
             _cacheClient = new RedisCacheClient<IDatabase>();//cacheClient;
             _context = new RedisContext(new HashAlgorithm(), options);
-            _connection = ConnectionMultiplexer.Connect(options.Configuration);
+            //_connection = ConnectionMultiplexer.Connect(options.Configuration);
             //_cache = _connection.GetDatabase(database);
             _instance = options.InstanceName;
             _expTime = options.expTime;
@@ -65,29 +64,29 @@ namespace Jy.Cache
         {
             return _instance + key;
         }
-        private IServer GetServer(EndPoint point)
-        {
-            return _connection.GetServer(point);
-        }
-        /// <summary>
-        /// getallkeys by pattern
-        /// </summary>
-        /// <param name="keypattern">"*key*"</param>
-        /// <returns></returns>
-        public List<string> GetKeys(string keypattern)
-        {
-            var endpoint = _connection.GetEndPoints();
-            List<string> rlist = new List<string>();
-            IEnumerable<RedisKey> data = null;
-            foreach (var point in endpoint)
-            {
-                var server = GetServer(point);
-                data = server.Keys(pattern: keypattern);
-                if(data!=null)
-                    rlist.AddRange(data.Select(k => k.ToString()));
-            }
-            return rlist;
-        }
+        //private IServer GetServer(EndPoint point)
+        //{
+        //    return _connection.GetServer(point);
+        //}
+        ///// <summary>
+        ///// getallkeys by pattern
+        ///// </summary>
+        ///// <param name="keypattern">"*key*"</param>
+        ///// <returns></returns>
+        //public List<string> GetKeys(string keypattern)
+        //{
+        //    var endpoint = _connection.GetEndPoints();
+        //    List<string> rlist = new List<string>();
+        //    IEnumerable<RedisKey> data = null;
+        //    foreach (var point in endpoint)
+        //    {
+        //        var server = GetServer(point);
+        //        data = server.Keys(pattern: keypattern);
+        //        if(data!=null)
+        //            rlist.AddRange(data.Select(k => k.ToString()));
+        //    }
+        //    return rlist;
+        //}
 
         /// <summary>
         /// 验证缓存项是否存在
@@ -306,8 +305,8 @@ namespace Jy.Cache
         }
         public void Dispose()
         {
-            if (_connection != null)
-                _connection.Dispose();
+            //if (_connection != null)
+            //    _connection.Dispose();
             GC.SuppressFinalize(this);
         }
 

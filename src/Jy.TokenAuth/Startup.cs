@@ -83,7 +83,8 @@ namespace Jy.TokenAuth
                 {
                     Configuration = Configuration.GetSection("CacheConfig").GetValue<string>("Redis_ConnectionString"),//_cacheProvider._connectionString,
                     InstanceName = Configuration.GetSection("CacheConfig").GetValue<string>("Redis_InstanceName"),//_cacheProvider._instanceName
-                    expTime = new TimeSpan(0, Configuration.GetSection("CacheConfig").GetValue<int>("expTime"), 0)
+                    expTime = new TimeSpan(0, Configuration.GetSection("CacheConfig").GetValue<int>("expTime"), 0),
+                    ConnectTimeout = Configuration.GetSection("CacheConfig").GetValue<int>("expTime")*60*1000
                 }, 0));
             }
             if ("TRUE".Equals(Configuration.GetSection("CacheConfig").GetValue<string>("UseHttpCache").ToUpper()))

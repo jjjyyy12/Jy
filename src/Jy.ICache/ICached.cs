@@ -252,6 +252,6 @@ namespace Jy.ICache
         //设置超时
         void KeyExpire(string key, TimeSpan expiresIn);
 
-        List<string> GetKeys(string keypattern);
+        //List<string> GetKeys(string keypattern);
     }
 }

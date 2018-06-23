@@ -26,7 +26,9 @@ BuildingBlocks --公共组件
 	
 		Jy.IMessageQueue	--消息的底层操作接口
 		
-		Jy.Kafka	--kafka的实现，主要实现IMessageQueue的IBigQueueOperation
+		Jy.Kafka	--kafka的实现，主要实现IMessageQueue的IBigQueueOperation，基于RdKafka
+		
+		Jy.CKafka	--kafka的实现，主要实现IMessageQueue的IBigQueueOperation，基于Confluent.Kafka
 		
 		Jy.QueueService	--IMessageQueue的上层封装
 		
@@ -100,7 +102,7 @@ Services	--服务层
 	
 	Jy.AuthService	--api与tokenauth（identityserver）的相关调用的公共封装
 	
-	Jy.ServicesKeep	--api的服务注册与发现
+	Jy.ServicesKeep	--api的服务注册与发现，基于zookeeper，ZooKeeperNetEx
 	
 WebApp	--web前端
 
