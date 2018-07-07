@@ -55,6 +55,18 @@
           "lib/netstandard2.0/Microsoft.Extensions.Caching.Memory.dll": {}
         }
       },
+      "Microsoft.Extensions.DependencyInjection/2.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.dll": {}
+        }
+      },
       "Microsoft.Extensions.DependencyInjection.Abstractions/2.0.0": {
         "type": "package",
         "compile": {
@@ -1695,6 +1707,21 @@
         "runtime": {
           "bin/placeholder/Jy.ICache.dll": {}
         }
+      },
+      "Jy.Utility/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection": "2.0.0",
+          "Newtonsoft.Json": "10.0.3",
+          "System.Text.RegularExpressions": "4.3.0"
+        },
+        "compile": {
+          "bin/placeholder/Jy.Utility.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Jy.Utility.dll": {}
+        }
       }
     }
   },
@@ -1776,6 +1803,17 @@
         "lib/netstandard2.0/Microsoft.Extensions.Caching.Memory.xml",
         "microsoft.extensions.caching.memory.2.0.0.nupkg.sha512",
         "microsoft.extensions.caching.memory.nuspec"
+      ]
+    },
+    "Microsoft.Extensions.DependencyInjection/2.0.0": {
+      "sha512": "wakg18gHYiUL1pcjjyZuYk6OvDpbSw1E7IWxm78TMepsr+gQ8W0tWzuRm0q/9RFblngwPwo15rrgZSUV51W5Iw==",
+      "type": "package",
+      "path": "microsoft.extensions.dependencyinjection/2.0.0",
+      "files": [
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.xml",
+        "microsoft.extensions.dependencyinjection.2.0.0.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.nuspec"
       ]
     },
     "Microsoft.Extensions.DependencyInjection.Abstractions/2.0.0": {
@@ -5853,11 +5891,17 @@
       "type": "project",
       "path": "../Jy.ICache/Jy.ICache.csproj",
       "msbuildProject": "../Jy.ICache/Jy.ICache.csproj"
+    },
+    "Jy.Utility/1.0.0": {
+      "type": "project",
+      "path": "../Jy.Utility/Jy.Utility.csproj",
+      "msbuildProject": "../Jy.Utility/Jy.Utility.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
       "Jy.ICache >= 1.0.0",
+      "Jy.Utility >= 1.0.0",
       "Microsoft.Extensions.Caching.Memory >= 2.0.0",
       "Microsoft.NETCore.App >= 2.0.0",
       "Newtonsoft.Json >= 10.0.3",
@@ -5897,6 +5941,9 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
+            "D:\\Study\\testJy\\Jy-master\\src\\Jy.Utility\\Jy.Utility.csproj": {
+              "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.Utility\\Jy.Utility.csproj"
+            },
             "D:\\Study\\testJy\\Jy-master\\src\\Jy.ICache\\Jy.ICache.csproj": {
               "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.ICache\\Jy.ICache.csproj"
             }

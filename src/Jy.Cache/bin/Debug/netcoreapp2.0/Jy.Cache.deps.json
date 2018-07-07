@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "75b35e02fae238efa2f2fd0561981232f41bbdf8"
+    "signature": "083633349a25752384c59c768e585fb16737ee66"
   },
   "compilationOptions": {},
   "targets": {
@@ -9,6 +9,7 @@
       "Jy.Cache/1.0.0": {
         "dependencies": {
           "Jy.ICache": "1.0.0",
+          "Jy.Utility": "1.0.0",
           "Microsoft.Extensions.Caching.Memory": "2.0.0",
           "Newtonsoft.Json": "10.0.3",
           "StackExchange.Redis": "1.2.6"
@@ -53,6 +54,14 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.Caching.Memory.dll": {}
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection/2.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.dll": {}
         }
       },
       "Microsoft.Extensions.DependencyInjection.Abstractions/2.0.0": {
@@ -1022,6 +1031,16 @@
         "runtime": {
           "Jy.ICache.dll": {}
         }
+      },
+      "Jy.Utility/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection": "2.0.0",
+          "Newtonsoft.Json": "10.0.3",
+          "System.Text.RegularExpressions": "4.3.0"
+        },
+        "runtime": {
+          "Jy.Utility.dll": {}
+        }
       }
     }
   },
@@ -1051,6 +1070,13 @@
       "sha512": "sha512-NqvVdYLbX7N2J2Wz9y3zjhE66JRdROiZZsGhA2u4a9IcIq/jzINC/cLM96BHA+TSOZFPxVdWneqB6/yt9u846A==",
       "path": "microsoft.extensions.caching.memory/2.0.0",
       "hashPath": "microsoft.extensions.caching.memory.2.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.DependencyInjection/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wakg18gHYiUL1pcjjyZuYk6OvDpbSw1E7IWxm78TMepsr+gQ8W0tWzuRm0q/9RFblngwPwo15rrgZSUV51W5Iw==",
+      "path": "microsoft.extensions.dependencyinjection/2.0.0",
+      "hashPath": "microsoft.extensions.dependencyinjection.2.0.0.nupkg.sha512"
     },
     "Microsoft.Extensions.DependencyInjection.Abstractions/2.0.0": {
       "type": "package",
@@ -1669,6 +1695,11 @@
       "hashPath": "system.xml.xmldocument.4.3.0.nupkg.sha512"
     },
     "Jy.ICache/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Jy.Utility/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

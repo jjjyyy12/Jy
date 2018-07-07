@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Jy.ICache\Jy.ICache.csproj" />
+    <ProjectReference Include="..\Jy.Utility\Jy.Utility.csproj" />
   </ItemGroup>
 
 </Project>

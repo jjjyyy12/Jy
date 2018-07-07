@@ -30,6 +30,7 @@ using System.Threading.Tasks;
 using Jy.IIndex;
 using Jy.EntityFramewordCoreBase.Repositories;
 using Jy.CKafka;
+using Jy.Utility;
 
 namespace Jy.ConsumerAuth
 {
@@ -44,7 +45,8 @@ namespace Jy.ConsumerAuth
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddEnvironmentVariables();
             IConfigurationRoot Configuration = confbuilder.Build();
-            
+
+            services.AddSerializerServices();
             services.AddDbContext<JyDbContext>(options => options.UseMySql(Configuration.GetConnectionString("MySql")), ServiceLifetime.Scoped);//mysql
             //services.AddDbContext<JyDBReadContext>(options => options.UseMySql(Configuration.GetConnectionString("MySqlRead")), ServiceLifetime.Scoped);//mysqlread
 

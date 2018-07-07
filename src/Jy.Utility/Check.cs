@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Jy.Cache.Utilities
+namespace Jy.Utility
 {
     public sealed class Check
     {
@@ -30,7 +30,7 @@ namespace Jy.Cache.Utilities
         {
             if (string.IsNullOrWhiteSpace(value))
             {
-                throw new ArgumentException(  parameterName );
+                throw new ArgumentException(string.Format("{0}参数不能为空", parameterName));
             }
 
             return value;
@@ -40,7 +40,7 @@ namespace Jy.Cache.Utilities
         {
             if (condition.Invoke())
             {
-                throw new ArgumentException( parameterName);
+                throw new ArgumentException(string.Format("{0}参数不能为空", parameterName));
             }
         }
 
@@ -48,7 +48,7 @@ namespace Jy.Cache.Utilities
         {
             if (condition.Invoke())
             {
-                throw new ArgumentException( string.Concat( parameters));
+                throw new ArgumentException(string.Format("{0}参数不能为空", parameters));
             }
         }
     }

@@ -24,6 +24,7 @@ using Jy.ServicesKeep;
 using Jy.IIndex;
 using Jy.AuthAdmin.SolrIndex;
 using Jy.Domain.IIndex;
+using Jy.Utility;
 
 namespace Jy.TokenAuth
 {
@@ -61,6 +62,7 @@ namespace Jy.TokenAuth
         // This method gets called by the runtime. Use this method to add services to the container
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSerializerServices();
             //添加数据上下文
             //services.AddDbContext<JyDbContext>(options => options.UseNpgsql(sqlConnectionString)); //PostgreSQL
             services.AddDbContext<JyDbContext>(options => options.UseMySql(Configuration.GetConnectionString("MySql")), ServiceLifetime.Scoped);//mysql
@@ -173,7 +175,7 @@ namespace Jy.TokenAuth
             IApplicationLifetime appLifetime = (IApplicationLifetime)app.ApplicationServices.GetService(typeof(IApplicationLifetime));
             if (appLifetime != null)
             {
-                appLifetime.ApplicationStopped.Register(Log.CloseAndFlush);
+                appLifetime.ApplicationStopped.Register(Serilog.Log.CloseAndFlush);
             }
             app.UseAuthLog(authLogOptions);//这个中间件用作记录请求中的过程日志
             //---------------------------------------------------serilog 配置

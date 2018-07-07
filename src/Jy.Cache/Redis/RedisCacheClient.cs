@@ -1,5 +1,6 @@
 ﻿using Jy.Cache.HashAlgorithms;
 using Jy.Cache.Utilities;
+using Jy.Utility;
 using StackExchange.Redis;
 using System;
 using System.Collections.Concurrent;

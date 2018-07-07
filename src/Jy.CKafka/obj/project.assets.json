@@ -1112,6 +1112,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
         "dependencies": {
+          "Microsoft.Extensions.DependencyInjection": "2.0.0",
           "Newtonsoft.Json": "10.0.3",
           "System.Text.RegularExpressions": "4.3.0"
         },

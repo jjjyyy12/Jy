@@ -3554,6 +3554,7 @@
       "Jy.Cache/1.0.0": {
         "dependencies": {
           "Jy.ICache": "1.0.0",
+          "Jy.Utility": "1.0.0",
           "Microsoft.Extensions.Caching.Memory": "2.0.0",
           "Newtonsoft.Json": "10.0.3",
           "StackExchange.Redis": "1.2.6"
@@ -3837,6 +3838,7 @@
       },
       "Jy.Utility/1.0.0": {
         "dependencies": {
+          "Microsoft.Extensions.DependencyInjection": "2.0.0",
           "Newtonsoft.Json": "10.0.3",
           "System.Text.RegularExpressions": "4.3.0"
         },

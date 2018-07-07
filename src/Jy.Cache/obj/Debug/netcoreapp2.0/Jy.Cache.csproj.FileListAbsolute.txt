@@ -9,3 +9,5 @@ D:\Study\testJy\Jy-master\src\Jy.Cache\obj\Debug\netcoreapp2.0\Jy.Cache.Assembly
 D:\Study\testJy\Jy-master\src\Jy.Cache\obj\Debug\netcoreapp2.0\Jy.Cache.AssemblyInfo.cs
 D:\Study\testJy\Jy-master\src\Jy.Cache\obj\Debug\netcoreapp2.0\Jy.Cache.dll
 D:\Study\testJy\Jy-master\src\Jy.Cache\obj\Debug\netcoreapp2.0\Jy.Cache.pdb
+D:\Study\testJy\Jy-master\src\Jy.Cache\bin\Debug\netcoreapp2.0\Jy.Utility.dll
+D:\Study\testJy\Jy-master\src\Jy.Cache\bin\Debug\netcoreapp2.0\Jy.Utility.pdb
