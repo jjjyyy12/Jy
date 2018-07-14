@@ -11,10 +11,10 @@ namespace Jy.Utility.Node
     {
         //原文中的JAVA类TreeMap实现了Comparator方法，这里我图省事，直接用了net下的SortedList，其中Comparer接口方法）
         private SortedList<long, string> ketamaNodes = new SortedList<long, string>();
-        private HashAlgorithm hashAlg;
+        private HashAlgorithmMD5 hashAlg;
         private int numReps = 160;
 
-        //此处参数与JAVA版中有区别，因为使用的静态方法，所以不再传递HashAlgorithm alg参数
+        //此处参数与JAVA版中有区别，因为使用的静态方法，所以不再传递HashAlgorithmMD5 alg参数
         public KetamaNodeLocator(List<string> nodes /*, int nodeCopies*/)
         {
             ketamaNodes = new SortedList<long, string>();
@@ -27,11 +27,11 @@ namespace Jy.Utility.Node
                 for (int i = 0; i < numReps / 4; i++)
                 {
                     //getKeyForNode方法为这组虚拟结点得到惟一名称 
-                    byte[] digest = HashAlgorithm.computeMd5(node + i);
+                    byte[] digest = HashAlgorithmMD5.computeMd5(node + i);
                     /** Md5是一个16字节长度的数组，将16字节的数组每四个字节一组，分别对应一个虚拟结点，这就是为什么上面把虚拟结点四个划分一组的原因*/
                     for (int h = 0; h < 4; h++)
                     {
-                        long m = HashAlgorithm.hash(digest, h);
+                        long m = HashAlgorithmMD5.hash(digest, h);
                         ketamaNodes[m] = node;
                     }
                 }
@@ -40,8 +40,8 @@ namespace Jy.Utility.Node
 
         public string GetPrimary(string k)
         {
-            byte[] digest = HashAlgorithm.computeMd5(k);
-            string rv = GetNodeForKey(HashAlgorithm.hash(digest, 0));
+            byte[] digest = HashAlgorithmMD5.computeMd5(k);
+            string rv = GetNodeForKey(HashAlgorithmMD5.hash(digest, 0));
             return rv;
         }
 
@@ -113,7 +113,7 @@ namespace Jy.Utility.Node
         }
     }
 
-    public class HashAlgorithm
+    public class HashAlgorithmMD5
     {
         public static long hash(byte[] digest, int nTime)
         {
