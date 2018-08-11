@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using System.Text;
 
 namespace Jy.Utility.Node
@@ -32,10 +34,6 @@ namespace Jy.Utility.Node
         /// <summary>
         /// 复制哈希节点数
         /// </summary>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2016/4/2</para>
-        /// </remarks>
         public int VirtualNodeReplicationFactor
         {
             get { return _virtualNodeReplicationFactor; }
@@ -46,10 +44,6 @@ namespace Jy.Utility.Node
         /// 初始化节点服务器
         /// </summary>
         /// <param name="nodes">节点</param>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2016/4/2</para>
-        /// </remarks>
         public void Initialize(IEnumerable<T> nodes)
         {
             foreach (var node in nodes)
@@ -63,10 +57,6 @@ namespace Jy.Utility.Node
         /// 添加节点
         /// </summary>
         /// <param name="node">节点</param>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2016/4/2</para>
-        /// </remarks>
         public void Add(T node)
         {
             AddNode(node);
@@ -77,10 +67,6 @@ namespace Jy.Utility.Node
         /// 删除节点
         /// </summary>
         /// <param name="node">节点</param>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2016/4/2</para>
-        /// </remarks>
         public void Remove(T node)
         {
             RemoveNode(node);
@@ -92,10 +78,6 @@ namespace Jy.Utility.Node
         /// </summary>
         /// <param name="item">值</param>
         /// <returns>返回节点</returns>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2016/4/2</para>
-        /// </remarks>
         public T GetItemNode(string item)
         {
             var hashOfItem = _hashAlgorithm.Hash(item);
@@ -107,10 +89,6 @@ namespace Jy.Utility.Node
         /// 添加节点
         /// </summary>
         /// <param name="node">节点</param>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2016/4/2</para>
-        /// </remarks>
         private void AddNode(T node)
         {
             for (var i = 0; i < _virtualNodeReplicationFactor; i++)
@@ -124,10 +102,6 @@ namespace Jy.Utility.Node
         /// 删除节点
         /// </summary>
         /// <param name="node">节点</param>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2016/4/2</para>
-        /// </remarks>
         private void RemoveNode(T node)
         {
             for (var i = 0; i < _virtualNodeReplicationFactor; i++)
@@ -144,10 +118,6 @@ namespace Jy.Utility.Node
         /// <param name="keys">键集合数</param>
         /// <param name="hashOfItem">哈希值</param>
         /// <returns>返回哈希的位置</returns>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2016/4/2</para>
-        /// </remarks>
         private int GetClockwiseNearestNode(int[] keys, int hashOfItem)
         {
             var begin = 0;

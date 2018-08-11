@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Net;
 using Jy.Cache.HashAlgorithms;
+using Jy.Utility.Node;
 
 namespace Jy.Cache
 {
