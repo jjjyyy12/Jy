@@ -7,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Net;
-using Jy.Cache.HashAlgorithms;
 using Jy.Utility.Node;
 
 namespace Jy.Cache
@@ -395,19 +394,25 @@ namespace Jy.Cache
             }
             if (expiressAbsoulte == default(TimeSpan))
                 expiressAbsoulte = this._expTime;
-            T obj;
+            
             var value = GetCache(key).StringGet(GetKeyForRedis(key));
 
+            T obj;
             if (!value.HasValue)
             {
                 obj = handler();
                 if (obj != null)
                     Add(key, obj, expiressAbsoulte);
+                else
+                    Add(key, "@~", expiressAbsoulte);
                 return obj;
             }
             else
             {
-                return JsonConvert.DeserializeObject<T>(value);
+                if (value.Equals("@~"))
+                    return  Activator.CreateInstance<T>();
+                else
+                    return JsonConvert.DeserializeObject<T>(value);
             }
 
         }

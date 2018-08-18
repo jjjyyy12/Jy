@@ -1,4 +1,4 @@
-﻿using Jy.Cache.HashAlgorithms;
+﻿
 using Jy.Utility.Node;
 using System;
 using System.Collections.Concurrent;
@@ -74,7 +74,7 @@ namespace Jy.Cache
                     connSet.Add(connStr);
                      
                     var hash =
-                        new ConsistentHash<HashAlgorithms.ConsistentHashNode>(_hashAlgorithm);
+                        new ConsistentHash<ConsistentHashNode>(_hashAlgorithm);
 
                         var endpoints = connStr.Split(':');
  
