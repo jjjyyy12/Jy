@@ -5,11 +5,7 @@ using System.Threading.Tasks;
 
 namespace Jy.ICache
 {
-    //public interface ICached
-    //{
-    //    T Get<T>(Func<T> handler, string key);
-    //    void Set(string key, object data);
-    //}
+
     public interface ICached
     {
         /// <summary>

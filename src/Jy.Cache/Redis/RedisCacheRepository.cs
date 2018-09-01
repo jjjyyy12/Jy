@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using System.Net;
 using Jy.Utility.Node;
 
 namespace Jy.Cache
