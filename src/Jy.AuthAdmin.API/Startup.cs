@@ -266,7 +266,7 @@ namespace Jy.AuthAdmin.API
                         description.GroupName,
                         new Info()
                         {
-                            Title = $"Sample API {description.ApiVersion}",
+                            Title = $"AuthAdmin HTTP API {description.ApiVersion}",
                             Version = description.ApiVersion.ToString()
                         });
                 }

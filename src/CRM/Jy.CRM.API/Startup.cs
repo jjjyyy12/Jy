@@ -63,7 +63,7 @@ namespace Jy.CRM.API
                 options.DescribeAllEnumsAsStrings();
                 options.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info
                 {
-                    Title = "AuthAdmin HTTP API",
+                    Title = "CRM HTTP API",
                     Version = "v1",
                     Description = "The AuthAdmin Service HTTP API",
                     TermsOfService = "Terms Of Service"
