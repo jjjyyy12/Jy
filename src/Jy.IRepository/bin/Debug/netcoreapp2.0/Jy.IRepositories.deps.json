@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "f6e2025dee3ad3ab37c098b1be500a0756e33894"
+    "signature": "b3b7733fb4afd3101c556686720239eb841849fc"
   },
   "compilationOptions": {},
   "targets": {
@@ -9,6 +9,7 @@
       "Jy.IRepositories/1.0.0": {
         "dependencies": {
           "Jy.Utility": "1.0.0",
+          "System.Linq.Dynamic.Core": "1.0.8.18",
           "System.Reflection.Emit": "4.3.0",
           "System.Reflection.Emit.Lightweight": "4.3.0"
         },
@@ -200,6 +201,14 @@
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0"
+        }
+      },
+      "System.Linq.Dynamic.Core/1.0.8.18": {
+        "dependencies": {
+          "System.Reflection.Emit": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Linq.Dynamic.Core.dll": {}
         }
       },
       "System.Linq.Expressions/4.3.0": {
@@ -552,6 +561,13 @@
       "sha512": "sha512-5DbqIUpsDp0dFftytzuMmc0oeMdQwjcP/EWxsksIz/w1TcFRkZ3yKKz0PqiYFMmEwPSWw+qNVqD7PJ889JzHbw==",
       "path": "system.linq/4.3.0",
       "hashPath": "system.linq.4.3.0.nupkg.sha512"
+    },
+    "System.Linq.Dynamic.Core/1.0.8.18": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Ti7yhula15jyfG/S2RoSmAgXwOltY1ILSef+SSCfTjq6GiOZNqhESRrXS2Aflq2ico++TOFg05rWTWShdVLtOQ==",
+      "path": "system.linq.dynamic.core/1.0.8.18",
+      "hashPath": "system.linq.dynamic.core.1.0.8.18.nupkg.sha512"
     },
     "System.Linq.Expressions/4.3.0": {
       "type": "package",

@@ -194,7 +194,6 @@ namespace Jy.DapperBase.Repositories
         /// <returns></returns>
         public override IQueryable<TEntity> LoadPageList(int startPage, int pageSize, out int rowCount, Expression<Func<TEntity, bool>> where = null, Expression<Func<TEntity, object>> order = null)
         {
-             
             var result = from p in _dbContext.connection.Query<TEntity>()
                          select p;
             if (where != null)
@@ -206,7 +205,58 @@ namespace Jy.DapperBase.Repositories
             rowCount = result.Count();
             return result.Skip((startPage - 1) * pageSize).Take(pageSize);
         }
+        public async Task<PaginatedList<TEntity>> GetPaginatedAsync(PaginationBase parameters, PropertyMapping propertyMapping)
+        {
+            var collectionBeforePaging = _dbContext.Query<TEntity>().ApplySort(parameters.OrderBy, propertyMapping);
+            parameters.Count = collectionBeforePaging.Count();
+            var items = collectionBeforePaging.Skip(parameters.PageIndex * parameters.PageSize).Take(parameters.PageSize).ToList();
+            var result = new PaginatedList<TEntity>(parameters, items);
+            return result;
+        }
 
+        public async Task<PaginatedList<TEntity>> GetPaginatedAsync(PaginationBase parameters, PropertyMapping propertyMapping, Expression<Func<TEntity, bool>> criteria)
+        {
+            var collectionBeforePaging = _dbContext.Query<TEntity>().Where(criteria).ApplySort(parameters.OrderBy, propertyMapping);
+            parameters.Count =   collectionBeforePaging.Count();
+            var items =   collectionBeforePaging.Skip(parameters.PageIndex * parameters.PageSize).Take(parameters.PageSize).ToList();
+            var result = new PaginatedList<TEntity>(parameters, items);
+            return result;
+        }
+
+        //public async Task<PaginatedList<TEntity>> GetPaginatedAsync(PaginationBase parameters, PropertyMapping propertyMapping, Expression<Func<TEntity, bool>> criteria,
+        //    params Expression<Func<TEntity, object>>[] includes)
+        //{
+        //    var collectionBeforePaging = includes
+        //        .Aggregate(_dbContext.Query<TEntity>().Where(criteria).ApplySort(parameters.OrderBy, propertyMapping),
+        //            (current, include) => current.Include(include));
+        //    parameters.Count = await collectionBeforePaging.CountAsync();
+        //    var items = await collectionBeforePaging.Skip(parameters.PageIndex * parameters.PageSize).Take(parameters.PageSize).ToListAsync();
+        //    var result = new PaginatedList<TEntity>(parameters, items);
+        //    return result;
+        //}
+        /*
+          [HttpGet]
+        [Route("Paged", Name = "GetPagedVehicles")]
+        public async Task<IActionResult> GetPaged(QueryViewModel parameters)
+        {
+            var propertyMapping = new VehiclePropertyMapping();
+            PaginatedList<Vehicle> pagedList;
+            if (string.IsNullOrEmpty(parameters.SearchTerm))
+            {
+                pagedList = await _vehicleRepository.GetPaginatedAsync(parameters, propertyMapping);
+            }
+            else
+            {
+                pagedList = await _vehicleRepository.GetPaginatedAsync(parameters, propertyMapping,
+                    x => x.Model.Contains(parameters.SearchTerm) || x.Owner.Contains(parameters.SearchTerm));
+            }
+            var vehicleVms = Mapper.Map<IEnumerable<VehicleViewModel>>(pagedList);
+            vehicleVms = vehicleVms.Select(CreateLinksForVehicle);
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(pagedList.PaginationBase));
+            var wrapper = new LinkedCollectionResourceWrapperViewModel<VehicleViewModel>(vehicleVms);
+            return Ok(CreateLinksForVehicle(wrapper));
+        }
+             */
         /// <summary>
         /// 事务性保存
         /// </summary>
