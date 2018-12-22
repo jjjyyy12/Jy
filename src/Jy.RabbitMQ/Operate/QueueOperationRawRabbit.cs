@@ -20,7 +20,7 @@ using RawRabbit;
 namespace Jy.RabbitMQ
 {
  
-    public class QueueOperationRawRabbit : IQueueOperation
+    public class QueueOperationRawRabbit : IQueueOperationRawRabbit
     {
         private readonly ILogger<QueueOperationRawRabbit> _logger;
         private readonly IQueueOperationSubscriptionsManager _subsManager;

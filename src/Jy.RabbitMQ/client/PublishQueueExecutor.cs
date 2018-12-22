@@ -8,10 +8,11 @@ using RabbitMQ.Client.MessagePatterns;
 using Jy.Utility.Convert;
 using System.Threading;
 using RabbitMQ.Client.Events;
+using System.Diagnostics;
 
 namespace Jy.RabbitMQ
 {
-    public class PublishQueueExecutor: BaseQueueExcutor
+    public class PublishQueueExecutor: IQueueExecutor
     {
         private readonly ILogger _logger;
         private readonly ConnectionPool _connectionPool;
@@ -20,48 +21,23 @@ namespace Jy.RabbitMQ
         public PublishQueueExecutor(
             ConnectionPool connectionPool,
             RabbitMQOptions rabbitMQOptions,
-            ILogger logger) : base( logger)
+            ILogger logger)
         {
             _logger = logger;
             _connectionPool = connectionPool;
             _rabbitMQOptions = rabbitMQOptions;
         }
-
-        public override void PublishTopic(MessageBase msg)
-        {
-            var connection = _connectionPool.Rent();
-
-            try
-            {
-                using (var channel = connection.CreateModel())
-                {
-                    //channel.ExchangeDeclare(msg.exchangeName, RabbitMQOptions.ExchangeType, true, true, null);
-                    channel.BasicPublish(exchange: msg.exchangeName,
-                                         routingKey: msg.MessageRouter,
-                                         basicProperties: null,
-                                         body: ByteConvertHelper.Object2Bytes(msg));
-
-                    _logger.LogDebug($"rabbitmq topic message [{msg.Id}] has been published.");
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError($"rabbitmq topic message [{msg.Id}] has benn raised an exception of sending. the exception is: {ex.Message}",ex);
-                throw ex;
-            }
-            finally
-            {
-                _connectionPool.Return(connection);
-            }
-        }
-      
+       
+        /// <summary>
+        /// RPC发送消息，带response
+        /// </summary>
         public Task<MessageBase> RequestTopic(MessageBase msg)
         {
             return RequestPublish(msg, new TimeSpan(0, 60, 0), CancellationToken.None);
         }
 
         static Object obj = new Object();
-        public Task<MessageBase> RequestPublish(MessageBase msg,TimeSpan timeout, CancellationToken cancellationToken)
+        private Task<MessageBase> RequestPublish(MessageBase msg,TimeSpan timeout, CancellationToken cancellationToken)
         {
             var connection = _connectionPool.Rent();
             try
@@ -69,16 +45,14 @@ namespace Jy.RabbitMQ
                 using (var channel = connection.CreateModel())
                 {
                     var replyQueueName = $"{msg.MessageRouter}_reply";
-
                     var responseConnection = _connectionPool.Rent();
                     var _responseChannel = responseConnection.CreateModel();
                     _connectionPool.Return(responseConnection);
-                    _responseChannel.QueueBind(replyQueueName, msg.exchangeName, $"{msg.MessageRouter}_reply");
+                    _responseChannel.QueueBind(replyQueueName, msg.exchangeName, replyQueueName);
                     var consumer = new EventingBasicConsumer(_responseChannel);
                     consumer.Received += OnReplyConsumerReceived;
                     _responseChannel.BasicConsume(replyQueueName, false,consumer);
 
-                    
                     channel.BasicPublish(exchange: msg.exchangeName,
                                          routingKey: msg.MessageRouter,
                                          basicProperties: null,
@@ -123,6 +97,67 @@ namespace Jy.RabbitMQ
             Monitor.Exit(obj);
         }
 
+        /// <summary>
+        /// 发送消息
+        /// </summary>
+        public void ExecuteAsync(MessageBase message)
+        {
+            try
+            {
+                var sp = Stopwatch.StartNew();
+                PublishTopic(message);
+                sp.Stop();
+
+                if (sp.Elapsed.TotalSeconds > 4000)
+                {
+                    _logger.LogInformation("BaseQueueExcutor ExecuteAsync too long time:{0},{1}", message.MessageRouter, message.Id);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"BaseQueueExcutor ExecuteAsync error:{message.Id},failtimes:{message.FailedTimes}", ex);
+                if (message.FailedTimes <= 4) //4次机会重发,每次等待2*失败次数的时间
+                    HandleAsync(message);
+            }
+        }
+        private void PublishTopic(MessageBase msg)
+        {
+            var connection = _connectionPool.Rent();
+            try
+            {
+                using (var channel = connection.CreateModel())
+                {
+                    //channel.ExchangeDeclare(msg.exchangeName, RabbitMQOptions.ExchangeType, true, true, null);
+                    channel.BasicPublish(exchange: msg.exchangeName,
+                                         routingKey: msg.MessageRouter,
+                                         basicProperties: null,
+                                         body: ByteConvertHelper.Object2Bytes(msg));
+
+                    _logger.LogDebug($"rabbitmq topic message [{msg.Id}] has been published.");
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"rabbitmq topic message [{msg.Id}] has benn raised an exception of sending. the exception is: {ex.Message}", ex);
+                throw ex;
+            }
+            finally
+            {
+                _connectionPool.Return(connection);
+            }
+        }
+        private Task<MessageBase> HandleAsync(MessageBase originalMsg)
+        {
+            if (originalMsg.MessageRouter.IndexOf("_normal") < 0) return Task.FromResult<MessageBase>(null); //非normal 不予处理
+            originalMsg.FailedTimes++;
+            Thread.Sleep(2000 * originalMsg.FailedTimes);
+            return Task.Run(() =>
+            {
+                //errorHandle
+                ExecuteAsync(originalMsg);
+                return originalMsg;
+            });
+        }
 
         //public Task<MessageBase> RequestTopic0(MessageBase msg)
         //{

@@ -114,7 +114,6 @@ namespace Jy.RabbitMQ
             //}
         }
          
-       
         public void Commit()
         {
             _channel.BasicAck(_deliveryTag, false);

@@ -128,7 +128,6 @@ namespace Jy.RabbitMQ
             {
                 var eventType = _subsManager.GetEventTypeByName(eventName);
                 var handlers = _subsManager.GetHandlersForEvent(eventName);
-
                 await ExecuteHandlersSync(handlers, eventType, message);
             }
         }

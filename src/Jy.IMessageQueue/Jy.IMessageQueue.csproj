@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="BaseQueueExcutor.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Jy.ILog\Jy.ILog.csproj" />
   </ItemGroup>
 
