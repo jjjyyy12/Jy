@@ -198,7 +198,7 @@ namespace Jy.AuthAdmin.API
             services.AddScoped<IVerifyTokenAppService, VerifyTokenAppService>();
             services.AddScoped<ITokenAuthService, TokenAuthService>();
             
-            //jwt  http://www.cnblogs.com/JacZhu/p/6837676.html
+            //----------------jwt  http://www.cnblogs.com/JacZhu/p/6837676.html
             services.AddAuthorization(auth =>
             {
                 auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
@@ -213,33 +213,28 @@ namespace Jy.AuthAdmin.API
                 // The signing key must match!
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = signingKey,
-
                 // Validate the JWT Issuer (iss) claim
                 ValidateIssuer = true,
                 ValidIssuer = "JyIssuer",
-
                 // Validate the JWT Audience (aud) claim
                 ValidateAudience = true,
                 ValidAudience = "JyAudience",
-
                 // Validate the token expiry
                 ValidateLifetime = true,
-
                 ClockSkew = TimeSpan.Zero
-
             };
             services.AddAuthentication(options =>
             {
                 options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddJwtBearer(options =>
+            }).AddJwtBearer(options =>
             {
                 options.TokenValidationParameters = tokenValidationParameters;
                 options.RequireHttpsMetadata = false;
             });
-
             // 注册验证要求的处理器，可通过这种方式对同一种要求添加多种验证
             services.AddSingleton<IAuthorizationHandler, Jy.MVCAuthorization.ValidJtiHandler>();
+            //----------------end jwt
+
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddMvc(options =>
             {
@@ -276,7 +271,7 @@ namespace Jy.AuthAdmin.API
                 // integrate xml comments
                 options.IncludeXmlComments(XmlCommentsFilePath);
             });
-            //------------version control and api document swagger
+            //------------end version control and api document swagger
 
             //注册到eureka，springcloud服务发现的注册
             services.AddDiscoveryClient(Configuration);        

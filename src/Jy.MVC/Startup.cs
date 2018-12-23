@@ -83,8 +83,8 @@ namespace Jy.MVC
             services.AddScoped<IDepartmentService, DepartmentService>();
             services.AddScoped<IMenuService, MenuService>();
             services.AddScoped<IAuthorityService, AuthorityService>();
-            
-            //jwt  http://www.cnblogs.com/JacZhu/p/6837676.html
+
+            //----------------jwt  http://www.cnblogs.com/JacZhu/p/6837676.html
             services.AddAuthorization(auth =>
             {
                 auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
@@ -99,33 +99,27 @@ namespace Jy.MVC
                 // The signing key must match!
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = signingKey,
-
                 // Validate the JWT Issuer (iss) claim
                 ValidateIssuer = true,
                 ValidIssuer = "JyIssuer",
-
                 // Validate the JWT Audience (aud) claim
                 ValidateAudience = true,
                 ValidAudience = "JyAudience",
-
                 // Validate the token expiry
                 ValidateLifetime = true,
-
                 ClockSkew = TimeSpan.Zero
-
             };
             services.AddAuthentication(options =>
             {
                 options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddJwtBearer(options =>
+            }).AddJwtBearer(options =>
             {
                 options.TokenValidationParameters = tokenValidationParameters;
                 options.RequireHttpsMetadata = false;
             });
-
             // 注册验证要求的处理器，可通过这种方式对同一种要求添加多种验证
             services.AddSingleton<IAuthorizationHandler, Jy.MVCAuthorization.ValidJtiHandler>();
+            //----------------end jwt
 
             services.AddMvc();
             //Session服务
