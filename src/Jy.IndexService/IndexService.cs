@@ -1,11 +1,19 @@
 ﻿using System;
-using Jy.IIndex;
+using Jy.IIndex; 
 
 namespace Jy.IndexService
 {
     public class IndexService : IIndexService
     {
-        public IIndexRead indexRead { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public IIndex.IIndex index { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        private IIndexReadFactory _indexReadFactory;
+        public IIndexReadFactory IndexReadFactory { set { _indexReadFactory = value; } get { return _indexReadFactory; } }
+
+        private IIndexFactory _indexFactory;
+        public IIndexFactory IndexFactory { set { _indexFactory = value; } get { return _indexFactory; } }
+        public IndexService(IIndexFactory indexFactory, IIndexReadFactory indexReadFactory)
+        {
+            _indexReadFactory = indexReadFactory;
+            _indexFactory = indexFactory;
+        }
     }
 }

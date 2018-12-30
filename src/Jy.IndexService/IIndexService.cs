@@ -3,7 +3,7 @@ namespace Jy.IndexService
 {
     public interface IIndexService
     {
-        IIndexRead indexRead { get; set; }
-        Jy.IIndex.IIndex index { get; set; }
+         IIndexReadFactory IndexReadFactory { set ;  get; }
+         IIndexFactory IndexFactory { set; get; }
     }
 }
