@@ -12,9 +12,6 @@ namespace Jy.Cache
 {
     public class RedisCacheRepository: ICached
     {
-        //protected IDatabase _cache;
-        //private ConnectionMultiplexer _connection;
-
         private readonly ICacheClient<IDatabase> _cacheClient;
         private readonly RedisContext _context;
         private readonly string _instance;
@@ -24,8 +21,6 @@ namespace Jy.Cache
         {
             _cacheClient = new RedisCacheClient<IDatabase>();//cacheClient;
             _context = new RedisContext(new HashAlgorithm(), options);
-            //_connection = ConnectionMultiplexer.Connect(options.Configuration);
-            //_cache = _connection.GetDatabase(database);
             _instance = options.InstanceName;
             _expTime = options.expTime;
             _connectTimeout = options.ConnectTimeout;
@@ -63,6 +58,16 @@ namespace Jy.Cache
         {
             return _instance + key;
         }
+
+        #region default connection getserver
+
+        //protected IDatabase _cache;
+        //private ConnectionMultiplexer _connection;
+        //public RedisCacheRepository(RedisCacheOptions options, int database = 0)
+        //{
+        //    _connection = ConnectionMultiplexer.Connect(options.Configuration);
+        //    _cache = _connection.GetDatabase(database);
+        //}
         //private IServer GetServer(EndPoint point)
         //{
         //    return _connection.GetServer(point);
@@ -86,6 +91,7 @@ namespace Jy.Cache
         //    }
         //    return rlist;
         //}
+        #endregion
 
         /// <summary>
         /// 验证缓存项是否存在
@@ -422,8 +428,8 @@ namespace Jy.Cache
             {
                 throw new ArgumentNullException(nameof(key));
             }
-           
-            var value = GetCache(key).SortedSetRangeByRank(GetKeyForRedis(key));
+            var realKey = GetKeyForRedis(key);
+            var value = GetCache(key).SortedSetRangeByRank(realKey);
             if (value?.Length==0)
             {
                 List<T> obj = handler();
@@ -434,10 +440,10 @@ namespace Jy.Cache
                     {
                         vals[i] = new SortedSetEntry(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(obj[i])),i);
                     }
-                    GetCache(key).SortedSetAdd(GetKeyForRedis(key), vals);
+                    GetCache(key).SortedSetAdd(realKey, vals);
                     if (expiresIn == default(TimeSpan))
                         expiresIn = this._expTime;
-                    GetCache(key).KeyExpire(GetKeyForRedis(key), expiresIn);
+                    GetCache(key).KeyExpire(realKey, expiresIn);
                 }
                 return obj;
             }

@@ -151,7 +151,7 @@ namespace Jy.TokenService
             _logger.LogInformation("CheckUser: username:{0}", userName);
             if (string.IsNullOrWhiteSpace(userName) || string.IsNullOrWhiteSpace(password)) return null;
 
-            //get from indexs
+            //get from indexs,get radom id to get url for balanced solrcloud
             var readindex = _indexReadFactory.CreateIndex<UserIndexs, IUserIndexsIndexRead>(Guid.NewGuid().ToString(), "authcore1");
             var userindexs = readindex.FirstOrDefault(new List<KeyValuePair<string, string>>(2) { new KeyValuePair<string, string>("name", userName), new KeyValuePair<string, string>("keywords", password) });
             UserIndex userindex = null;
