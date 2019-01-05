@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System; 
 namespace Jy.Utility.Convert
 {
@@ -16,9 +17,12 @@ namespace Jy.Utility.Convert
         /// <returns>序列化之后的结果。</returns>
         public string Serialize(object instance)
         {
-            return JsonConvert.SerializeObject(instance);
+            return JsonConvert.SerializeObject(instance, new IsoDateTimeConverter { DateTimeFormat = "yyyy-MM-dd HH:mm:ss" });
         }
-
+        public string Serialize(object obj, params JsonConverter[] converters)
+        {
+            return JsonConvert.SerializeObject(obj, converters);
+        }
         /// <summary>
         /// 反序列化。
         /// </summary>
