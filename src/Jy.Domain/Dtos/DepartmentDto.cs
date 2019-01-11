@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading.Tasks;
 
 namespace Jy.Domain.Dtos
@@ -53,5 +55,13 @@ namespace Jy.Domain.Dtos
         /// 是否已删除
         /// </summary>
         public int IsDeleted { get; set; }
+        public DepartmentDto GetCopy()
+        {
+            MemoryStream stream = new MemoryStream();
+            BinaryFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(stream, this);
+            stream.Position = 0;
+            return formatter.Deserialize(stream) as DepartmentDto;
+        }
     }
 }

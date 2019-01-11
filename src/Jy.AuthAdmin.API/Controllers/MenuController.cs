@@ -107,15 +107,7 @@ namespace Jy.AuthAdmin.API.Controllers
                     Message = GetModelStateError()
                 });
             }
-            MenuDto cMenu = _menuAppService.Get(dto.Id);
-                cMenu.Url = dto.Url;
-                cMenu.Icon = dto.Icon;
-                cMenu.SerialNumber = dto.SerialNumber;
-                cMenu.Name = dto.Name;
-                cMenu.Code = dto.Code;
-                cMenu.Remarks = dto.Remarks;
-
-            if (_menuAppService.InsertOrUpdate(cMenu))
+            if (_menuAppService.InsertOrUpdate(dto))
             {
                 return Ok(new { Result = "Success" });
             }

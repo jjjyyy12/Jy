@@ -150,6 +150,21 @@ namespace Jy.ICache
         /// <param name="score">缓存顺序</param>
         /// <returns></returns>
         bool SetSortSingal(string key, object value, double score);
+        /// <summary>
+        ///zrem 删除有序集合一个元素
+        /// </summary>
+        bool SortedSetRemove(string key, object value);
+        /// <summary>
+        /// zrem 删除有序集合多个个元素
+        /// </summary>
+        long SortedSetRemove<T>(string key, List<T> rlist);
+        /// <summary>
+        /// zscore 返回有序集合一个元素的score
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        double SortedSetScore(string key, object value);
         List<T> SortedSetRangeByRank<T>(string key, long start = 0, long end = -1);
         /// <summary>
         /// 更新zset分页缓存
@@ -161,6 +176,7 @@ namespace Jy.ICache
         /// <param name="delFlag">是否是删除</param>
         /// <returns></returns>
         bool SortedSetUpdate<T>(string key, T inobj, Func<T, bool> findHandle, bool delFlag = false);
+        bool SortedSetUpdate<T>(string key, T oldobj, T newobj);
         /// <summary>
         /// 获取缓存（异步方式）
         /// </summary>

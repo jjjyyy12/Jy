@@ -359,7 +359,7 @@ namespace Jy.Cache
             }
             return GetCache(key).KeyDeleteAsync(GetKeyForRedis(key));
         }
-
+        //多个key同个solt才能使用，有坑
         public Task RemoveAllAsync(IEnumerable<string> keys)
         {
             throw new NotImplementedException();
@@ -479,7 +479,37 @@ namespace Jy.Cache
             }
             return GetCache(key).SortedSetAdd(GetKeyForRedis(key), Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(value)), score);
         }
-        public List<T> SortedSetRangeByRank<T>(string key,long start=0,long end = -1)
+        public bool SortedSetRemove(string key, object value)
+        {
+            if (key == null)
+            {
+                throw new ArgumentNullException(nameof(key));
+            }
+            return GetCache(key).SortedSetRemove(GetKeyForRedis(key), Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(value)));
+        }
+        public long SortedSetRemove<T>(string key, List<T> rlist)
+        {
+            if (key == null)
+            {
+                throw new ArgumentNullException(nameof(key));
+            }
+            RedisValue[] vals = new RedisValue[rlist.Count];
+            for (int i = 0, j = rlist.Count; i < j; i++)
+            {
+                vals[i] = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(rlist[i]));
+            }
+            return GetCache(key).SortedSetRemove(GetKeyForRedis(key), vals);
+        }
+        public double SortedSetScore(string key, object value)
+        {
+            if (key == null)
+            {
+                throw new ArgumentNullException(nameof(key));
+            }
+            return GetCache(key).SortedSetScore(GetKeyForRedis(key), Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(value))).GetValueOrDefault();
+        }
+        
+        public List<T> SortedSetRangeByRank<T>(string key,long start = 0,long end = -1)
         {
             if (key == null)
             {
@@ -522,6 +552,26 @@ namespace Jy.Cache
                 _cache.SortedSetAdd(okey, Encoding.UTF8.GetBytes(sobj), 1);
             }
             return true;
+        }
+
+        public bool SortedSetUpdate<T>(string key, T oldobj, T newobj)
+        {
+            if (key == null)
+                throw new ArgumentNullException(nameof(key));
+            
+            var okey = GetKeyForRedis(key);
+            var _cache = GetCache(key);
+            double score = 1;
+            if (oldobj != null)
+            {
+                var oldbyte = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(oldobj));
+                score = _cache.SortedSetScore(okey, oldbyte).GetValueOrDefault();
+                if(score> 0)
+                    _cache.SortedSetRemove(okey, oldbyte);
+            }
+           
+            var res = _cache.SortedSetAdd(okey, Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(newobj)), score);
+            return res;
         }
         //------------------------------------------------zset
         public Task<object> GetAsync(string key)

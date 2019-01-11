@@ -68,10 +68,11 @@ namespace Jy.CRM.Application.UserApp
             List<UserDto> userdtos = Mapper.Map<List<UserDto>> (_repositoryRead.GetAllList(it => ids.Contains(it.Id)));
             if (userdtos != null)
             {
-                foreach(var userdto in userdtos)
+                _cacheService.Cached.SortedSetRemove(CacheKeyName.CRMUserKey , userdtos);
+                foreach (var userdto in userdtos)
                 {
-                    if (!_cacheService.Cached.SortedSetUpdate<UserDto>(CacheKeyName.CRMUserKey, userdto, (x) => { return (x.Id == userdto.Id); }, true))
-                        _logger.LogInformation("userDeleteCacheError: id:{0} nickname:{1}", userdto.Id, userdto.NickName);
+                    //if (!_cacheService.Cached.SortedSetUpdate<UserDto>(CacheKeyName.CRMUserKey, userdto, (x) => { return (x.Id == userdto.Id); }, true))
+                    //    _logger.LogInformation("userDeleteCacheError: id:{0} nickname:{1}", userdto.Id, userdto.NickName);
                     DeleteCache(userdto.Id);
                 }
             }
@@ -105,15 +106,16 @@ namespace Jy.CRM.Application.UserApp
 
         public bool Update(UserDto dto)
         {
-            UserDto cuser;
-                cuser = Get(dto.Id);
+            UserDto cuser,olddto=null;
+            olddto = Get(dto.Id);
+            cuser = olddto.GetCopy();
                 cuser.NickName = dto.NickName;
                 cuser.EMail = dto.EMail;
                 cuser.MobileNumber = dto.MobileNumber;
                 cuser.Address = dto.Address;
 
             crm_user_update_rpc user =null;
-            Request(cuser, user,0);  //异步rpc的方式
+            Request(cuser, olddto, user,0);  //异步rpc的方式
             //var user = _repository.InsertOrUpdate(Mapper.Map<User>(dto));
             return true;
         }
@@ -122,25 +124,26 @@ namespace Jy.CRM.Application.UserApp
         {
             UserDto cuser = dto;
             crm_user_update_rpc user = null;
-            Request(cuser, user, 0);  //异步rpc的方式
+            Request(cuser,null, user, 0);  //异步rpc的方式
             //var user = _repository.InsertOrUpdate(Mapper.Map<User>(dto));
             return true;
         }
-        private void Request(UserDto dto, crm_user_update_rpc replyMsg, int runcnt)
+        private void Request(UserDto dto, UserDto olddto, crm_user_update_rpc replyMsg, int runcnt)
         {
             crm_user_update_rpc msg = new crm_user_update_rpc(_queueService.ExchangeName, dto); 
-            _queueService.Request<UserDto>(dto, msg, replyMsg, (x,y) =>
+            _queueService.Request<UserDto>(dto, olddto, msg, replyMsg, (x,z,y) =>
             {
                 x.Id = ByteConvertHelper.Bytes2Object<Guid>(y.MessageBodyReturnByte);
                 _logger.LogInformation("user.update.insertupdate.rpc: username:{0} method:{1}", x.Id, "InsertOrUpdate");
-                InsertOrUpdateCache(x);
+                InsertOrUpdateCache(x,z);
             }, runcnt);
         }
-        private void InsertOrUpdateCache(UserDto userdto)
+        private void InsertOrUpdateCache(UserDto userdto, UserDto olddto)
         {
             if (userdto != null)
             {
-                if(!_cacheService.Cached.SortedSetUpdate(CacheKeyName.CRMUserKey,userdto,(x)=> { return (x.Id == userdto.Id); }))
+                if (!_cacheService.Cached.SortedSetUpdate(CacheKeyName.CRMUserKey , olddto, userdto))
+                    //if (!_cacheService.Cached.SortedSetUpdate(CacheKeyName.CRMUserKey,userdto,(x)=> { return (x.Id == userdto.Id); }))
                     _logger.LogInformation("userInsertOrUpdateCacheError: id:{0} nikename:{1}", userdto.Id, userdto.NickName);
                 DeleteCache(userdto.Id);
             }

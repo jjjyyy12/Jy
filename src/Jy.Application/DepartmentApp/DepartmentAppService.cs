@@ -70,27 +70,36 @@ namespace Jy.Application.DepartmentApp
         /// <returns></returns>
         public bool InsertOrUpdate(DepartmentDto dto)
         {
+            DepartmentDto  olddto = null;
+            if (default(Guid).Equals(dto.Id)) //add
+            {
+            }
+            else //edit
+            {
+                olddto = Get(dto.Id);
+            }
             //var department = _repository.InsertOrUpdate(Mapper.Map<Department>(dto));
             department_update_insertupdate_rpc msg = null;
-            Request(dto, msg,0);  //异步rpc的方式
+            Request(dto, olddto, msg,0);  //异步rpc的方式
             return true;
         }
-        private void Request(DepartmentDto dto, department_update_insertupdate_rpc replyMsg, int runcnt)
+        private void Request(DepartmentDto dto, DepartmentDto olddto, department_update_insertupdate_rpc replyMsg, int runcnt)
         {
             department_update_insertupdate_rpc msg = new department_update_insertupdate_rpc(_queueService.ExchangeName, dto);
-            _queueService.Request<DepartmentDto>(dto, msg, replyMsg, (x, y) =>
+            _queueService.Request<DepartmentDto>(dto, olddto, msg, replyMsg, (x,z, y) =>
             {
                 x.Id = ByteConvertHelper.Bytes2Object<Guid>(y.MessageBodyReturnByte);
                 _logger.LogInformation("department.update.insertupdate.rpc: name:{0} method:{1}", x.Id, "InsertOrUpdate");
-                InsertOrUpdateCache(x);
+                InsertOrUpdateCache(x,z);
             }, runcnt);
         }
 
-        private void InsertOrUpdateCache(DepartmentDto inobj)
+        private void InsertOrUpdateCache(DepartmentDto inobj, DepartmentDto olddto)
         {
             if (inobj != null)
             {
-                if (!_cacheService.Cached.SortedSetUpdate<DepartmentDto>(CacheKeyName.DepartmentKey, inobj, (x) => { return (x.Id == inobj.Id); }))
+                if (!_cacheService.Cached.SortedSetUpdate(CacheKeyName.DepartmentKey, olddto, inobj))
+                    //if (!_cacheService.Cached.SortedSetUpdate<DepartmentDto>(CacheKeyName.DepartmentKey, inobj, (x) => { return (x.Id == inobj.Id); }))
                     _logger.LogInformation("departmentInsertOrUpdateCacheError: username:{0} method:{1}", inobj.Id, inobj.Name);
                 DeleteCache(inobj.Id);
             }
@@ -120,14 +129,15 @@ namespace Jy.Application.DepartmentApp
         }
         private void DeleteCache(List<Guid> ids)
         {
-            List<DepartmentDto> userdtos = Mapper.Map<List<DepartmentDto>>(_repositoryRead.GetAllList(it => ids.Contains(it.Id)));
-            if (userdtos != null)
+            List<DepartmentDto> dtos = Mapper.Map<List<DepartmentDto>>(_repositoryRead.GetAllList(it => ids.Contains(it.Id)));
+            if (dtos != null)
             {
-                foreach (var userdto in userdtos)
+                _cacheService.Cached.SortedSetRemove(CacheKeyName.DepartmentKey, dtos);
+                foreach (var dto in dtos)
                 {
-                    if (!_cacheService.Cached.SortedSetUpdate<DepartmentDto>(CacheKeyName.DepartmentKey, userdto, (x) => { return (x.Id == userdto.Id); }, true))
-                        _logger.LogInformation("departmentDeleteCacheError: username:{0} method:{1}", userdto.Id, userdto.Name);
-                    DeleteCache(userdto.Id);
+                    //if (!_cacheService.Cached.SortedSetUpdate<DepartmentDto>(CacheKeyName.DepartmentKey, dto, (x) => { return (x.Id == dto.Id); }, true))
+                        _logger.LogInformation("departmentDeleteCacheError: username:{0} method:{1}", dto.Id, dto.Name);
+                    DeleteCache(dto.Id);
                 }
             }
         }

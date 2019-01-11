@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using Jy.IRepositories;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+
 namespace Jy.CRM.Domain.Dtos
 {
     public class UserDto : Entity
@@ -29,6 +32,13 @@ namespace Jy.CRM.Domain.Dtos
 
         public List<int> AddresssIds { get; set; }
 
-
+        public UserDto GetCopy()
+        {
+            MemoryStream stream = new MemoryStream();
+            BinaryFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(stream, this);
+            stream.Position = 0;
+            return formatter.Deserialize(stream) as UserDto;
+        }
     }
 }

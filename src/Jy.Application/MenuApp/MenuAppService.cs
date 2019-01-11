@@ -54,27 +54,45 @@ namespace Jy.Application.MenuApp
 
         public bool InsertOrUpdate(MenuDto dto)
         {
+            MenuDto cMenu, olddto = null;
+            if (default(Guid).Equals(dto.Id)) //add
+            {
+                cMenu = dto;
+            }
+            else //edit
+            {
+                olddto = Get(dto.Id);
+                cMenu = olddto.GetCopy();
+                cMenu.Url = dto.Url;
+                cMenu.Icon = dto.Icon;
+                cMenu.SerialNumber = dto.SerialNumber;
+                cMenu.Name = dto.Name;
+                cMenu.Code = dto.Code;
+                cMenu.Remarks = dto.Remarks;
+            }
+
             //var menu = _menuRepository.InsertOrUpdate(Mapper.Map<Menu>(dto));
             menu_update_insertupdate_rpc msg = null;
-            Request(dto, msg,0);  //异步rpc的方式
+            Request(dto, olddto, msg,0);  //异步rpc的方式
             return true;
         }
-        private void Request(MenuDto dto, menu_update_insertupdate_rpc replyMsg, int runcnt)
+        private void Request(MenuDto dto, MenuDto olddto, menu_update_insertupdate_rpc replyMsg, int runcnt)
         {
             menu_update_insertupdate_rpc msg = new menu_update_insertupdate_rpc(_queueService.ExchangeName, dto);
-             _queueService.Request(dto, msg, replyMsg, (x, y) =>
+             _queueService.Request(dto, olddto, msg, replyMsg, (x,z, y) =>
             {
                 x.Id = ByteConvertHelper.Bytes2Object<Guid>(y.MessageBodyReturnByte);
                 _logger.LogInformation("menu.update.insertupdate.rpc: name:{0} method:{1}", x.Id, "InsertOrUpdate");
-                InsertOrUpdateCache(x);
+                InsertOrUpdateCache(x,z);
             }, runcnt);
         }
 
-        private void InsertOrUpdateCache(MenuDto inobj)
+        private void InsertOrUpdateCache(MenuDto inobj,MenuDto olddto)
         {
             if (inobj != null)
             {
-                if (!_cacheService.Cached.SortedSetUpdate<MenuDto>(CacheKeyName.MenuKey, inobj, (x) => { return (x.Id == inobj.Id); }))
+                if (!_cacheService.Cached.SortedSetUpdate(CacheKeyName.MenuKey, olddto, inobj))
+                    //if (!_cacheService.Cached.SortedSetUpdate<MenuDto>(CacheKeyName.MenuKey, inobj, (x) => { return (x.Id == inobj.Id); }))
                     _logger.LogInformation("menuInsertOrUpdateCacheError: username:{0} method:{1}", inobj.Id, inobj.Name);
                 DeleteCache(inobj.Id);
             }
@@ -96,14 +114,15 @@ namespace Jy.Application.MenuApp
         }
         private void DeleteCache(List<Guid> ids)
         {
-            List<MenuDto> userdtos = Mapper.Map<List<MenuDto>>(_menuRepositoryRead.GetAllList(it => ids.Contains(it.Id)));
-            if (userdtos != null)
+            List<MenuDto> dtos = Mapper.Map<List<MenuDto>>(_menuRepositoryRead.GetAllList(it => ids.Contains(it.Id)));
+            if (dtos != null)
             {
-                foreach (var userdto in userdtos)
+                _cacheService.Cached.SortedSetRemove(CacheKeyName.MenuKey, dtos);
+                foreach (var dto in dtos)
                 {
-                    if (!_cacheService.Cached.SortedSetUpdate<MenuDto>(CacheKeyName.MenuKey, userdto, (x) => { return (x.Id == userdto.Id); }, true))
-                        _logger.LogInformation("menuDeleteCacheError: username:{0} method:{1}", userdto.Id, userdto.Name);
-                    DeleteCache(userdto.Id);
+                    //if (!_cacheService.Cached.SortedSetUpdate<MenuDto>(CacheKeyName.MenuKey, dto, (x) => { return (x.Id == dto.Id); }, true))
+                    //    _logger.LogInformation("menuDeleteCacheError: username:{0} method:{1}", dto.Id, dto.Name);
+                    DeleteCache(dto.Id);
                 }
             }
         }

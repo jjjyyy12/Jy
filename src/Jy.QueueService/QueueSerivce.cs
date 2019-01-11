@@ -47,14 +47,14 @@ namespace Jy.QueueSerivce
         /// <param name="replyMsg">接收到的回执消息</param>
         /// <param name="succHandle">成功后的处理方法</param>
         /// <param name="runcnt">当前重试的次数，第一次填0</param>
-        public async void Request<T>(T dto, MessageBase msg, MessageBase replyMsg, Action<T, MessageBase> succHandle, int runcnt) where T : class
+        public async void Request<T>(T dto, T olddto, MessageBase msg, MessageBase replyMsg, Action<T,T,MessageBase> succHandle, int runcnt) where T : class
         {
             try
             {
                 replyMsg = await Queue.RequestTopic(msg);
                 if (replyMsg.MessageBodyReturnByte != null)
                 {
-                    succHandle(dto, replyMsg);
+                    succHandle(dto, olddto,replyMsg);
                 }
             }
             catch (Exception e)
@@ -64,7 +64,7 @@ namespace Jy.QueueSerivce
                 {
                     runcnt++;
                     Thread.Sleep(2000 * runcnt);
-                    Request<T>(dto, msg, replyMsg, succHandle, runcnt);
+                    Request<T>(dto, olddto, msg, replyMsg, succHandle, runcnt);
                 }
             }
             try

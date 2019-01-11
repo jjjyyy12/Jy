@@ -64,14 +64,15 @@ namespace Jy.Application.RoleApp
         }
         private void DeleteCache(List<Guid> ids)
         {
-            List<RoleDto> userdtos = Mapper.Map<List<RoleDto>>(_repositoryRead.GetAllList(it => ids.Contains(it.Id)));
-            if (userdtos != null)
+            List<RoleDto> dtos = Mapper.Map<List<RoleDto>>(_repositoryRead.GetAllList(it => ids.Contains(it.Id)));
+            if (dtos != null)
             {
-                foreach (var userdto in userdtos)
+                _cacheService.Cached.SortedSetRemove(CacheKeyName.RoleKey, dtos);
+                foreach (var dto in dtos)
                 {
-                    if (!_cacheService.Cached.SortedSetUpdate<RoleDto>(CacheKeyName.RoleKey , userdto, (x) => { return (x.Id == userdto.Id); }, true))
-                        _logger.LogInformation("userDeleteCacheError: username:{0} method:{1}", userdto.Id, userdto.Name);
-                    DeleteCache(userdto.Id);
+                    //if (!_cacheService.Cached.SortedSetUpdate<RoleDto>(CacheKeyName.RoleKey , dto, (x) => { return (x.Id == dto.Id); }, true))
+                    //    _logger.LogInformation("userDeleteCacheError: username:{0} method:{1}", dto.Id, userdto.Name);
+                    DeleteCache(dto.Id);
                 }
             }
         }
@@ -114,7 +115,7 @@ namespace Jy.Application.RoleApp
         }
         public bool InsertOrUpdate(RoleDto dto, UserDto moduser)
         {
-            RoleDto cRole;
+            RoleDto cRole,olddto = null;
             if (default(Guid).Equals(dto.Id)) //add
             {
                 cRole = dto;
@@ -126,32 +127,34 @@ namespace Jy.Application.RoleApp
             }
             else //edit
             {
-                cRole = Get(dto.Id);
+                olddto = Get(dto.Id);
+                cRole = olddto.GetCopy();
                 cRole.Name = dto.Name;
                 cRole.Code = dto.Code;
                 cRole.Remarks = dto.Remarks;
             }
             role_update_insertupdate_rpc msg = null;
-            Request(cRole, msg,0);  //异步rpc的方式
+            Request(cRole,olddto, msg,0);  //异步rpc的方式
             //var user = _repository.InsertOrUpdate(Mapper.Map<Role>(dto));
             return true;
         }
-        private void Request(RoleDto dto, role_update_insertupdate_rpc replyMsg, int runcnt)
+        private void Request(RoleDto dto, RoleDto olddto, role_update_insertupdate_rpc replyMsg, int runcnt)
         {
             role_update_insertupdate_rpc msg = new role_update_insertupdate_rpc(_queueService.ExchangeName,dto);
-            _queueService.Request<RoleDto>(dto, msg, replyMsg, (x, y) =>
+            _queueService.Request<RoleDto>(dto, olddto,msg, replyMsg, (x,z, y) =>
             {
                 x.Id = ByteConvertHelper.Bytes2Object<Guid>(y.MessageBodyReturnByte);
                 _logger.LogInformation("role.update.insertupdate.rpc: name:{0} method:{1}", x.Id, "InsertOrUpdate");
-                InsertOrUpdateCache(x);
+                InsertOrUpdateCache(x,z);
             }, runcnt);
         }
 
-        private void InsertOrUpdateCache(RoleDto inobj)
+        private void InsertOrUpdateCache(RoleDto inobj,RoleDto olddto)
         {
             if (inobj != null)
             {
-                if (!_cacheService.Cached.SortedSetUpdate<RoleDto>(CacheKeyName.RoleKey, inobj, (x) => { return (x.Id == inobj.Id); }))
+                if (!_cacheService.Cached.SortedSetUpdate(CacheKeyName.RoleKey, olddto, inobj))
+                    //if (!_cacheService.Cached.SortedSetUpdate<RoleDto>(CacheKeyName.RoleKey, inobj, (x) => { return (x.Id == inobj.Id); }))
                    _logger.LogInformation("roleInsertOrUpdateCacheError: username:{0} method:{1}", inobj.Id, inobj.Name);
                 DeleteCache(inobj.Id);
             }

@@ -68,12 +68,14 @@ namespace Jy.Application.UserApp
         private void DeleteCache(List<Guid> ids)
         {
             List<UserDto> userdtos = Mapper.Map<List<UserDto>> (_repositoryRead.GetAllList(it => ids.Contains(it.Id)));
-            if (userdtos != null)
+            if (userdtos != null && userdtos.Count>0)
             {
-                foreach(var userdto in userdtos)
+                var departmentid = userdtos[0].DepartmentId;
+                _cacheService.Cached.SortedSetRemove(CacheKeyName.UserKey + departmentid, userdtos);
+                foreach (var userdto in userdtos)
                 {
-                    if (!_cacheService.Cached.SortedSetUpdate<UserDto>(CacheKeyName.UserKey + userdto.DepartmentId, userdto, (x) => { return (x.Id == userdto.Id); }, true))
-                        _logger.LogInformation("userDeleteCacheError: username:{0} method:{1}", userdto.Id, userdto.Name);
+                    //if (!_cacheService.Cached.SortedSetUpdate<UserDto>(CacheKeyName.UserKey + userdto.DepartmentId, userdto, (x) => { return (x.Id == userdto.Id); }, true))
+                    //    _logger.LogInformation("userDeleteCacheError: username:{0} method:{1}", userdto.Id, userdto.Name);
                     DeleteCache(userdto.Id);
                 }
             }
@@ -124,7 +126,7 @@ namespace Jy.Application.UserApp
 
         public bool InsertOrUpdate(UserDto dto,UserDto createUser)
         {
-            UserDto cuser;
+            UserDto cuser,olddto = null;
             if (default(Guid).Equals(dto.Id)) //add
             {
                 cuser = dto;
@@ -136,7 +138,8 @@ namespace Jy.Application.UserApp
             }
             else //edit
             {
-                cuser = Get(dto.Id);
+                olddto = Get(dto.Id);
+                cuser = olddto.GetCopy();
                 cuser.Name = dto.Name;
                 cuser.UserName = dto.UserName;
                 cuser.Email = dto.Email;
@@ -145,25 +148,26 @@ namespace Jy.Application.UserApp
             }
 
             user_update_insertupdate_rpc user =null;
-            Request(cuser, user,0);  //异步rpc的方式
+            Request(cuser, olddto, user,0);  //异步rpc的方式
             //var user = _repository.InsertOrUpdate(Mapper.Map<User>(dto));
             return true;
         }
-        private void Request(UserDto dto, user_update_insertupdate_rpc replyMsg, int runcnt)
+        private void Request(UserDto dto, UserDto olddto, user_update_insertupdate_rpc replyMsg, int runcnt)
         {
             user_update_insertupdate_rpc msg = new user_update_insertupdate_rpc(_queueService.ExchangeName, dto); 
-            _queueService.Request<UserDto>(dto, msg, replyMsg, (x,y) =>
+            _queueService.Request<UserDto>(dto, olddto, msg, replyMsg, (x,z,y) =>
             {
                 x.Id = ByteConvertHelper.Bytes2Object<Guid>(y.MessageBodyReturnByte);
                 _logger.LogInformation("user.update.insertupdate.rpc: username:{0} method:{1}", x.Id, "InsertOrUpdate");
-                InsertOrUpdateCache(x);
+                InsertOrUpdateCache(x,z);
             }, runcnt);
         }
-        private void InsertOrUpdateCache(UserDto userdto)
+        private void InsertOrUpdateCache(UserDto userdto,UserDto olddto)
         {
             if (userdto != null)
             {
-                if(!_cacheService.Cached.SortedSetUpdate(CacheKeyName.UserKey + userdto.DepartmentId,userdto,(x)=> { return (x.Id == userdto.Id); }))
+                if(!_cacheService.Cached.SortedSetUpdate(CacheKeyName.UserKey + userdto.DepartmentId, olddto, userdto))
+                //if(!_cacheService.Cached.SortedSetUpdate(CacheKeyName.UserKey + userdto.DepartmentId,userdto,(x)=> { return (x.Id == userdto.Id); }))
                     _logger.LogInformation("userInsertOrUpdateCacheError: username:{0} method:{1}", userdto.Id, userdto.Name);
                 DeleteCache(userdto.Id);
             }
