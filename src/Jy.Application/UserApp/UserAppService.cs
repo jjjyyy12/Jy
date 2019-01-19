@@ -98,26 +98,37 @@ namespace Jy.Application.UserApp
 
         public List<UserDto> GetChildrenByDepartment(Guid DepartmentId, int startPage, int pageSize, out int rowCount)
         {
-            List<UserDto> rlist = _cacheService.Cached.GetSortList<UserDto>(() => {
-                return Mapper.Map<List<UserDto>>(_repositoryRead.GetUserIndexList(it => it.DepartmentId == DepartmentId).OrderBy(it => it.UserName));
-            }, $"{CacheKeyName.UserKey}{DepartmentId}");
+            var res = new List<UserDto>();
+            var key = $"{CacheKeyName.UserKey}{DepartmentId}";
+            if (_cacheService.Cached.Exists(key))
+            {
+                rowCount = (int)_cacheService.Cached.SortedSetLength(key);
+                res = _cacheService.Cached.SortedSetRangeByRank<UserDto>(key, (startPage - 1) * pageSize, (startPage) * pageSize);
+            }
+            else
+            {
+                List<UserDto> rlist = _cacheService.Cached.GetSortList<UserDto>(() => {
+                    return Mapper.Map<List<UserDto>>(_repositoryRead.GetUserIndexList(it => it.DepartmentId == DepartmentId).OrderBy(it => it.UserName));
+                }, key);
 
-            return _pagedHelper.Paged(rlist, startPage, pageSize, out rowCount
-                ,(x) =>{
-                            for (int i = 0; i < x.Count; i++) //此处不用foreach，要改变元素值
+                res = _pagedHelper.Paged(rlist, startPage, pageSize, out rowCount
+                , (x) => {
+                    for (int i = 0; i < x.Count; i++) //此处不用foreach，要改变元素值
+                    {
+                        x[i] = _cacheService.Cached.Get(() => { return Mapper.Map<UserDto>(_repositoryReadFactory.CreateRepository<User, IUserRepositoryRead>(x[i].Id.ToString()).Get(x[i].Id)); }, $"{CacheKeyName.UserKey}{x[i].Id}");
+                        if (x[i].CreateUserId != null)
+                        {
+                            User tuser = _cacheService.Cached.Get(() => { return _repositoryReadFactory.CreateRepository<User, IUserRepositoryRead>(x[i].CreateUserId.ToString()).Get(x[i].CreateUserId); }, $"{CacheKeyName.UserKey}{x[i].CreateUserId}");
+                            if (tuser != null)
                             {
-                                x[i] = _cacheService.Cached.Get(() => { return Mapper.Map<UserDto>(_repositoryReadFactory.CreateRepository<User, IUserRepositoryRead>(x[i].Id.ToString()).Get(x[i].Id)); }, $"{CacheKeyName.UserKey}{x[i].Id}");
-                                if (x[i].CreateUserId != null)
-                                {
-                                    User tuser = _cacheService.Cached.Get(() => { return _repositoryReadFactory.CreateRepository<User, IUserRepositoryRead>(x[i].CreateUserId.ToString()).Get(x[i].CreateUserId); }, $"{CacheKeyName.UserKey}{x[i].CreateUserId}");
-                                    if (tuser != null)
-                                    {
-                                        x[i].CreateUserName = tuser.UserName;
-                                    }
-                                }
+                                x[i].CreateUserName = tuser.UserName;
                             }
+                        }
+                    }
                     return x;
-                        });
+                });
+            }
+            return res;
             //IQueryable<User> tu = _repositoryRead.LoadPageList(startPage, pageSize, out rowCount, it => it.DepartmentId == DepartmentId, it => it.UserName);
             //List<User> il = tu.ToList();
             //il.ForEach(it => it.CreateUser = _repositoryRead.Get(it.CreateUserId));

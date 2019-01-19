@@ -167,6 +167,10 @@ namespace Jy.ICache
         double SortedSetScore(string key, object value);
         List<T> SortedSetRangeByRank<T>(string key, long start = 0, long end = -1);
         /// <summary>
+        /// zcard 判断集合长度
+        /// </summary>
+        long SortedSetLength(string key);
+        /// <summary>
         /// 更新zset分页缓存
         /// </summary>
         /// <typeparam name="T"></typeparam>

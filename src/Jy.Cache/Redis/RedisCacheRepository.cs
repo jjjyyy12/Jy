@@ -523,6 +523,15 @@ namespace Jy.Cache
             }
             return rlist;
         }
+        public long SortedSetLength(string key)
+        {
+            if (key == null)
+            {
+                throw new ArgumentNullException(nameof(key));
+            }
+            return GetCache(key).SortedSetLength(GetKeyForRedis(key));
+        }
+        
         public bool SortedSetUpdate<T>(string key,T inobj, Func<T, bool> findHandle,bool delFlag=false)
         {
             if (key == null)
@@ -565,8 +574,8 @@ namespace Jy.Cache
             if (oldobj != null)
             {
                 var oldbyte = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(oldobj));
-                score = _cache.SortedSetScore(okey, oldbyte).GetValueOrDefault();
-                if(score> 0)
+                var cscore = _cache.SortedSetScore(okey, oldbyte);
+                if( cscore.HasValue )
                     _cache.SortedSetRemove(okey, oldbyte);
             }
            
