@@ -71,7 +71,7 @@ namespace Jy.Application.UserApp
             if (userdtos != null && userdtos.Count>0)
             {
                 var departmentid = userdtos[0].DepartmentId;
-                _cacheService.Cached.SortedSetRemove(CacheKeyName.UserKey + departmentid, userdtos);
+                _cacheService.Cached.SortedSetRemove($"{CacheKeyName.UserKey}{departmentid}", userdtos);
                 foreach (var userdto in userdtos)
                 {
                     //if (!_cacheService.Cached.SortedSetUpdate<UserDto>(CacheKeyName.UserKey + userdto.DepartmentId, userdto, (x) => { return (x.Id == userdto.Id); }, true))
@@ -103,30 +103,26 @@ namespace Jy.Application.UserApp
             if (_cacheService.Cached.Exists(key))
             {
                 rowCount = (int)_cacheService.Cached.SortedSetLength(key);
-                res = _cacheService.Cached.SortedSetRangeByRank<UserDto>(key, (startPage - 1) * pageSize, (startPage) * pageSize);
+                res = _cacheService.Cached.SortedSetRangeByRank<UserDto>(key, startPage == 1 ? 0 : (startPage - 1) * pageSize, (startPage) * pageSize - 1);
             }
             else
             {
                 List<UserDto> rlist = _cacheService.Cached.GetSortList<UserDto>(() => {
                     return Mapper.Map<List<UserDto>>(_repositoryRead.GetUserIndexList(it => it.DepartmentId == DepartmentId).OrderBy(it => it.UserName));
                 }, key);
-
-                res = _pagedHelper.Paged(rlist, startPage, pageSize, out rowCount
-                , (x) => {
-                    for (int i = 0; i < x.Count; i++) //此处不用foreach，要改变元素值
+                res = _pagedHelper.Paged(rlist, startPage, pageSize, out rowCount);
+            }
+            for (int i = 0; i < res.Count; i++) //此处不用foreach，要改变元素值
+            {
+                res[i] = _cacheService.Cached.Get(() => { return Mapper.Map<UserDto>(_repositoryReadFactory.CreateRepository<User, IUserRepositoryRead>(res[i].Id.ToString()).Get(res[i].Id)); }, $"{CacheKeyName.UserKey}{res[i].Id}");
+                if (res[i].CreateUserId != null)
+                {
+                    User tuser = _cacheService.Cached.Get(() => { return _repositoryReadFactory.CreateRepository<User, IUserRepositoryRead>(res[i].CreateUserId.ToString()).Get(res[i].CreateUserId); }, $"{CacheKeyName.UserKey}{res[i].CreateUserId}");
+                    if (tuser != null)
                     {
-                        x[i] = _cacheService.Cached.Get(() => { return Mapper.Map<UserDto>(_repositoryReadFactory.CreateRepository<User, IUserRepositoryRead>(x[i].Id.ToString()).Get(x[i].Id)); }, $"{CacheKeyName.UserKey}{x[i].Id}");
-                        if (x[i].CreateUserId != null)
-                        {
-                            User tuser = _cacheService.Cached.Get(() => { return _repositoryReadFactory.CreateRepository<User, IUserRepositoryRead>(x[i].CreateUserId.ToString()).Get(x[i].CreateUserId); }, $"{CacheKeyName.UserKey}{x[i].CreateUserId}");
-                            if (tuser != null)
-                            {
-                                x[i].CreateUserName = tuser.UserName;
-                            }
-                        }
+                        res[i].CreateUserName = tuser.UserName;
                     }
-                    return x;
-                });
+                }
             }
             return res;
             //IQueryable<User> tu = _repositoryRead.LoadPageList(startPage, pageSize, out rowCount, it => it.DepartmentId == DepartmentId, it => it.UserName);
@@ -177,7 +173,7 @@ namespace Jy.Application.UserApp
         {
             if (userdto != null)
             {
-                if(!_cacheService.Cached.SortedSetUpdate(CacheKeyName.UserKey + userdto.DepartmentId, olddto, userdto))
+                if(!_cacheService.Cached.SortedSetUpdate($"{CacheKeyName.UserKey}{userdto.DepartmentId}", olddto, userdto))
                 //if(!_cacheService.Cached.SortedSetUpdate(CacheKeyName.UserKey + userdto.DepartmentId,userdto,(x)=> { return (x.Id == userdto.Id); }))
                     _logger.LogInformation("userInsertOrUpdateCacheError: username:{0} method:{1}", userdto.Id, userdto.Name);
                 DeleteCache(userdto.Id);

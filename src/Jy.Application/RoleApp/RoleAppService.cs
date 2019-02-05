@@ -97,21 +97,29 @@ namespace Jy.Application.RoleApp
             //List<Role> il = tu.ToList();
             //il.ForEach(it => it.CreateUser = _userrepository.Get(it.CreateUserId));
             //return Mapper.Map<List<RoleDto>>(il);
+            var res = new List<RoleDto>();
+            var key = CacheKeyName.RoleKey;
+            if (_cacheService.Cached.Exists(key))
+            {
+                rowCount = (int)_cacheService.Cached.SortedSetLength(key);
+                res = _cacheService.Cached.SortedSetRangeByRank<RoleDto>(key, startPage == 1 ? 0 : (startPage - 1) * pageSize, (startPage) * pageSize - 1);
+            }
+            else
+            {
+                List<RoleDto> rlist = GetAllList();
+                res = _pagedHelper.Paged<RoleDto>(rlist, startPage, pageSize, out rowCount);
+            }
 
-            List<RoleDto> rlist = GetAllList();//Mapper.Map<List<UserDto>>(tlist);
-            return _pagedHelper.Paged<RoleDto>(rlist, startPage, pageSize, out rowCount
-               , (x) => {
-                   for (int i = 0; i < x.Count; i++) //此处不用foreach，要改变元素值
-                   {
-                       User tuser = _userrepository.Get(x[i].CreateUserId);
-                       if (tuser != null)
-                       {
-                           x[i].CreateUserId = tuser.Id;
-                           x[i].CreateUserName = tuser.UserName;
-                       }
-                   }
-                   return x;
-               });
+            for (int i = 0; i < res.Count; i++) //此处不用foreach，要改变元素值
+            {
+                User tuser = _userrepository.Get(res[i].CreateUserId);
+                if (tuser != null)
+                {
+                    res[i].CreateUserId = tuser.Id;
+                    res[i].CreateUserName = tuser.UserName;
+                }
+            }
+            return res;
         }
         public bool InsertOrUpdate(RoleDto dto, UserDto moduser)
         {
@@ -161,7 +169,7 @@ namespace Jy.Application.RoleApp
         }
         public List<RoleMenuDto> GetRoleMenus(Guid id)
         {
-            string tkey = CacheKeyName.RoleMenuKey + id.ToString();
+            string tkey = $"{CacheKeyName.RoleMenuKey}{id}";
             return _cacheService.Cached.Get<List<RoleMenuDto>>(() => { return Mapper.Map<List<RoleMenuDto>>(_repositoryRead.GetRoleMenus(id)); }, tkey, default(TimeSpan));
             //return Mapper.Map<List<RoleMenuDto>>(_repository.GetRoleMenus(id));
         }

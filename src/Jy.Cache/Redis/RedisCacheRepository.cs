@@ -429,7 +429,8 @@ namespace Jy.Cache
                 throw new ArgumentNullException(nameof(key));
             }
             var realKey = GetKeyForRedis(key);
-            var value = GetCache(key).SortedSetRangeByRank(realKey);
+            var database = GetCache(key);
+            var value = database.SortedSetRangeByRank(realKey);
             if (value?.Length==0)
             {
                 List<T> obj = handler();
@@ -440,10 +441,10 @@ namespace Jy.Cache
                     {
                         vals[i] = new SortedSetEntry(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(obj[i])),i);
                     }
-                    GetCache(key).SortedSetAdd(realKey, vals);
+                    database.SortedSetAdd(realKey, vals);
                     if (expiresIn == default(TimeSpan))
                         expiresIn = this._expTime;
-                    GetCache(key).KeyExpire(realKey, expiresIn);
+                    database.KeyExpire(realKey, expiresIn);
                 }
                 return obj;
             }
@@ -570,13 +571,16 @@ namespace Jy.Cache
             
             var okey = GetKeyForRedis(key);
             var _cache = GetCache(key);
-            double score = 1;
+            double score = 0;
             if (oldobj != null)
             {
                 var oldbyte = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(oldobj));
                 var cscore = _cache.SortedSetScore(okey, oldbyte);
-                if( cscore.HasValue )
+                if( cscore.HasValue)
+                {
                     _cache.SortedSetRemove(okey, oldbyte);
+                    score = cscore.GetValueOrDefault();
+                }
             }
            
             var res = _cache.SortedSetAdd(okey, Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(newobj)), score);
