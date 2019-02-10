@@ -58,8 +58,7 @@ namespace Jy.Application.DepartmentApp
         public List<DepartmentDto> GetChildrenByParent(Guid parentId, int startPage, int pageSize, out int rowCount)
         {
             List<DepartmentDto> rlist = GetAllList().Where(x => x.ParentId == parentId).ToList();
-            rowCount = rlist.Count();
-            return rlist.Skip((startPage - 1) * pageSize).Take(pageSize).ToList();
+            return _pagedHelper.Paged<DepartmentDto>(rlist, startPage, pageSize, out rowCount);
             //return Mapper.Map<List<DepartmentDto>>(_repository.LoadPageList(startPage, pageSize, out rowCount, it => it.ParentId == parentId, it => it.Code));
         }
 
