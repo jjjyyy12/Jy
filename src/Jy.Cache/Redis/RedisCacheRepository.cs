@@ -391,6 +391,7 @@ namespace Jy.Cache
             RedisValue value = await GetCache(key).StringGetAsync(GetKeyForRedis(key));
             return value;
         }
+        //get 当取到空值时缓存"~@"并返回，防止频繁查库
         public T Get<T>(Func<T> handler, string key, TimeSpan expiressAbsoulte = default(TimeSpan))
         {
             if (key == null)
@@ -399,27 +400,31 @@ namespace Jy.Cache
             }
             if (expiressAbsoulte == default(TimeSpan))
                 expiressAbsoulte = this._expTime;
-            
-            var value = GetCache(key).StringGet(GetKeyForRedis(key));
 
-            T obj;
-            if (!value.HasValue)
-            {
-                obj = handler();
-                if (obj != null)
-                    Add(key, obj, expiressAbsoulte);
-                else
-                    Add(key, "@~", expiressAbsoulte);
-                return obj;
-            }
+            object cres = JsonConvert.DeserializeObject<T>(GetCache(key).StringGet(GetKeyForRedis(key)));
+
+            if (cres != null && typeof(string).Equals(cres.GetType()) && "~@".Equals(cres))
+                return default(T);
+            T res;
+            if (cres != null)
+                res = (T)cres;
             else
             {
-                if (value.Equals("@~"))
-                    return  Activator.CreateInstance<T>();
-                else
-                    return JsonConvert.DeserializeObject<T>(value);
+                try { res = default(T); } catch { res = (T)cres; }
             }
-
+            if (res == null || res.Equals(default(T)))
+            {
+                res = handler();
+                if (res != null)
+                {
+                    Add(key, res, expiressAbsoulte);
+                }
+                else
+                {
+                    Add(key, "~@", expiressAbsoulte);
+                }
+            }
+            return res;
         }
         //-------------------------------zset 分页数据
         public List<T> GetSortList<T>(Func<List<T>> handler, string key, TimeSpan expiresIn = default(TimeSpan))
