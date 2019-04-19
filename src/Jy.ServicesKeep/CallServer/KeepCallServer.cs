@@ -5,7 +5,8 @@ using System;
 namespace Jy.ServicesKeep
 {
     public class KeepCallServer
-    { 
+    {
+        private static string http = "http";
         private static string _AuthAPIAddress=""; //cache AuthAPIAddress
         private static readonly object _AuthAPIAddresslocker = new object();
         public static string getAuthAPIHostPort(string zooKeeperURL)
@@ -54,7 +55,7 @@ namespace Jy.ServicesKeep
             if (string.IsNullOrWhiteSpace(ipport))
                 return "";
             else
-                return $"http://{ipport}";
+                return $"{http}://{ipport}";
         }
         public static string getTokenAuthAddress(string zooKeeperURL)
         {
@@ -64,7 +65,7 @@ namespace Jy.ServicesKeep
             if (string.IsNullOrWhiteSpace(ipport))
                 return "";
             else
-                return $"http://{ipport}";
+                return $"{http}://{ipport}";
         }
     }
 }

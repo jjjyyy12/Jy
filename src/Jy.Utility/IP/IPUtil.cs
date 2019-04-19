@@ -31,7 +31,7 @@ namespace Jy.Utility.IP
                 return "";
             }
         }
-
+        
         public static string GetLocalIPDebug()
         {
             return "localhost";

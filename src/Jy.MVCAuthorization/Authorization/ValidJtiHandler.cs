@@ -13,6 +13,7 @@ using Jy.ServicesKeep;
 
 namespace Jy.MVCAuthorization
 {
+    //api工程中统一引用的鉴权代码
     public class ValidJtiHandler : AuthorizationHandler<ValidJtiRequirement>
     {
         private readonly IOptionsSnapshot<UrlConfigSetting> _urlConfig;

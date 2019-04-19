@@ -47,11 +47,14 @@ namespace Jy.ServicesKeep
             }
             return _tokenAuthwatcher;
         }
-        public static string registerTokenAuthHostPort(string zooKeeperURL)
+        public static string registerTokenAuthHostPort(string zooKeeperURL,string ip ="")
         {
-            string name = IPUtil.GetLocalIPDebug();//GetLocalIP()
+            if (string.IsNullOrWhiteSpace(ip))
+                ip = IPUtil.GetLocalIP();
+            if (string.IsNullOrWhiteSpace(ip))
+                ip = IPUtil.GetLocalIPDebug();
             Register zk = getRegister(zooKeeperURL);
-            string res = zk.createAsync($"/{NodeName.TokenAuth}", name, NodeName.TokenAuthPort, getWatcher(zooKeeperURL)).Result;//getWatcher(zooKeeperURL)
+            string res = zk.createAsync($"/{NodeName.TokenAuth}", ip, NodeName.TokenAuthPort, getWatcher(zooKeeperURL)).Result;//getWatcher(zooKeeperURL)
             return res;
         }
       

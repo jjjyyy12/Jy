@@ -31,12 +31,14 @@ namespace Jy.ServicesKeep
             return _crmAPIzk;
         }
 
-        public static string registerCRMAPIHostPort(string zooKeeperURL)
+        public static string registerCRMAPIHostPort(string zooKeeperURL,string ip = "")
         {
-            string name = IPUtil.GetLocalIPDebug();//GetLocalIP()
-
+            if (string.IsNullOrWhiteSpace(ip))
+                ip = IPUtil.GetLocalIP();
+            if (string.IsNullOrWhiteSpace(ip))
+                ip = IPUtil.GetLocalIPDebug();
             Register zk = new Register(zooKeeperURL);
-            return zk.createAsync($"/{NodeName.CRM}", name, NodeName.CRMPort,new CRMAPIWatcher(zooKeeperURL)).Result;
+            return zk.createAsync($"/{NodeName.CRM}", ip, NodeName.CRMPort,new CRMAPIWatcher(zooKeeperURL)).Result;
         }
       
     }

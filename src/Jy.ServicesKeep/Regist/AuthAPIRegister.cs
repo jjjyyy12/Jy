@@ -48,11 +48,14 @@ namespace Jy.ServicesKeep
             }
             return _authAPIwatcher;
         }
-        public static string registerAuthAPIHostPort(string zooKeeperURL)
+        public static string registerAuthAPIHostPort(string zooKeeperURL,string ip = "")
         {
-            string name = IPUtil.GetLocalIPDebug();//GetLocalIP();
+            if (string.IsNullOrWhiteSpace(ip))
+                ip = IPUtil.GetLocalIP();
+            if (string.IsNullOrWhiteSpace(ip))
+                ip = IPUtil.GetLocalIPDebug();
             Register zk = getRegister(zooKeeperURL);
-            return zk.createAsync($"/{NodeName.AuthAdmin}", name, NodeName.AuthAdminPort, getWatcher(zooKeeperURL)).Result; //getWatcher(zooKeeperURL)
+            return zk.createAsync($"/{NodeName.AuthAdmin}", ip, NodeName.AuthAdminPort, getWatcher(zooKeeperURL)).Result; //getWatcher(zooKeeperURL)
         }
       
     }
