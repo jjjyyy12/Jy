@@ -11,3 +11,17 @@ D:\Study\testJy\Jy-master\src\Jy.DapperBase\bin\Debug\netcoreapp2.0\Jy.IReposito
 D:\Study\testJy\Jy-master\src\Jy.DapperBase\bin\Debug\netcoreapp2.0\Jy.Utility.dll
 D:\Study\testJy\Jy-master\src\Jy.DapperBase\bin\Debug\netcoreapp2.0\Jy.IRepositories.pdb
 D:\Study\testJy\Jy-master\src\Jy.DapperBase\bin\Debug\netcoreapp2.0\Jy.Utility.pdb
+D:\jyworkspace\githab\Jy\src\Jy.DapperBase\bin\Debug\netcoreapp2.0\Jy.DapperBase.deps.json
+D:\jyworkspace\githab\Jy\src\Jy.DapperBase\bin\Debug\netcoreapp2.0\Jy.DapperBase.dll
+D:\jyworkspace\githab\Jy\src\Jy.DapperBase\bin\Debug\netcoreapp2.0\Jy.DapperBase.pdb
+D:\jyworkspace\githab\Jy\src\Jy.DapperBase\bin\Debug\netcoreapp2.0\Jy.IRepositories.dll
+D:\jyworkspace\githab\Jy\src\Jy.DapperBase\bin\Debug\netcoreapp2.0\Jy.Utility.dll
+D:\jyworkspace\githab\Jy\src\Jy.DapperBase\bin\Debug\netcoreapp2.0\Jy.IRepositories.pdb
+D:\jyworkspace\githab\Jy\src\Jy.DapperBase\bin\Debug\netcoreapp2.0\Jy.Utility.pdb
+D:\jyworkspace\githab\Jy\src\Jy.DapperBase\obj\Debug\netcoreapp2.0\Jy.DapperBase.csprojAssemblyReference.cache
+D:\jyworkspace\githab\Jy\src\Jy.DapperBase\obj\Debug\netcoreapp2.0\Jy.DapperBase.csproj.CoreCompileInputs.cache
+D:\jyworkspace\githab\Jy\src\Jy.DapperBase\obj\Debug\netcoreapp2.0\Jy.DapperBase.AssemblyInfoInputs.cache
+D:\jyworkspace\githab\Jy\src\Jy.DapperBase\obj\Debug\netcoreapp2.0\Jy.DapperBase.AssemblyInfo.cs
+D:\jyworkspace\githab\Jy\src\Jy.DapperBase\obj\Debug\netcoreapp2.0\Jy.DapperBase.csproj.CopyComplete
+D:\jyworkspace\githab\Jy\src\Jy.DapperBase\obj\Debug\netcoreapp2.0\Jy.DapperBase.dll
+D:\jyworkspace\githab\Jy\src\Jy.DapperBase\obj\Debug\netcoreapp2.0\Jy.DapperBase.pdb

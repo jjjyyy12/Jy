@@ -7,3 +7,11 @@ D:\Study\testJy\Jy-master\src\Jy.ICache\obj\Debug\netcoreapp2.0\Jy.ICache.Assemb
 D:\Study\testJy\Jy-master\src\Jy.ICache\obj\Debug\netcoreapp2.0\Jy.ICache.AssemblyInfo.cs
 D:\Study\testJy\Jy-master\src\Jy.ICache\obj\Debug\netcoreapp2.0\Jy.ICache.dll
 D:\Study\testJy\Jy-master\src\Jy.ICache\obj\Debug\netcoreapp2.0\Jy.ICache.pdb
+D:\jyworkspace\githab\Jy\src\Jy.ICache\bin\Debug\netcoreapp2.0\Jy.ICache.deps.json
+D:\jyworkspace\githab\Jy\src\Jy.ICache\bin\Debug\netcoreapp2.0\Jy.ICache.dll
+D:\jyworkspace\githab\Jy\src\Jy.ICache\bin\Debug\netcoreapp2.0\Jy.ICache.pdb
+D:\jyworkspace\githab\Jy\src\Jy.ICache\obj\Debug\netcoreapp2.0\Jy.ICache.csproj.CoreCompileInputs.cache
+D:\jyworkspace\githab\Jy\src\Jy.ICache\obj\Debug\netcoreapp2.0\Jy.ICache.AssemblyInfoInputs.cache
+D:\jyworkspace\githab\Jy\src\Jy.ICache\obj\Debug\netcoreapp2.0\Jy.ICache.AssemblyInfo.cs
+D:\jyworkspace\githab\Jy\src\Jy.ICache\obj\Debug\netcoreapp2.0\Jy.ICache.dll
+D:\jyworkspace\githab\Jy\src\Jy.ICache\obj\Debug\netcoreapp2.0\Jy.ICache.pdb

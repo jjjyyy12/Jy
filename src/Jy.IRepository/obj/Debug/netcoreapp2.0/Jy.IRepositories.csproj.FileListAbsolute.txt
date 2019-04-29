@@ -9,3 +9,15 @@ D:\Study\testJy\Jy-master\src\Jy.IRepository\obj\Debug\netcoreapp2.0\Jy.IReposit
 D:\Study\testJy\Jy-master\src\Jy.IRepository\obj\Debug\netcoreapp2.0\Jy.IRepositories.AssemblyInfo.cs
 D:\Study\testJy\Jy-master\src\Jy.IRepository\obj\Debug\netcoreapp2.0\Jy.IRepositories.dll
 D:\Study\testJy\Jy-master\src\Jy.IRepository\obj\Debug\netcoreapp2.0\Jy.IRepositories.pdb
+D:\jyworkspace\githab\Jy\src\Jy.IRepository\bin\Debug\netcoreapp2.0\Jy.IRepositories.deps.json
+D:\jyworkspace\githab\Jy\src\Jy.IRepository\bin\Debug\netcoreapp2.0\Jy.IRepositories.dll
+D:\jyworkspace\githab\Jy\src\Jy.IRepository\bin\Debug\netcoreapp2.0\Jy.IRepositories.pdb
+D:\jyworkspace\githab\Jy\src\Jy.IRepository\bin\Debug\netcoreapp2.0\Jy.Utility.dll
+D:\jyworkspace\githab\Jy\src\Jy.IRepository\bin\Debug\netcoreapp2.0\Jy.Utility.pdb
+D:\jyworkspace\githab\Jy\src\Jy.IRepository\obj\Debug\netcoreapp2.0\Jy.IRepositories.csprojAssemblyReference.cache
+D:\jyworkspace\githab\Jy\src\Jy.IRepository\obj\Debug\netcoreapp2.0\Jy.IRepositories.csproj.CoreCompileInputs.cache
+D:\jyworkspace\githab\Jy\src\Jy.IRepository\obj\Debug\netcoreapp2.0\Jy.IRepositories.AssemblyInfoInputs.cache
+D:\jyworkspace\githab\Jy\src\Jy.IRepository\obj\Debug\netcoreapp2.0\Jy.IRepositories.AssemblyInfo.cs
+D:\jyworkspace\githab\Jy\src\Jy.IRepository\obj\Debug\netcoreapp2.0\Jy.IRepositories.csproj.CopyComplete
+D:\jyworkspace\githab\Jy\src\Jy.IRepository\obj\Debug\netcoreapp2.0\Jy.IRepositories.dll
+D:\jyworkspace\githab\Jy\src\Jy.IRepository\obj\Debug\netcoreapp2.0\Jy.IRepositories.pdb

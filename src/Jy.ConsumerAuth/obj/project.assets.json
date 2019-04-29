@@ -3232,7 +3232,8 @@
         "dependencies": {
           "Jy.Domain": "1.0.0",
           "Jy.IIndex": "1.0.0",
-          "Jy.SolrIndex": "1.0.0"
+          "Jy.SolrIndex": "1.0.0",
+          "Microsoft.Extensions.Options": "2.0.0"
         },
         "compile": {
           "bin/placeholder/Jy.AuthAdmin.SolrIndex.dll": {}
@@ -3484,7 +3485,8 @@
           "Jy.DistributedLock": "1.0.0",
           "Jy.Domain": "1.0.0",
           "Jy.ILog": "1.0.0",
-          "Jy.Utility": "1.0.0"
+          "Jy.Utility": "1.0.0",
+          "Microsoft.Extensions.Options": "2.0.0"
         },
         "compile": {
           "bin/placeholder/Jy.ProcessMessage.dll": {}
@@ -4353,10 +4355,12 @@
       ]
     },
     "Microsoft.NETCore.DotNetAppHost/2.0.0": {
-      "sha512": "S4EgTXSy1/AxCIsEEEodf6PXlKAfgvIJOwYn6qilH9xG7PsCSAA9bPMHsYwd82s4cGStt0iYxAhAYaWuzQg33g==",
+      "sha512": "L4GGkcI/Mxl8PKLRpFdGmLb5oI8sGIR05bDTGkzCoamAjdUl1Zhkov2swjEsZvKYT8kkdiz39LtwyGYuCJxm1A==",
       "type": "package",
       "path": "microsoft.netcore.dotnetapphost/2.0.0",
       "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "microsoft.netcore.dotnetapphost.2.0.0.nupkg.sha512",
@@ -4365,10 +4369,12 @@
       ]
     },
     "Microsoft.NETCore.DotNetHostPolicy/2.0.0": {
-      "sha512": "4t3ZspnVIj+nU+d5/5uId/sJkFLuBSE1tnq/eswmRh5hhxxyvAM8DmiZxY7anAGCcG2WMYTfztNvBFTyh8RMWQ==",
+      "sha512": "rm7mMn0A93fwyAwVhbyOCcPuu2hZNL0A0dAur9sNG9pEkONPfCEQeF7m2mC8KpqZO0Ol6tpV5J0AF3HTXT3GXA==",
       "type": "package",
       "path": "microsoft.netcore.dotnethostpolicy/2.0.0",
       "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "microsoft.netcore.dotnethostpolicy.2.0.0.nupkg.sha512",
@@ -4377,10 +4383,12 @@
       ]
     },
     "Microsoft.NETCore.DotNetHostResolver/2.0.0": {
-      "sha512": "AYM02nuYyIhaHFXRHt2D8YmEyAgSFGBxAKa2lYfxPvRMmsMjnSNJ6xbEdNpBOrqEPLD+9/52aQRFHE6HR2KAfQ==",
+      "sha512": "uBbjpeSrwsaTCADZCzRk+3aBzNnMqkC4zftJWBsL+Zk+8u+W+/lMb2thM5Y4hiVrv1YQg9t6dKldXzOKkY+pQw==",
       "type": "package",
       "path": "microsoft.netcore.dotnethostresolver/2.0.0",
       "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "microsoft.netcore.dotnethostresolver.2.0.0.nupkg.sha512",
@@ -4389,10 +4397,12 @@
       ]
     },
     "Microsoft.NETCore.Platforms/2.0.0": {
-      "sha512": "OtVuMufKaeGT+hje3RzhUiekCUL11tBX55BW7WpbnCMHa+Pq56rjXCgHs5JS7eGSfw85sBe2EAwHcUgHO5wLaA==",
+      "sha512": "VdLJOCXhZaEMY7Hm2GKiULmn7IEPFE4XC5LPSfBVCUIA8YLZVh846gtfBJalsPQF2PlzdD7ecX7DZEulJ402ZQ==",
       "type": "package",
       "path": "microsoft.netcore.platforms/2.0.0",
       "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard1.0/_._",
@@ -4586,10 +4596,12 @@
       ]
     },
     "NETStandard.Library/2.0.0": {
-      "sha512": "boAS7fBhOLV3B+dEx9gyr9iwSFWIteRVeyB+WvvCJ2R8iju6SS3kDYIFpFjmmrqzxFi6qn9qqZoo5A59BjXuWA==",
+      "sha512": "7jnbRU+L08FXKMxqUflxEXtVymWvNOrS8yHgu9s6EM8Anr6T/wIX4nZ08j/u3Asz+tCufp3YVwFSEvFTPYmBPA==",
       "type": "package",
       "path": "netstandard.library/2.0.0",
       "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "build/NETStandard.Library.targets",
@@ -4714,10 +4726,13 @@
       ]
     },
     "Newtonsoft.Json/10.0.3": {
-      "sha512": "wBM7i7i3U2WX0ecor4zdVGvgrwFUjuigBoHKiL+nH39fCOpCPjBY3RDqJM32edvdyTAVdjzlccHsg41+/+zpSA==",
+      "sha512": "hSXaFmh7hNCuEoC4XNY5DrRkLDzYHqPx/Ik23R4J86Z7PE/Y6YidhG602dFVdLBRSdG6xp9NabH3dXpcoxWvww==",
       "type": "package",
       "path": "newtonsoft.json/10.0.3",
+      "hasTools": true,
       "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "LICENSE.md",
         "lib/net20/Newtonsoft.Json.dll",
         "lib/net20/Newtonsoft.Json.xml",
@@ -4741,12 +4756,12 @@
       ]
     },
     "NLog/4.4.0-betaV15": {
-      "sha512": "LDRcdjv5VG9EWz+mnFqdSolUci+j+DBPIPjm7Xdam3xa1F9Rt7o0UpYoCnNRulqHzpKbU704o7Ad4ck9WxDhnw==",
+      "sha512": "uT0bM+uQLLe9N5F0XFmmUL9zktV4DWNXQqqGQOcOi12zzloDABmHrU8RrAV2gsF8FkRugFVL2bl6W2fdLAHl0Q==",
       "type": "package",
       "path": "nlog/4.4.0-betav15",
       "files": [
-        "NLog.4.4.0-betav15.nupkg.sha512",
-        "NLog.nuspec",
+        ".nupkg.metadata",
+        ".signature.p7s",
         "lib/monoandroid23/NLog.dll",
         "lib/monoandroid23/NLog.xml",
         "lib/net35/NLog.dll",
@@ -4766,7 +4781,9 @@
         "lib/wp80/NLog.dll",
         "lib/wp80/NLog.xml",
         "lib/xamarinios10/NLog.dll",
-        "lib/xamarinios10/NLog.xml"
+        "lib/xamarinios10/NLog.xml",
+        "nlog.4.4.0-betav15.nupkg.sha512",
+        "nlog.nuspec"
       ]
     },
     "Npgsql/3.2.5": {
@@ -4913,10 +4930,12 @@
       ]
     },
     "RdKafka/0.9.1": {
-      "sha512": "ygms0MV17ZY+QGxUXbpEoPnt3mw69jqxZBlBQEPuiLZf3+MApHpfkfNgOVjZoNkxgR5edgDW7irSYB23lQwUmg==",
+      "sha512": "zk3P0g/gJaGHgpnoQsTnOl1FK7qjJOwUFXc+teC80xwDvoaX4fpCWY8qLMU8lex6uiLgKTKhv7NAhUHBFtECWg==",
       "type": "package",
       "path": "rdkafka/0.9.1",
       "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "lib/net451/RdKafka.dll",
         "lib/netstandard1.3/RdKafka.dll",
         "rdkafka.0.9.1.nupkg.sha512",
@@ -5129,10 +5148,11 @@
       ]
     },
     "runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
-      "sha512": "X7IdhILzr4ROXd8mI1BUCQMSHSQwelUlBjF1JyTKCjXaOGn2fB4EKBxQbCK2VjO3WaWIdlXZL3W6TiIVnrhX4g==",
+      "sha512": "/p8IQT2brFMDa7BHMH71LV+w5Tb3OxoLHxhn6+MGqN5xeqhM2HRHmj+7xQGJnaRn73d7ZTvp6yRCFMvolws4wA==",
       "type": "package",
       "path": "runtime.osx.10.10-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "files": [
+        ".nupkg.metadata",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "runtime.osx.10.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
@@ -5153,10 +5173,11 @@
       ]
     },
     "runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
-      "sha512": "ytoewC6wGorL7KoCAvRfsgoJPJbNq+64k2SqW6JcOAebWsFUvCCYgfzQMrnpvPiEl4OrblUlhF2ji+Q1+SVLrQ==",
+      "sha512": "JGc0pAWRE8lB4Ucygk2pYSKbUPLlAIq6Bczf5/WF2D/VKJEPtYlVUMxk8fbl1zRfTWzSHi+VcFZlaPlWiNxeKg==",
       "type": "package",
       "path": "runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "files": [
+        ".nupkg.metadata",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
@@ -5601,10 +5622,11 @@
       ]
     },
     "System.Collections.Specialized/4.3.0": {
-      "sha512": "Epx8PoVZR0iuOnJJDzp7pWvdfMMOAvpUo95pC4ScH2mJuXkKA2Y4aR3cG9qt2klHgSons1WFh4kcGW7cSXvrxg==",
+      "sha512": "NoPBj0ykejqAWW4p4gGtrrL+3c84ZLSvGnHgq422ew1Rj4WKj1FA8/BCybqC111EtgcqUl6ZJNFYYS22HLgbjA==",
       "type": "package",
       "path": "system.collections.specialized/4.3.0",
       "files": [
+        ".nupkg.metadata",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -5780,10 +5802,11 @@
       ]
     },
     "System.ComponentModel.Primitives/4.3.0": {
-      "sha512": "j8GUkCpM8V4d4vhLIIoBLGey2Z5bCkMVNjEZseyAlm4n5arcsJOeI3zkUP+zvZgzsbLTYh4lYeP/ZD/gdIAPrw==",
+      "sha512": "KMVuoQ+8bMQ/Z59M3s64num5AD74X5YSqVc7ibwGkPTfmmkl2W8VuSxLRJtpw4KzQrSKUgR0BLbF0adPfcTSGQ==",
       "type": "package",
       "path": "system.componentmodel.primitives/4.3.0",
       "files": [
+        ".nupkg.metadata",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -7021,10 +7044,11 @@
       ]
     },
     "System.Linq.Dynamic.Core/1.0.8.18": {
-      "sha512": "Ti7yhula15jyfG/S2RoSmAgXwOltY1ILSef+SSCfTjq6GiOZNqhESRrXS2Aflq2ico++TOFg05rWTWShdVLtOQ==",
+      "sha512": "j1DztLi7r1L6JNVQTiQn0vBr3s0pz/cRkYKTP1bYbOV8Fbawb16IPA3jF++VHDPRbW56hznubcugH5NgOILPDA==",
       "type": "package",
       "path": "system.linq.dynamic.core/1.0.8.18",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "lib/net35/System.Linq.Dynamic.Core.dll",
         "lib/net35/System.Linq.Dynamic.Core.xml",
@@ -9912,26 +9936,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jiaoyue\\.nuget\\packages\\": {},
+    "C:\\Users\\jiaoy\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
-      "projectUniqueName": "D:\\Study\\testJy\\Jy-master\\src\\Jy.ConsumerAuth\\Jy.ConsumerAuth.csproj",
+      "projectUniqueName": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.ConsumerAuth\\Jy.ConsumerAuth.csproj",
       "projectName": "Jy.ConsumerAuth",
-      "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.ConsumerAuth\\Jy.ConsumerAuth.csproj",
-      "packagesPath": "C:\\Users\\jiaoyue\\.nuget\\packages\\",
-      "outputPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.ConsumerAuth\\obj\\",
+      "projectPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.ConsumerAuth\\Jy.ConsumerAuth.csproj",
+      "packagesPath": "C:\\Users\\jiaoy\\.nuget\\packages\\",
+      "outputPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.ConsumerAuth\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\jiaoyue\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jiaoy\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9939,43 +9960,44 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "http://jhnuget.iuoooo.com:8008/nuget": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "D:\\Study\\testJy\\Jy-master\\src\\Jy.DistributedLockHandler\\Jy.DistributedLockHandler.csproj": {
-              "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.DistributedLockHandler\\Jy.DistributedLockHandler.csproj"
+            "D:\\jyworkspace\\githab\\Jy\\src\\Jy.Application\\Jy.Application.csproj": {
+              "projectPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.Application\\Jy.Application.csproj"
             },
-            "D:\\Study\\testJy\\Jy-master\\src\\Jy.ProcessMessage\\Jy.ProcessMessage.csproj": {
-              "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.ProcessMessage\\Jy.ProcessMessage.csproj"
+            "D:\\jyworkspace\\githab\\Jy\\src\\Jy.CKafka\\Jy.CKafka.csproj": {
+              "projectPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.CKafka\\Jy.CKafka.csproj"
             },
-            "D:\\Study\\testJy\\Jy-master\\src\\Jy.Application\\Jy.Application.csproj": {
-              "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.Application\\Jy.Application.csproj"
+            "D:\\jyworkspace\\githab\\Jy\\src\\Jy.Dapper\\Jy.Dapper.csproj": {
+              "projectPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.Dapper\\Jy.Dapper.csproj"
             },
-            "D:\\Study\\testJy\\Jy-master\\src\\Jy.Dapper\\Jy.Dapper.csproj": {
-              "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.Dapper\\Jy.Dapper.csproj"
+            "D:\\jyworkspace\\githab\\Jy\\src\\Jy.DistributedLockHandler\\Jy.DistributedLockHandler.csproj": {
+              "projectPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.DistributedLockHandler\\Jy.DistributedLockHandler.csproj"
             },
-            "D:\\Study\\testJy\\Jy-master\\src\\Jy.RabbitMQ\\Jy.RabbitMQ.csproj": {
-              "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.RabbitMQ\\Jy.RabbitMQ.csproj"
+            "D:\\jyworkspace\\githab\\Jy\\src\\Jy.Domain\\Jy.Domain.csproj": {
+              "projectPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.Domain\\Jy.Domain.csproj"
             },
-            "D:\\Study\\testJy\\Jy-master\\src\\Jy.Utility\\Jy.Utility.csproj": {
-              "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.Utility\\Jy.Utility.csproj"
+            "D:\\jyworkspace\\githab\\Jy\\src\\Jy.EntityFrameworkCore\\Jy.EntityFrameworkCore.csproj": {
+              "projectPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.EntityFrameworkCore\\Jy.EntityFrameworkCore.csproj"
             },
-            "D:\\Study\\testJy\\Jy-master\\src\\Jy.IMessageQueue\\Jy.IMessageQueue.csproj": {
-              "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.IMessageQueue\\Jy.IMessageQueue.csproj"
+            "D:\\jyworkspace\\githab\\Jy\\src\\Jy.IMessageQueue\\Jy.IMessageQueue.csproj": {
+              "projectPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.IMessageQueue\\Jy.IMessageQueue.csproj"
             },
-            "D:\\Study\\testJy\\Jy-master\\src\\Jy.Domain\\Jy.Domain.csproj": {
-              "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.Domain\\Jy.Domain.csproj"
+            "D:\\jyworkspace\\githab\\Jy\\src\\Jy.Kafka\\Jy.Kafka.csproj": {
+              "projectPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.Kafka\\Jy.Kafka.csproj"
             },
-            "D:\\Study\\testJy\\Jy-master\\src\\Jy.CKafka\\Jy.CKafka.csproj": {
-              "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.CKafka\\Jy.CKafka.csproj"
+            "D:\\jyworkspace\\githab\\Jy\\src\\Jy.ProcessMessage\\Jy.ProcessMessage.csproj": {
+              "projectPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.ProcessMessage\\Jy.ProcessMessage.csproj"
             },
-            "D:\\Study\\testJy\\Jy-master\\src\\Jy.Kafka\\Jy.Kafka.csproj": {
-              "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.Kafka\\Jy.Kafka.csproj"
+            "D:\\jyworkspace\\githab\\Jy\\src\\Jy.RabbitMQ\\Jy.RabbitMQ.csproj": {
+              "projectPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.RabbitMQ\\Jy.RabbitMQ.csproj"
             },
-            "D:\\Study\\testJy\\Jy-master\\src\\Jy.EntityFrameworkCore\\Jy.EntityFrameworkCore.csproj": {
-              "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.EntityFrameworkCore\\Jy.EntityFrameworkCore.csproj"
+            "D:\\jyworkspace\\githab\\Jy\\src\\Jy.Utility\\Jy.Utility.csproj": {
+              "projectPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.Utility\\Jy.Utility.csproj"
             }
           }
         }
@@ -9989,30 +10011,31 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
+          "Autofac": {
+            "target": "Package",
+            "version": "[4.6.1, )"
+          },
           "Microsoft.Extensions.Configuration.EnvironmentVariables": {
             "target": "Package",
-            "version": "2.0.0"
-          },
-          "Serilog.Sinks.RollingFile": {
-            "target": "Package",
-            "version": "3.3.0"
-          },
-          "Serilog": {
-            "target": "Package",
-            "version": "2.5.0"
-          },
-          "Microsoft.NETCore.App": {
-            "target": "Package",
-            "version": "2.0.0",
-            "autoReferenced": true
+            "version": "[2.0.0, )"
           },
           "Microsoft.Extensions.Options.ConfigurationExtensions": {
             "target": "Package",
-            "version": "2.0.0"
+            "version": "[2.0.0, )"
           },
-          "Autofac": {
+          "Microsoft.NETCore.App": {
+            "suppressParent": "All",
             "target": "Package",
-            "version": "4.6.1"
+            "version": "[2.0.0, )",
+            "autoReferenced": true
+          },
+          "Serilog": {
+            "target": "Package",
+            "version": "[2.5.0, )"
+          },
+          "Serilog.Sinks.RollingFile": {
+            "target": "Package",
+            "version": "[3.3.0, )"
           }
         },
         "imports": [

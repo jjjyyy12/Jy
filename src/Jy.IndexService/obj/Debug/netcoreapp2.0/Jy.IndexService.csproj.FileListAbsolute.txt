@@ -11,3 +11,17 @@ D:\Study\testJy\Jy-master\src\Jy.IndexService\obj\Debug\netcoreapp2.0\Jy.IndexSe
 D:\Study\testJy\Jy-master\src\Jy.IndexService\obj\Debug\netcoreapp2.0\Jy.IndexService.AssemblyInfo.cs
 D:\Study\testJy\Jy-master\src\Jy.IndexService\obj\Debug\netcoreapp2.0\Jy.IndexService.dll
 D:\Study\testJy\Jy-master\src\Jy.IndexService\obj\Debug\netcoreapp2.0\Jy.IndexService.pdb
+D:\jyworkspace\githab\Jy\src\Jy.IndexService\bin\Debug\netcoreapp2.0\Jy.IndexService.deps.json
+D:\jyworkspace\githab\Jy\src\Jy.IndexService\bin\Debug\netcoreapp2.0\Jy.IndexService.dll
+D:\jyworkspace\githab\Jy\src\Jy.IndexService\bin\Debug\netcoreapp2.0\Jy.IndexService.pdb
+D:\jyworkspace\githab\Jy\src\Jy.IndexService\bin\Debug\netcoreapp2.0\Jy.IIndex.dll
+D:\jyworkspace\githab\Jy\src\Jy.IndexService\bin\Debug\netcoreapp2.0\Jy.Utility.dll
+D:\jyworkspace\githab\Jy\src\Jy.IndexService\bin\Debug\netcoreapp2.0\Jy.IIndex.pdb
+D:\jyworkspace\githab\Jy\src\Jy.IndexService\bin\Debug\netcoreapp2.0\Jy.Utility.pdb
+D:\jyworkspace\githab\Jy\src\Jy.IndexService\obj\Debug\netcoreapp2.0\Jy.IndexService.csprojAssemblyReference.cache
+D:\jyworkspace\githab\Jy\src\Jy.IndexService\obj\Debug\netcoreapp2.0\Jy.IndexService.csproj.CoreCompileInputs.cache
+D:\jyworkspace\githab\Jy\src\Jy.IndexService\obj\Debug\netcoreapp2.0\Jy.IndexService.AssemblyInfoInputs.cache
+D:\jyworkspace\githab\Jy\src\Jy.IndexService\obj\Debug\netcoreapp2.0\Jy.IndexService.AssemblyInfo.cs
+D:\jyworkspace\githab\Jy\src\Jy.IndexService\obj\Debug\netcoreapp2.0\Jy.IndexService.csproj.CopyComplete
+D:\jyworkspace\githab\Jy\src\Jy.IndexService\obj\Debug\netcoreapp2.0\Jy.IndexService.dll
+D:\jyworkspace\githab\Jy\src\Jy.IndexService\obj\Debug\netcoreapp2.0\Jy.IndexService.pdb

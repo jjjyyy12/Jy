@@ -7,3 +7,12 @@ D:\Study\testJy\Jy-master\src\Jy.Utility\obj\Debug\netcoreapp2.0\Jy.Utility.Asse
 D:\Study\testJy\Jy-master\src\Jy.Utility\obj\Debug\netcoreapp2.0\Jy.Utility.dll
 D:\Study\testJy\Jy-master\src\Jy.Utility\obj\Debug\netcoreapp2.0\Jy.Utility.pdb
 D:\Study\testJy\Jy-master\src\Jy.Utility\obj\Debug\netcoreapp2.0\Jy.Utility.csprojResolveAssemblyReference.cache
+D:\jyworkspace\githab\Jy\src\Jy.Utility\bin\Debug\netcoreapp2.0\Jy.Utility.deps.json
+D:\jyworkspace\githab\Jy\src\Jy.Utility\bin\Debug\netcoreapp2.0\Jy.Utility.dll
+D:\jyworkspace\githab\Jy\src\Jy.Utility\bin\Debug\netcoreapp2.0\Jy.Utility.pdb
+D:\jyworkspace\githab\Jy\src\Jy.Utility\obj\Debug\netcoreapp2.0\Jy.Utility.csproj.CoreCompileInputs.cache
+D:\jyworkspace\githab\Jy\src\Jy.Utility\obj\Debug\netcoreapp2.0\Jy.Utility.AssemblyInfoInputs.cache
+D:\jyworkspace\githab\Jy\src\Jy.Utility\obj\Debug\netcoreapp2.0\Jy.Utility.AssemblyInfo.cs
+D:\jyworkspace\githab\Jy\src\Jy.Utility\obj\Debug\netcoreapp2.0\Jy.Utility.dll
+D:\jyworkspace\githab\Jy\src\Jy.Utility\obj\Debug\netcoreapp2.0\Jy.Utility.pdb
+D:\jyworkspace\githab\Jy\src\Jy.Utility\obj\Debug\netcoreapp2.0\Jy.Utility.csprojAssemblyReference.cache

@@ -9,3 +9,15 @@ D:\Study\testJy\Jy-master\src\Jy.Resilience.Http\obj\Debug\netcoreapp2.0\Jy.Resi
 D:\Study\testJy\Jy-master\src\Jy.Resilience.Http\obj\Debug\netcoreapp2.0\Jy.Resilience.Http.AssemblyInfo.cs
 D:\Study\testJy\Jy-master\src\Jy.Resilience.Http\obj\Debug\netcoreapp2.0\Jy.Resilience.Http.dll
 D:\Study\testJy\Jy-master\src\Jy.Resilience.Http\obj\Debug\netcoreapp2.0\Jy.Resilience.Http.pdb
+D:\jyworkspace\githab\Jy\src\Jy.Resilience.Http\bin\Debug\netcoreapp2.0\Jy.Resilience.Http.deps.json
+D:\jyworkspace\githab\Jy\src\Jy.Resilience.Http\bin\Debug\netcoreapp2.0\Jy.Resilience.Http.dll
+D:\jyworkspace\githab\Jy\src\Jy.Resilience.Http\bin\Debug\netcoreapp2.0\Jy.Resilience.Http.pdb
+D:\jyworkspace\githab\Jy\src\Jy.Resilience.Http\bin\Debug\netcoreapp2.0\Jy.ILog.dll
+D:\jyworkspace\githab\Jy\src\Jy.Resilience.Http\bin\Debug\netcoreapp2.0\Jy.ILog.pdb
+D:\jyworkspace\githab\Jy\src\Jy.Resilience.Http\obj\Debug\netcoreapp2.0\Jy.Resilience.Http.csprojAssemblyReference.cache
+D:\jyworkspace\githab\Jy\src\Jy.Resilience.Http\obj\Debug\netcoreapp2.0\Jy.Resilience.Http.csproj.CoreCompileInputs.cache
+D:\jyworkspace\githab\Jy\src\Jy.Resilience.Http\obj\Debug\netcoreapp2.0\Jy.Resilience.Http.AssemblyInfoInputs.cache
+D:\jyworkspace\githab\Jy\src\Jy.Resilience.Http\obj\Debug\netcoreapp2.0\Jy.Resilience.Http.AssemblyInfo.cs
+D:\jyworkspace\githab\Jy\src\Jy.Resilience.Http\obj\Debug\netcoreapp2.0\Jy.Resilience.Http.csproj.CopyComplete
+D:\jyworkspace\githab\Jy\src\Jy.Resilience.Http\obj\Debug\netcoreapp2.0\Jy.Resilience.Http.dll
+D:\jyworkspace\githab\Jy\src\Jy.Resilience.Http\obj\Debug\netcoreapp2.0\Jy.Resilience.Http.pdb

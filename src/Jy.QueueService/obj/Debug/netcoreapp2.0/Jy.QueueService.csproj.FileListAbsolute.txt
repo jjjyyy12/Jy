@@ -11,3 +11,17 @@ D:\Study\testJy\Jy-master\src\Jy.QueueService\obj\Debug\netcoreapp2.0\Jy.QueueSe
 D:\Study\testJy\Jy-master\src\Jy.QueueService\obj\Debug\netcoreapp2.0\Jy.QueueService.AssemblyInfo.cs
 D:\Study\testJy\Jy-master\src\Jy.QueueService\obj\Debug\netcoreapp2.0\Jy.QueueService.dll
 D:\Study\testJy\Jy-master\src\Jy.QueueService\obj\Debug\netcoreapp2.0\Jy.QueueService.pdb
+D:\jyworkspace\githab\Jy\src\Jy.QueueService\bin\Debug\netcoreapp2.0\Jy.QueueService.deps.json
+D:\jyworkspace\githab\Jy\src\Jy.QueueService\bin\Debug\netcoreapp2.0\Jy.QueueService.dll
+D:\jyworkspace\githab\Jy\src\Jy.QueueService\bin\Debug\netcoreapp2.0\Jy.QueueService.pdb
+D:\jyworkspace\githab\Jy\src\Jy.QueueService\bin\Debug\netcoreapp2.0\Jy.ILog.dll
+D:\jyworkspace\githab\Jy\src\Jy.QueueService\bin\Debug\netcoreapp2.0\Jy.IMessageQueue.dll
+D:\jyworkspace\githab\Jy\src\Jy.QueueService\bin\Debug\netcoreapp2.0\Jy.ILog.pdb
+D:\jyworkspace\githab\Jy\src\Jy.QueueService\bin\Debug\netcoreapp2.0\Jy.IMessageQueue.pdb
+D:\jyworkspace\githab\Jy\src\Jy.QueueService\obj\Debug\netcoreapp2.0\Jy.QueueService.csprojAssemblyReference.cache
+D:\jyworkspace\githab\Jy\src\Jy.QueueService\obj\Debug\netcoreapp2.0\Jy.QueueService.csproj.CoreCompileInputs.cache
+D:\jyworkspace\githab\Jy\src\Jy.QueueService\obj\Debug\netcoreapp2.0\Jy.QueueService.AssemblyInfoInputs.cache
+D:\jyworkspace\githab\Jy\src\Jy.QueueService\obj\Debug\netcoreapp2.0\Jy.QueueService.AssemblyInfo.cs
+D:\jyworkspace\githab\Jy\src\Jy.QueueService\obj\Debug\netcoreapp2.0\Jy.QueueService.csproj.CopyComplete
+D:\jyworkspace\githab\Jy\src\Jy.QueueService\obj\Debug\netcoreapp2.0\Jy.QueueService.dll
+D:\jyworkspace\githab\Jy\src\Jy.QueueService\obj\Debug\netcoreapp2.0\Jy.QueueService.pdb

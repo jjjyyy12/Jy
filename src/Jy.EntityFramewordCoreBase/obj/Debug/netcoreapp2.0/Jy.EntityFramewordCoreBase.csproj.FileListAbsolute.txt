@@ -11,3 +11,17 @@ D:\Study\testJy\Jy-master\src\Jy.EntityFramewordCoreBase\obj\Debug\netcoreapp2.0
 D:\Study\testJy\Jy-master\src\Jy.EntityFramewordCoreBase\obj\Debug\netcoreapp2.0\Jy.EntityFramewordCoreBase.AssemblyInfo.cs
 D:\Study\testJy\Jy-master\src\Jy.EntityFramewordCoreBase\obj\Debug\netcoreapp2.0\Jy.EntityFramewordCoreBase.dll
 D:\Study\testJy\Jy-master\src\Jy.EntityFramewordCoreBase\obj\Debug\netcoreapp2.0\Jy.EntityFramewordCoreBase.pdb
+D:\jyworkspace\githab\Jy\src\Jy.EntityFramewordCoreBase\bin\Debug\netcoreapp2.0\Jy.EntityFramewordCoreBase.deps.json
+D:\jyworkspace\githab\Jy\src\Jy.EntityFramewordCoreBase\bin\Debug\netcoreapp2.0\Jy.EntityFramewordCoreBase.dll
+D:\jyworkspace\githab\Jy\src\Jy.EntityFramewordCoreBase\bin\Debug\netcoreapp2.0\Jy.EntityFramewordCoreBase.pdb
+D:\jyworkspace\githab\Jy\src\Jy.EntityFramewordCoreBase\bin\Debug\netcoreapp2.0\Jy.IRepositories.dll
+D:\jyworkspace\githab\Jy\src\Jy.EntityFramewordCoreBase\bin\Debug\netcoreapp2.0\Jy.Utility.dll
+D:\jyworkspace\githab\Jy\src\Jy.EntityFramewordCoreBase\bin\Debug\netcoreapp2.0\Jy.IRepositories.pdb
+D:\jyworkspace\githab\Jy\src\Jy.EntityFramewordCoreBase\bin\Debug\netcoreapp2.0\Jy.Utility.pdb
+D:\jyworkspace\githab\Jy\src\Jy.EntityFramewordCoreBase\obj\Debug\netcoreapp2.0\Jy.EntityFramewordCoreBase.csprojAssemblyReference.cache
+D:\jyworkspace\githab\Jy\src\Jy.EntityFramewordCoreBase\obj\Debug\netcoreapp2.0\Jy.EntityFramewordCoreBase.csproj.CoreCompileInputs.cache
+D:\jyworkspace\githab\Jy\src\Jy.EntityFramewordCoreBase\obj\Debug\netcoreapp2.0\Jy.EntityFramewordCoreBase.AssemblyInfoInputs.cache
+D:\jyworkspace\githab\Jy\src\Jy.EntityFramewordCoreBase\obj\Debug\netcoreapp2.0\Jy.EntityFramewordCoreBase.AssemblyInfo.cs
+D:\jyworkspace\githab\Jy\src\Jy.EntityFramewordCoreBase\obj\Debug\netcoreapp2.0\Jy.EntityFramewordCoreBase.csproj.CopyComplete
+D:\jyworkspace\githab\Jy\src\Jy.EntityFramewordCoreBase\obj\Debug\netcoreapp2.0\Jy.EntityFramewordCoreBase.dll
+D:\jyworkspace\githab\Jy\src\Jy.EntityFramewordCoreBase\obj\Debug\netcoreapp2.0\Jy.EntityFramewordCoreBase.pdb

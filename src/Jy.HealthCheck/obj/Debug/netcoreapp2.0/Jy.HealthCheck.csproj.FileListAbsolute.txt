@@ -7,3 +7,12 @@ D:\Study\testJy\Jy-master\src\Jy.HealthCheck\obj\Debug\netcoreapp2.0\Jy.HealthCh
 D:\Study\testJy\Jy-master\src\Jy.HealthCheck\obj\Debug\netcoreapp2.0\Jy.HealthCheck.AssemblyInfo.cs
 D:\Study\testJy\Jy-master\src\Jy.HealthCheck\obj\Debug\netcoreapp2.0\Jy.HealthCheck.dll
 D:\Study\testJy\Jy-master\src\Jy.HealthCheck\obj\Debug\netcoreapp2.0\Jy.HealthCheck.pdb
+D:\jyworkspace\githab\Jy\src\Jy.HealthCheck\bin\Debug\netcoreapp2.0\Jy.HealthCheck.deps.json
+D:\jyworkspace\githab\Jy\src\Jy.HealthCheck\bin\Debug\netcoreapp2.0\Jy.HealthCheck.dll
+D:\jyworkspace\githab\Jy\src\Jy.HealthCheck\bin\Debug\netcoreapp2.0\Jy.HealthCheck.pdb
+D:\jyworkspace\githab\Jy\src\Jy.HealthCheck\obj\Debug\netcoreapp2.0\Jy.HealthCheck.csprojAssemblyReference.cache
+D:\jyworkspace\githab\Jy\src\Jy.HealthCheck\obj\Debug\netcoreapp2.0\Jy.HealthCheck.csproj.CoreCompileInputs.cache
+D:\jyworkspace\githab\Jy\src\Jy.HealthCheck\obj\Debug\netcoreapp2.0\Jy.HealthCheck.AssemblyInfoInputs.cache
+D:\jyworkspace\githab\Jy\src\Jy.HealthCheck\obj\Debug\netcoreapp2.0\Jy.HealthCheck.AssemblyInfo.cs
+D:\jyworkspace\githab\Jy\src\Jy.HealthCheck\obj\Debug\netcoreapp2.0\Jy.HealthCheck.dll
+D:\jyworkspace\githab\Jy\src\Jy.HealthCheck\obj\Debug\netcoreapp2.0\Jy.HealthCheck.pdb

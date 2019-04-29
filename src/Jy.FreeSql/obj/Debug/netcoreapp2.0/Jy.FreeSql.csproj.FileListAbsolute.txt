@@ -6,3 +6,11 @@ D:\Study\testJy\Jy-master\src\Jy.FreeSql\obj\Debug\netcoreapp2.0\Jy.FreeSql.Asse
 D:\Study\testJy\Jy-master\src\Jy.FreeSql\obj\Debug\netcoreapp2.0\Jy.FreeSql.AssemblyInfo.cs
 D:\Study\testJy\Jy-master\src\Jy.FreeSql\obj\Debug\netcoreapp2.0\Jy.FreeSql.dll
 D:\Study\testJy\Jy-master\src\Jy.FreeSql\obj\Debug\netcoreapp2.0\Jy.FreeSql.pdb
+D:\jyworkspace\githab\Jy\src\Jy.FreeSql\bin\Debug\netcoreapp2.0\Jy.FreeSql.deps.json
+D:\jyworkspace\githab\Jy\src\Jy.FreeSql\bin\Debug\netcoreapp2.0\Jy.FreeSql.dll
+D:\jyworkspace\githab\Jy\src\Jy.FreeSql\bin\Debug\netcoreapp2.0\Jy.FreeSql.pdb
+D:\jyworkspace\githab\Jy\src\Jy.FreeSql\obj\Debug\netcoreapp2.0\Jy.FreeSql.csproj.CoreCompileInputs.cache
+D:\jyworkspace\githab\Jy\src\Jy.FreeSql\obj\Debug\netcoreapp2.0\Jy.FreeSql.AssemblyInfoInputs.cache
+D:\jyworkspace\githab\Jy\src\Jy.FreeSql\obj\Debug\netcoreapp2.0\Jy.FreeSql.AssemblyInfo.cs
+D:\jyworkspace\githab\Jy\src\Jy.FreeSql\obj\Debug\netcoreapp2.0\Jy.FreeSql.dll
+D:\jyworkspace\githab\Jy\src\Jy.FreeSql\obj\Debug\netcoreapp2.0\Jy.FreeSql.pdb

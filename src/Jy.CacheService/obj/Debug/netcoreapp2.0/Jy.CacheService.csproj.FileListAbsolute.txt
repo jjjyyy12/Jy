@@ -9,3 +9,15 @@ D:\Study\testJy\Jy-master\src\Jy.CacheService\obj\Debug\netcoreapp2.0\Jy.CacheSe
 D:\Study\testJy\Jy-master\src\Jy.CacheService\obj\Debug\netcoreapp2.0\Jy.CacheService.AssemblyInfo.cs
 D:\Study\testJy\Jy-master\src\Jy.CacheService\obj\Debug\netcoreapp2.0\Jy.CacheService.dll
 D:\Study\testJy\Jy-master\src\Jy.CacheService\obj\Debug\netcoreapp2.0\Jy.CacheService.pdb
+D:\jyworkspace\githab\Jy\src\Jy.CacheService\bin\Debug\netcoreapp2.0\Jy.CacheService.deps.json
+D:\jyworkspace\githab\Jy\src\Jy.CacheService\bin\Debug\netcoreapp2.0\Jy.CacheService.dll
+D:\jyworkspace\githab\Jy\src\Jy.CacheService\bin\Debug\netcoreapp2.0\Jy.CacheService.pdb
+D:\jyworkspace\githab\Jy\src\Jy.CacheService\bin\Debug\netcoreapp2.0\Jy.ICache.dll
+D:\jyworkspace\githab\Jy\src\Jy.CacheService\bin\Debug\netcoreapp2.0\Jy.ICache.pdb
+D:\jyworkspace\githab\Jy\src\Jy.CacheService\obj\Debug\netcoreapp2.0\Jy.CacheService.csprojAssemblyReference.cache
+D:\jyworkspace\githab\Jy\src\Jy.CacheService\obj\Debug\netcoreapp2.0\Jy.CacheService.csproj.CoreCompileInputs.cache
+D:\jyworkspace\githab\Jy\src\Jy.CacheService\obj\Debug\netcoreapp2.0\Jy.CacheService.AssemblyInfoInputs.cache
+D:\jyworkspace\githab\Jy\src\Jy.CacheService\obj\Debug\netcoreapp2.0\Jy.CacheService.AssemblyInfo.cs
+D:\jyworkspace\githab\Jy\src\Jy.CacheService\obj\Debug\netcoreapp2.0\Jy.CacheService.csproj.CopyComplete
+D:\jyworkspace\githab\Jy\src\Jy.CacheService\obj\Debug\netcoreapp2.0\Jy.CacheService.dll
+D:\jyworkspace\githab\Jy\src\Jy.CacheService\obj\Debug\netcoreapp2.0\Jy.CacheService.pdb

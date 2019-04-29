@@ -1651,10 +1651,12 @@
       ]
     },
     "Microsoft.NETCore.DotNetAppHost/2.0.0": {
-      "sha512": "S4EgTXSy1/AxCIsEEEodf6PXlKAfgvIJOwYn6qilH9xG7PsCSAA9bPMHsYwd82s4cGStt0iYxAhAYaWuzQg33g==",
+      "sha512": "L4GGkcI/Mxl8PKLRpFdGmLb5oI8sGIR05bDTGkzCoamAjdUl1Zhkov2swjEsZvKYT8kkdiz39LtwyGYuCJxm1A==",
       "type": "package",
       "path": "microsoft.netcore.dotnetapphost/2.0.0",
       "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "microsoft.netcore.dotnetapphost.2.0.0.nupkg.sha512",
@@ -1663,10 +1665,12 @@
       ]
     },
     "Microsoft.NETCore.DotNetHostPolicy/2.0.0": {
-      "sha512": "4t3ZspnVIj+nU+d5/5uId/sJkFLuBSE1tnq/eswmRh5hhxxyvAM8DmiZxY7anAGCcG2WMYTfztNvBFTyh8RMWQ==",
+      "sha512": "rm7mMn0A93fwyAwVhbyOCcPuu2hZNL0A0dAur9sNG9pEkONPfCEQeF7m2mC8KpqZO0Ol6tpV5J0AF3HTXT3GXA==",
       "type": "package",
       "path": "microsoft.netcore.dotnethostpolicy/2.0.0",
       "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "microsoft.netcore.dotnethostpolicy.2.0.0.nupkg.sha512",
@@ -1675,10 +1679,12 @@
       ]
     },
     "Microsoft.NETCore.DotNetHostResolver/2.0.0": {
-      "sha512": "AYM02nuYyIhaHFXRHt2D8YmEyAgSFGBxAKa2lYfxPvRMmsMjnSNJ6xbEdNpBOrqEPLD+9/52aQRFHE6HR2KAfQ==",
+      "sha512": "uBbjpeSrwsaTCADZCzRk+3aBzNnMqkC4zftJWBsL+Zk+8u+W+/lMb2thM5Y4hiVrv1YQg9t6dKldXzOKkY+pQw==",
       "type": "package",
       "path": "microsoft.netcore.dotnethostresolver/2.0.0",
       "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "microsoft.netcore.dotnethostresolver.2.0.0.nupkg.sha512",
@@ -1687,10 +1693,12 @@
       ]
     },
     "Microsoft.NETCore.Platforms/2.0.0": {
-      "sha512": "OtVuMufKaeGT+hje3RzhUiekCUL11tBX55BW7WpbnCMHa+Pq56rjXCgHs5JS7eGSfw85sBe2EAwHcUgHO5wLaA==",
+      "sha512": "VdLJOCXhZaEMY7Hm2GKiULmn7IEPFE4XC5LPSfBVCUIA8YLZVh846gtfBJalsPQF2PlzdD7ecX7DZEulJ402ZQ==",
       "type": "package",
       "path": "microsoft.netcore.platforms/2.0.0",
       "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard1.0/_._",
@@ -1715,10 +1723,12 @@
       ]
     },
     "NETStandard.Library/2.0.0": {
-      "sha512": "boAS7fBhOLV3B+dEx9gyr9iwSFWIteRVeyB+WvvCJ2R8iju6SS3kDYIFpFjmmrqzxFi6qn9qqZoo5A59BjXuWA==",
+      "sha512": "7jnbRU+L08FXKMxqUflxEXtVymWvNOrS8yHgu9s6EM8Anr6T/wIX4nZ08j/u3Asz+tCufp3YVwFSEvFTPYmBPA==",
       "type": "package",
       "path": "netstandard.library/2.0.0",
       "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "build/NETStandard.Library.targets",
@@ -1843,10 +1853,13 @@
       ]
     },
     "Newtonsoft.Json/10.0.3": {
-      "sha512": "wBM7i7i3U2WX0ecor4zdVGvgrwFUjuigBoHKiL+nH39fCOpCPjBY3RDqJM32edvdyTAVdjzlccHsg41+/+zpSA==",
+      "sha512": "hSXaFmh7hNCuEoC4XNY5DrRkLDzYHqPx/Ik23R4J86Z7PE/Y6YidhG602dFVdLBRSdG6xp9NabH3dXpcoxWvww==",
       "type": "package",
       "path": "newtonsoft.json/10.0.3",
+      "hasTools": true,
       "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "LICENSE.md",
         "lib/net20/Newtonsoft.Json.dll",
         "lib/net20/Newtonsoft.Json.xml",
@@ -1989,10 +2002,11 @@
       ]
     },
     "System.Collections.Specialized/4.3.0": {
-      "sha512": "Epx8PoVZR0iuOnJJDzp7pWvdfMMOAvpUo95pC4ScH2mJuXkKA2Y4aR3cG9qt2klHgSons1WFh4kcGW7cSXvrxg==",
+      "sha512": "NoPBj0ykejqAWW4p4gGtrrL+3c84ZLSvGnHgq422ew1Rj4WKj1FA8/BCybqC111EtgcqUl6ZJNFYYS22HLgbjA==",
       "type": "package",
       "path": "system.collections.specialized/4.3.0",
       "files": [
+        ".nupkg.metadata",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -2083,10 +2097,11 @@
       ]
     },
     "System.ComponentModel.Primitives/4.3.0": {
-      "sha512": "j8GUkCpM8V4d4vhLIIoBLGey2Z5bCkMVNjEZseyAlm4n5arcsJOeI3zkUP+zvZgzsbLTYh4lYeP/ZD/gdIAPrw==",
+      "sha512": "KMVuoQ+8bMQ/Z59M3s64num5AD74X5YSqVc7ibwGkPTfmmkl2W8VuSxLRJtpw4KzQrSKUgR0BLbF0adPfcTSGQ==",
       "type": "package",
       "path": "system.componentmodel.primitives/4.3.0",
       "files": [
+        ".nupkg.metadata",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -4150,26 +4165,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jiaoyue\\.nuget\\packages\\": {},
+    "C:\\Users\\jiaoy\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
-      "projectUniqueName": "D:\\Study\\testJy\\Jy-master\\src\\Jy.CKafka\\Jy.CKafka.csproj",
+      "projectUniqueName": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.CKafka\\Jy.CKafka.csproj",
       "projectName": "Jy.CKafka",
-      "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.CKafka\\Jy.CKafka.csproj",
-      "packagesPath": "C:\\Users\\jiaoyue\\.nuget\\packages\\",
-      "outputPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.CKafka\\obj\\",
+      "projectPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.CKafka\\Jy.CKafka.csproj",
+      "packagesPath": "C:\\Users\\jiaoy\\.nuget\\packages\\",
+      "outputPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.CKafka\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\jiaoyue\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jiaoy\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4177,19 +4189,20 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "http://jhnuget.iuoooo.com:8008/nuget": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "D:\\Study\\testJy\\Jy-master\\src\\Jy.ILog\\Jy.ILog.csproj": {
-              "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.ILog\\Jy.ILog.csproj"
+            "D:\\jyworkspace\\githab\\Jy\\src\\Jy.ILog\\Jy.ILog.csproj": {
+              "projectPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.ILog\\Jy.ILog.csproj"
             },
-            "D:\\Study\\testJy\\Jy-master\\src\\Jy.Utility\\Jy.Utility.csproj": {
-              "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.Utility\\Jy.Utility.csproj"
+            "D:\\jyworkspace\\githab\\Jy\\src\\Jy.IMessageQueue\\Jy.IMessageQueue.csproj": {
+              "projectPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.IMessageQueue\\Jy.IMessageQueue.csproj"
             },
-            "D:\\Study\\testJy\\Jy-master\\src\\Jy.IMessageQueue\\Jy.IMessageQueue.csproj": {
-              "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.IMessageQueue\\Jy.IMessageQueue.csproj"
+            "D:\\jyworkspace\\githab\\Jy\\src\\Jy.Utility\\Jy.Utility.csproj": {
+              "projectPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.Utility\\Jy.Utility.csproj"
             }
           }
         }
@@ -4203,31 +4216,31 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
+          "Confluent.Kafka": {
+            "target": "Package",
+            "version": "[0.11.4, )"
+          },
           "Microsoft.Extensions.Configuration.Json": {
             "target": "Package",
-            "version": "2.0.0"
+            "version": "[2.0.0, )"
           },
           "Microsoft.Extensions.DependencyInjection": {
             "target": "Package",
-            "version": "2.0.0"
+            "version": "[2.0.0, )"
           },
-          "Confluent.Kafka": {
+          "Microsoft.Extensions.Options.ConfigurationExtensions": {
             "target": "Package",
-            "version": "0.11.4"
-          },
-          "Polly": {
-            "target": "Package",
-            "version": "5.3.1"
+            "version": "[2.0.0, )"
           },
           "Microsoft.NETCore.App": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "2.0.0",
+            "version": "[2.0.0, )",
             "autoReferenced": true
           },
-          "Microsoft.Extensions.Options.ConfigurationExtensions": {
+          "Polly": {
             "target": "Package",
-            "version": "2.0.0"
+            "version": "[5.3.1, )"
           }
         },
         "imports": [

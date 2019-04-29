@@ -1650,10 +1650,12 @@
       ]
     },
     "Microsoft.NETCore.DotNetAppHost/2.0.0": {
-      "sha512": "S4EgTXSy1/AxCIsEEEodf6PXlKAfgvIJOwYn6qilH9xG7PsCSAA9bPMHsYwd82s4cGStt0iYxAhAYaWuzQg33g==",
+      "sha512": "L4GGkcI/Mxl8PKLRpFdGmLb5oI8sGIR05bDTGkzCoamAjdUl1Zhkov2swjEsZvKYT8kkdiz39LtwyGYuCJxm1A==",
       "type": "package",
       "path": "microsoft.netcore.dotnetapphost/2.0.0",
       "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "microsoft.netcore.dotnetapphost.2.0.0.nupkg.sha512",
@@ -1662,10 +1664,12 @@
       ]
     },
     "Microsoft.NETCore.DotNetHostPolicy/2.0.0": {
-      "sha512": "4t3ZspnVIj+nU+d5/5uId/sJkFLuBSE1tnq/eswmRh5hhxxyvAM8DmiZxY7anAGCcG2WMYTfztNvBFTyh8RMWQ==",
+      "sha512": "rm7mMn0A93fwyAwVhbyOCcPuu2hZNL0A0dAur9sNG9pEkONPfCEQeF7m2mC8KpqZO0Ol6tpV5J0AF3HTXT3GXA==",
       "type": "package",
       "path": "microsoft.netcore.dotnethostpolicy/2.0.0",
       "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "microsoft.netcore.dotnethostpolicy.2.0.0.nupkg.sha512",
@@ -1674,10 +1678,12 @@
       ]
     },
     "Microsoft.NETCore.DotNetHostResolver/2.0.0": {
-      "sha512": "AYM02nuYyIhaHFXRHt2D8YmEyAgSFGBxAKa2lYfxPvRMmsMjnSNJ6xbEdNpBOrqEPLD+9/52aQRFHE6HR2KAfQ==",
+      "sha512": "uBbjpeSrwsaTCADZCzRk+3aBzNnMqkC4zftJWBsL+Zk+8u+W+/lMb2thM5Y4hiVrv1YQg9t6dKldXzOKkY+pQw==",
       "type": "package",
       "path": "microsoft.netcore.dotnethostresolver/2.0.0",
       "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "microsoft.netcore.dotnethostresolver.2.0.0.nupkg.sha512",
@@ -1686,10 +1692,12 @@
       ]
     },
     "Microsoft.NETCore.Platforms/2.0.0": {
-      "sha512": "OtVuMufKaeGT+hje3RzhUiekCUL11tBX55BW7WpbnCMHa+Pq56rjXCgHs5JS7eGSfw85sBe2EAwHcUgHO5wLaA==",
+      "sha512": "VdLJOCXhZaEMY7Hm2GKiULmn7IEPFE4XC5LPSfBVCUIA8YLZVh846gtfBJalsPQF2PlzdD7ecX7DZEulJ402ZQ==",
       "type": "package",
       "path": "microsoft.netcore.platforms/2.0.0",
       "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard1.0/_._",
@@ -1750,10 +1758,12 @@
       ]
     },
     "NETStandard.Library/2.0.0": {
-      "sha512": "boAS7fBhOLV3B+dEx9gyr9iwSFWIteRVeyB+WvvCJ2R8iju6SS3kDYIFpFjmmrqzxFi6qn9qqZoo5A59BjXuWA==",
+      "sha512": "7jnbRU+L08FXKMxqUflxEXtVymWvNOrS8yHgu9s6EM8Anr6T/wIX4nZ08j/u3Asz+tCufp3YVwFSEvFTPYmBPA==",
       "type": "package",
       "path": "netstandard.library/2.0.0",
       "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "build/NETStandard.Library.targets",
@@ -2022,10 +2032,11 @@
       ]
     },
     "runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
-      "sha512": "X7IdhILzr4ROXd8mI1BUCQMSHSQwelUlBjF1JyTKCjXaOGn2fB4EKBxQbCK2VjO3WaWIdlXZL3W6TiIVnrhX4g==",
+      "sha512": "/p8IQT2brFMDa7BHMH71LV+w5Tb3OxoLHxhn6+MGqN5xeqhM2HRHmj+7xQGJnaRn73d7ZTvp6yRCFMvolws4wA==",
       "type": "package",
       "path": "runtime.osx.10.10-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "files": [
+        ".nupkg.metadata",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "runtime.osx.10.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
@@ -2046,10 +2057,11 @@
       ]
     },
     "runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
-      "sha512": "ytoewC6wGorL7KoCAvRfsgoJPJbNq+64k2SqW6JcOAebWsFUvCCYgfzQMrnpvPiEl4OrblUlhF2ji+Q1+SVLrQ==",
+      "sha512": "JGc0pAWRE8lB4Ucygk2pYSKbUPLlAIq6Bczf5/WF2D/VKJEPtYlVUMxk8fbl1zRfTWzSHi+VcFZlaPlWiNxeKg==",
       "type": "package",
       "path": "runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "files": [
+        ".nupkg.metadata",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
@@ -4698,26 +4710,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jiaoyue\\.nuget\\packages\\": {},
+    "C:\\Users\\jiaoy\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
-      "projectUniqueName": "D:\\Study\\testJy\\Jy-master\\src\\Jy.DistributedLockHandler\\Jy.DistributedLockHandler.csproj",
+      "projectUniqueName": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.DistributedLockHandler\\Jy.DistributedLockHandler.csproj",
       "projectName": "Jy.DistributedLockHandler",
-      "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.DistributedLockHandler\\Jy.DistributedLockHandler.csproj",
-      "packagesPath": "C:\\Users\\jiaoyue\\.nuget\\packages\\",
-      "outputPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.DistributedLockHandler\\obj\\",
+      "projectPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.DistributedLockHandler\\Jy.DistributedLockHandler.csproj",
+      "packagesPath": "C:\\Users\\jiaoy\\.nuget\\packages\\",
+      "outputPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.DistributedLockHandler\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\jiaoyue\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jiaoy\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4725,16 +4734,17 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "http://jhnuget.iuoooo.com:8008/nuget": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "D:\\Study\\testJy\\Jy-master\\src\\Jy.DistributedLock\\Jy.DistributedLock.csproj": {
-              "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.DistributedLock\\Jy.DistributedLock.csproj"
+            "D:\\jyworkspace\\githab\\Jy\\src\\Jy.DistributedLock\\Jy.DistributedLock.csproj": {
+              "projectPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.DistributedLock\\Jy.DistributedLock.csproj"
             },
-            "D:\\Study\\testJy\\Jy-master\\src\\Jy.IMessageQueue\\Jy.IMessageQueue.csproj": {
-              "projectPath": "D:\\Study\\testJy\\Jy-master\\src\\Jy.IMessageQueue\\Jy.IMessageQueue.csproj"
+            "D:\\jyworkspace\\githab\\Jy\\src\\Jy.IMessageQueue\\Jy.IMessageQueue.csproj": {
+              "projectPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.IMessageQueue\\Jy.IMessageQueue.csproj"
             }
           }
         }
@@ -4751,7 +4761,7 @@
           "Microsoft.NETCore.App": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "2.0.0",
+            "version": "[2.0.0, )",
             "autoReferenced": true
           }
         },
