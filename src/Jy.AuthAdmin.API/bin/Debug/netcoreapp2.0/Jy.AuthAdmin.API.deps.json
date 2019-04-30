@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "91fd51340db537ffe9be4cd674629478710a41d2"
+    "signature": "ec665f441c4ddde39e6b5f52905b61551fce43d1"
   },
   "compilationOptions": {
     "defines": [
@@ -187,6 +187,24 @@
         },
         "compile": {
           "lib/netcoreapp2.0/HttpWebAdaptersCore.dll": {}
+        }
+      },
+      "JWT/4.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "2.0.0",
+          "Newtonsoft.Json": "10.0.3",
+          "System.ComponentModel.Primitives": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.4.0",
+          "System.Security.Cryptography.Csp": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.3/JWT.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard1.3/JWT.dll": {}
         }
       },
       "librdkafka.redist/0.11.4": {
@@ -4560,6 +4578,7 @@
       "Jy.TokenService/1.0.0": {
         "dependencies": {
           "AutoMapper": "6.1.1",
+          "JWT": "4.0.0",
           "Jy.AuthAdmin.SolrIndex": "1.0.0",
           "Jy.CacheService": "1.0.0",
           "Jy.Domain": "1.0.0",
@@ -4810,6 +4829,13 @@
       "sha512": "sha512-ROnFhykJz8ZyUlM4pcAQQMHuvHsRlInnoXbxE0BWXORin5eQJAxi4ewKyXOMjH0dy2fPJvsonAgUII9ioWvoAg==",
       "path": "httpwebadapterscore/1.0.0",
       "hashPath": "httpwebadapterscore.1.0.0.nupkg.sha512"
+    },
+    "JWT/4.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Iq8WBwka61+w9XTdN9F5HCrgt4gguWfZGbd8lEAFjgY4aGwgteQuCHLNrDOZp2DE19IooeeEF3TGNwV+y/SSkA==",
+      "path": "jwt/4.0.0",
+      "hashPath": "jwt.4.0.0.nupkg.sha512"
     },
     "librdkafka.redist/0.11.4": {
       "type": "package",

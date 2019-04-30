@@ -85,6 +85,22 @@
           "lib/netcoreapp2.0/HttpWebAdaptersCore.dll": {}
         }
       },
+      "JWT/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "Newtonsoft.Json": "9.0.1",
+          "System.ComponentModel.Primitives": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.4.0",
+          "System.Security.Cryptography.Csp": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/JWT.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/JWT.dll": {}
+        }
+      },
       "Libuv/1.10.0": {
         "type": "package",
         "dependencies": {
@@ -3434,7 +3450,7 @@
           "System.Threading": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/System.Security.Cryptography.Csp.dll": {}
         },
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard1.3/System.Security.Cryptography.Csp.dll": {
@@ -4159,6 +4175,7 @@
         "framework": ".NETCoreApp,Version=v2.0",
         "dependencies": {
           "AutoMapper": "6.1.1",
+          "JWT": "4.0.0",
           "Jy.AuthAdmin.SolrIndex": "1.0.0",
           "Jy.CacheService": "1.0.0",
           "Jy.Domain": "1.0.0",
@@ -4253,6 +4270,21 @@
         "httpwebadapterscore.1.0.0.nupkg.sha512",
         "httpwebadapterscore.nuspec",
         "lib/netcoreapp2.0/HttpWebAdaptersCore.dll"
+      ]
+    },
+    "JWT/4.0.0": {
+      "sha512": "Iq8WBwka61+w9XTdN9F5HCrgt4gguWfZGbd8lEAFjgY4aGwgteQuCHLNrDOZp2DE19IooeeEF3TGNwV+y/SSkA==",
+      "type": "package",
+      "path": "jwt/4.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "jwt.4.0.0.nupkg.sha512",
+        "jwt.nuspec",
+        "lib/net46/JWT.dll",
+        "lib/net46/JWT.xml",
+        "lib/netstandard1.3/JWT.dll",
+        "lib/netstandard1.3/JWT.xml"
       ]
     },
     "Libuv/1.10.0": {

@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.1.1" />
+    <PackageReference Include="JWT" Version="4.0.0" />
   </ItemGroup>
 
   <ItemGroup>
