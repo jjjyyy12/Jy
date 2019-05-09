@@ -1,5 +1,4 @@
 ﻿using Confluent.Kafka;
-using Confluent.Kafka.Serialization;
 using Jy.ILog;
 using Jy.IMessageQueue;
 using System;
@@ -12,7 +11,7 @@ namespace Jy.CKafka.Implementation
     public class KafkaConsumerPersistentConnection : KafkaPersistentConnectionBase
     {
         private readonly ILogger _logger;
-        private Consumer<string, MessageBase> _consumerClient;
+        private IConsumer<string, MessageBase> _consumerClient;
         private readonly IDeserializer<string> _keyDeserializer;
         private readonly IDeserializer<MessageBase> _valueDeserializer;
         bool _disposed;
@@ -21,7 +20,7 @@ namespace Jy.CKafka.Implementation
             : base(logger)
         {
             _logger = logger;
-            _keyDeserializer = new StringDeserializer(Encoding.UTF8);
+            _keyDeserializer = new Utf8Deserializer();
             _valueDeserializer = new MessageBaseDeserializer();
         }
 
@@ -29,11 +28,34 @@ namespace Jy.CKafka.Implementation
 
         public override Action Connection(IEnumerable<KeyValuePair<string, object>> options)
         {
+            string borkerList = "";
+            var list = options.GetEnumerator();
+            while (list.MoveNext())
+            {
+                if ("BorkerList".Equals(list.Current.Key))
+                {
+                    borkerList = list.Current.Value.ToString();
+                }
+            }
+            var cConfig = new ConsumerConfig
+            {
+                BootstrapServers = borkerList,
+                BrokerVersionFallback = "0.10.0.0",
+                ApiVersionFallbackMs = 0,
+                //SaslMechanism = SaslMechanism.Plain,
+                //SecurityProtocol = SecurityProtocol.SaslSsl,
+                //SslCaLocation = "/usr/local/etc/openssl/cert.pem", // suitable configuration for linux, osx.
+                // SslCaLocation = "c:\\path\\to\\cacert.pem",     // windows
+                //SaslUsername = "<confluent cloud key>",
+                //SaslPassword = "<confluent cloud secret>",
+                GroupId = Guid.NewGuid().ToString(),
+                AutoOffsetReset = AutoOffsetReset.Earliest
+            };
             return () =>
             {
-                _consumerClient = new Consumer<string, MessageBase>(options, _keyDeserializer, _valueDeserializer);
-                _consumerClient.OnConsumeError += OnConsumeError;
-                _consumerClient.OnError += OnConnectionException;
+                var consumerBuilder = new ConsumerBuilder<string, MessageBase>(cConfig);
+                consumerBuilder.SetErrorHandler(OnConnectionException);
+                _consumerClient = consumerBuilder.Build();
             };
         }
 
@@ -42,13 +64,13 @@ namespace Jy.CKafka.Implementation
             return _consumerClient;
         }
 
-        private void OnConsumeError(object sender, Message e)
+        private void OnConsumeError(object sender, Message<string,MessageBase> e)
         {
-            var message = e.Deserialize<string, MessageBase>( _keyDeserializer, _valueDeserializer);
+            var message = e.Value;
             if (_disposed) return;
 
-            _logger.LogWarning($"An error occurred during consume the message; Topic:'{e.Topic}'," +
-                $"Message:'{message.Value}', Reason:'{e.Error}'.");
+            _logger.LogWarning($"An error occurred during consume the message; Key:'{e.Key}'," +
+                $"Value:'{e.Value}.");
 
             TryConnect();
         }
@@ -75,6 +97,22 @@ namespace Jy.CKafka.Implementation
             catch (IOException ex)
             {
                 _logger.LogError("KafkaConsumerPersistentConnection Dispose Error ", ex);
+            }
+        }
+        private class Utf8Deserializer : IDeserializer<string>
+        {
+            public string Deserialize(ReadOnlySpan<byte> data, bool isNull, SerializationContext context)
+            {
+                if (isNull)
+                {
+                    return null;
+                }
+
+#if NETCOREAPP2_1
+                    return Encoding.UTF8.GetString(data);
+#else
+                return Encoding.UTF8.GetString(data.ToArray());
+#endif
             }
         }
     }

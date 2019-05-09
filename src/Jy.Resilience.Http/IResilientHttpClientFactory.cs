@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Jy.MVC.Infrastructure
+namespace Jy.Resilience.Http
 {
     public interface IResilientHttpClientFactory
     {

@@ -22,6 +22,7 @@ namespace Jy.CKafka
         private readonly IKafkaPersisterConnection _producerConnection;
         private readonly IKafkaPersisterConnection _consumerConnection;
         private readonly Func<string, IKafkaPersisterConnection> _connectionAccessor;
+        const int commitPeriod = 5;
         public QueueOperationCKafka(IQueueOperationSubscriptionsManager subsManager, Func<string, IKafkaPersisterConnection> connectionAccessor)
         {
             _subsManager = subsManager ?? new InMemorySubscriptionsManager();
@@ -46,7 +47,7 @@ namespace Jy.CKafka
                 _consumerConnection.TryConnect();
             }
 
-            using (var channel = _consumerConnection.CreateConnect() as Consumer<string, MessageBase>)
+            using (var channel = _consumerConnection.CreateConnect() as IConsumer<string, MessageBase>)
             {
                 channel.Unsubscribe();
                 if (_subsManager.IsEmpty)
@@ -70,9 +71,7 @@ namespace Jy.CKafka
 
             var eventName = msg.GetType()
                    .Name;
-
-            var message = JsonConvert.SerializeObject(msg);
-            var body = Encoding.UTF8.GetBytes(message);
+            Message<string, MessageBase> message = new Message<string, MessageBase>() { Key = eventName, Value = msg };
 
             var policy = RetryPolicy.Handle<KafkaException>()
                .WaitAndRetry(5, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), (ex, time) =>
@@ -80,11 +79,11 @@ namespace Jy.CKafka
                    _logger.LogWarning(ex.ToString());
                });
 
-            using (var conn = _producerConnection.CreateConnect() as Producer)
+            using (var conn = _producerConnection.CreateConnect() as IProducer<string, MessageBase>)
             {
                 policy.Execute(() =>
                 {
-                    conn.ProduceAsync(eventName, null, body);
+                    conn.ProduceAsync(eventName, message);
                 });
             }
 
@@ -103,20 +102,63 @@ namespace Jy.CKafka
                 {
                     _consumerConnection.TryConnect();
                 }
+                _subsManager.AddSubscription<T, TH>(handler);
 
-                using (var channel = _consumerConnection.CreateConnect() as Consumer<string, MessageBase>)
+                using (var consumer = _consumerConnection.CreateConnect() as IConsumer<string, MessageBase>)
                 {
-                    channel.Subscribe(eventName);
-                    channel.OnMessage += ConsumerClient_OnMessage;
+                    consumer.Subscribe(eventName);
+
+                    try
+                    {
+                        while (true)
+                        {
+                            try
+                            {
+                                var consumeResult = consumer.Consume();
+                                if (consumeResult.IsPartitionEOF)
+                                {
+                                    _logger.LogInformation(
+                                        $"Reached end of topic {consumeResult.Topic}, partition {consumeResult.Partition}, offset {consumeResult.Offset}.");
+
+                                    continue;
+                                }
+
+                                _logger.LogInformation($"Received message at {consumeResult.TopicPartitionOffset}: {consumeResult.Value}");
+
+                                ConsumerClient_OnMessage(null, consumeResult);
+
+                                if (consumeResult.Offset % commitPeriod == 0)
+                                {
+                                    try
+                                    {
+                                        consumer.Commit(consumeResult);
+                                    }
+                                    catch (KafkaException e)
+                                    {
+                                        _logger.LogError($"Commit error: {e.Error.Reason}",e);
+                                    }
+                                }
+                            }
+                            catch (ConsumeException e)
+                            {
+                                _logger.LogError($"Consume error: {e.Error.Reason}",e);
+                            }
+                        }
+                    }
+                    catch (OperationCanceledException e)
+                    {
+                        _logger.LogError("Closing consumer.",e);
+                        consumer.Close();
+                    }
                 }
             }
-            _subsManager.AddSubscription<T, TH>(handler);
+        
             
         }
 
-        private void ConsumerClient_OnMessage(object sender, Message<string, MessageBase> e)
+        private void ConsumerClient_OnMessage(object sender, ConsumeResult<string, MessageBase> e)
         {
-            ProcessEvent(e.Topic, e.Value).Wait();
+            ProcessEvent(e.Key, e.Value).Wait();
         }
         //执行总线中该事件的所有handler
         private async Task ProcessEvent<T>(string eventName, T message) where T : MessageBase

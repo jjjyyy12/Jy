@@ -1,4 +1,4 @@
-﻿using Confluent.Kafka.Serialization;
+﻿using Confluent.Kafka;
 using Jy.IMessageQueue;
 using Jy.Utility.Convert;
 using System;
@@ -35,5 +35,9 @@ namespace Jy.CKafka.Implementation
         /// </summary>
         public void Dispose() { }
 
+        public MessageBase Deserialize(ReadOnlySpan<byte> data, bool isNull, SerializationContext context)
+        {
+            return ByteConvertHelper.Bytes2Object<MessageBase>(data.ToArray());
+        }
     }
 }

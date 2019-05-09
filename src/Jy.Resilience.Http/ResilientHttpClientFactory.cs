@@ -1,10 +1,11 @@
 ﻿using Jy.ILog;
 using Jy.Resilience.Http;
 using Polly;
+using Polly.Retry;
 using System;
 using System.Net.Http;
 
-namespace Jy.MVC.Infrastructure
+namespace Jy.Resilience.Http
 {
     public class ResilientHttpClientFactory : IResilientHttpClientFactory
     {
@@ -16,8 +17,8 @@ namespace Jy.MVC.Infrastructure
         public ResilientHttpClient CreateResilientHttpClient()
             => new ResilientHttpClient((origin) => CreatePolicies(), _logger);
 
-        private Policy[] CreatePolicies()
-            => new Policy[]
+        private AsyncPolicy[] CreatePolicies()
+            => new AsyncPolicy[]
             {
                 Policy.Handle<HttpRequestException>()
                 .WaitAndRetryAsync(
@@ -30,7 +31,7 @@ namespace Jy.MVC.Infrastructure
                     {
                         var msg = $"Retry {retryCount} implemented with Polly's RetryPolicy " +
                             $"of {context.PolicyKey} " +
-                            $"at {context.ExecutionKey}, " +
+                            $"at {context.OperationKey}, " +
                             $"due to: {exception}.";
                         _logger.LogError(msg,exception);
                         

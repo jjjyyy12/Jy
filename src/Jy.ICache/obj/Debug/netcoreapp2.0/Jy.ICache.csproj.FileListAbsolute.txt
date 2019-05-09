@@ -15,3 +15,4 @@ D:\jyworkspace\githab\Jy\src\Jy.ICache\obj\Debug\netcoreapp2.0\Jy.ICache.Assembl
 D:\jyworkspace\githab\Jy\src\Jy.ICache\obj\Debug\netcoreapp2.0\Jy.ICache.AssemblyInfo.cs
 D:\jyworkspace\githab\Jy\src\Jy.ICache\obj\Debug\netcoreapp2.0\Jy.ICache.dll
 D:\jyworkspace\githab\Jy\src\Jy.ICache\obj\Debug\netcoreapp2.0\Jy.ICache.pdb
+D:\jyworkspace\githab\Jy\src\Jy.ICache\obj\Debug\netcoreapp2.0\Jy.ICache.csprojAssemblyReference.cache

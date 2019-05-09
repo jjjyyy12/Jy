@@ -2,6 +2,7 @@
 using Jy.ILog;
 using Newtonsoft.Json;
 using Polly;
+using Polly.Retry;
 using Polly.Wrap;
 using System;
 using System.Collections.Concurrent;
@@ -23,15 +24,15 @@ namespace Jy.Resilience.Http
     {
         private readonly HttpClient _client;
         private readonly ILogger _logger;
-        private readonly Func<string, IEnumerable<Policy>> _policyCreator;
-        private ConcurrentDictionary<string, PolicyWrap> _policyWrappers;
+        private readonly Func<string, IEnumerable<AsyncPolicy>> _policyCreator;
+        private ConcurrentDictionary<string, AsyncPolicyWrap> _policyWrappers;
 
-        public ResilientHttpClient(Func<string, IEnumerable<Policy>> policyCreator, ILogger logger)
+        public ResilientHttpClient(Func<string, IEnumerable<AsyncPolicy>> policyCreator, ILogger logger)
         {
             _client = new HttpClient();
             _logger = logger;
             _policyCreator = policyCreator;
-            _policyWrappers = new ConcurrentDictionary<string, PolicyWrap>();
+            _policyWrappers = new ConcurrentDictionary<string, AsyncPolicyWrap>();
         }
 
 
@@ -49,7 +50,7 @@ namespace Jy.Resilience.Http
         {
             var origin = GetOriginFromUri(uri);
 
-            return HttpInvoker(origin, async () =>
+            return HttpInvoker(origin, async (context) =>
             {
                 var requestMessage = new HttpRequestMessage(HttpMethod.Delete, uri);
 
@@ -71,7 +72,7 @@ namespace Jy.Resilience.Http
         {
             var origin = GetOriginFromUri(uri);
 
-            return HttpInvoker(origin, async () =>
+            return HttpInvoker(origin, async (context) =>
             {
                 var requestMessage = new HttpRequestMessage(HttpMethod.Get, uri);
 
@@ -97,7 +98,7 @@ namespace Jy.Resilience.Http
             // as it is disposed after each call
             var origin = GetOriginFromUri(uri);
 
-            return HttpInvoker(origin, async () =>
+            return HttpInvoker(origin, async (context) =>
            {
                var requestMessage = new HttpRequestMessage(method, uri);
 
@@ -127,11 +128,11 @@ namespace Jy.Resilience.Http
            });
         }
 
-        private async Task<T> HttpInvoker<T>(string origin, Func<Task<T>> action)
+        private async Task<T> HttpInvoker<T>(string origin, Func<Context,Task<T>> action)
         {
             var normalizedOrigin = NormalizeOrigin(origin);
 
-            if (!_policyWrappers.TryGetValue(normalizedOrigin, out PolicyWrap policyWrap))
+            if (!_policyWrappers.TryGetValue(normalizedOrigin, out AsyncPolicyWrap policyWrap))
             {
                 policyWrap = Policy.WrapAsync(_policyCreator(normalizedOrigin).ToArray());
                 _policyWrappers.TryAdd(normalizedOrigin, policyWrap);

@@ -244,7 +244,8 @@ namespace Jy.AuthAdmin.API
 
             //------------version control and api document swagger
             // format the version as "'v'major[.minor][-status]"
-            services.AddMvcCore().AddVersionedApiExplorer(o => o.GroupNameFormat = "'v'VVV");
+            services.AddMvcCore();
+            services.AddVersionedApiExplorer(o => o.GroupNameFormat = "'v'VVV");
             //http://www.hanselman.com/blog/ASPNETCoreRESTfulWebAPIVersioningMadeEasy.aspx
             //http://blog.csdn.net/jjhaochang/article/details/76573752
             services.AddApiVersioning(options => {
