@@ -12,7 +12,6 @@ namespace Jy.ServicesKeep
     {
         private static volatile Register _authAPIzk;
         private static readonly object _locker = new object();
-
         private static volatile AuthAPIRegisterWatcher _authAPIwatcher;
         private static readonly object _watcherlocker = new object();
         public void Dispose()

@@ -4963,6 +4963,71 @@
           "bin/placeholder/Jy.CKafka.dll": {}
         }
       },
+      "Jy.Component/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "Jy.Application": "1.0.0",
+          "Jy.AuthAdmin.SolrIndex": "1.0.0",
+          "Jy.AuthService": "1.0.0",
+          "Jy.CKafka": "1.0.0",
+          "Jy.CRM.Domain": "1.0.0",
+          "Jy.Cache": "1.0.0",
+          "Jy.CacheService": "1.0.0",
+          "Jy.Dapper": "1.0.0",
+          "Jy.DapperBase": "1.0.0",
+          "Jy.EntityFrameworkCore": "1.0.0",
+          "Jy.HealthCheck": "1.0.0",
+          "Jy.ICache": "1.0.0",
+          "Jy.IIndex": "1.0.0",
+          "Jy.IMessageQueue": "1.0.0",
+          "Jy.IRepositories": "1.0.0",
+          "Jy.MVCAuthorization": "1.0.0",
+          "Jy.QueueService": "1.0.0",
+          "Jy.RabbitMQ": "1.0.0",
+          "Jy.ServicesKeep": "1.0.0",
+          "Jy.SolrIndex": "1.0.0",
+          "Jy.TokenService": "1.0.0",
+          "Jy.Utility": "1.0.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "2.2.0",
+          "Microsoft.AspNetCore.Diagnostics": "2.2.0",
+          "Microsoft.AspNetCore.Mvc": "2.2.0",
+          "Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer": "3.2.0",
+          "Microsoft.AspNetCore.StaticFiles": "2.2.0",
+          "Microsoft.Extensions.Configuration": "2.2.0",
+          "Microsoft.Extensions.Configuration.Binder": "2.2.4",
+          "Microsoft.Extensions.Configuration.Json": "2.2.0",
+          "Microsoft.Extensions.Logging.Console": "2.2.0",
+          "Microsoft.Extensions.Logging.Debug": "2.2.0",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "2.2.0",
+          "Serilog": "2.8.0",
+          "Serilog.Extensions.Logging": "2.0.4",
+          "Serilog.Sinks.RollingFile": "3.3.0",
+          "Swashbuckle.AspNetCore.SwaggerGen": "4.0.1",
+          "Swashbuckle.AspNetCore.SwaggerUI": "4.0.1"
+        },
+        "compile": {
+          "bin/placeholder/Jy.Component.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Jy.Component.dll": {}
+        }
+      },
+      "Jy.CRM.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "AutoMapper": "8.1.0",
+          "Jy.IMessageQueue": "1.0.0",
+          "Jy.IRepositories": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Jy.CRM.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Jy.CRM.Domain.dll": {}
+        }
+      },
       "Jy.Dapper/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
@@ -5089,6 +5154,9 @@
       "Jy.ILog/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "Jy.Utility": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Jy.ILog.dll": {}
         },
@@ -13987,6 +14055,16 @@
       "path": "../Jy.CKafka/Jy.CKafka.csproj",
       "msbuildProject": "../Jy.CKafka/Jy.CKafka.csproj"
     },
+    "Jy.Component/1.0.0": {
+      "type": "project",
+      "path": "../Jy.Component/Jy.Component.csproj",
+      "msbuildProject": "../Jy.Component/Jy.Component.csproj"
+    },
+    "Jy.CRM.Domain/1.0.0": {
+      "type": "project",
+      "path": "../CRM/Jy.CRM.Domain/Jy.CRM.Domain.csproj",
+      "msbuildProject": "../CRM/Jy.CRM.Domain/Jy.CRM.Domain.csproj"
+    },
     "Jy.Dapper/1.0.0": {
       "type": "project",
       "path": "../Jy.Dapper/Jy.Dapper.csproj",
@@ -14090,6 +14168,7 @@
       "Jy.AuthService >= 1.0.0",
       "Jy.CKafka >= 1.0.0",
       "Jy.Cache >= 1.0.0",
+      "Jy.Component >= 1.0.0",
       "Jy.Dapper >= 1.0.0",
       "Jy.Domain >= 1.0.0",
       "Jy.EntityFrameworkCore >= 1.0.0",
@@ -14175,6 +14254,9 @@
             },
             "D:\\jyworkspace\\githab\\Jy\\src\\Jy.CKafka\\Jy.CKafka.csproj": {
               "projectPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.CKafka\\Jy.CKafka.csproj"
+            },
+            "D:\\jyworkspace\\githab\\Jy\\src\\Jy.Component\\Jy.Component.csproj": {
+              "projectPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.Component\\Jy.Component.csproj"
             },
             "D:\\jyworkspace\\githab\\Jy\\src\\Jy.Dapper\\Jy.Dapper.csproj": {
               "projectPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.Dapper\\Jy.Dapper.csproj"

@@ -5033,6 +5033,9 @@
       "Jy.ILog/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "Jy.Utility": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Jy.ILog.dll": {}
         },
