@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Jy.Component\Jy.Component.csproj" />
     <ProjectReference Include="..\Jy.ILog\Jy.ILog.csproj" />
     <ProjectReference Include="..\Jy.MVCAuthorization\Jy.MVCAuthorization.csproj" />
     <ProjectReference Include="..\Jy.Resilience.Http\Jy.Resilience.Http.csproj" />

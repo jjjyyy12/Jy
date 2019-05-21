@@ -9,6 +9,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="3.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="2.2.4" />
@@ -42,6 +43,7 @@
     <ProjectReference Include="..\Jy.MVCAuthorization\Jy.MVCAuthorization.csproj" />
     <ProjectReference Include="..\Jy.QueueService\Jy.QueueService.csproj" />
     <ProjectReference Include="..\Jy.RabbitMQ\Jy.RabbitMQ.csproj" />
+    <ProjectReference Include="..\Jy.Resilience.Http\Jy.Resilience.Http.csproj" />
     <ProjectReference Include="..\Jy.ServicesKeep\Jy.ServicesKeep.csproj" />
     <ProjectReference Include="..\Jy.SolrIndex\Jy.SolrIndex.csproj" />
     <ProjectReference Include="..\Jy.TokenService\Jy.TokenService.csproj" />

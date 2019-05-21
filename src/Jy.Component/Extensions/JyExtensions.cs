@@ -19,6 +19,7 @@ using Jy.ILog;
 using Jy.IRepositories;
 using Jy.QueueSerivce;
 using Jy.RabbitMQ;
+using Jy.Resilience.Http;
 using Jy.ServicesKeep;
 using Jy.TokenService;
 using Jy.Utility;
@@ -59,6 +60,8 @@ namespace Jy.Component.Extensions
             //txtlog
             services.AddSingleton<ILog.ILogger, ILog.Logger>();
 
+            services.Configure<UrlConfigSetting>(Configuration.GetSection("UrlConfig"));//配置url
+
             InitSolrIndex(services, Configuration);
             InitCache(services, Configuration);
             InitDB(services, Configuration);
@@ -76,6 +79,42 @@ namespace Jy.Component.Extensions
             InitRegisterAPIHostPort(nodeName, Configuration);
 
             services.AddScoped<PagedHelper>();
+        }
+        public static void InitAllUIComponents(this IServiceCollection services, IConfigurationRoot Configuration, string nodeName)
+        {
+            services.AddOptions();
+            services.AddSerializerServices();
+            //txtlog
+            services.AddSingleton<ILog.ILogger, ILog.Logger>();
+
+            services.Configure<UrlConfigSetting>(Configuration.GetSection("UrlConfig"));//配置url
+
+            InitSolrIndex(services, Configuration);
+            InitCache(services, Configuration);
+
+            InitMQ(services, Configuration);
+            InitService(services, Configuration);
+            InitTokenService(services, Configuration);
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            //ResilientHttpClient
+            if (Configuration.GetValue<string>("UseResilientHttp") == bool.TrueString)
+            {
+                services.AddSingleton<IResilientHttpClientFactory, ResilientHttpClientFactory>();
+                services.AddSingleton<IHttpClient, ResilientHttpClient>(sp => sp.GetService<IResilientHttpClientFactory>().CreateResilientHttpClient());
+            }
+            else
+            {
+                services.AddSingleton<IHttpClient, StandardHttpClient>();
+            }
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(typeof(HttpGlobalExceptionFilter));
+            });//.AddControllersAsServices();
+
+            services.AddMvc();
+            InitRegisterAPIHostPort(nodeName, Configuration);
+            services.AddSession();
         }
         public static void InitSwagger(this IServiceCollection services,IConfigurationRoot Configuration)
         {
@@ -129,7 +168,6 @@ namespace Jy.Component.Extensions
         }
         public static void InitDB(this IServiceCollection services, IConfigurationRoot Configuration)
         {
-            services.Configure<UrlConfigSetting>(Configuration.GetSection("UrlConfig"));//配置url
             services.Configure<SDBSettings>(Configuration.GetSection("SDBSettings"));
             //----dapper
             services.Configure<DapperOptions>(options =>
@@ -296,7 +334,7 @@ IApiVersionDescriptionProvider provider, IConfigurationRoot Configuration)
             //-------------------------------------------------------serilog 配置
             MVCLogOptions mvcLogOptions = new MVCLogOptions()
             {
-                LogPath = "D:\\LogFiles_AuthAdmin_API",//Configuration[nameof(AuthLogOptions.LogPath)],
+                LogPath = "D:\\LogFiles_API",//Configuration[nameof(AuthLogOptions.LogPath)],
                 PathFormat = "{Date}.log"
             };
             var serilog = new LoggerConfiguration()
@@ -353,7 +391,108 @@ IApiVersionDescriptionProvider provider, IConfigurationRoot Configuration)
           
  
         }
+        public static void ConfigureAllUIComponent(this IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory,
+ IConfigurationRoot Configuration)
+        {
+            app.UseHealthCheck("/HealthCheck", null, new TimeSpan(0, 0, 10));
 
+            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            loggerFactory.AddDebug();
+            //-------------------------------------------------------serilog 配置
+            MVCLogOptions mvcLogOptions = new MVCLogOptions()
+            {
+                LogPath = "D:\\LogFiles_API",//Configuration[nameof(AuthLogOptions.LogPath)],
+                PathFormat = "{Date}.log"
+            };
+            var serilog = new LoggerConfiguration()
+               .MinimumLevel.Debug()
+               .Enrich.FromLogContext()
+               .WriteTo.RollingFile(Path.Combine(mvcLogOptions.LogPath, mvcLogOptions.PathFormat),
+                   outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {Message}{NewLine}{Exception}");
+            MVCLogOptions.EnsurePreConditions(mvcLogOptions);
+
+            loggerFactory.AddSerilog(serilog.CreateLogger());
+
+            // Ensure any buffered events are sent at shutdown 日志的生命周期
+            IApplicationLifetime appLifetime = (IApplicationLifetime)app.ApplicationServices.GetService(typeof(IApplicationLifetime));
+            if (appLifetime != null)
+            {
+                appLifetime.ApplicationStopped.Register(Serilog.Log.CloseAndFlush);
+            }
+            app.UseAuthLog(mvcLogOptions);//这个中间件用作记录请求中的过程日志
+            //---------------------------------------------------serilog 配置
+
+            //app.UsePetapoco();//use  Petapocomiddleware
+            app.UseDapper(); //----dapper
+
+            if (env.IsDevelopment())
+            {
+                //开发环境异常处理
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                //生产环境异常处理
+                app.UseExceptionHandler("/Shared/Error");
+            }
+            //使用静态文件
+            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(Directory.GetCurrentDirectory())
+            });
+
+            //Session 
+            app.UseSession(new SessionOptions() { IdleTimeout = TimeSpan.FromMinutes(30) });
+
+            //使用Mvc，设置默认路由为系统登录
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Login}/{action=Index}/{id?}");
+            });
+
+            //cookie验证
+            //app.UseCookieAuthentication(CookieAuthMiddleware.GetOptions());
+            //app.UseOwin();
+            //app.UseCors(a => { a.AllowAnyOrigin(); });
+            // Listen for login and logout requests //cookie验证
+            //app.Map("/loginverify", builder =>
+            //{
+            //    builder.Run(async context =>
+            //    {
+            //        var name = context.Request.Form["name"];
+            //        var pwd = context.Request.Form["pwd"];
+            //        if (name == "wushuang" && pwd == "wushuang")
+            //        {
+
+            //            var claims = new List<Claim>() { new Claim("name", name), new Claim("role", "admin") };
+            //            var identity = new ClaimsIdentity(claims, "password");
+            //            var principal = new ClaimsPrincipal(identity);
+            //            await context.Authentication.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+            //            context.Response.Redirect("/Index/Home");
+            //        }
+            //        else
+            //        {
+            //            await context.Authentication.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            //            context.Response.Redirect("/Index/Home");
+            //        }
+            //    });
+            //});
+
+            //app.Map("/logout", builder =>
+            //{
+            //    builder.Run(async context =>
+            //    {
+            //        // Sign the user out / clear the auth cookie
+            //        await context.Authentication.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            //        // Perform a simple redirect after logout
+            //        context.Response.Redirect("/");
+            //    });
+            //});
+        }
         //往zookeeper注册服务
         public static void InitRegisterAPIHostPort(string nodeName, IConfigurationRoot Configuration)
         {

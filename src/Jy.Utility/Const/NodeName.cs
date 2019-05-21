@@ -13,5 +13,7 @@ namespace Jy.Utility.Const
         public const string AuthAdminPort = "5100";
         public const string TokenAuthPort = "8001";
         public const string CRMPort = "5200";
+
+        public const string AuthAdminUI = "AuthAdminUI";
     }
 }

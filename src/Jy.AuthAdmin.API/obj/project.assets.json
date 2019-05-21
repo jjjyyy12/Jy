@@ -4985,6 +4985,7 @@
           "Jy.MVCAuthorization": "1.0.0",
           "Jy.QueueService": "1.0.0",
           "Jy.RabbitMQ": "1.0.0",
+          "Jy.Resilience.Http": "1.0.0",
           "Jy.ServicesKeep": "1.0.0",
           "Jy.SolrIndex": "1.0.0",
           "Jy.TokenService": "1.0.0",
@@ -4993,6 +4994,7 @@
           "Microsoft.AspNetCore.Diagnostics": "2.2.0",
           "Microsoft.AspNetCore.Mvc": "2.2.0",
           "Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer": "3.2.0",
+          "Microsoft.AspNetCore.Session": "2.2.0",
           "Microsoft.AspNetCore.StaticFiles": "2.2.0",
           "Microsoft.Extensions.Configuration": "2.2.0",
           "Microsoft.Extensions.Configuration.Binder": "2.2.4",
@@ -5269,6 +5271,22 @@
         },
         "runtime": {
           "bin/placeholder/Jy.RabbitMQ.dll": {}
+        }
+      },
+      "Jy.Resilience.Http/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "Jy.ILog": "1.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "2.2.0",
+          "Newtonsoft.Json": "12.0.2",
+          "Polly": "7.1.0"
+        },
+        "compile": {
+          "bin/placeholder/Jy.Resilience.Http.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Jy.Resilience.Http.dll": {}
         }
       },
       "Jy.ServicesKeep/1.0.0": {
@@ -14139,6 +14157,11 @@
       "type": "project",
       "path": "../Jy.RabbitMQ/Jy.RabbitMQ.csproj",
       "msbuildProject": "../Jy.RabbitMQ/Jy.RabbitMQ.csproj"
+    },
+    "Jy.Resilience.Http/1.0.0": {
+      "type": "project",
+      "path": "../Jy.Resilience.Http/Jy.Resilience.Http.csproj",
+      "msbuildProject": "../Jy.Resilience.Http/Jy.Resilience.Http.csproj"
     },
     "Jy.ServicesKeep/1.0.0": {
       "type": "project",
