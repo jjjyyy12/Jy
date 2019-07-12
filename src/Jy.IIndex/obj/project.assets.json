@@ -1513,7 +1513,7 @@
       ]
     },
     "System.Runtime/4.3.0": {
-      "sha512": "JufQi0vPQ0xGnAczR13AUFglDyVYt4Kqnz1AZaiKZ5+GICq0/1MH/mO/eAJHt/mHW1zjKBJd7kV26SrxddAhiw==",
+      "sha512": "GzhNKhiBZdoEF7/RA6lzdbkwvFbvPBz6tb0LPNz60OYhWHhpGYtNnX5sG9xfV2jrkSv/fhnzyPbjB3EoAF2mwA==",
       "type": "package",
       "path": "system.runtime/4.3.0",
       "files": [
@@ -1671,7 +1671,7 @@
       ]
     },
     "System.Text.RegularExpressions/4.3.0": {
-      "sha512": "RpT2DA+L660cBt1FssIE9CAGpLFdFPuheB7pLpKpn6ZXNby7jDERe8Ua/Ne2xGiwLVG2JOqziiaVCGDon5sKFA==",
+      "sha512": "/POuk4sy5XgZmQS34GXfCRQtkMGEij3ins3jq6XFl6j4PfuSKlNrGHwdxAkOMESYSbPgAURs1I4KeFI7RyLrxw==",
       "type": "package",
       "path": "system.text.regularexpressions/4.3.0",
       "files": [
@@ -1857,7 +1857,6 @@
         "netcoreapp2.2"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "http://jhnuget.iuoooo.com:8008/nuget": {},
         "https://api.nuget.org/v3/index.json": {}
       },
