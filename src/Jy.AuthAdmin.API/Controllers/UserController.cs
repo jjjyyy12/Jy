@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Newtonsoft.Json;
+using System.Net.Http;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -24,7 +25,8 @@ namespace Jy.AuthAdmin.API.Controllers
         private readonly IDepartmentAppService _departmentservice;
         private readonly IVerifyTokenAppService _verifyTokenAppService;
         private IHttpContextAccessor _httpContextAccesor;
-        public UserController(IUserAppService service, IDepartmentAppService departmentservice, IVerifyTokenAppService verifyTokenAppService, IHttpContextAccessor httpContextAccesor)
+        public UserController(IUserAppService service, IDepartmentAppService departmentservice, IVerifyTokenAppService verifyTokenAppService, IHttpContextAccessor httpContextAccesor, IHttpClientFactory clientFactory)
+            : base(clientFactory)
         {
             _service = service;
             _departmentservice = departmentservice;

@@ -7,12 +7,17 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Jy.Application.UserApp;
 using Jy.Utility.Convert;
 using Jy.AuthAdmin.API.Models;
+using System.Net.Http;
 
 namespace Jy.AuthAdmin.API.Controllers
 {
     public abstract class JyControllerBase : ControllerBase
     {
-
+        protected IHttpClientFactory ClientFactory;
+        public JyControllerBase(IHttpClientFactory clientFactory)
+        {
+            ClientFactory = clientFactory;
+        }
         /// <summary>
         /// 获取服务端验证的第一条错误信息
         /// </summary>

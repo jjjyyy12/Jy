@@ -1108,6 +1108,8 @@
       "type": "package",
       "path": "microsoft.entityframeworkcore.relational.design/1.1.2",
       "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "lib/net451/Microsoft.EntityFrameworkCore.Relational.Design.dll",
         "lib/net451/Microsoft.EntityFrameworkCore.Relational.Design.xml",
         "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.Design.dll",
@@ -1840,6 +1842,8 @@
       "type": "package",
       "path": "npgsql.entityframeworkcore.postgresql.design/1.1.1",
       "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "lib/net451/Npgsql.EntityFrameworkCore.PostgreSQL.Design.dll",
         "lib/netstandard1.3/Npgsql.EntityFrameworkCore.PostgreSQL.Design.dll",
         "npgsql.entityframeworkcore.postgresql.design.1.1.1.nupkg.sha512",
@@ -2251,7 +2255,7 @@
       ]
     },
     "System.IO/4.3.0": {
-      "sha512": "BIBAa/7jjQtg2htTHAvhWFWiWlw+vHlNYKZ6iVj2QzRQUAZ4aD60mz0YpcqMDQtEfwDbqT5jNP2ZdSNFaIt2aA==",
+      "sha512": "3qjaHvxQPDpSOYICjUoTsmoq5u6QJAFRUITgeT/4gqkF1bajbSmb1kwSxEA8AHlofqgcKJcM8udgieRNhaJ5Cg==",
       "type": "package",
       "path": "system.io/4.3.0",
       "files": [
@@ -2672,7 +2676,7 @@
       ]
     },
     "System.Reflection/4.3.0": {
-      "sha512": "KWSAsh7QVnC7gJEuJpTEPelGen8LHKAUS0kNvhR9g6/WBEUttKuJxhQehkdMyGe5TVyvKr9r236RB6qSSt2UjA==",
+      "sha512": "KMiAFoW7MfJGa9nDFNcfu+FpEdiHpWgTcS2HdMpDvt9saK3y/G4GwprPyzqjFH9NTaGPQeWNHU+iDlDILj96aQ==",
       "type": "package",
       "path": "system.reflection/4.3.0",
       "files": [
@@ -2752,7 +2756,7 @@
       ]
     },
     "System.Reflection.Emit/4.3.0": {
-      "sha512": "Y7quJm03WH7fPsfpgT7+cwcYyZYw8ZXJ3z2htsVtjvmWforIcAhIFokI/z3Dma7DvxbfpVAsdwxwT3TXBoynCA==",
+      "sha512": "228FG0jLcIwTVJyz8CLFKueVqQK36ANazUManGaJHkO0icjiIypKW7YLWLIWahyIkdh5M7mV2dJepllLyA1SKg==",
       "type": "package",
       "path": "system.reflection.emit/4.3.0",
       "files": [
@@ -2788,7 +2792,7 @@
       ]
     },
     "System.Reflection.Emit.ILGeneration/4.3.0": {
-      "sha512": "W5/COCScSrK/oPKP9VSb1LYxOgzbv2Uxrt4akqWIEEF80KzS4xrbCz+kqTyFULjJPubeCvcwZwbdGFXgjkb95Q==",
+      "sha512": "59tBslAk9733NXLrUJrwNZEzbMAcu8k344OYo+wfSVygcgZ9lgBdGIzH/nrg3LYhXceynyvTc8t5/GD4Ri0/ng==",
       "type": "package",
       "path": "system.reflection.emit.ilgeneration/4.3.0",
       "files": [
@@ -2833,7 +2837,7 @@
       ]
     },
     "System.Reflection.Emit.Lightweight/4.3.0": {
-      "sha512": "NMVAWghxzp0VURrZqPOFIjqbFeWY8z1m5vlzvHrcc9mzC74wS03Joki2C/PZAnvouF+EXNbmREIntopgHGNTTg==",
+      "sha512": "oadVHGSMsTmZsAF864QYN1t1QzZjIcuKU3l2S9cZOwDdDueNTrqq1yRj7koFfIGEnKpt6NjpL3rOzRhs4ryOgA==",
       "type": "package",
       "path": "system.reflection.emit.lightweight/4.3.0",
       "files": [
@@ -2934,7 +2938,7 @@
       ]
     },
     "System.Reflection.Primitives/4.3.0": {
-      "sha512": "rQm+hMaY2uJYiVYy1d0RbH8ezoJ38NbPtSMj2jmxPsocxNTMytYFHnQ99Ld8yps/nthQ8S2XYP7Smrw+aWVhKA==",
+      "sha512": "5RXItQz5As4xN2/YUDxdpsEkMhvw3e6aNveFXUn4Hl/udNTCNhnKp8lT9fnc3MhvGKh1baak5CovpuQUXHAlIA==",
       "type": "package",
       "path": "system.reflection.primitives/4.3.0",
       "files": [
@@ -3100,7 +3104,7 @@
       ]
     },
     "System.Runtime/4.3.0": {
-      "sha512": "GzhNKhiBZdoEF7/RA6lzdbkwvFbvPBz6tb0LPNz60OYhWHhpGYtNnX5sG9xfV2jrkSv/fhnzyPbjB3EoAF2mwA==",
+      "sha512": "JufQi0vPQ0xGnAczR13AUFglDyVYt4Kqnz1AZaiKZ5+GICq0/1MH/mO/eAJHt/mHW1zjKBJd7kV26SrxddAhiw==",
       "type": "package",
       "path": "system.runtime/4.3.0",
       "files": [
@@ -3296,7 +3300,7 @@
       ]
     },
     "System.Text.Encoding/4.3.0": {
-      "sha512": "xnDuZa+uCYSGz0DKUjqvIhsD2skEw4abGy/N/xWy8RTpKYxzaDiuAM4WAuVF+wSjoos7K0dVlhvkAtMhA8NanA==",
+      "sha512": "BiIg+KWaSDOITze6jGQynxg64naAPtqGHBwDrLaCtixsa5bKiR8dpPOHA7ge3C0JJQizJE+sfkz1wV+BAKAYZw==",
       "type": "package",
       "path": "system.text.encoding/4.3.0",
       "files": [
@@ -3363,7 +3367,7 @@
       ]
     },
     "System.Text.RegularExpressions/4.3.0": {
-      "sha512": "/POuk4sy5XgZmQS34GXfCRQtkMGEij3ins3jq6XFl6j4PfuSKlNrGHwdxAkOMESYSbPgAURs1I4KeFI7RyLrxw==",
+      "sha512": "RpT2DA+L660cBt1FssIE9CAGpLFdFPuheB7pLpKpn6ZXNby7jDERe8Ua/Ne2xGiwLVG2JOqziiaVCGDon5sKFA==",
       "type": "package",
       "path": "system.text.regularexpressions/4.3.0",
       "files": [
@@ -3516,7 +3520,7 @@
       ]
     },
     "System.Threading.Tasks/4.3.0": {
-      "sha512": "+uku9YSVY9vXDZxsRoMek+qTzr32ANJEOB5bAy6MXKUc4ZY6RQIOAX9d65zMZFdzBqu5Er91zWE2qmXEIuEa0w==",
+      "sha512": "LbSxKEdOUhVe8BezB/9uOGGppt+nZf6e1VFyw6v3DN6lqitm0OSn2uXMOdtP0M3W4iMcqcivm2J6UgqiwwnXiA==",
       "type": "package",
       "path": "system.threading.tasks/4.3.0",
       "files": [
@@ -3711,6 +3715,7 @@
         "netcoreapp2.2"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "http://jhnuget.iuoooo.com:8008/nuget": {},
         "https://api.nuget.org/v3/index.json": {}
       },

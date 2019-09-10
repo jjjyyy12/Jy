@@ -11,6 +11,7 @@ using Jy.Domain.Dtos;
 using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
+using System.Net.Http;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -24,7 +25,8 @@ namespace Jy.AuthAdmin.API.Controllers
         private readonly IMenuAppService _menuAppService;
         private readonly IVerifyTokenAppService _verifyTokenAppService;
         private IHttpContextAccessor _httpContextAccesor;
-        public RoleController(IRoleAppService service , IMenuAppService menuAppService, IVerifyTokenAppService verifyTokenAppService,IHttpContextAccessor httpContextAccesor)
+        public RoleController(IRoleAppService service , IMenuAppService menuAppService, IVerifyTokenAppService verifyTokenAppService,IHttpContextAccessor httpContextAccesor, IHttpClientFactory clientFactory)
+            : base(clientFactory)
         {
             _service = service;
             _menuAppService = menuAppService;

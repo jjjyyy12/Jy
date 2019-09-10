@@ -10,6 +10,7 @@ using Jy.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Jy.MVCAuthorization;
 using Jy.Domain.Dtos;
+using System.Net.Http;
 
 namespace Jy.AuthAdmin.API.Controllers
 {
@@ -21,7 +22,8 @@ namespace Jy.AuthAdmin.API.Controllers
     public class MenuController : JyControllerBase
     {
         private readonly IMenuAppService _menuAppService;
-        public MenuController(IMenuAppService menuAppService)
+        public MenuController(IMenuAppService menuAppService, IHttpClientFactory clientFactory)
+            : base(clientFactory)
         {
             _menuAppService = menuAppService;
         }

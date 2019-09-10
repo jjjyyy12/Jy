@@ -6,6 +6,7 @@ using Jy.AuthAdmin.API.Models;
 using Jy.Application.UserApp;
 using Jy.MVCAuthorization;
 using Jy.Domain.Dtos;
+using System.Net.Http;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -20,7 +21,8 @@ namespace Jy.AuthAdmin.API.Controllers
     {
         private readonly IRoleAppService _service;
         private readonly IUserAppService _userAppService;
-        public AuthorityController(IRoleAppService service , IUserAppService userAppService)
+        public AuthorityController(IRoleAppService service , IUserAppService userAppService, IHttpClientFactory clientFactory)
+            : base(clientFactory)
         {
             _service = service;
             _userAppService = userAppService;

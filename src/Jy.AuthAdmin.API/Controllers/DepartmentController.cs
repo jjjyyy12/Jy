@@ -6,6 +6,7 @@ using Jy.AuthAdmin.API.Models;
 using Microsoft.AspNetCore.Authorization;
 using Jy.MVCAuthorization;
 using Jy.Domain.Dtos;
+using System.Net.Http;
 
 namespace Jy.AuthAdmin.API.Controllers
 {
@@ -14,7 +15,8 @@ namespace Jy.AuthAdmin.API.Controllers
     public class DepartmentController : JyControllerBase
     {
         private readonly IDepartmentAppService _service;
-        public DepartmentController(IDepartmentAppService service)
+        public DepartmentController(IDepartmentAppService service, IHttpClientFactory clientFactory)
+            : base(clientFactory)
         {
             _service = service;
         }

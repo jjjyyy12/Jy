@@ -70,6 +70,23 @@ namespace Jy.Component.Extensions
             InitTokenService(services, Configuration);
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            //ResilientHttpClient
+            if (Configuration.GetValue<string>("UseResilientHttp") == bool.TrueString)
+            {
+                services.AddSingleton<IResilientHttpClientFactory, ResilientHttpClientFactory>();
+                services.AddSingleton<IHttpClient, ResilientHttpClient>(sp => sp.GetService<IResilientHttpClientFactory>().CreateResilientHttpClient());
+            }
+            else if (Configuration.GetValue<string>("UseHttpClientFactory") == bool.TrueString)
+            {
+                services.AddHttpClient();
+                var serviceProvider = services.BuildServiceProvider();
+                JyHttpClientFactory.Init(serviceProvider);
+                services.AddScoped<IHttpClient, JyHttpClient>();
+            }
+            else
+            {
+                services.AddSingleton<IHttpClient, StandardHttpClient>();
+            }
             services.AddMvc(options =>
             {
                 options.Filters.Add(typeof(HttpGlobalExceptionFilter));
@@ -102,6 +119,13 @@ namespace Jy.Component.Extensions
             {
                 services.AddSingleton<IResilientHttpClientFactory, ResilientHttpClientFactory>();
                 services.AddSingleton<IHttpClient, ResilientHttpClient>(sp => sp.GetService<IResilientHttpClientFactory>().CreateResilientHttpClient());
+            }
+            else if (Configuration.GetValue<string>("UseHttpClientFactory") == bool.TrueString)
+            {
+                services.AddHttpClient();
+                var serviceProvider = services.BuildServiceProvider();
+                JyHttpClientFactory.Init(serviceProvider);
+                services.AddScoped<IHttpClient, JyHttpClient>();
             }
             else
             {

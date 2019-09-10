@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authentication;
 using Jy.Utility;
 using Jy.ServicesKeep;
 using Jy.AuthService;
+using System.Net.Http;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -26,7 +27,8 @@ namespace Jy.AuthAdmin.API.Controllers
         public LoginController(IVerifyTokenAppService verifyTokenAppService,
             ITokenAuthService tokenAuthService,
             IOptions<UrlConfigSetting> urlConfig,
-            IHttpContextAccessor httpContextAccesor)
+            IHttpContextAccessor httpContextAccesor, IHttpClientFactory clientFactory)
+            : base(clientFactory)
         {
             _verifyTokenAppService = verifyTokenAppService;
             _tokenAuthService = tokenAuthService;
