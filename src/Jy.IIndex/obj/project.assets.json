@@ -1842,7 +1842,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jiaoy\\.nuget\\packages\\": {},
+    "C:\\Users\\jiaoy.JHWL\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -1851,22 +1851,21 @@
       "projectUniqueName": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.IIndex\\Jy.IIndex.csproj",
       "projectName": "Jy.IIndex",
       "projectPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.IIndex\\Jy.IIndex.csproj",
-      "packagesPath": "C:\\Users\\jiaoy\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\jiaoy.JHWL\\.nuget\\packages\\",
       "outputPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.IIndex\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\jiaoy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "D:\\jyworkspace\\githab\\Jy\\NuGet.Config",
+        "C:\\Users\\jiaoy.JHWL\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "http://jhnuget.iuoooo.com:8008/nuget": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1899,10 +1898,16 @@
           }
         },
         "imports": [
-          "net461"
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
