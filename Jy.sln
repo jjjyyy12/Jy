@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A321168A-8AB7-4793-A10E-526D474D33F0}"
 EndProject
@@ -115,7 +115,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jy.CKafka", "src\Jy.CKafka\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jy.FreeSql", "src\Jy.FreeSql\Jy.FreeSql.csproj", "{E1ECA0FF-61C5-4AAD-9FE1-660C41EE891E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jy.Component", "src\Jy.Component\Jy.Component.csproj", "{DD53237D-E6D5-4AE2-AEE1-76F216C968E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jy.Component", "src\Jy.Component\Jy.Component.csproj", "{DD53237D-E6D5-4AE2-AEE1-76F216C968E3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "File", "File", "{1AEB5C3A-64A7-4E1A-B928-9382F0A35A47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jy.IFile", "src\Jy.IFile\Jy.IFile.csproj", "{CCA4113F-B742-46DE-B3E7-BF3F3B109BD8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -283,6 +287,10 @@ Global
 		{DD53237D-E6D5-4AE2-AEE1-76F216C968E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD53237D-E6D5-4AE2-AEE1-76F216C968E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD53237D-E6D5-4AE2-AEE1-76F216C968E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCA4113F-B742-46DE-B3E7-BF3F3B109BD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCA4113F-B742-46DE-B3E7-BF3F3B109BD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCA4113F-B742-46DE-B3E7-BF3F3B109BD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCA4113F-B742-46DE-B3E7-BF3F3B109BD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -343,6 +351,8 @@ Global
 		{DE3DBE7B-D38C-40CD-B7D1-AB9D5AB0ED2B} = {E7EF3144-4D21-494C-AD50-ECF2604105C3}
 		{E1ECA0FF-61C5-4AAD-9FE1-660C41EE891E} = {1A101DC5-80BF-4F4F-A224-3A0894455999}
 		{DD53237D-E6D5-4AE2-AEE1-76F216C968E3} = {4C1C4B7D-E7A0-4BE8-8A25-184895E7D6FF}
+		{1AEB5C3A-64A7-4E1A-B928-9382F0A35A47} = {4C1C4B7D-E7A0-4BE8-8A25-184895E7D6FF}
+		{CCA4113F-B742-46DE-B3E7-BF3F3B109BD8} = {1AEB5C3A-64A7-4E1A-B928-9382F0A35A47}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F5F89B58-6C55-4263-80BB-69549FC838F9}

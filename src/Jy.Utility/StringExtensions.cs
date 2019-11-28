@@ -993,5 +993,65 @@ namespace Jy.Utility
 
             return text;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="paths"></param>
+        /// <returns></returns>
+        public static string Combine(params string[] paths)
+        {
+            StringBuilder path = new StringBuilder();
+            foreach (var item in paths)
+            {
+                path.Append(item).Append("/");
+            }
+            var resPath = path.ToString();
+            var sresPath = resPath.AsSpan();
+            if (path.Length > 0)
+                return sresPath.Slice(0, sresPath.LastIndexOf('/')).ToString();
+            return resPath;
+        }
+        public static List<string> SpanSplit(this string text, ReadOnlySpan<char> splitSapn)
+        {
+            int n;
+            List<string> arr = new List<string>();
+            var strSpan = text.AsSpan();
+            while (true)
+            {
+                n = strSpan.IndexOf(splitSapn);
+                if (n > -1)
+                {
+                    arr.Add(strSpan.Slice(0, n).ToString());
+                    strSpan = strSpan.Slice(n + splitSapn.Length);
+                }
+                else
+                {
+                    arr.Add(strSpan.Slice(0).ToString());
+                    break;
+                }
+            }
+            return arr;
+        }
+        public static string SpanReplace(this string text, ReadOnlySpan<char> splitSapn, string replaceStr)
+        {
+            int n;
+            List<string> arr = new List<string>();
+            var strSpan = text.AsSpan();
+            while (true)
+            {
+                n = strSpan.IndexOf(splitSapn);
+                if (n > -1)
+                {
+                    arr.Add(strSpan.Slice(0, n).ToString());
+                    strSpan = strSpan.Slice(n + splitSapn.Length);
+                }
+                else
+                {
+                    arr.Add(strSpan.Slice(0).ToString());
+                    break;
+                }
+            }
+            return string.Join(replaceStr, arr);
+        }
     }
 }
