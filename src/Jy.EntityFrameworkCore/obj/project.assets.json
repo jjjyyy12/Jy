@@ -6305,7 +6305,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jiaoy.JHWL\\.nuget\\packages\\": {},
+    "C:\\Users\\jiaoy.JINHER\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -6314,7 +6314,7 @@
       "projectUniqueName": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.EntityFrameworkCore\\Jy.EntityFrameworkCore.csproj",
       "projectName": "Jy.EntityFrameworkCore",
       "projectPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.EntityFrameworkCore\\Jy.EntityFrameworkCore.csproj",
-      "packagesPath": "C:\\Users\\jiaoy.JHWL\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\jiaoy.JINHER\\.nuget\\packages\\",
       "outputPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.EntityFrameworkCore\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
@@ -6322,7 +6322,7 @@
       ],
       "configFilePaths": [
         "D:\\jyworkspace\\githab\\Jy\\NuGet.Config",
-        "C:\\Users\\jiaoy.JHWL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jiaoy.JINHER\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6333,6 +6333,7 @@
       },
       "frameworks": {
         "netcoreapp2.2": {
+          "targetAlias": "netcoreapp2.2",
           "projectReferences": {
             "D:\\jyworkspace\\githab\\Jy\\src\\Jy.Domain\\Jy.Domain.csproj": {
               "projectPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.Domain\\Jy.Domain.csproj"
@@ -6351,6 +6352,7 @@
     },
     "frameworks": {
       "netcoreapp2.2": {
+        "targetAlias": "netcoreapp2.2",
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Tools": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers",
@@ -6395,7 +6397,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
       }
     }
   }

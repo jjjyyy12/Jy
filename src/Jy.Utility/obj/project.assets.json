@@ -975,7 +975,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jiaoy.JHWL\\.nuget\\packages\\": {},
+    "C:\\Users\\jiaoy.JINHER\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -984,7 +984,7 @@
       "projectUniqueName": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.Utility\\Jy.Utility.csproj",
       "projectName": "Jy.Utility",
       "projectPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.Utility\\Jy.Utility.csproj",
-      "packagesPath": "C:\\Users\\jiaoy.JHWL\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\jiaoy.JINHER\\.nuget\\packages\\",
       "outputPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.Utility\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
@@ -992,7 +992,7 @@
       ],
       "configFilePaths": [
         "D:\\jyworkspace\\githab\\Jy\\NuGet.Config",
-        "C:\\Users\\jiaoy.JHWL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jiaoy.JINHER\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1003,6 +1003,7 @@
       },
       "frameworks": {
         "netcoreapp2.2": {
+          "targetAlias": "netcoreapp2.2",
           "projectReferences": {}
         }
       },
@@ -1014,6 +1015,7 @@
     },
     "frameworks": {
       "netcoreapp2.2": {
+        "targetAlias": "netcoreapp2.2",
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection": {
             "target": "Package",
@@ -1044,7 +1046,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -140,7 +140,7 @@ namespace Jy.Component.Extensions
             InitRegisterAPIHostPort(nodeName, Configuration);
             services.AddSession();
         }
-        public static void InitSwagger(this IServiceCollection services,IConfigurationRoot Configuration)
+        private static void InitSwagger(this IServiceCollection services,IConfigurationRoot Configuration)
         {
             //------------version control and api document swagger
             // format the version as "'v'major[.minor][-status]"
@@ -183,14 +183,14 @@ namespace Jy.Component.Extensions
                 return Path.Combine(basePath, fileName);
             }
         }
-        public static void InitService(this IServiceCollection services, IConfigurationRoot Configuration)
+        private static void InitService(this IServiceCollection services, IConfigurationRoot Configuration)
         {
             services.AddScoped<IRoleAppService, RoleAppService>();
             services.AddScoped<IUserAppService, UserAppService>();
             services.AddScoped<IMenuAppService, MenuAppService>();
             services.AddScoped<IDepartmentAppService, DepartmentAppService>();
         }
-        public static void InitDB(this IServiceCollection services, IConfigurationRoot Configuration)
+        private static void InitDB(this IServiceCollection services, IConfigurationRoot Configuration)
         {
             services.Configure<SDBSettings>(Configuration.GetSection("SDBSettings"));
             //----dapper

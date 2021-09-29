@@ -4620,7 +4620,7 @@
       ]
     },
     "System.Diagnostics.FileVersionInfo/4.3.0": {
-      "sha512": "omCF64wzQ3Q2CeIqkD6lmmxeMZtGHUmzgFMPjfVaOsyqpR66p/JaZzManMw1s33osoAb5gqpncsjie67+yUPHQ==",
+      "sha512": "6WVi7gArhxRiC+3qI5V2mFe1gHENj/F7xT5PQiy/lI/RsxXeivrt09WF0huwSQK2ubnmyyRFeA9z3w743/w32A==",
       "type": "package",
       "path": "system.diagnostics.fileversioninfo/4.3.0",
       "files": [
@@ -7597,7 +7597,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jiaoy.JHWL\\.nuget\\packages\\": {},
+    "C:\\Users\\jiaoy.JINHER\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -7606,7 +7606,7 @@
       "projectUniqueName": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.HealthCheck\\Jy.HealthCheck.csproj",
       "projectName": "Jy.HealthCheck",
       "projectPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.HealthCheck\\Jy.HealthCheck.csproj",
-      "packagesPath": "C:\\Users\\jiaoy.JHWL\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\jiaoy.JINHER\\.nuget\\packages\\",
       "outputPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.HealthCheck\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
@@ -7614,7 +7614,7 @@
       ],
       "configFilePaths": [
         "D:\\jyworkspace\\githab\\Jy\\NuGet.Config",
-        "C:\\Users\\jiaoy.JHWL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jiaoy.JINHER\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7625,6 +7625,7 @@
       },
       "frameworks": {
         "netcoreapp2.2": {
+          "targetAlias": "netcoreapp2.2",
           "projectReferences": {}
         }
       },
@@ -7636,6 +7637,7 @@
     },
     "frameworks": {
       "netcoreapp2.2": {
+        "targetAlias": "netcoreapp2.2",
         "dependencies": {
           "Microsoft.AspNetCore.Mvc": {
             "target": "Package",
@@ -7658,7 +7660,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
       }
     }
   }

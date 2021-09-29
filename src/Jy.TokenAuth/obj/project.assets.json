@@ -7954,7 +7954,7 @@
       ]
     },
     "System.Diagnostics.FileVersionInfo/4.3.0": {
-      "sha512": "omCF64wzQ3Q2CeIqkD6lmmxeMZtGHUmzgFMPjfVaOsyqpR66p/JaZzManMw1s33osoAb5gqpncsjie67+yUPHQ==",
+      "sha512": "6WVi7gArhxRiC+3qI5V2mFe1gHENj/F7xT5PQiy/lI/RsxXeivrt09WF0huwSQK2ubnmyyRFeA9z3w743/w32A==",
       "type": "package",
       "path": "system.diagnostics.fileversioninfo/4.3.0",
       "files": [
@@ -12300,7 +12300,7 @@
       ]
     },
     "System.Xml.XmlSerializer/4.3.0": {
-      "sha512": "MYoTCP7EZ98RrANESW05J5ZwskKDoN0AuZ06ZflnowE50LTpbR5yRg3tHckTVm5j/m47stuGgCrCHWePyHS70Q==",
+      "sha512": "VShQJhOxgD/5M2Z1IWm1vMaSqlbjo1zdFf8H7Ahte6bTvSUhUko/gDpAVVhGgGgTDeue4QyNg1fu1Zz2GKSEuQ==",
       "type": "package",
       "path": "system.xml.xmlserializer/4.3.0",
       "files": [
@@ -12576,7 +12576,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jiaoy.JHWL\\.nuget\\packages\\": {},
+    "C:\\Users\\jiaoy.JINHER\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -12585,7 +12585,7 @@
       "projectUniqueName": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.TokenAuth\\Jy.TokenAuth.csproj",
       "projectName": "Jy.TokenAuth",
       "projectPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.TokenAuth\\Jy.TokenAuth.csproj",
-      "packagesPath": "C:\\Users\\jiaoy.JHWL\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\jiaoy.JINHER\\.nuget\\packages\\",
       "outputPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.TokenAuth\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
@@ -12593,7 +12593,7 @@
       ],
       "configFilePaths": [
         "D:\\jyworkspace\\githab\\Jy\\NuGet.Config",
-        "C:\\Users\\jiaoy.JHWL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jiaoy.JINHER\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -12604,6 +12604,7 @@
       },
       "frameworks": {
         "netcoreapp2.2": {
+          "targetAlias": "netcoreapp2.2",
           "projectReferences": {
             "D:\\jyworkspace\\githab\\Jy\\src\\Jy.AuthAdmin.SolrIndex\\Jy.AuthAdmin.SolrIndex.csproj": {
               "projectPath": "D:\\jyworkspace\\githab\\Jy\\src\\Jy.AuthAdmin.SolrIndex\\Jy.AuthAdmin.SolrIndex.csproj"
@@ -12646,6 +12647,7 @@
     },
     "frameworks": {
       "netcoreapp2.2": {
+        "targetAlias": "netcoreapp2.2",
         "dependencies": {
           "Microsoft.ApplicationInsights.AspNetCore": {
             "target": "Package",
@@ -12732,7 +12734,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
       }
     }
   }
